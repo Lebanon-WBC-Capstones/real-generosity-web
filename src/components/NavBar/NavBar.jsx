@@ -21,13 +21,10 @@ function NavBar() {
         align="center"
         mx={16}
         mt={3}
-        fonts="
-            Montserrat"
-        fontSize={16}
-        fontWeight={600}
-        bg="transparent"
+        fontSize="md"
+        fontWeight="medium"
       >
-        <Box fontSize={24}>LOGO</Box>
+        <Box fontSize="2xl">LOGO</Box>
 
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
           <Text _hover={{ color: 'green.400' }}>Home</Text>
@@ -39,7 +36,7 @@ function NavBar() {
         <Flex>
           <Menu>
             <MenuButton
-              p={1}
+              p={2}
               transition="all 0.2s"
               borderRadius="md"
               _hover={{ bg: 'gray.100', color: 'green.400' }}
@@ -49,7 +46,7 @@ function NavBar() {
                 <Icon as={Globe} mr={0.5} /> EN
               </Box>
             </MenuButton>
-            <MenuList>
+            <MenuList minW="max-content">
               <MenuItem>
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
                   <Icon as={Globe} mr={2} /> FR
