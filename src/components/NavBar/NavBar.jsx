@@ -49,12 +49,12 @@ function NavBar() {
             <MenuList minW="max-content">
               <MenuItem>
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  <Icon as={Globe} mr={2} /> FR
+                  FR
                 </Box>
               </MenuItem>
               <MenuItem>
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  <Icon as={Globe} mr={2} /> AR
+                  AR
                 </Box>
               </MenuItem>
             </MenuList>
