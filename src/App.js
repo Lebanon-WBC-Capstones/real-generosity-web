@@ -1,11 +1,13 @@
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
+import ItemsPage from './pages/ItemsPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 function App() {
   return (
     <div className="App">
       <NavBar />
+      {/* uncomment the following line to see the map */}
+      {/*  <ItemsPage /> */}
       <Router>
         <Switch>
           <Route exact path="/">

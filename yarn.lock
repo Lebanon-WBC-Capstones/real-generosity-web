@@ -9972,6 +9972,11 @@ react-focus-lock@2.5.0:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
+react-hook-google-maps@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-hook-google-maps/-/react-hook-google-maps-0.0.3.tgz#468b7631970a25ce070f9f2e7f5ca6fd6b6d536d"
+  integrity sha512-ZgsFaKXOX/sTWBMlbgdvfRp6PAp1WYT3XYyJf1nplOwnoBfd81vqQoeLnM005q0tQaxq6/M5ymKuFUWrpFxJgQ==
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
