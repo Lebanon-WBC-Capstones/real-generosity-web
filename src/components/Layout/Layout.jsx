@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 
 function Layout({ children }) {
   return (
-    <Flex direction="column">
+    <Flex minH="100vh" direction="column">
       <NavBar />
       {children}
       <Footer />
