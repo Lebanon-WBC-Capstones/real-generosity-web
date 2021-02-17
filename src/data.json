@@ -1,0 +1,23 @@
+{
+"categories" : 
+     ["Furniture", 
+       "Clothes",
+        "Books", 
+        "Toys",
+        "Medics", 
+        "Appliances" ]
+,
+
+"item" : {
+    "name": "",
+    "date":"",
+    "location":"",
+    "category":"",
+    "imageURL":["https://i.pinimg.com/originals/78/6d/ca/786dca74ea74da56c66c5acd52066997.jpg"
+                ,"https://i.pinimg.com/originals/78/6d/ca/786dca74ea74da56c66c5acd52066997.jpg"
+                ,"https://i.pinimg.com/originals/78/6d/ca/786dca74ea74da56c66c5acd52066997.jpg "]  ,
+    "description": "",
+    "Active":true,
+    "reports":[]
+}
+}
