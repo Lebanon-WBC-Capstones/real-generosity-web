@@ -1,18 +1,19 @@
 import React from "react";
-import {Container,Box,Flex} from "@chakra-ui/react";
+import {Container,Box,Flex,Text} from "@chakra-ui/react";
 import ItemMap from "./components/ItemstemMap"
 
 
 const ItemsPage = () => {
     return ( 
-        <Container colorScheme="pink" maxW="1080px">
-                 <Box></Box>
-                 <Box></Box>
+        <Container my="45px" maxW="1080px">
+                 <Box mb="45px"></Box>
+                 <Box mb="45px"></Box>
 
             <Flex justify="space-between">
-               <Box w="50%">
+               <Box  w="50%">
+               
                </Box>
-               <Box w="50%">
+               <Box  w="50%">
                 <ItemsMap />
                </Box>
             </Flex>
