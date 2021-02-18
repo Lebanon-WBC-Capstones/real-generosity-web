@@ -35,8 +35,7 @@
     "id": "101",
     "name": "baby overall",
     "date": "12/2/2021",
-    "location": {"Town":"Tripoli", 
-                "Neigborhood":"Mina"},
+    "location": [32.1667,13.7865],
     "category": "clothes",
     "imageURL": [
       "https://i.pinimg.com/originals/78/6d/ca/786dca74ea74da56c66c5acd52066997.jpg",
@@ -47,15 +46,18 @@
     "ownerId": "88978628",
     "Status": "Active",
     "reports": [
-      {"reporterId":"201",
+      { "id":"701",
+        "reporterId":"201",
         "reportReason":"false identity to decieve people"
 
                }
       ],
       "requests": [
-        {"requesterId":"301",
+        { "id":"801",
+          "requesterId":"301",
           "requesterReason":"Have a newborn baby"
   
                  }
+                ]
   }
 }
