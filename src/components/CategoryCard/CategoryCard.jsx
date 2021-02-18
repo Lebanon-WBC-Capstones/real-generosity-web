@@ -1,25 +1,27 @@
 import React from "react";
 import { Box, HStack, Text, Image } from "@chakra-ui/react";
-
+import sofa from '../../assets/sofa.png';
 const CategoryCard = () => {
   return (
     <Box
-      margin="10px"
-      py="10px"
+      
       fontSize="18px"
-      maxW="xs"
-      maxBlockSize="xs"
+      height="100%"
+      Width="100%"
+      objectFit="cover"
       borderRadius="lg"
       bg="gray.200"
       _hover={{ cursor: "pointer" }}
+      centerContent
     >
       <Image
-        src="./sofa.png"
-        maxW="241px"
-        maxH="233px"
+        src={sofa} alt="Furniture"
+        maxW="80%"
+        maxH="80%"
+        objectFit="cover"
         mb="20px"
-        ml="22px"
-      ></Image>
+        align="center"
+       ></Image>
       <HStack
         spacing="12px"
         mb="20px"
