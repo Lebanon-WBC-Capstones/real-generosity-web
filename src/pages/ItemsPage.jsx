@@ -1,5 +1,5 @@
 import React from "react";
-import {Container,Box,Flex,Text} from "@chakra-ui/react";
+import {Container,Box,Flex} from "@chakra-ui/react";
 
 
 
