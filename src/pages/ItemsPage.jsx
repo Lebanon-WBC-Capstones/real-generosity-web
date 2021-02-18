@@ -1,6 +1,6 @@
 import React from "react";
 import {Container,Box,Flex,Text} from "@chakra-ui/react";
-import ItemMap from "./components/ItemstemMap"
+
 
 
 const ItemsPage = () => {
@@ -14,7 +14,7 @@ const ItemsPage = () => {
                
                </Box>
                <Box  w="50%">
-                <ItemsMap />
+                
                </Box>
             </Flex>
               
