@@ -2,10 +2,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
 
+import ImageCarousel from './components/ImageCarousel';
+
 function App() {
   return (
     <div className="App">
       <Layout>
+        <ImageCarousel />
         <Router>
           <Switch>
             <Route exact path="/">
