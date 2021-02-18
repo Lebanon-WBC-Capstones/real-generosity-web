@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
-// import './App.css';
+import ItemsPage from './pages/ItemsPage';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
             </Route>
             <Route exact path="/items">
               {/* Items page goes here  */}
+              <ItemsPage />
             </Route>
             <Route exact path="/item/:id">
               {/* Single item page goes here  */}
