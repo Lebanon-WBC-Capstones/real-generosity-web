@@ -1,8 +1,6 @@
 import React from "react";
 import {Container,Box,Flex} from "@chakra-ui/react";
 
-
-
 const ItemsPage = () => {
     return ( 
         <Container my="45px" maxW="1080px">
