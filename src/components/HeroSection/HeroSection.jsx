@@ -11,9 +11,7 @@ const HeroSection = () => {
           height="5xl"
           textAlign="right"
           fontSize="7xl"
-          backgroundImage="url('../../assets/charity-background.png')"
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
+          
         >
           <Text fontSize="7xl">Make som</Text>
           <Flex textAlign="right">
@@ -55,7 +53,10 @@ const HeroSection = () => {
 
         {/* </Box> */}
 
-        <Box pt="56" pb="80" width="62%" height="5xl" fontSize="7xl">
+        <Box pt="56" pb="80" width="62%" height="5xl" fontSize="7xl"
+        backgroundImage="url('../../assets/charity-background.png')"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat">
           <Flex textAlign="left">
             <Text pr="18px">eone's</Text>
             <Text color="green.400" fontWeight="bold" textAlign="right">
