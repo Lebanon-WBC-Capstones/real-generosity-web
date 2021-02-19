@@ -8,9 +8,10 @@ const ImageCarousel = () => {
 
   React.useEffect(() => {
     let shouldCancel = false;
-
+    
     const call = async () => {
       const response = await axios.get(
+    
         "https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948"
       );
       if (!shouldCancel && response.data && response.data.length > 0) {
@@ -25,6 +26,16 @@ const ImageCarousel = () => {
     call();
     return () => (shouldCancel = true);
   }, []);
+
+  
+  // useEffect(() => {
+  //   fetch("../assets/data.json")
+  //     .then((response) => response.json())
+  //     .then((res) => setImages( response.res.item.imageURL.map(url => ({
+  //                      original: `${url}=w1024`,
+  //                      thumbnail: `${url}=w100`
+  //           }))));
+  // }, []);
 
   return images ? <ImageGallery items={images} /> : null;
 };
