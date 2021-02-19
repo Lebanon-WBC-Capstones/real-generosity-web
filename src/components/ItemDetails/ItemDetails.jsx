@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex, Box, HStack, Text, Button, Badge } from '@chakra-ui/react';
 import { MapPin, Edit2, ArrowLeft, AlertCircle, Trash2 } from 'react-feather';
 
-const Description = () => {
+const ItemDetails = () => {
   return (
     <Flex d="column" px={28} maxW="50%" my="50" fontSize={18}>
       <Flex justify="space-between">
@@ -58,4 +58,4 @@ const Description = () => {
   );
 };
 
-export default Description;
+export default ItemDetails;
