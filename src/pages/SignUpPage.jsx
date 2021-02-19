@@ -35,9 +35,10 @@ function SignUpPage() {
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
       <GridItem colSpan={1}>
-        <Image maxH="100vh" w="100%" src={proto} alt="sign up img" />
+        <Image fit="contain" src={proto} alt="sign up img" />
       </GridItem>
-      <GridItem colSpan={2} mt={10} w="1000px" mx="auto">
+
+      <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
           <Box fontSize="4xl">LOGO</Box>
           <Button variant="outline" colorScheme="black">
@@ -46,7 +47,7 @@ function SignUpPage() {
         </Flex>
 
         <Flex minH="80vh" align="center" justify="space-between">
-          <Box fontSize="4xl" maxW="450px">
+          <Box fontSize="4xl">
             Some relatively long heading paragraph sign-up
           </Box>
           <Box>
