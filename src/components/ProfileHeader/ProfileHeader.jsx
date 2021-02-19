@@ -12,20 +12,14 @@ import { MapPin, Phone } from 'react-feather';
 
 const ProfileHeader = () => {
   return (
-    <Box>
-      <HStack spacing="40px">
+    <Box maxW="1080px" mx="auto">
+      <HStack d="flex" justifyContent="center" spacing="40px">
         <Avatar size="xl" name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
         <Grid>
-          <HStack spacing="25px">
-            <Text
-              fontSize="2xl"
-              fontWeight="semibold"
-              color="black.500"
-              marginBottom="10px"
-            >
+          <HStack spacing="25px" marginBottom="10px">
+            <Text fontSize="2xl" fontWeight="semibold" color="black.500">
               User Name
             </Text>
-
             <Button
               rounded="5px"
               size="xs"

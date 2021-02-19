@@ -1,15 +1,17 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
+import ProfileHeader from './components/ProfileHeader';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Layout>
         <Router>
           <Switch>
             <Route exact path="/">
               {/* Home page goes here  */}
+              <ProfileHeader />
             </Route>
             <Route exact path="/auth/login">
               {/* Login page goes here  */}
