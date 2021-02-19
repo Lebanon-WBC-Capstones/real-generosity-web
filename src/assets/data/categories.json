@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Furniture"
+    },
+    {
+      "id": "2",
+      "name": "Clothes"
+    },
+    {
+      "id": "3",
+      "name": "Books"
+    },
+    {
+      "id": "4",
+      "name": "Toys"
+    },
+    {
+      "id": "5",
+      "name": "Medics"
+    },
+    {
+      "id": "6",
+      "name": "Appliances"
+    }
+  ]
+}
