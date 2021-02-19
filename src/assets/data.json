@@ -33,7 +33,7 @@
   ],
   "item": {
     "id": "101",
-    "name": "baby overall",
+    "title": "baby overall",
     "date": "12/2/2021",
     "location": [32.1667,13.7865],
     "category": "clothes",
@@ -48,16 +48,34 @@
     "reports": [
       { "id":"701",
         "reporterId":"201",
-        "reportReason":"false identity to decieve people"
+        "reportReason":"false identity to decieve people",
+        "date":""
 
                }
       ],
       "requests": [
         { "id":"801",
           "requesterId":"301",
-          "requesterReason":"Have a newborn baby"
-  
+          "requesterReason":"Have a newborn baby",
+          "date":"",
                  }
                 ]
+  },
+
+  "user":{
+     "id":"",
+     "status":"normalUser",
+     "name":"",
+     "loaction":{},
+     "emailAddress":"",
+     "password":"",
+     "idCard":"",
+     "avatar":"",
+     "profilePic":[],
+     "mobileNumber":"",
+     "itemsDonated":[{},{}],
+     "itemsReguested":[{}],
+     "itemsReported":[{}],
+     
   }
 }
