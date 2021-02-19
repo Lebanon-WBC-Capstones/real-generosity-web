@@ -4,6 +4,8 @@ import {
   Image,
   Text,
   Grid,
+  GridItem,
+  Flex,
   Center,
   Input,
   Button,
@@ -32,93 +34,91 @@ function SignUpPage() {
 
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
-      <Box>
+      <GridItem colSpan={1}>
         <Image maxH="100vh" w="100%" src={proto} alt="sign up img" />
-      </Box>
-      <Box mt={10} ml={10}>
-        <Box fontSize="4xl">LOGO</Box>
-
-        <Center h="60vh" fontSize="4xl" alignSelf="center">
-          Some relatively long heading paragraph sign-up
-        </Center>
-      </Box>
-      <Box mt={10} ml={10}>
-        <Box float="right" mr={20}>
+      </GridItem>
+      <GridItem colSpan={2} mt={10} w="1000px" mx="auto">
+        <Flex justify="space-between">
+          <Box fontSize="4xl">LOGO</Box>
           <Button variant="outline" colorScheme="black">
             Sign In
           </Button>
-        </Box>
-        <Box mt={16} fontSize="lg">
-          <Text mb={2}>Full Name:</Text>
-          <Input
-            value={fullName}
-            onChange={handleFullNameChange}
-            size="sm"
-            variant="filled"
-            isRequired
-            focusBorderColor="green.200"
-            maxWidth={72}
-          />
-        </Box>
+        </Flex>
 
-        <Box mt={8} fontSize="lg">
-          <Text mb={2}>Address:</Text>
-          <Input
-            value={address}
-            onChange={handleAddressChange}
-            size="sm"
-            variant="filled"
-            isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
-          />
-        </Box>
-
-        <Box mt={8} fontSize="lg">
-          <Text mb={2}>Email Address:</Text>
-          <Input
-            value={emailAddress}
-            onChange={handleEmailAddressChange}
-            type="email"
-            size="sm"
-            variant="filled"
-            isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
-          />
-        </Box>
-        <Box mt={8} fontSize="lg">
-          <Text mb={2}>Phone Number:</Text>
-          <Input
-            value={phoneNumber}
-            onChange={handlePhoneNumberChange}
-            type="tel"
-            size="sm"
-            variant="filled"
-            isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
-          />
-        </Box>
-
-        <Box mt={8} fontSize="lg">
-          <Text mb={2}>Kindly, upload your ID card here:</Text>
-          <Input
-            type="file"
-            accept="image/*,.pdf"
-            size="sm"
-            isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
-          />
-        </Box>
-
-        <Box mt={8}>
-          <Button colorScheme="green" w={72}>
-            Create Account
-          </Button>
-        </Box>
-      </Box>
+        <Flex minH="80vh" align="center" justify="space-between">
+          <Box fontSize="4xl" maxW="450px">
+            Some relatively long heading paragraph sign-up
+          </Box>
+          <Box>
+            <Box mt={16} fontSize="lg">
+              <Text mb={2}>Full Name:</Text>
+              <Input
+                value={fullName}
+                onChange={handleFullNameChange}
+                size="sm"
+                variant="filled"
+                isRequired
+                focusBorderColor="green.200"
+                maxWidth={72}
+              />
+            </Box>
+            <Box mt={8} fontSize="lg">
+              <Text mb={2}>Address:</Text>
+              <Input
+                value={address}
+                onChange={handleAddressChange}
+                size="sm"
+                variant="filled"
+                isRequired
+                maxWidth={72}
+                focusBorderColor="green.200"
+              />
+            </Box>
+            <Box mt={8} fontSize="lg">
+              <Text mb={2}>Email Address:</Text>
+              <Input
+                value={emailAddress}
+                onChange={handleEmailAddressChange}
+                type="email"
+                size="sm"
+                variant="filled"
+                isRequired
+                maxWidth={72}
+                focusBorderColor="green.200"
+              />
+            </Box>
+            <Box mt={8} fontSize="lg">
+              <Text mb={2}>Phone Number:</Text>
+              <Input
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                type="tel"
+                size="sm"
+                variant="filled"
+                isRequired
+                maxWidth={72}
+                focusBorderColor="green.200"
+              />
+            </Box>
+            <Box mt={8} fontSize="lg">
+              <Text mb={2}>Kindly, upload your ID card here:</Text>
+              <Input
+                type="file"
+                accept="image/*,.pdf"
+                size="sm"
+                isRequired
+                maxWidth={72}
+                focusBorderColor="green.200"
+              />
+            </Box>
+            <Box mt={8}>
+              <Button colorScheme="green" w={72}>
+                Create Account
+              </Button>
+            </Box>
+          </Box>
+        </Flex>
+      </GridItem>
     </Grid>
   );
 }
