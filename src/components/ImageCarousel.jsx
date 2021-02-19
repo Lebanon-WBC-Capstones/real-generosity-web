@@ -1,43 +1,34 @@
-import React from "react";
-import axios from 'axios';
+import React, { useEffect,useState } from "react";
+import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
-import ImageGallery from "react-image-gallery";
-
+import {Box} from "@chakra-ui/react"
 const ImageCarousel = () => {
-  const [images, setImages] = React.useState(null);
+  const images = [
+    {
+      original: 'https://picsum.photos/id/1018/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1015/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1019/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    },
+  ];
+  // const [images,setImages]=useState('')
+  // const call=()=>{
+  //    fetch("./assets/data.json") 
+  //    .then(response => response.json())
+  //    .then(res => setImages(res.item.imageURL.map(url => ({
+  //     original: `${url}=w1024`,
+  //     thumbnail: `${url}=w100`
+  //    }))));
 
-  React.useEffect(() => {
-    let shouldCancel = false;
-    
-    const call = async () => {
-      const response = await axios.get(
-    
-        "https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948"
-      );
-      if (!shouldCancel && response.data && response.data.length > 0) {
-        setImages(
-          response.data.map(url => ({
-            original: `${url}=w1024`,
-            thumbnail: `${url}=w100`
-          }))
-        );
-      }
-    };
-    call();
-    return () => (shouldCancel = true);
-  }, []);
+  //  }
 
-  
-  // useEffect(() => {
-  //   fetch("../assets/data.json")
-  //     .then((response) => response.json())
-  //     .then((res) => setImages( response.res.item.imageURL.map(url => ({
-  //                      original: `${url}=w1024`,
-  //                      thumbnail: `${url}=w100`
-  //           }))));
-  // }, []);
-
-  return images ? <ImageGallery items={images} /> : null;
-};
-
+  return (<Box maxW="430px" maxH="500px" px="4" pb="4" border="1px" margin="auto" borderRadius="lg" > <ImageGallery items={images} />  </Box>);
+}
+ 
 export default ImageCarousel;
