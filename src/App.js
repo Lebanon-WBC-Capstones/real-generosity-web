@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
-
+import SignUpPage from './pages/SignUpPage';
 function App() {
   return (
     <div className="App">
+      {/* <SignUpPage /> */}
       <Layout>
         <Router>
           <Switch>
