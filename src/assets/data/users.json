@@ -1,0 +1,18 @@
+{
+    "user":{
+        "id":"201",
+        "status":"normalUser",
+        "name":"",
+        "loaction":{},
+        "emailAddress":"",
+        "password":"",
+        "idCard":"",
+        "avatar":"",
+        "profilePic":[{"imgUrl":""}],
+        "mobileNumber":"",
+        "itemsDonated":[{"id":205},{"id":240}],
+        "itemsReguested":[{}],
+        "itemsReported":[{}],
+        
+     }
+}
