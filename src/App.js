@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
+import ItemsPage from './pages/ItemsPage';
 
 function App() {
   return (
