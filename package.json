@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "emotion-theming": "^11.0.0",
     "framer-motion": "^3.3.0",
     "i18next": "^19.8.9",
@@ -21,6 +22,7 @@
     "react-feather": "^2.0.9",
     "react-hook-google-maps": "^0.0.3",
     "react-i18next": "^11.8.7",
+    "react-image-gallery": "^1.0.8",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
