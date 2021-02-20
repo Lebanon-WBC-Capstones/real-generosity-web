@@ -1,47 +1,61 @@
-import React from 'react';
-import Card from '../Card';
 import {
-  Button,
   Box,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  SimpleGrid,
   Tab,
-  Tabs,
   TabList,
   TabPanel,
-  HStack,
   TabPanels,
+  Tabs,
 } from '@chakra-ui/react';
+import React from 'react';
 import { Search } from 'react-feather';
+import Card from '../Card';
 
 const ProfileTaskbars = () => {
   return (
-    <Box maxW="700px" mx="auto">
+    <Box>
       <Tabs>
         <TabList justifyContent="space-around">
           <Tab>Donations</Tab>
           <Tab>Requests</Tab>
         </TabList>
 
-        <HStack justifyContent="space-between" marginTop="10px">
-          <Search />
-          <Button size="xs" color="white" background="green.300">
-            + Submit Donation
-          </Button>
-        </HStack>
-
         <TabPanels>
+          {/* Donations panel  */}
           <TabPanel>
-            <HStack spacing="15px">
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<Search color="gray" />}
+              />
+              <Input type="text" placeholder="Search" />
+            </InputGroup>
+
+            <SimpleGrid columns={4} gap={4}>
               <Card />
               <Card />
               <Card />
-            </HStack>
+              <Card />
+              <Card />
+              <Card />
+            </SimpleGrid>
           </TabPanel>
+          {/* Requests panel  */}
           <TabPanel>
-            <HStack spacing="15px">
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<Search color="gray" />}
+              />
+              <Input type="text" placeholder="Search" />
+            </InputGroup>
+            <SimpleGrid columns={4} gap={4}>
               <Card />
               <Card />
-              <Card />
-            </HStack>
+            </SimpleGrid>
           </TabPanel>
         </TabPanels>
       </Tabs>

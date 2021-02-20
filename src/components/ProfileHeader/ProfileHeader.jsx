@@ -1,20 +1,24 @@
-import React from 'react';
 import {
-  Box,
-  Grid,
   Avatar,
-  HStack,
-  VStack,
-  Text,
+  Box,
   Button,
+  Grid,
+  HStack,
+  Text,
+  VStack,
 } from '@chakra-ui/react';
+import React from 'react';
 import { MapPin, Phone } from 'react-feather';
 
 const ProfileHeader = () => {
   return (
-    <Box maxW="1080px" mx="auto" mT="20px">
+    <Box>
       <HStack d="flex" justifyContent="center" spacing="40px">
-        <Avatar size="xl" name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
+        <Avatar
+          size="2xl"
+          name="Kent Dodds"
+          src="https://bit.ly/kent-c-dodds"
+        />
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
             <Text fontSize="2xl" fontWeight="semibold" color="black.500">
