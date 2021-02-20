@@ -51,7 +51,7 @@ function SignUpPage() {
             Some relatively long heading paragraph sign-up
           </Box>
           <Box>
-            <Box mt={16} fontSize="lg">
+            <Box mt={8} fontSize="lg">
               <Text mb={2}>Full Name:</Text>
               <Input
                 value={fullName}
