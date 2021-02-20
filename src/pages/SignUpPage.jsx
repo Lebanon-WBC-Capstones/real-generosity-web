@@ -6,11 +6,11 @@ import {
   Grid,
   GridItem,
   Flex,
-  Center,
   Input,
   Button,
 } from '@chakra-ui/react';
 import proto from '../assets/proto.png';
+import Dropzonecomp from '../components/Dropzone/Dropzonecomp';
 function SignUpPage() {
   const [fullName, setFullName] = useState('');
   const handleFullNameChange = (e) => {
@@ -51,7 +51,7 @@ function SignUpPage() {
             Some relatively long heading paragraph sign-up
           </Box>
           <Box>
-            <Box mt={8} fontSize="lg">
+            <Box mt={4} fontSize="lg">
               <Text mb={2}>Full Name:</Text>
               <Input
                 value={fullName}
@@ -103,14 +103,15 @@ function SignUpPage() {
             </Box>
             <Box mt={8} fontSize="lg">
               <Text mb={2}>Kindly, upload your ID card here:</Text>
-              <Input
+              <Dropzonecomp />
+              {/* <Input
                 type="file"
                 accept="image/*,.pdf"
                 size="sm"
                 isRequired
                 maxWidth={72}
                 focusBorderColor="green.200"
-              />
+              /> */}
             </Box>
             <Box mt={8}>
               <Button colorScheme="green" w={72}>
