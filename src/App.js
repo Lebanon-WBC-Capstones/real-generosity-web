@@ -1,17 +1,19 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
+import ProfileTaskbars from './components/ProfileTaskbars';
 import ProfileHeader from './components/ProfileHeader';
 
 function App() {
   return (
     <div>
       <Layout>
+        <ProfileHeader />
+        <ProfileTaskbars />
         <Router>
           <Switch>
             <Route exact path="/">
               {/* Home page goes here  */}
-              <ProfileHeader />
             </Route>
             <Route exact path="/auth/login">
               {/* Login page goes here  */}
