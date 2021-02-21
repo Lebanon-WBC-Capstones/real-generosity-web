@@ -1,5 +1,5 @@
 import React from "react";
-import trash2 from "react-feather";
+import {Trash2} from 'react-feather';
 import {
   Modal,
   ModalOverlay,
@@ -29,8 +29,8 @@ const DeleteModal = () => {
         aria-label="Focus moved to this box"
         onClick={onOpen}
       >
-        <trash2 color="black" />
-        <Text>Delete</Text>
+        <Trash2 color="black" />
+        <Text fontSize="medium">Delete</Text>
       </HStack>
 
       <Modal 
@@ -43,11 +43,11 @@ const DeleteModal = () => {
         <ModalContent py="12" px="12" align="center" >
           <ModalCloseButton />
           <ModalBody >
-           <Text fontSize="large" textAlign="center" mt="8" mb="4">Are you sure you want to delete?</Text>
+           <Text fontSize="large" textAlign="center">Are you sure you want to delete?</Text>
           </ModalBody>
 
           <ModalFooter justifyContent="space-evenly" fontSize="medium">
-            <Button colorScheme="red" px="12" py="4" >
+            <Button bg="#FF0000" textColor="white" px="12" py="4" >
               Delete
             </Button>
             <Button variant="ghost" px="12" py="4" onClick={onClose}>Cancel</Button>
@@ -58,4 +58,3 @@ const DeleteModal = () => {
   );
 };
 export default DeleteModal;
-indes.j
