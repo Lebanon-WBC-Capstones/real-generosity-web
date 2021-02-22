@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -27,10 +28,18 @@ function NavBar() {
         <Box fontSize="2xl">LOGO</Box>
 
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
-          <Text _hover={{ color: 'green.400' }}>Home</Text>
-          <Text _hover={{ color: 'green.400' }}>Items</Text>
-          <Text _hover={{ color: 'green.400' }}>About</Text>
-          <Text _hover={{ color: 'green.400' }}>Contact us</Text>
+          <Link to="/">
+            <Text _hover={{ color: 'green.400' }}>Home</Text>
+          </Link>
+          <Link to="/items">
+            <Text _hover={{ color: 'green.400' }}>Items</Text>
+          </Link>
+          <Link to="/about">
+            <Text _hover={{ color: 'green.400' }}>About</Text>
+          </Link>
+          <Link to="/contactus">
+            <Text _hover={{ color: 'green.400' }}>Contact us</Text>
+          </Link>
         </HStack>
 
         <Flex>
@@ -59,10 +68,11 @@ function NavBar() {
               </MenuItem>
             </MenuList>
           </Menu>
-
-          <Button variant="outline" colorScheme="black" ml={2}>
-            Get Started
-          </Button>
+          <Link to="/auth/signin">
+            <Button variant="outline" colorScheme="black" ml={2}>
+              Get Started
+            </Button>
+          </Link>
         </Flex>
       </Flex>
     </Box>
