@@ -4,14 +4,7 @@ import { MapPin, Edit2, ArrowLeft, AlertCircle, Trash2 } from 'react-feather';
 
 const ItemDetails = () => {
   return (
-    <Flex d="column" px={28} maxW="50%" my="50" fontSize={18}>
-      <Flex justify="space-between">
-        <Button variant="ghost">Details</Button>
-        <Button color="gray" variant="ghost">
-          Request
-        </Button>
-      </Flex>
-      <hr width="100%" />
+    <Flex d="column"  maxW="400px" fontSize={18}>
       <Flex justify="space-between">
         <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
           items
