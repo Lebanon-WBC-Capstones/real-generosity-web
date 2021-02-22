@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Box,
-  Flex,
   HStack,
   Text,
   MenuButton,
@@ -9,22 +8,25 @@ import {
   Menu,
   MenuItem,
   Button,
-  ButtonGroup,
-  IconButton,
+  Tabs, TabList, Tab,
 } from '@chakra-ui/react';
 import { Plus } from 'react-feather';
 
 const Category = () => {
   return (
-    <Box py="10" px="20" as="Category" fontSize={15} fontWeight={400}>
-      <HStack mx="50px" spacing={10} mb="10" color="black">
-        <Text>All</Text>
-        <Text> Furniture</Text>
-        <Text>Books</Text>
-        <Text>Toys</Text>
-        <Text>Medics</Text>
-        <Text>Appliances</Text>
-        <Text>Clothes</Text>
+    <Box py="10"  width={1080} as="Category" fontSize={15} fontWeight={400}>
+      <HStack spacing={10} mb="10" color="black">
+      <Tabs  variant="soft-rounded" colorScheme="gray">
+        <TabList>
+          <Tab>All</Tab>
+          <Tab>Furniture</Tab>
+          <Tab>Books</Tab>
+          <Tab>Toys</Tab>
+          <Tab>Medics</Tab>
+          <Tab>Appliances</Tab>
+          <Tab>Clothes</Tab>
+          </TabList>
+          </Tabs>
 
         <HStack>
           <Menu>
@@ -43,12 +45,11 @@ const Category = () => {
               <MenuItem>
                 <Box _hover={{ color: 'green.400' }}>Oldest</Box>
               </MenuItem>
-              <MenuItem></MenuItem>
             </MenuList>
           </Menu>
         </HStack>
 
-        <HStack pl={350}>
+        <HStack pl={100}>
           <Button color="white" bg="green.400">
             <Plus />
             Submit Donation
