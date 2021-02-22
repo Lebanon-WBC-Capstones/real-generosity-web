@@ -69,7 +69,13 @@ function NavBar() {
             </MenuList>
           </Menu>
           <Link to="/auth/signin">
-            <Button variant="outline" colorScheme="black" ml={2}>
+            <Button
+              variant="outline"
+              _hover={{ bg: 'green.400', color: 'white' }}
+              _focus={{ boxShadow: 'none' }}
+              colorScheme="black"
+              ml={2}
+            >
               Get Started
             </Button>
           </Link>
