@@ -1,10 +1,18 @@
-import React from "react";
-import { Grid, GridItem, Box } from "@chakra-ui/react";
-import CategoryCard from "../CategoryCard";
+import React from 'react';
+import { Grid, GridItem, Box, Text } from '@chakra-ui/react';
+import CategoryCard from '../CategoryCard';
 
 const CategoryCardsLayout = () => {
   return (
     <Box p={[2, 4, 6, 8]} mt={[2, 4, 6, 8]}>
+      <Text
+        fontStyle="Montserrat"
+        fontSize="30px"
+        fontWeight="bold"
+        marginBottom="30px"
+      >
+        Discover what's available
+      </Text>
       <Grid
         h="500px"
         templateRows="repeat(6, 1fr)"
@@ -32,5 +40,5 @@ const CategoryCardsLayout = () => {
       </Grid>
     </Box>
   );
-}
+};
 export default CategoryCardsLayout;

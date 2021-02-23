@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               {/* Home page goes here  */}
+              <HomePage />
             </Route>
             <Route exact path="/auth/login">
               {/* Login page goes here  */}
