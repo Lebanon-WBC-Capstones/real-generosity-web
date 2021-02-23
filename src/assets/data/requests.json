@@ -1,24 +1,30 @@
 {
   "requests": [
-    { "id": "2010",
-     "requesterId": "201", 
-     "requestedId": "101", 
-     "isApproved": false , 
-     "requestReason":"needed", 
-     "dateOfRequest":"Sun May 28 2020 06:59:56 GMT+0530"},
+    {
+      "id": "2010",
+      "requesterId": "201",
+      "requestedId": "101",
+      "isApproved": false,
+      "requestReason": "needed",
+      "dateOfRequest": "Sun May 28 2020 06:59:56 GMT+0530"
+    },
 
-      { "id": "2011",
-       "requesterId": "201", 
-       "requestedId": "102", 
-       "isApproved": false , 
-       "requestReason":"want to transfer to a new house", 
-       "dateOfRequest":"Sun May 28 2020 04:59:56 GMT+0530"},
+    {
+      "id": "2011",
+      "requesterId": "201",
+      "requestedId": "102",
+      "isApproved": false,
+      "requestReason": "want to transfer to a new house",
+      "dateOfRequest": "Sun May 28 2020 04:59:56 GMT+0530"
+    },
 
-       { "id": "2012",
-        "requesterId": "202", 
-        "requestedId": "103", 
-        "isApproved": false , 
-        "requestReason":"my son want it", 
-        "dateOfRequest":"Sun May 28 2020 03:59:56 GMT+0530"},
+    {
+      "id": "2012",
+      "requesterId": "202",
+      "requestedId": "103",
+      "isApproved": false,
+      "requestReason": "my son want it",
+      "dateOfRequest": "Sun May 28 2020 03:59:56 GMT+0530"
+    }
   ]
 }
