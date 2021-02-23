@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Layout>
         <Router>
           <Switch>
@@ -32,6 +33,7 @@ function App() {
             </Route>
             <Route exact path="/profile">
               {/* Profile page goes here  */}
+              <ProfilePage />
             </Route>
             <Route exact path="/profile/settings">
               {/* Settings page goes here  */}
