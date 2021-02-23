@@ -10,6 +10,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import proto from '../assets/images/proto.png';
+import GoogleButton from 'react-google-button';
 
 function SignInPage() {
   const [authEmail, setAuthEmail] = useState('');
@@ -46,7 +47,7 @@ function SignInPage() {
             Some relatively long heading paragraph sign-in
           </Box>
           <Box>
-            <Box mt={8} fontSize="lg">
+            <Box mt={4} fontSize="lg">
               <Text mb={2}>Email Address:</Text>
               <Input
                 value={authEmail}
@@ -88,6 +89,16 @@ function SignInPage() {
               <Button colorScheme="green" w={72}>
                 Sign In
               </Button>
+            </Box>
+
+            <Box mt={8}>
+              <GoogleButton
+                type="light"
+                boxShadow="green"
+                onClick={() => {
+                  alert('Google button clicked');
+                }}
+              />
             </Box>
           </Box>
         </Flex>
