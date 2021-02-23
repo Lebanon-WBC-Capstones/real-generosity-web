@@ -9,8 +9,8 @@ import {
   Input,
   Button,
 } from '@chakra-ui/react';
-import proto from '../assets/images/proto.png';
-import Dropzonecomp from '../components/Dropzone/Dropzonecomp';
+import proto from '../../assets/images/proto.png';
+import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 function SignUpPage() {
   const [fullName, setFullName] = useState('');
   const handleFullNameChange = (e) => {
