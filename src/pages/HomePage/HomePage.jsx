@@ -6,10 +6,16 @@ import CardList from '../../components/CardList';
 
 const HomePage = () => {
   return (
-    <Box>
-      <HeroSection />
-      <CategoryCardLayout />
-      <CardList />
+    <Box maxWidth="1080px" mx="auto">
+      <Box>
+        <HeroSection />
+      </Box>
+      <Box marginBottom="30px">
+        <CategoryCardLayout />
+      </Box>
+      <Box marginBottom="40px">
+        <CardList />
+      </Box>
     </Box>
   );
 };
