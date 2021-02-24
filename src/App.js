@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
+
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 import ProfilePage from './pages/ProfilePage';
