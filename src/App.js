@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
 import HomePage from './pages/HomePage';
 

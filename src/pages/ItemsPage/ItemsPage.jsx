@@ -10,9 +10,10 @@ const ItemsPage = () => {
       <Box mb="45px"></Box>
 
       <Flex justify="space-between">
-        <Box w="50%"></Box>
         <Box w="50%">
           <ItemsList />
+        </Box>
+        <Box w="50%">
           <ItemsMap />
         </Box>
       </Flex>
