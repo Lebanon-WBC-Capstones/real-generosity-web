@@ -1,1 +1,9 @@
-{}
+{
+  "navbar": {
+    "home": "Accueil",
+    "items": "Eléments",
+    "about": "A Propos",
+    "contactUs": "Contact",
+    "getStarted": "Créer un compte"
+  }
+}

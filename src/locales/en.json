@@ -1,1 +1,9 @@
-{}
+{
+  "navbar": {
+    "home": "Home",
+    "items": "Items",
+    "about": "About",
+    "contactUs": "Contact us",
+    "getStarted": "Get Started"
+  }
+}

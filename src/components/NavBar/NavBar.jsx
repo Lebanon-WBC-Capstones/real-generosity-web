@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import {
   Menu,
@@ -15,6 +16,8 @@ import {
 import { Globe } from 'react-feather';
 
 function NavBar() {
+  const [t, i18n] = useTranslation('translation');
+  const [lang, setLang] = useState('EN');
   return (
     <Box>
       <Flex
@@ -29,16 +32,19 @@ function NavBar() {
 
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
           <Link to="/">
-            <Text _hover={{ color: 'green.400' }}>Home</Text>
+            <Text _hover={{ color: 'green.400' }}>{t('navbar.home')}</Text>
           </Link>
           <Link to="/items">
-            <Text _hover={{ color: 'green.400' }}>Items</Text>
+            <Text _hover={{ color: 'green.400' }}>{t('navbar.items')}</Text>
           </Link>
           <Link to="/about">
-            <Text _hover={{ color: 'green.400' }}>About</Text>
+            <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
           </Link>
           <Link to="/contactus">
-            <Text _hover={{ color: 'green.400' }}>Contact us</Text>
+            <Text _hover={{ color: 'green.400' }}>
+              {' '}
+              {t('navbar.contactUs')}
+            </Text>
           </Link>
         </HStack>
 
@@ -52,18 +58,39 @@ function NavBar() {
               _expanded={{ bg: 'gray.100' }}
             >
               <Box color="gray.400">
-                <Icon as={Globe} mr={0.5} /> EN
+                <Icon as={Globe} mr={0.5} /> {lang}
               </Box>
             </MenuButton>
             <MenuList minW="max-content">
-              <MenuItem>
+              <MenuItem
+                onClick={() => {
+                  i18n.changeLanguage('en');
+                  setLang('EN');
+                }}
+              >
+                <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                  EN
+                </Box>
+              </MenuItem>
+
+              <MenuItem
+                onClick={() => {
+                  i18n.changeLanguage('fr');
+                  setLang('FR');
+                }}
+              >
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
                   FR
                 </Box>
               </MenuItem>
-              <MenuItem>
+              <MenuItem
+                onClick={() => {
+                  i18n.changeLanguage('ar');
+                  setLang('ع');
+                }}
+              >
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  AR
+                  ع
                 </Box>
               </MenuItem>
             </MenuList>
@@ -76,7 +103,7 @@ function NavBar() {
               colorScheme="black"
               ml={2}
             >
-              Get Started
+              {t('navbar.getStarted')}
             </Button>
           </Link>
         </Flex>
