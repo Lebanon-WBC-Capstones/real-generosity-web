@@ -1,32 +1,29 @@
 import React from 'react';
-import { Box, HStack, Text, Image } from '@chakra-ui/react';
-import sofa from '../../assets/images/sofa.png';
-const CategoryCard = () => {
+import { Flex, Stack, Text, Image } from '@chakra-ui/react';
+
+const CategoryCard = ({ categoryPic, direction, categoryName, ml, mt }) => {
   return (
-    <Box
-      fontSize="18px"
-      height="100%"
+    <Flex
+      mb="4"
+      fontSize="md"
       Width="100%"
-      objectFit="cover"
-      borderRadius="lg"
-      bg="gray.200"
+      height="100%"
+      justifyContent="center"
       _hover={{ cursor: 'pointer' }}
-      centerContent
     >
-      <Image
-        src={sofa}
-        alt="Furniture"
-        maxW="80%"
-        maxH="80%"
-        objectFit="cover"
-        mb="20px"
-        align="center"
-      ></Image>
-      <HStack spacing="12px" mb="20px" ml="22px" justify="left">
-        <Text fontWeight={600}>Furniture</Text>
-        <Text color="gray.500">55</Text>
-      </HStack>
-    </Box>
+      <Stack direction={direction} mb="4">
+        <Image src={categoryPic} maxW="90%" maxH="90%" m="auto" />
+
+        <Stack>
+          <Flex mt={mt} justify="left">
+            <Text fontWeight={600} ml={ml} mr="2">
+              {categoryName}
+            </Text>
+            <Text color="gray.400">55</Text>
+          </Flex>
+        </Stack>
+      </Stack>
+    </Flex>
   );
 };
 
