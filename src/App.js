@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
+// import CarouselComponent from './components/Carousel';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           </Switch>
         </Router>
       </Layout>
+      {/* <CarouselComponent/> */}
     </div>
   );
 }

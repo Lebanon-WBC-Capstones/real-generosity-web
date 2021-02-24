@@ -11,23 +11,27 @@ import {
   Tabs, TabList, Tab,
 } from '@chakra-ui/react';
 import { Plus } from 'react-feather';
+import  data from '../../assets/data/categories.json';
 
 const Category = () => {
+
+  
+  
   return (
+    
     <Box py="10"  width={1080} as="Category" fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
+      
       <Tabs  variant="soft-rounded" colorScheme="gray">
+       
         <TabList>
-          <Tab>All</Tab>
-          <Tab>Furniture</Tab>
-          <Tab>Books</Tab>
-          <Tab>Toys</Tab>
-          <Tab>Medics</Tab>
-          <Tab>Appliances</Tab>
-          <Tab>Clothes</Tab>
+         
+        {data.categories.map(x=><Tab>{x.name}</Tab>)}
+         
           </TabList>
-          </Tabs>
 
+          </Tabs>
+      
         <HStack>
           <Menu>
             <Text color="gray.400">SortedBy:</Text>

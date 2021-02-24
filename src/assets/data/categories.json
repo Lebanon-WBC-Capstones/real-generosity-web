@@ -1,5 +1,11 @@
-{
+ {
   "categories": [
+    {
+      "id": "0",
+      "name": "All",
+      "imgURL":"https://purepng.com/public/uploads/thumbnail//purepng.com-chair-brown-greyobjectschair-brown-greychair-furniture-decoration-821523987859sgtve.png"
+    },
+    
     {
       "id": "1",
       "name": "Furniture",
