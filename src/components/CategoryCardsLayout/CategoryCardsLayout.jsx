@@ -1,36 +1,44 @@
 import React from "react";
-import { Grid, GridItem, Box } from "@chakra-ui/react";
+import { Grid, GridItem, Flex } from "@chakra-ui/react";
 import CategoryCard from "../CategoryCard";
+import sofa from '../../assets/images/sofa.png';
+import Clothes from '../../assets/images/Clothes.png';
+import book from '../../assets/images/book.png';
+import toys from '../../assets/images/toys.png';
+import medicalkit from '../../assets/images/medicalkit.png';
+import appliances from '../../assets/images/appliances.png';
 
 const CategoryCardsLayout = () => {
+
   return (
-    <Box p={[2, 4, 6, 8]} mt={[2, 4, 6, 8]}>
+    <Flex>
       <Grid
-        h="500px"
-        templateRows="repeat(6, 1fr)"
-        templateColumns="repeat(11, 1fr)"
+        maxH="72"
+        maxW="4xl"
+        templateRows="repeat(12, 1fr)"
+        templateColumns="repeat(25, 1fr)"
         gap={4}
       >
-        <GridItem boxShadow="lg" rowSpan={6} colSpan={4} bg="papayawhip">
-          <CategoryCard></CategoryCard>
+        <GridItem borderRadius="xl" colSpan={8} rowSpan={12} bg="#EAEAF1">
+          <CategoryCard categoryPic={sofa} direction="column" categoryName="Furniture" ml="4"></CategoryCard>
         </GridItem>
-        <GridItem boxShadow="lg" colSpan={2} rowSpan={3} bg="papayawhip">
-          <CategoryCard></CategoryCard>
+        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#F6E8CD">
+          <CategoryCard categoryPic={Clothes} direction="column" categoryName="Clothes"></CategoryCard>
         </GridItem>
-        <GridItem boxShadow="lg" colSpan={2} rowSpan={3} bg="papayawhip">
-          <CategoryCard></CategoryCard>
+        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#CBECE9">
+          <CategoryCard categoryPic={book} direction="column" categoryName="Books"></CategoryCard>
         </GridItem>
-        <GridItem boxShadow="lg" colSpan={3} rowSpan={3} bg="papayawhip">
-          <CategoryCard></CategoryCard>
+        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#E6D0EF">
+          <CategoryCard categoryPic={toys} direction="row-reverse" categoryName="Toys" mt="24"></CategoryCard>
         </GridItem>
-        <GridItem boxShadow="lg" colSpan={3} rowSpan={3} bg="papayawhip">
-          <CategoryCard></CategoryCard>
+        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#F0D0D2">
+          <CategoryCard categoryPic={medicalkit} direction="row-reverse" categoryName="Medics" mt="24"></CategoryCard>
         </GridItem>
-        <GridItem boxShadow="lg" colSpan={4} rowSpan={3} bg="papayawhip">
-          <CategoryCard></CategoryCard>
+        <GridItem borderRadius="xl" colSpan={10} rowSpan={6} bg="#CFD6F2">
+          <CategoryCard categoryPic={appliances} direction="row-reverse" categoryName="Appliances" mt="24"></CategoryCard>
         </GridItem>
       </Grid>
-    </Box>
+    </Flex>
   );
 }
 export default CategoryCardsLayout;
