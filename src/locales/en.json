@@ -1,1 +1,19 @@
-{}
+{
+ "card":{
+    "more":"more datails"
+   },
+   "itemPage":{
+       "items":"Items",
+       "details":"Details",
+       "requests":"Requests",
+       "reason":"Reason:",
+       "approve":"Approve",
+       "decline":"Decline",
+       "edit":"",
+       "request":"Request",
+       "report":"Report",
+       "delete":"Delete",
+       "delivered":"Delivered"
+
+   }
+}

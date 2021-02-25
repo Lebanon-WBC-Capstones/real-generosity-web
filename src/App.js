@@ -9,14 +9,16 @@ import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage';
+//import SingleItemPage from './pages/SingleItemPage';
 import ContactUsPage from './pages/ContactUsPage';
+import SingleItemPage from './pages/SingleItemPage/SingleItemPage';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Layout>
+          <SingleItemPage />
           <Switch>
             <Route exact path="/">
               <HomePage />

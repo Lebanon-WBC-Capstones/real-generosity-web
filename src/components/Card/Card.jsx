@@ -9,8 +9,10 @@ import {
   Avatar,
 } from '@chakra-ui/react';
 import { MapPin } from 'react-feather';
+import { useTranslation } from "react-i18next";
 
 const Card = () => {
+  const { t } = useTranslation();
   return (
     <Box bg="white" maxW="2xs" borderRadius="lg">
       <Box p="4">
@@ -49,7 +51,7 @@ const Card = () => {
             <Box fontSize="sm">Location</Box>
           </HStack>
           <Box fonts="Montserrat" color="blue.500" fontSize="sm">
-            More Details
+          {t("card.more")}
           </Box>
         </Flex>
       </Box>

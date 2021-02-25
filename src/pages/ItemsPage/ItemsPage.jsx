@@ -11,7 +11,7 @@ const ItemsPage = () => {
 
     <Flex justify="space-between">
        <Box  w="50%">
-  
+        
        </Box>
        <Box  w="50%">
        <ItemsMap />
