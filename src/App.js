@@ -42,6 +42,7 @@ function App() {
             <Route exact path="/contactus">
               <ContactUsPage />
             </Route>
+
             <Route exact path="/profile">
               <ProfilePage />
             </Route>

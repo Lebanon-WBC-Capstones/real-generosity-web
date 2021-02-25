@@ -11,10 +11,11 @@ import {
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 
 function EditProfile() {
+
     const [profilePicture, setProfilePicture] = useState(null);
     const selectProfilePicture = (e) => {
-        setProfilePicture(e.target.files[0])
-    };
+        setProfilePicture(e.target.value);
+       };
 
     const [fullName, setFullName] = useState('');
     const handleFullNameChange = (e) => {
@@ -63,7 +64,8 @@ function EditProfile() {
                             maxW="72"
                             border="transparent"
                             style={{display: 'none'}}
-                            onClick={selectProfilePicture}
+                            onChange={selectProfilePicture}
+                            ref={fileInput => Input.fileInput = fileInput}
                             
                         />
 
@@ -73,10 +75,9 @@ function EditProfile() {
                         fontSize="sm"
                         color="blue.500"
                         _hover={{ cursor: "pointer" }}
-                        // ref={finalRef}
                         tabIndex={-1}
                         aria-label="Focus moved to this box"
-                        // onClick={onOpen}
+                        onClick={()=> Input.fileInput.click()}
                     >
                         Change Profile Photo
                          </Text>
@@ -136,11 +137,12 @@ function EditProfile() {
                         isRequired
                         maxWidth={72}
                         focusBorderColor="green.200"
+
                     />
                 </Box>
 
-                <Box mt={8} fontSize="lg">
-                    <Text mb={2}>ID card</Text>
+                <Box mt={8} fontSize="lg" >
+                    <Text mb={2} >ID card</Text>
                    <Dropzonecomp/>
                 </Box>
 
