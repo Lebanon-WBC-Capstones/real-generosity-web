@@ -38,5 +38,24 @@
     "q3": "",
     "a3": "",
     "tab3p": ""
+  },
+
+  "signin": {
+    "email": "Email Address:",
+    "password": "Password:",
+    "forgotyourpassword": "Forgot your password?",
+    "signinbutton": "Sign In",
+    "paragraph": "Some relatively long heading paragraph sign-in",
+    "googlebutton": "Sign in with Google"
+  },
+
+  "signup": {
+    "fullname": "Full Name:",
+    "address": "Address:",
+    "email": "Email Address:",
+    "phone": "Phone Number:",
+    "idupload": "Kindly, upload your ID card here:",
+    "createbutton": "Create Account",
+    "paragraph": "Some relatively long heading paragraph sign-in"
   }
 }
