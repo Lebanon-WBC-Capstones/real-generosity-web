@@ -5,10 +5,17 @@ import {
     Text,
     Input,
     Button,
+    Avatar,
+    VStack,
 } from '@chakra-ui/react';
-import ChangeProfileModal from '../../components/ChangeProfileModal';
+import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 
 function EditProfile() {
+    const [profilePicture, setProfilePicture] = useState(null);
+    const selectProfilePicture = (e) => {
+        setProfilePicture(e.target.files[0])
+    };
+
     const [fullName, setFullName] = useState('');
     const handleFullNameChange = (e) => {
         setFullName(e.target.value);
@@ -34,7 +41,48 @@ function EditProfile() {
         <HStack spacing="16" my="16" justifyContent="center" fontFamily="Monteserrat">
 
             <Box justifyContent="center" mt="10">
-                <ChangeProfileModal />
+           
+                <VStack>
+
+                    <Avatar
+                        borderRadius="full"
+                        typeof="Avatar"
+                        minW="xs"
+                        minH="xs"
+                        size="2xl"
+                        name="Dan Abrahmov"
+                        bg="green.400"
+                        textColor="white"
+                        fontSize="6xl"
+                        src={profilePicture} />
+                    <Input
+                            type="file"
+                            accept="image/*"
+                            size="md"
+                            isRequired
+                            maxW="72"
+                            border="transparent"
+                            style={{display: 'none'}}
+                            onClick={selectProfilePicture}
+                            
+                        />
+
+                    <Text
+                        mt="4"
+                        textAlign="center"
+                        fontSize="sm"
+                        color="blue.500"
+                        _hover={{ cursor: "pointer" }}
+                        // ref={finalRef}
+                        tabIndex={-1}
+                        aria-label="Focus moved to this box"
+                        // onClick={onOpen}
+                    >
+                        Change Profile Photo
+                         </Text>
+
+                </VStack>
+
             </Box>
 
             <Box>
@@ -93,7 +141,7 @@ function EditProfile() {
 
                 <Box mt={8} fontSize="lg">
                     <Text mb={2}>ID card</Text>
-                   
+                   <Dropzonecomp/>
                 </Box>
 
                 <Box mt={8}>
