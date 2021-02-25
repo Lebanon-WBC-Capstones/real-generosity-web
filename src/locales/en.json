@@ -51,11 +51,13 @@
        "reason":"Reason:",
        "approve":"Approve",
        "decline":"Decline",
-       "edit":"",
+       "edit":"edit",
        "request":"Request",
        "report":"Report",
+       "reports":"Reports",
        "delete":"Delete",
-       "delivered":"Delivered"
+       "delivered":"Delivered",
+       "cancel":"Cancel"
 
    }
 }

@@ -1,23 +1,24 @@
 import React from 'react';
 import { Flex, Box, Text, Button, SimpleGrid } from '@chakra-ui/react';
 import { useTranslation } from "react-i18next";
-
 import data from "../../assets/data/items.json";
 import req from "../../assets/data/requests.json";
+import moment from 'moment';
+
 
 const ItemsRequest = () => {
   const { t } = useTranslation();
+
   const handleDeliverClick=()=>{
     console.log("hi")
   }
-
 
   return (
 
      <Flex d="column"  maxW="400px"  fontSize={18}>
          <Box py={5}>
           <Text fontWeight="bold" fontSize={12}>
-         {data.items[0].requests.length} {t("itemPage.requests")}
+             {data.items[0].requests.length} {t("itemPage.requests")}
           </Text>
           </Box>
           <SimpleGrid spacing={5} >
@@ -42,7 +43,7 @@ const ItemsRequest = () => {
                      color="gray.400"
                      fontSize="xs"
                      textTransform="uppercase">
-                    {request.dateOfRequest.form}       
+                 { moment(`${request.dateOfRequest}`).startOf('day').fromNow()}
                </Text>
            </Box>
            )})}

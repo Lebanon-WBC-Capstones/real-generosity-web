@@ -3,7 +3,11 @@ import {Box,TabList,TabPanel,TabPanels,Tabs,Tab,SimpleGrid} from "@chakra-ui/rea
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import ItemDetails from "../../components/ItemDetails";
 import ItemRequests from "../../components/ItemRequests/ItemRequests";
+import ItemReports from "../../components/ItemReports/Itemreports"
+import ItemsMap from "../../components/ItemsMap/ItemsMap";
 import { useTranslation } from "react-i18next";
+
+
 
 const SingleItemPage = () => {
   const { t } = useTranslation();
@@ -24,12 +28,16 @@ const SingleItemPage = () => {
                     <ItemDetails /> 
                 </TabPanel>
                 <TabPanel>
-                   <ItemRequests />
+                   {/* <ItemRequests /> */}
+                   <ItemReports />
                 </TabPanel>
              </TabPanels>
             </Tabs>
            </Box>
         </SimpleGrid>
+        <Box>
+        <ItemsMap />
+        </Box>
       </Box>
 
      );

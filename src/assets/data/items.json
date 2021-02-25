@@ -1,9 +1,9 @@
 {
   "items": [
     {
-      "id": "101",
-      "name": "T-Shirt",
-      "date": "Wed May 27 2020 09:59:56 GMT+0530",
+      "id":"101",
+      "name":"T-Shirt",
+      "date":"Wed May 27 2020 09:59:56 GMT+0530",
       "location": [31.2443, 16.2445],
       "category": "Clothes",
       "imageURL": [
@@ -11,17 +11,17 @@
         "https://www.marni.com/12/12386489MT_13_n_r.jpg",
         "https://www.marni.com/12/12386489MT_13_n_r.jpg "
       ],
-      "description": "size:medium",
-      "ownerId": "88978628",
-      "Active": true,
-      "isDelivered": false,
+      "description":"size:medium",
+      "ownerId":"88978628",
+      "Active":true,
+      "isDelivered":false,
       "reports": [{ "id": "3015" }],
       "requests": [{ "id": "2010" }]
     },
 
     {
-      "id": "102",
-      "name": "Sofa",
+      "id":"102",
+      "name":"Sofa",
       "date": "tues May 26 2020 09:59:56 GMT+0530",
       "location": [31.2443, 16.2445],
       "category": "Furniture",

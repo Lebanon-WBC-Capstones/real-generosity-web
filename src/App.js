@@ -3,18 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
 import HomePage from './pages/HomePage';
-
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
-
-import SingleItemPage from './pages/SingleItemPage';
-
-import SingleItemPage from './pages/SingleItemPage/SingleItemPage';
-
+//import SingleItemPage from './pages/SingleItemPage';
 import ContactUsPage from './pages/ContactUsPage';
 import SingleItemPage from './pages/SingleItemPage/SingleItemPage';
 
