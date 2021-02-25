@@ -66,6 +66,7 @@ function NavBar() {
               <MenuItem
                 onClick={() => {
                   i18n.changeLanguage('en');
+                  document.body.dir = i18n.dir();
                   setLang('EN');
                 }}
               >
@@ -77,6 +78,7 @@ function NavBar() {
               <MenuItem
                 onClick={() => {
                   i18n.changeLanguage('fr');
+                  document.body.dir = i18n.dir();
                   setLang('FR');
                 }}
               >
@@ -87,6 +89,7 @@ function NavBar() {
               <MenuItem
                 onClick={() => {
                   i18n.changeLanguage('ar');
+                  document.body.dir = i18n.dir();
                   setLang('ع');
                 }}
               >

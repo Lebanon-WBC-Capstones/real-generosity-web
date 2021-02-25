@@ -1,9 +1,9 @@
 {
   "navbar": {
     "home": "Accueil",
-    "items": "Eléments",
-    "about": "A Propos",
+    "items": "Éléments",
+    "about": "À Propos",
     "contactUs": "Contact",
-    "getStarted": "Créer un compte"
+    "getStarted": "Créer Un Compte"
   }
 }
