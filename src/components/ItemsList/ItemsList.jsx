@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Grid,
-  Image,
-  Flex,
-  HStack,
-  VStack,
-  Text,
-  Avatar,
-} from '@chakra-ui/react';
-import { MapPin } from 'react-feather';
+import { Box, Grid } from '@chakra-ui/react';
 
 import Card from '../Card';
 

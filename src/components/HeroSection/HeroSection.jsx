@@ -1,18 +1,11 @@
-import React from "react";
-import { Box, Button, Flex, Text, Spacer } from "@chakra-ui/react";
+import React from 'react';
+import { Box, Button, Flex, Text, Spacer } from '@chakra-ui/react';
 
 const HeroSection = () => {
   return (
     <Box width="100%">
       <Flex align="center" justify="space-between">
-        <Box
-          py="56"
-          width="38%"
-          height="5xl"
-          textAlign="right"
-          fontSize="7xl"
-          
-        >
+        <Box py="56" width="38%" height="5xl" textAlign="right" fontSize="7xl">
           <Text fontSize="7xl">Make som</Text>
           <Flex textAlign="right">
             <Spacer />
@@ -53,10 +46,16 @@ const HeroSection = () => {
 
         {/* </Box> */}
 
-        <Box pt="56" pb="80" width="62%" height="5xl" fontSize="7xl"
-        backgroundImage="url('../../assets/charity-background.png')"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat">
+        <Box
+          pt="56"
+          pb="80"
+          width="62%"
+          height="5xl"
+          fontSize="7xl"
+          backgroundImage="url('../../assets/charity-background.png')"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+        >
           <Flex textAlign="left">
             <Text pr="18px">eone's</Text>
             <Text color="green.400" fontWeight="bold" textAlign="right">
