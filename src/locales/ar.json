@@ -11,7 +11,7 @@
     "aboutUs": "من نحن",
     "tab1": "معلومات عن Real generosity",
     "tab2": "قيمنا",
-    "tab3": "كيف يعمل",
+    "tab3": "دليل المشاركة",
     "tab4": "أسئلة و أجوبة",
     "tab1heading1": " ",
     "tab1heading2": " ",
@@ -39,7 +39,29 @@
     "a2": "",
     "q3": "",
     "a3": "",
-    "tab3p": ""
-  }
+    "tab3p": "هل لديك المزيد من الأسئلة؟ يمكنك التواصل معنا عبر الضغط ",
+    "here":"هنا"
+  },
+
+  
+  "card":{
+    "more":"المزيد من التفاصيل"
+   },
+   "itemPage":{
+       "items":"المعروضات",
+       "details":"تفاصيل",
+       "requests":"Requests",
+       "reason":"السبب",
+       "approve":"قبول",
+       "decline":"رفض",
+       "edit":"تعديل",
+       "request":"اطلب",
+       "report":"",
+       "reports":"Reports",
+       "delete":"مسح",
+       "delivered":"تم التوصيل",
+       "cancel":"الغاء",
+       "deletep":"هل أنت متأكد من عملية الإلغاء"
+   }
 }
 

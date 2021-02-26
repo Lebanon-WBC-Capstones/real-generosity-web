@@ -6,11 +6,17 @@ import req from "../../assets/data/requests.json";
 import moment from 'moment';
 
 
-const ItemsRequest = () => {
+const ItemRequests = () => {
   const { t } = useTranslation();
 
-  const handleDeliverClick=()=>{
-    console.log("hi")
+  const handleDelivered=()=>{
+    console.log("delivered")
+  }
+  const handleApprove=()=>{
+    console.log("approve")
+  }
+  const handleDecline=()=>{
+    console.log("decline")
   }
 
   return (
@@ -36,8 +42,8 @@ const ItemsRequest = () => {
                      {t("itemPage.reason")}{" "}{request.requestReason}
                      </Text>
                   <Box>
-                      <Button fontSize="xs" variant="ghost" >{t("itemPage.approve")}</Button>
-                      <Button fontSize="xs" color="red" variant="ghost">{t("itemPage.decline")}</Button>
+                      <Button fontSize="xs" variant="ghost" onClick={handleApprove} >{t("itemPage.approve")}</Button>
+                      <Button fontSize="xs" color="red" variant="ghost" onClick={handleDecline}>{t("itemPage.decline")}</Button>
                    </Box>
                  </Flex>
               <Text  fonts="Montserrat"
@@ -52,7 +58,7 @@ const ItemsRequest = () => {
           </SimpleGrid>
           </Box>
          <Box py="30px">
-             <Button  variant="outline" w="100%" size="lg" onClick={handleDeliverClick}>
+             <Button  variant="outline" w="100%" size="lg" onClick={handleDelivered}>
                  {t("itemPage.delivered")}
              </Button>
          </Box>
@@ -61,4 +67,4 @@ const ItemsRequest = () => {
   );
 };
 
-export default ItemsRequest;
+export default ItemRequests;

@@ -6,7 +6,7 @@ import {
   HStack,
   VStack,
   Text,
-  Avatar,
+  Button
 } from '@chakra-ui/react';
 import { MapPin } from 'react-feather';
 import { useTranslation } from "react-i18next";
@@ -18,11 +18,12 @@ const Card = () => {
   const { t } = useTranslation();
   return (
     <Box bg="white" maxW="2xs" borderRadius="lg">
-      <Box p="4">
+      <Box p="4"  >
         <Image
+          objectFit="fill"
           borderRadius="lg"
           boxShadow="lg"
-          src="https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg"
+          src={data.items[2].imageURL[0]}
           alt="item image"
         />
       </Box>
@@ -46,7 +47,6 @@ const Card = () => {
                { moment(`${data.items[0].date}`).startOf('day').fromNow()}
             </Text>
           </VStack>
-          <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
         </Flex>
         <Flex align="center" justify="space-between">
           <HStack color="gray.500">

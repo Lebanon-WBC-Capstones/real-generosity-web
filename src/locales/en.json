@@ -40,7 +40,8 @@
     "a2": "",
     "q3": "",
     "a3": "",
-    "tab3p": "Any further question? you can get in contact with us"
+    "tab3p": "Any further question? you can get in contact with us",
+    "here":"here"
   },
 
   "card":{
@@ -59,8 +60,8 @@
        "reports":"Reports",
        "delete":"Delete",
        "delivered":"Delivered",
-       "cancel":"Cancel"
-
+       "cancel":"Cancel",
+       "deletep":"Are you sure you want to delete?"
    }
 }
 

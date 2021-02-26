@@ -15,6 +15,10 @@ import {
 } from "@chakra-ui/react";
 
 const DeleteModal = () => {
+ 
+  const handleDelete = () => {
+    console.log("deleted")
+    }
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
@@ -37,11 +41,11 @@ const DeleteModal = () => {
         <ModalContent py="12" px="12" align="center" >
           <ModalCloseButton />
           <ModalBody >
-           <Text fontSize="large" textAlign="center">Are you sure you want to delete?</Text>
+           <Text fontSize="large" textAlign="center">{t("itemPage.deletep")}</Text>
           </ModalBody>
 
           <ModalFooter justifyContent="space-evenly" fontSize="medium">
-            <Button bg="#FF0000" textColor="white" px="12" py="4" >
+            <Button bg="#FF0000" textColor="white" px="12" py="4" onClick={handleDelete}>
                 {t("itemPage.delete")}
             </Button>
             <Button variant="ghost" px="12" py="4" onClick={onClose}> 

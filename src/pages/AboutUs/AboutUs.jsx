@@ -123,7 +123,7 @@ const AboutUs = () => {
                 <Heading size="sx"> {t("aboutUs.q3")} </Heading>
                 <Text>{t("aboutUs.a3")} </Text>
             </Box>
-                 <Text pt="20px"> {t("aboutUs.tab3p")} <Link to="/contactus"> <Text color="#3182CE" as="ins" >here.</Text></Link> </Text>
+                 <Text pt="20px"> {t("aboutUs.tab3p")} <Link to="/contactus"> <Text color="#3182CE" as="ins" >{t("aboutUs.here")}.</Text></Link> </Text>
             </Box>
             <Box m="auto">
                 <Image boxSize="200px" src={security}></Image>
