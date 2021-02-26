@@ -24,7 +24,7 @@ const AboutUs = () => {
     return ( 
         <Box maxW="1080px" minH="500px" m="auto">
             <Box m="auto">
-              <Heading py="20px" size="lg" >{t("aboutUs.aboutUs")}</Heading>
+              <Heading as="h1" py="20px" size="lg" >{t("aboutUs.aboutUs")}</Heading>
               </Box>
             <Box>
           <Tabs>
@@ -39,9 +39,11 @@ const AboutUs = () => {
           <TabPanel>
             <SimpleGrid columns={2} spacing={10} m="auto" >
                 <Box >
-                <Heading as="h1" size="md" py="20px">{t("aboutUs.tab1heading")} </Heading>
+                <Heading as="h2" size="md" py="20px">{t("aboutUs.tab1heading1")} </Heading>
                 <Text>{t("aboutUs.tab1p1")}</Text>
                 <Text>{t("aboutUs.tab1p2")}</Text>
+                <Text>{t("aboutUs.tab1p3")}</Text>
+                <Heading as="h1" size="sx" py="20px">{t("aboutUs.tab1heading2")} </Heading>
                 </Box>
                 <Box m="auto">
                     <Image src="https://i.pinimg.com/474x/bc/f2/4f/bcf24f3af41a044065b7c676cf2cfc37.jpg"></Image>
@@ -76,7 +78,7 @@ const AboutUs = () => {
               </Box>
             </TabPanel>
           <TabPanel>
-              <Box m="auto">
+              <Box>
                  <SimpleGrid columns={3} spacing={10}>
                    <Box>
                     <VStack>
@@ -108,22 +110,22 @@ const AboutUs = () => {
        <TabPanel>
            <Flex  justify="space-between">
                <Box>
-               <Text pb="20px"> {t("aboutUs.tab3heading")} </Text>
+               <Heading as="h2" size="md" py="20px"> {t("aboutUs.tab4heading")} </Heading>
             <Box py="15px">
-                <Heading font="Montserrat" size="md"> {t("aboutUs.q1")} </Heading>
+                <Heading font="Montserrat" size="sx"> {t("aboutUs.q1")} </Heading>
                 <Text  fontSize="sx"> {t("aboutUs.a1")} </Text>
             </Box>
             <Box py="15px">
-                <Heading size="md"> {t("aboutUs.q2")} </Heading>
+                <Heading size="sx"> {t("aboutUs.q2")} </Heading>
                 <Text>{t("aboutUs.a2")} </Text>
             </Box>
             <Box py="15px">
-                <Heading size="md"> {t("aboutUs.q3")} </Heading>
+                <Heading size="sx"> {t("aboutUs.q3")} </Heading>
                 <Text>{t("aboutUs.a3")} </Text>
             </Box>
                  <Text pt="20px"> {t("aboutUs.tab3p")} <Link to="/contactus"> <Text color="#3182CE" as="ins" >here.</Text></Link> </Text>
             </Box>
-            <Box>
+            <Box m="auto">
                 <Image boxSize="200px" src={security}></Image>
             </Box>
             </Flex>

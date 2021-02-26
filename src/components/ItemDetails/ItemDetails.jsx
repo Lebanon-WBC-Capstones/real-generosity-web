@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Box, HStack, Text, Button, Badge,VStack } from '@chakra-ui/react';
-import { MapPin, Edit2, ArrowLeft, AlertCircle} from 'react-feather';
+import { MapPin, Edit, ArrowLeft, AlertCircle} from 'react-feather';
 import { useTranslation } from "react-i18next";
 import moment from 'moment';
 import data from "../../assets/data/items.json";
@@ -15,19 +15,19 @@ const ItemDetails = () => {
   return (
     <Flex d="column"  maxW="400px" fontSize={18}>
       <Flex justify="space-between">
-        <Link to ="/items">
-        <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
-        {t("itemPage.items")}
-        </Button>
+        <Link onClick={() => window.history.back()}>
+             <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
+                 {t("itemPage.items")}
+             </Button>
         </Link>
         <HStack color="gray" fontSize={12}>
-          <Button leftIcon={<Edit2 size={15} />} variant="ghost">
+          <Button leftIcon={<Edit size={15} />} variant="ghost">
           {t("itemPage.edit")}
           </Button>
         </HStack>
       </Flex>
 
-      <Badge my="40px" bg="gray.100" fontSize="1em" py="1" px="5">
+      <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
         {data.items[0].category}
       </Badge>
 
@@ -45,14 +45,17 @@ const ItemDetails = () => {
        <Text fonts="Montserrat"
               color="gray.400"
               fontSize="xs"
-              my="5px"
+              my="10px"
               textTransform="uppercase"> 
               { moment(`${data.items[0].date}`).startOf('day').fromNow()}
             </Text>
         </Box>
      </Flex>
-      <Box py="50px">{data.items[0].description}</Box>
-      
+      <Box mb="5" py="10px" minH="100px">
+        <Text fontSize="lg">
+        {data.items[0].description}
+        </Text>
+        </Box>
 
       <Button colorScheme="green" w="100%" size="lg">
       {t("itemPage.request")}

@@ -16,11 +16,12 @@ const ItemsRequest = () => {
   return (
 
      <Flex d="column"  maxW="400px"  fontSize={18}>
-         <Box py={5}>
+         <Box py={5} >
           <Text fontWeight="bold" fontSize={12}>
              {data.items[0].requests.length} {t("itemPage.requests")}
           </Text>
           </Box>
+          <Box maxH="300px" style={data.items[0].requests.length >= 3 ? { overflow:"auto" } : {} } >
           <SimpleGrid spacing={5} >
             {req.requests &&
              req.requests
@@ -49,8 +50,9 @@ const ItemsRequest = () => {
            )})}
      
           </SimpleGrid>
+          </Box>
          <Box py="30px">
-             <Button variant="outline" w="100%" size="lg" onClick={handleDeliverClick}>
+             <Button  variant="outline" w="100%" size="lg" onClick={handleDeliverClick}>
                  {t("itemPage.delivered")}
              </Button>
          </Box>
