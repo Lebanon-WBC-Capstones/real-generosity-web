@@ -22,7 +22,7 @@ import {
 const AboutUs = () => {
   const { t } = useTranslation();
     return ( 
-        <Box maxW="1080px" m="auto">
+        <Box maxW="1080px" minH="500px" m="auto">
             <Box m="auto">
               <Heading py="20px" size="lg" >{t("aboutUs.aboutUs")}</Heading>
               </Box>
@@ -50,7 +50,7 @@ const AboutUs = () => {
           </TabPanel>
         <TabPanel>
             <Box>
-                <SimpleGrid columns={3} spacing={10} m="auto">
+                <SimpleGrid columns={3} spacing={10} >
                     <Box>
                       <VStack>
                       <Image  boxSize="200px" src="https://media.istockphoto.com/vectors/hands-heart-one-line-vector-id1136858654?k=6&m=1136858654&s=612x612&w=0&h=TkFMsZSnWH-nAw6En-VN4mGYgrn_jBL4qzLuVJg8JlA="></Image>
@@ -77,25 +77,31 @@ const AboutUs = () => {
             </TabPanel>
           <TabPanel>
               <Box m="auto">
-                 <SimpleGrid columns={3} spacing={15}>
+                 <SimpleGrid columns={3} spacing={10}>
+                   <Box>
                     <VStack>
                     <Image  boxSize="200px" src={laptophand}></Image>
                     <Heading size="md" color="#00D285">{t("aboutUs.step1")}</Heading>
                     <Heading size="md">{t("aboutUs.step1H")}</Heading>
                     <Text align="center" px="15px" py="10px">{t("aboutUs.step1p")}</Text>
                     </VStack>
+                    </Box>
+                    <Box>
                     <VStack>
                     <Image   boxSize="200px" src={idcard}></Image>
                     <Heading  size="md" color="#00D285">{t("aboutUs.step2")}</Heading>
                     <Heading size="md">{t("aboutUs.step2H")}</Heading>
                     <Text align="center" px="15px" py="10px">{t("aboutUs.step2p")} </Text>
                     </VStack>
+                    </Box>
+                    <Box>
                     <VStack>
                     <Image   boxSize="200px" src="https://i.pinimg.com/474x/63/98/89/63988930bde2ed562ac283a05d02053c.jpg"></Image>
                     <Heading  size="md" color="#00D285">{t("aboutUs.step3")}</Heading>
                     <Heading size="md">{t("aboutUs.step3H")}</Heading>
                     <Text align="center" px="15px" py="10px">{t("aboutUs.step3p")}</Text>
                     </VStack>
+                    </Box>
                 </SimpleGrid>
               </Box>
        </TabPanel>
