@@ -26,7 +26,8 @@
     "react-i18next": "^11.8.7",
     "react-image-gallery": "^1.0.8",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
+    "react-script": "^2.0.5",
+    "react-scripts": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

@@ -1,1 +1,42 @@
-{}
+{
+  "navbar": {
+    "home": "Home",
+    "items": "Items",
+    "about": "About",
+    "contactUs": "Contact Us",
+    "getStarted": "Get Started"
+  },
+  "aboutUs": {
+    "aboutUs": "About us",
+    "tab1": "About Real generosity",
+    "tab2": "Our Vales",
+    "tab3": "How it works",
+    "tab4": "FAQ",
+    "tab1heading": " ",
+    "tab1p1": "",
+    "tab1p2": "",
+    "v1": "Dignity",
+    "v2": "Confidentiality",
+    "v3": "Authenticity",
+    "v1p": "We assure that throughout the process of donation and request preserve sense of user self-worth.",
+    "v2p": "User’s privacy is fully taken into consideration. Certain personal information are only exposed with previous notice.",
+    "v3p": "According to our terms and agreements, no false or fake donations or request are to be submitted.",
+    "step1": "step 1",
+    "step2": "step 2",
+    "step3": "step 3",
+    "step1H": "sign up",
+    "step2H": "Get Verified",
+    "step3H": "Donate and Request items safely",
+    "step1p": "",
+    "step2p": "",
+    "step3p": "",
+    "tab3heading": "",
+    "q1": "",
+    "a1": "",
+    "q2": "",
+    "a2": "",
+    "q3": "",
+    "a3": "",
+    "tab3p": ""
+  }
+}

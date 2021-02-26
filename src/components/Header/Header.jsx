@@ -10,27 +10,27 @@ import {
   InputGroup,
 } from '@chakra-ui/react';
 import { Search } from 'react-feather';
-import sofa  from '../../assets/sofa.png';
+import sofa  from '../../assets/images/sofa.png';
  
 const Header = () => {
   return (
     <Box
       py="10"
       px="10"
-      my="60"
+      my="50px"
       as="header"
       mx="auto"
       fontSize={30}
       fontWeight={600}
       height={200}
-      width={1200}
+      width={1080}
       borderRadius="20px"
       bg="gray.200"
     >
       <Flex mb="10" color="black" fontWeight={800}>
         <Text>Furniture</Text>
 
-        <Flex mx="250px" py="1">
+        <Flex mx="200px" py="1">
           <InputGroup>
             <InputLeftElement children={<Search color="black" />} />
             <Input width="400px" bg="whiteAlpha.800" placeholder="Search" />
