@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ItemDetails from './components/ItemDetails/ItemDetails';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
 
@@ -26,6 +27,7 @@ function App() {
             </Route>
             <Route exact path="/item/:id">
               {/* Single item page goes here  */}
+              <ItemDetails />
             </Route>
             <Route exact path="/about">
               {/* About page goes here  */}
