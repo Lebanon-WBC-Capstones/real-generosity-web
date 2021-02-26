@@ -11,10 +11,12 @@ import AddItemPage from './pages/AddItemPage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SingleItemPage from './pages/SingleItemPage';
 import ContactUsPage from './pages/ContactUsPage';
+import AddForm from './pages/AddForm';
 
 function App() {
   return (
     <div className="App">
+      <AddForm />
       <Router>
         <Layout>
           <Switch>
