@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Button, Flex, Text, Spacer } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -32,6 +33,7 @@ const HeroSection = () => {
             </Text>
           </Box>
           <Box pr="7">
+            <Link to="/add-item">
             <Button
               bg="green.400"
               textColor="white"
@@ -41,6 +43,7 @@ const HeroSection = () => {
             >
               Donate Now
             </Button>
+            </Link>
           </Box>
         </Box>
 
