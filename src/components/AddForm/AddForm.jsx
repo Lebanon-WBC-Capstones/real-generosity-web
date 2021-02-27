@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Flex, Text, Input, Button, Select } from '@chakra-ui/react';
+import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
 import Dropzonecomp from '../Dropzone/Dropzonecomp';
-import data from '../../assets/data/categories.json';
+import { categories } from '../../assets/data/categories';
 
 const AddForm = () => {
   const [Title, setTitle] = useState('');
@@ -59,7 +59,7 @@ const AddForm = () => {
             maxWidth={72}
             focusBorderColor="green.200"
           >
-            {data.categories.map((x) => (
+            {categories.map((x) => (
               <option>{x.name}</option>
             ))}
           </Select>

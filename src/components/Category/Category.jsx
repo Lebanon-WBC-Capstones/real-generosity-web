@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { Plus } from 'react-feather';
-import data from '../../assets/data/categories.json';
+import { categories } from '../../assets/data/categories';
 
 const Category = () => {
   return (
@@ -22,7 +22,7 @@ const Category = () => {
       <HStack spacing={10} mb="10" color="black">
         <Tabs variant="soft-rounded" colorScheme="gray">
           <TabList>
-            {data.categories.map((x) => (
+            {categories.map((x) => (
               <Tab>{x.name}</Tab>
             ))}
           </TabList>

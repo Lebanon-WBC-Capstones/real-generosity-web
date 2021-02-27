@@ -1,5 +1,5 @@
 import { Container, Flex, Box, Button } from '@chakra-ui/react';
-import AddForm from '../components/AddForm';
+import AddForm from '../../components/AddForm';
 function AddItemPage() {
   return (
     <Container my="45px" maxW="1080px">
