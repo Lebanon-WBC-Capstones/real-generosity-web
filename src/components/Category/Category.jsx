@@ -8,30 +8,25 @@ import {
   Menu,
   MenuItem,
   Button,
-  Tabs, TabList, Tab,
+  Tabs,
+  TabList,
+  Tab,
 } from '@chakra-ui/react';
 import { Plus } from 'react-feather';
-import  data from '../../assets/data/categories.json';
+import data from '../../assets/data/categories.json';
 
 const Category = () => {
-
-  
-  
   return (
-    
-    <Box py="10"  width={1080} as="Category" fontSize={15} fontWeight={400}>
+    <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
-      
-      <Tabs  variant="soft-rounded" colorScheme="gray">
-       
-        <TabList>
-         
-        {data.categories.map(x=><Tab>{x.name}</Tab>)}
-         
+        <Tabs variant="soft-rounded" colorScheme="gray">
+          <TabList>
+            {data.categories.map((x) => (
+              <Tab>{x.name}</Tab>
+            ))}
           </TabList>
+        </Tabs>
 
-          </Tabs>
-      
         <HStack>
           <Menu>
             <Text color="gray.400">SortedBy:</Text>

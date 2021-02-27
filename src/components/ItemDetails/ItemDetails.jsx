@@ -1,28 +1,26 @@
 import React from 'react';
-import { Flex, Box, HStack, Text, Button, Badge,VStack } from '@chakra-ui/react';
-import { MapPin, Edit, ArrowLeft, AlertCircle} from 'react-feather';
-import { useTranslation } from "react-i18next";
+import { Flex, Box, HStack, Text, Button, Badge } from '@chakra-ui/react';
+import { MapPin, Edit, ArrowLeft, AlertCircle } from 'react-feather';
+import { useTranslation } from 'react-i18next';
 import moment from 'moment';
-import data from "../../assets/data/items.json";
-import DeleteModal from "../DeleteModal/DeleteModal";
+import data from '../../assets/data/items.json';
+import DeleteModal from '../DeleteModal/DeleteModal';
 import { Link } from 'react-router-dom';
 
-
 const ItemDetails = () => {
-
   const { t } = useTranslation();
 
   return (
-    <Flex d="column"  maxW="400px" fontSize={18}>
+    <Flex d="column" maxW="400px" fontSize={18}>
       <Flex justify="space-between">
         <Link onClick={() => window.history.back()}>
-             <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
-                 {t("itemPage.items")}
-             </Button>
+          <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
+            {t('itemPage.items')}
+          </Button>
         </Link>
         <HStack color="gray" fontSize={12}>
           <Button leftIcon={<Edit size={15} />} variant="ghost">
-          {t("itemPage.edit")}
+            {t('itemPage.edit')}
           </Button>
         </HStack>
       </Flex>
@@ -35,30 +33,32 @@ const ItemDetails = () => {
         {data.items[0].name}
       </Box>
       <Flex justify="space-between">
-      <Box my="5px">
-         <HStack color="gray.500">
+        <Box my="5px">
+          <HStack color="gray.500">
             <MapPin />
-            <Box fontSize="md"  color="gray.500" >Tripoli,mina</Box>
+            <Box fontSize="md" color="gray.500">
+              Tripoli,mina
+            </Box>
           </HStack>
-       </Box> 
-       <Box>
-       <Text fonts="Montserrat"
-              color="gray.400"
-              fontSize="xs"
-              my="10px"
-              textTransform="uppercase"> 
-              { moment(`${data.items[0].date}`).startOf('day').fromNow()}
-            </Text>
         </Box>
-     </Flex>
+        <Box>
+          <Text
+            fonts="Montserrat"
+            color="gray.400"
+            fontSize="xs"
+            my="10px"
+            textTransform="uppercase"
+          >
+            {moment(`${data.items[0].date}`).startOf('day').fromNow()}
+          </Text>
+        </Box>
+      </Flex>
       <Box mb="5" py="10px" minH="100px">
-        <Text fontSize="lg">
-        {data.items[0].description}
-        </Text>
-        </Box>
+        <Text fontSize="lg">{data.items[0].description}</Text>
+      </Box>
 
       <Button colorScheme="green" w="100%" size="lg">
-      {t("itemPage.request")}
+        {t('itemPage.request')}
       </Button>
 
       <Flex justify="space-between" pt={50}>
@@ -67,7 +67,7 @@ const ItemDetails = () => {
           leftIcon={<AlertCircle size={15} color="red" />}
           variant="ghost"
         >
-         {t("itemPage.report")}
+          {t('itemPage.report')}
         </Button>
         <DeleteModal />
       </Flex>

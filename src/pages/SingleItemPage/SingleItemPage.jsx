@@ -10,11 +10,11 @@ import {
   Container,
   Image,
 } from '@chakra-ui/react';
-import ImageCarousel from '../../components/ImageCarousel';
+// import ImageCarousel from '../../components/ImageCarousel';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
-import ItemReports from '../../components/ItemReports';
-import ItemsMap from '../../components/ItemsMap/ItemsMap';
+// import ItemReports from '../../components/ItemReports';
+// import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import { useTranslation } from 'react-i18next';
 
 const SingleItemPage = () => {

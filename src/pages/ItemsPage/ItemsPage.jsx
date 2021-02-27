@@ -19,7 +19,6 @@ const ItemsPage = () => {
         </Box>
       </Flex>
     </Container>
-
   );
 };
 
