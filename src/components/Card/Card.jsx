@@ -6,7 +6,8 @@ import {
   HStack,
   VStack,
   Text,
-  Button
+  Button,
+  Container
 } from '@chakra-ui/react';
 import { MapPin } from 'react-feather';
 import { useTranslation } from "react-i18next";
@@ -17,16 +18,19 @@ import moment from 'moment';
 const Card = () => {
   const { t } = useTranslation();
   return (
-    <Box bg="white" maxW="2xs" borderRadius="lg">
-      <Box p="4"  >
+    <Box bg="white" maxW="2xs" borderRadius="lg" boxShadow="md">
+      <Box p="4" >
         <Image
-          objectFit="fill"
+          objectFit="cover"
+          width="250px"
+          height="100px"
           borderRadius="lg"
           boxShadow="lg"
-          src={data.items[2].imageURL[0]}
+          src={data.items[0].imageURL[0]}
           alt="item image"
         />
       </Box>
+    
       <Box px="4" pb="4">
         <Flex mb="4" align="center" justify="space-between">
           <VStack alignItems="flex-start">

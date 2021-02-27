@@ -12,12 +12,12 @@ import { useTranslation } from "react-i18next";
 const SingleItemPage = () => {
   const { t } = useTranslation();
     return ( 
-      <Container maxW="1080px" minH="600px" m="auto">
+      <Container maxW="1080px" minH="600px" m="auto" my="10px">
         <Box >
         <SimpleGrid  columns={2} spacingX="5px">
            <Box m="10px" p="10px">
                {/* <ImageCarousel /> */}
-               <Image  src="https://www.marni.com/12/12386489MT_13_n_r.jpg"></Image>
+               <Image boxSize="500px" src="https://www.marni.com/12/12386489MT_13_n_r.jpg"></Image>
            </Box>
         
             <Box px={10}>
