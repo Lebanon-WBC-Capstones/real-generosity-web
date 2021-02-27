@@ -2,6 +2,7 @@ import { Box, SimpleGrid, Heading } from '@chakra-ui/react';
 import React from 'react';
 import Card from '../Card';
 import { Link } from 'react-router-dom';
+import { items } from '../../assets/data/items';
 
 const CardList = () => {
   return (
@@ -19,10 +20,9 @@ const CardList = () => {
         </Box>
       </Box>
       <SimpleGrid spacing={2} bg="white" columns={[1, 2, 3, 4]}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {items.slice(0, 4).map((item) => (
+          <Card {...item} />
+        ))}
       </SimpleGrid>
     </Box>
   );
