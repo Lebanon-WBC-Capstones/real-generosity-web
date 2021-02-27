@@ -17,7 +17,7 @@ const SingleItemPage = () => {
         <SimpleGrid  columns={2} spacingX={1}>
            <Box m={3} p={3}>
                {/* <ImageCarousel /> */}
-               <Image boxSize="500px" src="https://www.marni.com/12/12386489MT_13_n_r.jpg"></Image>
+               <Image boxSize="md" src="https://www.marni.com/12/12386489MT_13_n_r.jpg"></Image>
            </Box>
         
             <Box px={10}>
