@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Box,
   Image,
@@ -11,8 +12,12 @@ import {
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
 import GoogleButton from 'react-google-button';
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 
 function SignInPage() {
+  const [t] = useTranslation('translation');
+
   const [authEmail, setAuthEmail] = useState('');
   const handleAuthEmailChange = (e) => {
     setAuthEmail(e.target.value);
@@ -32,23 +37,23 @@ function SignInPage() {
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
           <Box fontSize="4xl">LOGO</Box>
-          <Button
-            variant="outline"
-            colorScheme="black"
-            _hover={{ bg: 'green.500', color: 'white' }}
-            _focus={{ boxShadow: 'none' }}
-          >
-            Sign Up
-          </Button>
+          <Link to="/auth/signup">
+            <Button
+              variant="outline"
+              colorScheme="black"
+              _hover={{ bg: 'green.500', color: 'white' }}
+              _focus={{ boxShadow: 'none' }}
+            >
+              {t('signup.createbutton')}
+            </Button>
+          </Link>
         </Flex>
 
         <Flex minH="80vh" align="center" justify="space-between">
-          <Box fontSize="4xl">
-            Some relatively long heading paragraph sign-in
-          </Box>
+          <Box fontSize="4xl">{t('signin.paragraph')}</Box>
           <Box>
             <Box mt={4} fontSize="lg">
-              <Text mb={2}>Email Address:</Text>
+              <Text mb={2}>{t('signin.email')}</Text>
               <Input
                 value={authEmail}
                 onChange={handleAuthEmailChange}
@@ -62,7 +67,7 @@ function SignInPage() {
             </Box>
 
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>Password:</Text>
+              <Text mb={2}>{t('signin.password')}</Text>
               <Input
                 value={authPassword}
                 onChange={handleAuthPasswordChange}
@@ -81,13 +86,13 @@ function SignInPage() {
                 fontSize="md"
                 _hover={{ color: 'blue', cursor: 'pointer' }}
               >
-                Forgot your password?
+                {t('signin.forgotyourpassword')}
               </Text>
             </Box>
 
             <Box mt={8}>
               <Button colorScheme="green" w={72}>
-                Sign In
+                {t('signin.signinbutton')}
               </Button>
             </Box>
 
