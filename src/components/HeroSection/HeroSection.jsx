@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, Flex, Text, Spacer } from '@chakra-ui/react';
 import heroSectionImage from '../../assets/images/hero-section-image.jpg';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -33,15 +34,17 @@ const HeroSection = () => {
             </Text>
           </Box>
           <Box pr="7">
-            <Button
-              bg="green.400"
-              textColor="white"
-              py="8"
-              px="20"
-              fontSize="2xl"
-            >
-              Donate Now
-            </Button>
+            <Link to="/add-item">
+              <Button
+                bg="green.400"
+                textColor="white"
+                py="8"
+                px="20"
+                fontSize="2xl"
+              >
+                Donate Now
+              </Button>
+            </Link>
           </Box>
         </Box>
 

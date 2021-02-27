@@ -12,6 +12,7 @@ import {
   TabList,
   Tab,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { Plus } from 'react-feather';
 import data from '../../assets/data/categories.json';
 
@@ -49,10 +50,12 @@ const Category = () => {
         </HStack>
 
         <HStack pl={100}>
-          <Button color="white" bg="green.400">
-            <Plus />
-            Submit Donation
-          </Button>
+          <Link to="/add-item">
+            <Button color="white" bg="green.400">
+              <Plus />
+              Submit Donation
+            </Button>
+          </Link>
         </HStack>
       </HStack>
     </Box>
