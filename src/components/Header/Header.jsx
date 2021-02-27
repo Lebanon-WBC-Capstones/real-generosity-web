@@ -10,8 +10,8 @@ import {
   InputGroup,
 } from '@chakra-ui/react';
 import { Search } from 'react-feather';
-import sofa  from '../../assets/images/sofa.png';
- 
+import sofa from '../../assets/images/sofa.png';
+
 const Header = () => {
   return (
     <Box

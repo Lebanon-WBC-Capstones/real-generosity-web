@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
 import { Link } from 'react-router-dom';
 import {
   Menu,
@@ -17,7 +16,7 @@ import {
 import { Globe } from 'react-feather';
 
 function NavBar() {
-  const [t, i18n] = useTranslation('translation');
+  const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
   return (
     <Box>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Button, Flex, Text, Spacer } from '@chakra-ui/react';
+import heroSectionImage from '../../assets/images/hero-section-image.jpg';
 
 const HeroSection = () => {
   return (
@@ -52,7 +53,7 @@ const HeroSection = () => {
           width="62%"
           height="5xl"
           fontSize="7xl"
-          backgroundImage="url('../../assets/charity-background.png')"
+          backgroundImage={`url(${heroSectionImage})`}
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
         >

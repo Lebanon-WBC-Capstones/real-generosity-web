@@ -1,19 +1,21 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
 import ItemsPage from './pages/ItemsPage';
 import HomePage from './pages/HomePage';
-
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage/SingleItemPage';
+import SingleItemPage from './pages/SingleItemPage';
 import ContactUsPage from './pages/ContactUsPage';
 
 function App() {
+  const [query, setQuery] = useState('');
+  console.log('query', query);
+
   return (
     <div className="App">
       <Router>
@@ -21,7 +23,7 @@ function App() {
           <Layout>
             <Switch>
               <Route exact path="/">
-                <HomePage />
+                <HomePage setQuery={setQuery} />
               </Route>
               <Route exact path="/auth/signin">
                 <SignInPage />

@@ -10,7 +10,6 @@ const ItemsPage = () => {
     <Container my="45px" maxW="1080px">
       <Box mb="45px"></Box>
       <Box mb="45px"></Box>
-
       <Flex justify="space-between">
         <Box w="50%">
           <ItemsList />

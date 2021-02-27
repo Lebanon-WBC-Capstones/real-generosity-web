@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Box,
   Image,
@@ -11,7 +12,11 @@ import {
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
+import { useTranslation } from 'react-i18next';
+
 function SignUpPage() {
+  const { t } = useTranslation();
+
   const [fullName, setFullName] = useState('');
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
@@ -41,18 +46,23 @@ function SignUpPage() {
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
           <Box fontSize="4xl">LOGO</Box>
-          <Button variant="outline" colorScheme="black">
-            Sign In
-          </Button>
+          <Link to="/auth/signin">
+            <Button
+              variant="outline"
+              colorScheme="black"
+              _hover={{ bg: 'green.500', color: 'white' }}
+              _focus={{ boxShadow: 'none' }}
+            >
+              {t('signin.signinbutton')}
+            </Button>
+          </Link>
         </Flex>
 
         <Flex minH="80vh" align="center" justify="space-between">
-          <Box fontSize="4xl">
-            Some relatively long heading paragraph sign-up
-          </Box>
+          <Box fontSize="4xl">{t('signup.paragraph')}</Box>
           <Box>
             <Box mt={4} fontSize="lg">
-              <Text mb={2}>Full Name:</Text>
+              <Text mb={2}>{t('signup.fullname')}</Text>
               <Input
                 value={fullName}
                 onChange={handleFullNameChange}
@@ -64,7 +74,7 @@ function SignUpPage() {
               />
             </Box>
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>Address:</Text>
+              <Text mb={2}>{t('signup.address')}</Text>
               <Input
                 value={address}
                 onChange={handleAddressChange}
@@ -76,7 +86,7 @@ function SignUpPage() {
               />
             </Box>
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>Email Address:</Text>
+              <Text mb={2}>{t('signup.email')}</Text>
               <Input
                 value={emailAddress}
                 onChange={handleEmailAddressChange}
@@ -89,7 +99,7 @@ function SignUpPage() {
               />
             </Box>
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>Phone Number:</Text>
+              <Text mb={2}>{t('signup.phone')}</Text>
               <Input
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
@@ -102,20 +112,12 @@ function SignUpPage() {
               />
             </Box>
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>Kindly, upload your ID card here:</Text>
+              <Text mb={2}>{t('signup.idupload')}</Text>
               <Dropzonecomp />
-              {/* <Input
-                type="file"
-                accept="image/*,.pdf"
-                size="sm"
-                isRequired
-                maxWidth={72}
-                focusBorderColor="green.200"
-              /> */}
             </Box>
             <Box mt={8}>
               <Button colorScheme="green" w={72}>
-                Create Account
+                {t('signup.createbutton')}
               </Button>
             </Box>
           </Box>
