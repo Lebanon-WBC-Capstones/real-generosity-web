@@ -13,10 +13,9 @@ import {
 import proto from '../../assets/images/proto.png';
 import GoogleButton from 'react-google-button';
 import { useTranslation } from 'react-i18next';
-import i18n from '../i18n';
 
 function SignInPage() {
-  const [t] = useTranslation('translation');
+  const { t } = useTranslation();
 
   const [authEmail, setAuthEmail] = useState('');
   const handleAuthEmailChange = (e) => {

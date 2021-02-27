@@ -13,10 +13,9 @@ import {
 import proto from '../../assets/images/proto.png';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
 
 function SignUpPage() {
-  const [t] = useTranslation('translation');
+  const { t } = useTranslation();
 
   const [fullName, setFullName] = useState('');
   const handleFullNameChange = (e) => {
