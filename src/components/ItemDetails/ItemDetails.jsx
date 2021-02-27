@@ -1,13 +1,12 @@
-import React from 'react';
-import { Flex, Box, HStack, Text, Button, Badge } from '@chakra-ui/react';
-import { MapPin, Edit, ArrowLeft, AlertCircle } from 'react-feather';
-import { useTranslation } from 'react-i18next';
+import { Badge, Box, Button, Flex, HStack, Text } from '@chakra-ui/react';
 import moment from 'moment';
-import { items } from '../../assets/data/items';
-import DeleteModal from '../DeleteModal/DeleteModal';
+import React from 'react';
+import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import DeleteModal from '../DeleteModal/DeleteModal';
 
-const ItemDetails = () => {
+const ItemDetails = ({ category, name, date, description }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,11 +25,11 @@ const ItemDetails = () => {
       </Flex>
 
       <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
-        {items[0].category}
+        {category}
       </Badge>
 
       <Box color="black" fontWeight="bold" letterSpacing="wide" fontSize="3xl">
-        {items[0].name}
+        {name}
       </Box>
       <Flex justify="space-between">
         <Box my="5px">
@@ -49,12 +48,12 @@ const ItemDetails = () => {
             my="10px"
             textTransform="uppercase"
           >
-            {moment(`${items[0].date}`).startOf('day').fromNow()}
+            {moment(`${date}`).startOf('day').fromNow()}
           </Text>
         </Box>
       </Flex>
       <Box mb="5" py="10px" minH="100px">
-        <Text fontSize="lg">{items[0].description}</Text>
+        <Text fontSize="lg">{description}</Text>
       </Box>
 
       <Button colorScheme="green" w="100%" size="lg">
