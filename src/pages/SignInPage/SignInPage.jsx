@@ -9,7 +9,7 @@ import {
   Input,
   Button,
 } from '@chakra-ui/react';
-import proto from '../assets/images/proto.png';
+import proto from '../../assets/images/proto.png';
 import GoogleButton from 'react-google-button';
 
 function SignInPage() {
