@@ -8,7 +8,7 @@ import toys from '../../assets/images/toys.png';
 import medicalkit from '../../assets/images/medicalkit.png';
 import appliances from '../../assets/images/appliances.png';
 
-const CategoryCardsLayout = () => {
+const CategoryCardsLayout = ({ setQuery }) => {
   return (
     <Flex>
       <Grid
@@ -18,7 +18,13 @@ const CategoryCardsLayout = () => {
         templateColumns="repeat(25, 1fr)"
         gap={4}
       >
-        <GridItem borderRadius="xl" colSpan={8} rowSpan={12} bg="#EAEAF1">
+        <GridItem
+          onClick={() => setQuery('furniture')}
+          borderRadius="xl"
+          colSpan={8}
+          rowSpan={12}
+          bg="#EAEAF1"
+        >
           <CategoryCard
             categoryPic={sofa}
             direction="column"
@@ -26,21 +32,39 @@ const CategoryCardsLayout = () => {
             ml="4"
           ></CategoryCard>
         </GridItem>
-        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#F6E8CD">
+        <GridItem
+          onClick={() => setQuery('clothes')}
+          borderRadius="xl"
+          colSpan={5}
+          rowSpan={6}
+          bg="#F6E8CD"
+        >
           <CategoryCard
             categoryPic={Clothes}
             direction="column"
             categoryName="Clothes"
           ></CategoryCard>
         </GridItem>
-        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#CBECE9">
+        <GridItem
+          onClick={() => setQuery('books')}
+          borderRadius="xl"
+          colSpan={5}
+          rowSpan={6}
+          bg="#CBECE9"
+        >
           <CategoryCard
             categoryPic={book}
             direction="column"
             categoryName="Books"
           ></CategoryCard>
         </GridItem>
-        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#E6D0EF">
+        <GridItem
+          onClick={() => setQuery('toys')}
+          borderRadius="xl"
+          colSpan={7}
+          rowSpan={6}
+          bg="#E6D0EF"
+        >
           <CategoryCard
             categoryPic={toys}
             direction="row-reverse"
@@ -48,7 +72,13 @@ const CategoryCardsLayout = () => {
             mt="24"
           ></CategoryCard>
         </GridItem>
-        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#F0D0D2">
+        <GridItem
+          onClick={() => setQuery('medics')}
+          borderRadius="xl"
+          colSpan={7}
+          rowSpan={6}
+          bg="#F0D0D2"
+        >
           <CategoryCard
             categoryPic={medicalkit}
             direction="row-reverse"
@@ -56,7 +86,13 @@ const CategoryCardsLayout = () => {
             mt="24"
           ></CategoryCard>
         </GridItem>
-        <GridItem borderRadius="xl" colSpan={10} rowSpan={6} bg="#CFD6F2">
+        <GridItem
+          onClick={() => setQuery('appliances')}
+          borderRadius="xl"
+          colSpan={10}
+          rowSpan={6}
+          bg="#CFD6F2"
+        >
           <CategoryCard
             categoryPic={appliances}
             direction="row-reverse"

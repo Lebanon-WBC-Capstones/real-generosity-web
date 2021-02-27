@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 import HeroSection from '../components/HeroSection';
 import CategoryCardLayout from '../components/CategoryCardsLayout';
 import CardList from '../components/CardList';
-function HomePage() {
+function HomePage({ setQuery }) {
   return (
     <div>
       <Box maxWidth="1080px" mx="auto">
@@ -11,7 +11,7 @@ function HomePage() {
           <HeroSection />
         </Box>
         <Box marginBottom="30px">
-          <CategoryCardLayout />
+          <CategoryCardLayout setQuery={setQuery} />
         </Box>
         <Box marginBottom="40px">
           <CardList />
