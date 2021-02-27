@@ -1,12 +1,11 @@
+import { Box, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react';
+import moment from 'moment';
 import React from 'react';
-import { Box, Image, Flex, HStack, VStack, Text } from '@chakra-ui/react';
 import { MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { items } from '../../assets/data/items';
-import moment from 'moment';
 
-const Card = () => {
+const Card = ({ imageURL, name, date, id }) => {
   const { t } = useTranslation();
   return (
     <Box bg="white" maxW="2xs" borderRadius="lg" boxShadow="md">
@@ -17,7 +16,7 @@ const Card = () => {
           height="100px"
           borderRadius="lg"
           boxShadow="lg"
-          src={items[0].imageURL[0]}
+          src={imageURL[0]}
           alt="item image"
         />
       </Box>
@@ -31,7 +30,7 @@ const Card = () => {
               fontWeight="semibold"
               as="h3"
             >
-              {items[0].name}
+              {name}
             </Text>
             <Text
               fonts="Montserrat"
@@ -39,7 +38,7 @@ const Card = () => {
               fontSize="xs"
               textTransform="uppercase"
             >
-              {moment(`${items[0].date}`).startOf('day').fromNow()}
+              {moment(`${date}`).startOf('day').fromNow()}
             </Text>
           </VStack>
         </Flex>
@@ -49,7 +48,7 @@ const Card = () => {
             <Box fontSize="sm">Location</Box>
           </HStack>
           <Box fonts="Montserrat" color="blue.500" fontSize="sm">
-            <Link to={`/item/${items[0].id}`}>{t('card.more')}</Link>
+            <Link to={`item/${id}`}>{t('card.more')}</Link>
           </Box>
         </Flex>
       </Box>
