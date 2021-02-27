@@ -9,7 +9,7 @@ import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage/SingleItemPage';
+import SingleItemPage from './pages/SingleItemPage';
 import ContactUsPage from './pages/ContactUsPage';
 
 function App() {
