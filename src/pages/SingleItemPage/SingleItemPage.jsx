@@ -4,7 +4,7 @@ import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import ItemDetails from "../../components/ItemDetails";
 import ItemRequests from "../../components/ItemRequests/ItemRequests";
 import ItemReports from "../../components/ItemReports/ItemReports"
-import ItemsMap from "../../components/ItemsMap/ItemsMap";
+//import ItemsMap from "../../components/ItemsMap/ItemsMap";
 import { useTranslation } from "react-i18next";
 
 
@@ -38,9 +38,9 @@ const SingleItemPage = () => {
             </Tabs>
            </Box> 
         </SimpleGrid> 
-        {/* <Box> */}
-        {/* <ItemsMap /> */}
-        {/* </Box>  */}
+        <Box>
+           {/* map will be tragged here */}
+        </Box> 
       </Box>
 </Container>
      );
