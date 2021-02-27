@@ -1,8 +1,8 @@
 import React from 'react';
 import { Flex, Box, Text, Button, SimpleGrid } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import data from '../../assets/data/items.json';
-import req from '../../assets/data/requests.json';
+import { items } from '../../assets/data/items';
+import { requests } from '../../assets/data/requests';
 import moment from 'moment';
 
 const ItemRequests = () => {
@@ -22,17 +22,17 @@ const ItemRequests = () => {
     <Flex d="column" maxW="400px" fontSize={18}>
       <Box py={5}>
         <Text fontWeight="bold" fontSize={12}>
-          {data.items[0].requests.length} {t('itemPage.requests')}
+          {items[0].requests.length} {t('itemPage.requests')}
         </Text>
       </Box>
       <Box
         maxH="300px"
-        style={data.items[0].requests.length >= 3 ? { overflow: 'auto' } : {}}
+        style={items[0].requests.length >= 3 ? { overflow: 'auto' } : {}}
       >
         <SimpleGrid spacing={5}>
-          {req.requests &&
-            req.requests
-              .filter((r) => r.requestedId === data.items[0].id)
+          {requests.requests &&
+            requests.requests
+              .filter((r) => r.requestedId === items[0].id)
               .map((request) => {
                 return (
                   <Box bg="gray.50" height="80px" py="10px" px="5px">
