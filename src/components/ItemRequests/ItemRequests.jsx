@@ -33,7 +33,7 @@ const ItemRequests = () => {
              req.requests
              .filter((r)=>r.requestedId===data.items[0].id)
              .map(request=>{return(    
-               <Box bg="gray.50"  height="80px" py="10px" px="5px">
+               <Box bg="gray.50"  height={20} py={3} px={1}>
                   <Flex align="center" justify="space-between">
                     <Text   fonts="Montserrat"
                             fontSize="lg"
@@ -57,7 +57,7 @@ const ItemRequests = () => {
      
           </SimpleGrid>
           </Box>
-         <Box py="30px">
+         <Box py={8}>
              <Button  variant="outline" w="100%" size="lg" onClick={handleDelivered}>
                  {t("itemPage.delivered")}
              </Button>

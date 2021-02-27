@@ -4,7 +4,7 @@ import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import ItemDetails from "../../components/ItemDetails";
 import ItemRequests from "../../components/ItemRequests/ItemRequests";
 import ItemReports from "../../components/ItemReports/ItemReports"
-//import ItemsMap from "../../components/ItemsMap/ItemsMap";
+import ItemsMap from "../../components/ItemsMap/ItemsMap";
 import { useTranslation } from "react-i18next";
 
 
@@ -12,10 +12,10 @@ import { useTranslation } from "react-i18next";
 const SingleItemPage = () => {
   const { t } = useTranslation();
     return ( 
-      <Container maxW="1080px" minH="600px" m="auto" my="10px">
+      <Container maxW="5xl" minH="sm" m="auto" my={3}>
         <Box >
-        <SimpleGrid  columns={2} spacingX="5px">
-           <Box m="10px" p="10px">
+        <SimpleGrid  columns={2} spacingX={1}>
+           <Box m={3} p={3}>
                {/* <ImageCarousel /> */}
                <Image boxSize="500px" src="https://www.marni.com/12/12386489MT_13_n_r.jpg"></Image>
            </Box>
@@ -31,16 +31,17 @@ const SingleItemPage = () => {
                     <ItemDetails /> 
                 </TabPanel>
                 <TabPanel>
-                   <ItemRequests />
-                    {/* <ItemReports /> */}
+                   {/* <ItemRequests /> */}
+                    <ItemReports />
                 </TabPanel>
              </TabPanels>
             </Tabs>
            </Box> 
         </SimpleGrid> 
-        <Box>
+         {/* <Box maxW="1080px" maxH="20px"> */}
            {/* map will be tragged here */}
-        </Box> 
+            {/* <ItemsMap />
+        </Box>  */}
       </Box>
 </Container>
      );

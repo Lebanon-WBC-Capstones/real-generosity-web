@@ -23,8 +23,8 @@ const ItemsMap = React.memo(function Map() {
       <div
         ref={ref}
         style={{
-          width: '450px',
-          height: 650,
+          width: "100%",
+          height: "100vh",
           float: 'right',
           marginTop: 7,
           borderTopLeftRadius: 5,

@@ -19,7 +19,7 @@ const ItemReports = () => {
                          {"id":"02", "option":"Inappropriate content"},
                          {"id":"03", "option":"option 03"}]
     return ( 
-        <Flex d="column"  maxW="400px"  fontSize={18}>
+        <Flex d="column"  maxW={96} fontSize={18}>
          <Box py={5}>
           <Text fontWeight="bold" fontSize={12}>
              {rep.reports.filter(repo=>repo.reportedId===data.items[0].id).length} {t("itemPage.reports")}
@@ -32,7 +32,7 @@ const ItemReports = () => {
                 <AccordionItem py={5}>
                     <Heading size="lg">
                    <AccordionButton>
-                   <Text px="10px" py="6px"  bg="gray.100" borderRadius="100%" mr="5px">
+                   <Text px={3} py={1}  bg="gray.100" borderRadius="100%" mr={1}>
                       {rep.reports.filter(repo=>repo.reportedId===data.items[0].id)
                                   .filter(r=>r.reasonId===opt.id)
                                   .length}
@@ -65,7 +65,7 @@ const ItemReports = () => {
                              <Text fonts="Montserrat"
                                    color="gray.400"
                                    fontSize="xs"
-                                   my="5px"
+                                   my={1}
                                    textTransform="uppercase"> 
                                 { moment(`${repor.dateOfReport}`).startOf('day').fromNow()}
                              </Text>

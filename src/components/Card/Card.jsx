@@ -22,8 +22,8 @@ const Card = () => {
       <Box p="4" >
         <Image
           objectFit="cover"
-          width="250px"
-          height="100px"
+          width={64}
+          height={24}
           borderRadius="lg"
           boxShadow="lg"
           src={data.items[0].imageURL[0]}

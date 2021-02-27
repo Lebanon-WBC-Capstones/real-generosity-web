@@ -27,7 +27,7 @@ const ItemDetails = () => {
         </HStack>
       </Flex>
 
-      <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
+      <Badge my="20px" bg="gray.100" fontSize="md" py={1} px={5}>
         {data.items[0].category}
       </Badge>
 
@@ -35,7 +35,7 @@ const ItemDetails = () => {
         {data.items[0].name}
       </Box>
       <Flex justify="space-between">
-      <Box my="5px">
+      <Box my={1}>
          <HStack color="gray.500">
             <MapPin />
             <Box fontSize="md"  color="gray.500" >Tripoli,mina</Box>
@@ -45,13 +45,13 @@ const ItemDetails = () => {
        <Text fonts="Montserrat"
               color="gray.400"
               fontSize="xs"
-              my="10px"
+              my={3}
               textTransform="uppercase"> 
               { moment(`${data.items[0].date}`).startOf('day').fromNow()}
             </Text>
         </Box>
      </Flex>
-      <Box mb="5" py="10px" minH="100px">
+      <Box mb={1} py={3} minH={24}>
         <Text fontSize="lg">
         {data.items[0].description}
         </Text>
