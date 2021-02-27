@@ -1,23 +1,25 @@
-import React from 'react';
 import {
   Box,
+  Container,
+  Image,
+  SimpleGrid,
+  Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Tab,
-  SimpleGrid,
-  Container,
-  Image,
 } from '@chakra-ui/react';
-// import ImageCarousel from '../../components/ImageCarousel';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import { items } from '../../assets/data/items';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
-// import ItemReports from '../../components/ItemReports';
-// import ItemsMap from '../../components/ItemsMap/ItemsMap';
-import { useTranslation } from 'react-i18next';
 
 const SingleItemPage = () => {
+  const { id } = useParams();
+  const item = items.find((item) => item.id === id);
+
   const { t } = useTranslation();
   return (
     <Container maxW="1080px" minH="600px" m="auto" my="10px">
@@ -25,10 +27,7 @@ const SingleItemPage = () => {
         <SimpleGrid columns={2} spacingX="5px">
           <Box m="10px" p="10px">
             {/* <ImageCarousel /> */}
-            <Image
-              boxSize="500px"
-              src="https://www.marni.com/12/12386489MT_13_n_r.jpg"
-            ></Image>
+            <Image boxSize="500px" src={`${item.imageURL[0]}`}></Image>
           </Box>
 
           <Box px={10}>
@@ -39,7 +38,7 @@ const SingleItemPage = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <ItemDetails />
+                  <ItemDetails {...item} />
                 </TabPanel>
                 <TabPanel>
                   <ItemRequests />
