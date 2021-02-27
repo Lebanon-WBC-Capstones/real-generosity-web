@@ -16,7 +16,7 @@ import {
 import { Globe } from 'react-feather';
 
 function NavBar() {
-  const [t, i18n] = useTranslation('translation');
+  const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
   return (
     <Box>
