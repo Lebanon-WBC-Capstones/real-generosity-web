@@ -23,7 +23,7 @@ const Category = () => {
         <Tabs variant="soft-rounded" colorScheme="gray">
           <TabList>
             {categories.map((x) => (
-              <Tab>{x.name}</Tab>
+              <Tab key={Date.now() + '' + Math.random()}>{x.name}</Tab>
             ))}
           </TabList>
         </Tabs>

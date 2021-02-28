@@ -3,7 +3,10 @@ export const items = [
     id: '101',
     name: 'T-Shirt',
     date: 'Wed May 27 2020 09:59:56 GMT+0530',
-    location: { lat: '33.8333', Ing: '35.8333' },
+    location: {
+      name: 'blabla',
+      coords: { lat: '33.8333', lng: '35.8333' },
+    },
     category: 'Clothes',
     imageURL: [
       'https://www.marni.com/12/12386489MT_13_n_r.jpg',

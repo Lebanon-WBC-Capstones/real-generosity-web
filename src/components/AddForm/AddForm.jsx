@@ -3,34 +3,43 @@ import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
 import Dropzonecomp from '../Dropzone/Dropzonecomp';
 import { categories } from '../../assets/data/categories';
 
-const AddForm = () => {
-  const [Title, setTitle] = useState('');
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const [Category, setCategory] = useState('');
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-
-  const [Description, setDescription] = useState('');
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
-
-  // const [picture, setPicture] = useState([]);
-  // const handleUploadChange = (e) => {
-
-  //   console.log('picture: ', picture);
-  //   setPicture(...picture, e.target.files[0]);
-
+const AddForm = ({
+  title,
+  category,
+  description,
+  picture,
+  handleTitleChange,
+  handleCategoryChange,
+  handleDescriptionChange,
+  handleUploadChange,
+}) => {
+  // const [title, setTitle] = useState('');
+  // const handleTitleChange = (e) => {
+  //   setTitle(e.target.value);
   // };
 
-  const [picture, setPicture] = useState('');
-  function handleUploadChange(event) {
-    setPicture(event.target.files[0]);
-  }
+  // const [category, setCategory] = useState('');
+  // const handleCategoryChange = (e) => {
+  //   setCategory(e.target.value);
+  // };
+
+  // const [description, setDescription] = useState('');
+  // const handleDescriptionChange = (e) => {
+  //   setDescription(e.target.value);
+  // };
+
+  // // const [picture, setPicture] = useState([]);
+  // // const handleUploadChange = (e) => {
+
+  // //   console.log('picture: ', picture);
+  // //   setPicture(...picture, e.target.files[0]);
+
+  // // };
+
+  // const [picture, setPicture] = useState('');
+  // function handleUploadChange(event) {
+  //   setPicture(event.target.files[0]);
+  // }
 
   return (
     <Flex fontSize={15} fontWeight={400}>
@@ -38,7 +47,7 @@ const AddForm = () => {
         <Box mt={4} fontSize="lg">
           <Text mb={2}>Title</Text>
           <Input
-            value={Title}
+            value={title}
             onChange={handleTitleChange}
             size="sm"
             variant="filled"
@@ -51,7 +60,7 @@ const AddForm = () => {
         <Box mt={8} fontSize="lg">
           <Text mb={2}>Category</Text>
           <Select
-            value={Category}
+            value={category}
             onChange={handleCategoryChange}
             size="sm"
             variant="filled"
@@ -60,7 +69,7 @@ const AddForm = () => {
             focusBorderColor="green.200"
           >
             {categories.map((x) => (
-              <option>{x.name}</option>
+              <option key={Date.now() + '' + Math.random()}>{x.name}</option>
             ))}
           </Select>
         </Box>
@@ -68,7 +77,7 @@ const AddForm = () => {
         <Box mt={8} fontSize="lg">
           <Text mb={2}>Description</Text>
           <Input
-            value={Description}
+            value={description}
             onChange={handleDescriptionChange}
             size="sm"
             variant="filled"

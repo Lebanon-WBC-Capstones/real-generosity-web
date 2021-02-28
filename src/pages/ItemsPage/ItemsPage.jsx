@@ -19,7 +19,7 @@ const ItemsPage = () => {
         <Box w="50%">
           <ItemsList />
         </Box>
-        <Box w="50%">
+        <Box w="50%" ml={30}>
           <ItemsMap />
         </Box>
       </Flex>
