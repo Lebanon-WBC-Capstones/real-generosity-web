@@ -83,5 +83,14 @@
     "donations": "Donations",
     "requests": "Requests",
     "search": "Search"
+  },
+  "adminPage": {
+    "admin": "Admin",
+    "users": "Users",
+    "reports": "Reports",
+    "search": "Search",
+    "donations": "Donations",
+    "requests": "Requests",
+    "delete": "Delete"
   }
 }

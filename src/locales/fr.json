@@ -63,5 +63,15 @@
     "donations": "Dons",
     "requests": "Requêtes",
     "search": "Rechercher"
+  },
+
+  "adminPage": {
+    "admin": "Admin",
+    "users": "Usagers",
+    "reports": "Rapports",
+    "search": "Rechercher",
+    "donations": "Dons",
+    "requests": "Requêtes",
+    "delete": "Effacer"
   }
 }
