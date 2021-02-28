@@ -54,7 +54,7 @@ function AddItemPage() {
     setPicture([]);
     setCurrentPosition({});
     setCityName('');
-    console.log(items);
+    // console.log(items);
   };
 
   return (

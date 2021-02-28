@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
 import Dropzonecomp from '../Dropzone/Dropzonecomp';
 import { categories } from '../../assets/data/categories';
@@ -13,34 +13,6 @@ const AddForm = ({
   handleDescriptionChange,
   handleUploadChange,
 }) => {
-  // const [title, setTitle] = useState('');
-  // const handleTitleChange = (e) => {
-  //   setTitle(e.target.value);
-  // };
-
-  // const [category, setCategory] = useState('');
-  // const handleCategoryChange = (e) => {
-  //   setCategory(e.target.value);
-  // };
-
-  // const [description, setDescription] = useState('');
-  // const handleDescriptionChange = (e) => {
-  //   setDescription(e.target.value);
-  // };
-
-  // // const [picture, setPicture] = useState([]);
-  // // const handleUploadChange = (e) => {
-
-  // //   console.log('picture: ', picture);
-  // //   setPicture(...picture, e.target.files[0]);
-
-  // // };
-
-  // const [picture, setPicture] = useState('');
-  // function handleUploadChange(event) {
-  //   setPicture(event.target.files[0]);
-  // }
-
   return (
     <Flex fontSize={15} fontWeight={400}>
       <Box width={250}>
