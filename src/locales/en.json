@@ -79,7 +79,9 @@
     "deletep": "Are you sure you want to delete?"
   },
   "profilePage": {
+    "editProfile": "Edit Profile",
     "donations": "Donations",
-    "requests": "Requests"
+    "requests": "Requests",
+    "search": "Search"
   }
 }

@@ -76,5 +76,11 @@
     "delivered": "تم التوصيل",
     "cancel": "الغاء",
     "deletep": "هل أنت متأكد من عملية الإلغاء"
+  },
+  "profilePage": {
+    "editProfile": "تعديل الحساب",
+    "donations": "التبرعات",
+    "requests": "الطلبات",
+    "search": "بحث"
   }
 }
