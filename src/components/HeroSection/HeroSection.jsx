@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Flex, Text, Spacer, Image,VStack } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, Image } from '@chakra-ui/react';
 import heroSectionImage from '../../assets/images/hero-section-image.png';
 import './HeroSection.css';
 import { Link } from 'react-router-dom';
