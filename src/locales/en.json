@@ -102,5 +102,13 @@
   "toys": "Toys",
   "medics": "Medics",
   "appliances": "Appliances"
+},
+"editProfile": {
+  "fullname": "Full Name",
+  "address": "Address",
+  "email": "Email Address",
+  "phone": "Phone Number",
+  "idupload": "Kindly, upload your new ID card here",
+  "updateInfo": "Update your Info"
 }
 }
