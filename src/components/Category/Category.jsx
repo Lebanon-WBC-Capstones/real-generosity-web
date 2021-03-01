@@ -12,8 +12,9 @@ import {
   TabList,
   Tab,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { Plus } from 'react-feather';
-import data from '../../assets/data/categories.json';
+import { categories } from '../../assets/data/categories';
 
 const Category = () => {
   return (
@@ -21,8 +22,8 @@ const Category = () => {
       <HStack spacing={10} mb="10" color="black">
         <Tabs variant="soft-rounded" colorScheme="gray">
           <TabList>
-            {data.categories.map((x) => (
-              <Tab>{x.name}</Tab>
+            {categories.map((x) => (
+              <Tab key={Date.now() + '' + Math.random()}>{x.name}</Tab>
             ))}
           </TabList>
         </Tabs>
@@ -49,10 +50,12 @@ const Category = () => {
         </HStack>
 
         <HStack pl={100}>
-          <Button color="white" bg="green.400">
-            <Plus />
-            Submit Donation
-          </Button>
+          <Link to="/add-item">
+            <Button color="white" bg="green.400">
+              <Plus />
+              Submit Donation
+            </Button>
+          </Link>
         </HStack>
       </HStack>
     </Box>

@@ -11,6 +11,7 @@ import AddItemPage from './pages/AddItemPage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SingleItemPage from './pages/SingleItemPage';
 import ContactUsPage from './pages/ContactUsPage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -48,6 +49,9 @@ function App() {
               </Route>
               <Route exact path="/profile">
                 <ProfilePage />
+              </Route>
+              <Route exact path="/admin">
+                <AdminPage />
               </Route>
               <Route exact path="/profile/settings">
                 <ProfileSettingsPage />
