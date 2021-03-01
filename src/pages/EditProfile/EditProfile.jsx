@@ -12,9 +12,9 @@ import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 
 function EditProfile() {
 
-    const [profilePicture, setProfilePicture] = useState(null);
-    const selectProfilePicture = (e) => {
-        setProfilePicture(e.target.value);
+    const [idCard, setIdCard] = useState(null);
+    const selectIdCard = (e) => {
+        setIdCard(e.target.value);
        };
 
     const [fullName, setFullName] = useState('');
@@ -143,7 +143,7 @@ function EditProfile() {
 
                 <Box mt={8} fontSize="lg" >
                     <Text mb={2} >ID card</Text>
-                   <Dropzonecomp/>
+                   <Dropzonecomp onChange={selectIdCard}/>
                 </Box>
 
                 <Box mt={8}>
