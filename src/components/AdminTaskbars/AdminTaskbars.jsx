@@ -19,17 +19,20 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
+import { users } from '../../assets/data/users';
 
 const AdminTaskbars = () => {
+  const { t } = useTranslation();
   return (
     <Container maxWidth="891px">
       <Heading size="lg" marginBottom="30px">
-        Admin
+        {t('adminPage.admin')}
       </Heading>
       <Tabs>
         <TabList justifyContent="space-around">
-          <Tab>Users</Tab>
-          <Tab>Reports</Tab>
+          <Tab>{t('adminPage.users')}</Tab>
+          <Tab>{t('adminPage.reports')}</Tab>
         </TabList>
 
         <TabPanels>
@@ -37,7 +40,7 @@ const AdminTaskbars = () => {
           <TabPanel>
             <HStack justifyContent="space-between" marginBottom="40px">
               <Text fontSize="md" fontWeight="bold">
-                Number of users
+                {users.length} {t('adminPage.users')}
               </Text>
               <Box size="100px">
                 <InputGroup>
@@ -45,16 +48,14 @@ const AdminTaskbars = () => {
                     pointerEvents="none"
                     children={<Search color="gray" />}
                   />
-                  <Input type="text" placeholder="Search" />
+                  <Input type="text" placeholder={t('adminPage.search')} />
                 </InputGroup>
               </Box>
             </HStack>
             <SimpleGrid rows={6} gap={4}>
-              <AdminUsers />
-              <AdminUsers />
-              <AdminUsers />
-              <AdminUsers />
-              <AdminUsers />
+              {users.map((user) => (
+                <AdminUsers {...user} />
+              ))}
             </SimpleGrid>
           </TabPanel>
 
