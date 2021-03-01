@@ -1,16 +1,17 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
-import ItemsPage from './pages/ItemsPage';
+import EditProfile from './pages/EditProfile/EditProfile';
+// import HomePage from './pages/HomePage';
+// import ItemsPage from './pages/ItemsPage';
 
-import SignUpPage from './pages/SignUpPage';
-import SignInPage from './pages/SignInPage';
-import ProfilePage from './pages/ProfilePage';
-import AboutPage from './pages/AboutUs';
-import AddItemPage from './pages/AddItemPage';
-import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage';
-import ContactUsPage from './pages/ContactUsPage';
+// import SignUpPage from './pages/SignUpPage';
+// import SignInPage from './pages/SignInPage';
+// import ProfilePage from './pages/ProfilePage';
+// import AboutPage from './pages/AboutUs';
+// import AddItemPage from './pages/AddItemPage';
+// import ProfileSettingsPage from './pages/ProfileSettingsPage';
+// import SingleItemPage from './pages/SingleItemPage';
+// import ContactUsPage from './pages/ContactUsPage';
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
       <Router>
         <Layout>
           <Switch>
-            <Route exact path="/">
+            <EditProfile />
+            {/* <Route exact path="/">
               <HomePage />
-            </Route>
-            <Route exact path="/auth/signin">
+            </Route> */}
+            {/* <Route exact path="/auth/signin">
               <SignInPage />
             </Route>
             <Route exact path="/auth/signup">
@@ -48,7 +50,7 @@ function App() {
             </Route>
             <Route exact path="/profile/settings">
               <ProfileSettingsPage />
-            </Route>
+            </Route> */}
           </Switch>
         </Layout>
       </Router>

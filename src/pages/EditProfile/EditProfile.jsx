@@ -5,10 +5,11 @@ import {
     Text,
     Input,
     Button,
-    Avatar,
+    Image,
     VStack,
 } from '@chakra-ui/react';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
+import proto from "../../assets/images/proto.png";
 
 function EditProfile() {
 
@@ -39,55 +40,13 @@ function EditProfile() {
 
     return (
 
-        <HStack spacing="16" my="16" justifyContent="center" fontFamily="Monteserrat">
+        <HStack fontFamily="Monteserrat">
 
-            <Box justifyContent="center" mt="10">
-           
-                <VStack>
+          
+            <Image fit="contain" src={proto} alt="Edit Profile photo" maxH="4xl"/>
 
-                    <Avatar
-                        borderRadius="full"
-                        typeof="Avatar"
-                        minW="xs"
-                        minH="xs"
-                        size="2xl"
-                        name="Dan Abrahmov"
-                        bg="green.400"
-                        textColor="white"
-                        fontSize="6xl"
-                        src={profilePicture} />
-                    <Input
-                            type="file"
-                            accept="image/*"
-                            size="md"
-                            isRequired
-                            maxW="72"
-                            border="transparent"
-                            style={{display: 'none'}}
-                            onChange={selectProfilePicture}
-                            ref={fileInput => Input.fileInput = fileInput}
-                            
-                        />
-
-                    <Text
-                        mt="4"
-                        textAlign="center"
-                        fontSize="sm"
-                        color="blue.500"
-                        _hover={{ cursor: "pointer" }}
-                        tabIndex={-1}
-                        aria-label="Focus moved to this box"
-                        onClick={()=> Input.fileInput.click()}
-                    >
-                        Change Profile Photo
-                         </Text>
-
-                </VStack>
-
-            </Box>
-
-            <Box>
-                <Box mt={16} fontSize="lg">
+            <Box w="100%" maxW="2xl" alignContent="center">
+                <Box fontSize="lg" maxW={72} mx="auto">
                     <Text mb={2}>Full Name</Text>
                     <Input
                         value={fullName}
@@ -96,11 +55,11 @@ function EditProfile() {
                         variant="filled"
                         isRequired
                         focusBorderColor="green.200"
-                        maxWidth={72}
+                        
                     />
                 </Box>
 
-                <Box mt={8} fontSize="lg">
+                <Box mt={8} fontSize="lg" maxW={72} mx="auto">
                     <Text mb={2}>Address</Text>
                     <Input
                         value={address}
@@ -108,12 +67,11 @@ function EditProfile() {
                         size="sm"
                         variant="filled"
                         isRequired
-                        maxWidth={72}
                         focusBorderColor="green.200"
                     />
                 </Box>
 
-                <Box mt={8} fontSize="lg">
+                <Box mt={8} fontSize="lg" maxW={72} mx="auto">
                     <Text mb={2}>Email Address</Text>
                     <Input
                         value={emailAddress}
@@ -122,11 +80,10 @@ function EditProfile() {
                         size="sm"
                         variant="filled"
                         isRequired
-                        maxWidth={72}
                         focusBorderColor="green.200"
                     />
                 </Box>
-                <Box mt={8} fontSize="lg">
+                <Box mt={8} fontSize="lg" maxW={72} mx="auto">
                     <Text mb={2}>Phone Number</Text>
                     <Input
                         value={phoneNumber}
@@ -135,18 +92,17 @@ function EditProfile() {
                         size="sm"
                         variant="filled"
                         isRequired
-                        maxWidth={72}
                         focusBorderColor="green.200"
 
                     />
                 </Box>
 
-                <Box mt={8} fontSize="lg" >
+                <Box mt={8} fontSize="lg" maxW={72} mx="auto">
                     <Text mb={2} >ID card</Text>
                    <Dropzonecomp onChange={selectIdCard}/>
                 </Box>
 
-                <Box mt={8}>
+                <Box mt={8} maxW={72} mx="auto">
                     <Button colorScheme="green" w={72}>
                         Update  your Info
                         </Button>
