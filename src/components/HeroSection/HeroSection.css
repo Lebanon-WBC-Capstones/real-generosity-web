@@ -1,0 +1,9 @@
+.css-pymsvr {
+  filter: invert(1);
+  mix-blend-mode: difference;
+}
+
+.css-pymsvr {
+  isolation: isolate;
+  position: relative;
+}
