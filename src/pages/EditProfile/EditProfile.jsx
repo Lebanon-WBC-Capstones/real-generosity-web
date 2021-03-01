@@ -6,12 +6,13 @@ import {
     Input,
     Button,
     Image,
-    VStack,
 } from '@chakra-ui/react';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 import proto from "../../assets/images/proto.png";
+import { useTranslation } from 'react-i18next';
 
 function EditProfile() {
+    const { t } = useTranslation();
 
     const [idCard, setIdCard] = useState(null);
     const selectIdCard = (e) => {
@@ -47,7 +48,7 @@ function EditProfile() {
 
             <Box w="100%" maxW="2xl" alignContent="center">
                 <Box fontSize="lg" maxW={72} mx="auto">
-                    <Text mb={2}>Full Name</Text>
+                    <Text mb={2}>{t('editProfile.fullname')}</Text>
                     <Input
                         value={fullName}
                         onChange={handleFullNameChange}
@@ -60,7 +61,7 @@ function EditProfile() {
                 </Box>
 
                 <Box mt={8} fontSize="lg" maxW={72} mx="auto">
-                    <Text mb={2}>Address</Text>
+                    <Text mb={2}>{t('editProfile.address')}</Text>
                     <Input
                         value={address}
                         onChange={handleAddressChange}
@@ -72,7 +73,7 @@ function EditProfile() {
                 </Box>
 
                 <Box mt={8} fontSize="lg" maxW={72} mx="auto">
-                    <Text mb={2}>Email Address</Text>
+                    <Text mb={2}>{t('editProfile.email')}</Text>
                     <Input
                         value={emailAddress}
                         onChange={handleEmailAddressChange}
@@ -84,7 +85,7 @@ function EditProfile() {
                     />
                 </Box>
                 <Box mt={8} fontSize="lg" maxW={72} mx="auto">
-                    <Text mb={2}>Phone Number</Text>
+                    <Text mb={2}>{t('editProfile.phone')}</Text>
                     <Input
                         value={phoneNumber}
                         onChange={handlePhoneNumberChange}
@@ -104,7 +105,7 @@ function EditProfile() {
 
                 <Box mt={8} maxW={72} mx="auto">
                     <Button colorScheme="green" w={72}>
-                        Update  your Info
+                    {t('editProfile.updateInfo')}
                         </Button>
                 </Box>
             </Box>
