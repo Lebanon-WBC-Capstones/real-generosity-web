@@ -1,13 +1,14 @@
 import firebase from 'firebase';
+import doten from 'dotenv';
 import '@firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC4edsRlUvSF_Cu26vsIHVAZI7KBvsJDYA',
-  authDomain: 'real-generosity-3916e.firebaseapp.com',
-  projectId: 'real-generosity-3916e',
-  storageBucket: 'real-generosity-3916e.appspot.com',
-  messagingSenderId: '237589675652',
-  appId: '1:237589675652:web:d723ac74d3d9b31c758cd1',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
