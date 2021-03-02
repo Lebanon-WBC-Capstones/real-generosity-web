@@ -10,7 +10,9 @@ import {
 import React from 'react';
 import { MapPin, Phone } from 'react-feather';
 
+
 const ProfileHeader = () => {
+
   return (
     <Box>
       <HStack d="flex" justifyContent="center" spacing="40px">
@@ -22,7 +24,7 @@ const ProfileHeader = () => {
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
             <Text fontSize="2xl" fontWeight="semibold" color="black.500">
-              User Name
+              username
             </Text>
             <Button
               rounded="5px"
