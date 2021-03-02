@@ -16,6 +16,7 @@ import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
 import { Button, HStack, Box } from '@chakra-ui/react';
+import DeployindData from './DeployingData';
 
 const Item = () => {
   const itemsRef = firestore.collection('items');
@@ -88,6 +89,8 @@ function App() {
       ) : (
         <Button onClick={logoutFunc}>Sign out</Button>
       )}
+
+      <DeployindData />
       <Router>
         <Suspense fallback="loading">
           <Layout>
