@@ -2,17 +2,18 @@ import React from 'react';
 import { Box, Button, Flex, Text, Spacer } from '@chakra-ui/react';
 import heroSectionImage from '../../assets/images/hero-section-image.jpg';
 import { Link } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 const HeroSection = () => {
+  const { t, i18n } = useTranslation();
   return (
     <Box width="100%">
       <Flex align="center" justify="space-between">
         <Box py="56" width="38%" height="5xl" textAlign="right" fontSize="7xl">
-          <Text fontSize="7xl">Make som</Text>
+          <Text fontSize="7xl"> {t('herosec.heading1')}</Text>
           <Flex textAlign="right">
             <Spacer />
             <Text textAlign="right" pr="18px">
-              by
+            {t('herosec.heading2')}
             </Text>
             <Text
               color="green.400"
@@ -20,17 +21,17 @@ const HeroSection = () => {
               textAlign="right"
               pr="18px"
             >
-              giving
+              {t('herosec.heading3')}
             </Text>
           </Flex>
 
           <Box pr="7" pt="16" pb="10">
             {/* <Box pt="16" pb="10" width="60%" pl="251px"> */}
             <Text fontSize="20px" pl="251px">
-              Help make lebanon a better place
+            {t('herosec.text1')}
             </Text>
             <Text fontSize="20px" pl="251px" textAlign="left">
-              one donation at a time
+            {t('herosec.text2')}
             </Text>
           </Box>
           <Box pr="7">
@@ -42,7 +43,7 @@ const HeroSection = () => {
                 px="20"
                 fontSize="2xl"
               >
-                Donate Now
+               {t('herosec.button')}
               </Button>
             </Link>
           </Box>
@@ -61,18 +62,18 @@ const HeroSection = () => {
           backgroundRepeat="no-repeat"
         >
           <Flex textAlign="left">
-            <Text pr="18px">eone's</Text>
+            <Text pr="18px">{t('herosec.heading4')}</Text>
             <Text color="green.400" fontWeight="bold" textAlign="right">
-              Life
+            {t('herosec.heading5')}
             </Text>
           </Flex>
 
           <Flex textAlign="right">
             <Text textAlign="right" color="white" pr="18px">
-              of
+            {t('herosec.heading6')}
             </Text>
             <Text color="green.400" fontWeight="bold" textAlign="right">
-              yours
+            {t('herosec.heading7')}
             </Text>
           </Flex>
         </Box>
