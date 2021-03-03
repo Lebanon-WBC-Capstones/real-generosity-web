@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Box,
-  Image,
-  Text,
+  Button,
+  Flex,
   Grid,
   GridItem,
-  Flex,
+  Image,
   Input,
-  Button,
+  Text,
 } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import proto from '../../assets/images/proto.png';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
-import { useTranslation } from 'react-i18next';
+import firebase, { auth, firestore } from '../../firebaseConfig';
 
 function SignUpPage() {
   const { t } = useTranslation();
+  // const [
+  //   createUserWithEmailAndPassword,
+  //   user,
+  //   loading,
+  //   error,
+  // ] = useCreateUserWithEmailAndPassword(auth);
+
+  // console.log('user ???', user);
 
   const [fullName, setFullName] = useState('');
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
   };
 
-  const [address, setAddress] = useState('');
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
+  const [password, setPassword] = useState('');
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const [emailAddress, setEmailAddress] = useState('');
@@ -37,8 +46,21 @@ function SignUpPage() {
     setPhoneNumber(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    auth.createUserWithEmailAndPassword(emailAddress, password).then((res) => {
+      return firestore.collection('users').doc(`${res.user.uid}`).set({
+        fullName,
+        idCard_url: [],
+        items: [],
+        phoneNumber,
+        requests: [],
+      });
+    });
+  };
+
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
+    <Grid templateColumns="repeat(3, 1fr)" gap={4}>
       <GridItem colSpan={1}>
         <Image fit="contain" src={proto} alt="sign up img" />
       </GridItem>
@@ -60,7 +82,7 @@ function SignUpPage() {
 
         <Flex minH="80vh" align="center" justify="space-between">
           <Box fontSize="4xl">{t('signup.paragraph')}</Box>
-          <Box>
+          <form onSubmit={handleSubmit}>
             <Box mt={4} fontSize="lg">
               <Text mb={2}>{t('signup.fullname')}</Text>
               <Input
@@ -74,10 +96,10 @@ function SignUpPage() {
               />
             </Box>
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.address')}</Text>
+              <Text mb={2}>Password</Text>
               <Input
-                value={address}
-                onChange={handleAddressChange}
+                value={password}
+                onChange={handlePasswordChange}
                 size="sm"
                 variant="filled"
                 isRequired
@@ -116,11 +138,11 @@ function SignUpPage() {
               <Dropzonecomp />
             </Box>
             <Box mt={8}>
-              <Button colorScheme="green" w={72}>
+              <Button type="submit" colorScheme="green" w={72}>
                 {t('signup.createbutton')}
               </Button>
             </Box>
-          </Box>
+          </form>
         </Flex>
       </GridItem>
     </Grid>
