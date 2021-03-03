@@ -28,8 +28,9 @@ function NavBar() {
         fontSize="md"
         fontWeight="medium"
       >
+          <Link to="/">
         <Box fontSize="2xl">LOGO</Box>
-
+           </Link>
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
           <Link to="/">
             <Text _hover={{ color: 'green.400' }}>{t('navbar.home')}</Text>
