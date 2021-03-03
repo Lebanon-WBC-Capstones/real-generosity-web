@@ -1,11 +1,10 @@
 import React from 'react';
 import { Flex, Box, Text, Button, SimpleGrid } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { items } from '../../assets/data/items';
 import { requests } from '../../assets/data/requests';
 import moment from 'moment';
 
-const ItemRequests = () => {
+const ItemRequests = ({requestsId,id,}) => {
   const { t } = useTranslation();
 
   const handleDelivered = () => {
@@ -19,23 +18,23 @@ const ItemRequests = () => {
   };
 
   return (
-    <Flex d="column" maxW="400px" fontSize={18}>
+    <Flex d="column" fontSize={18}>
       <Box py={5}>
         <Text fontWeight="bold" fontSize={12}>
-          {items[0].requests.length} {t('itemPage.requests')}
+          {requestsId.length} {t('itemPage.requests')}
         </Text>
       </Box>
       <Box
         maxH="300px"
-        style={items[0].requests.length >= 3 ? { overflow: 'auto' } : {}}
+        style={requestsId.length >= 3 ? { overflow: 'auto' } : {}}
       >
         <SimpleGrid spacing={5}>
-          {requests.requests &&
-            requests.requests
-              .filter((r) => r.requestedId === items[0].id)
+          {requests  &&
+           requests
+              .filter((r) => r.requestedId ===id)
               .map((request) => {
                 return (
-                  <Box bg="gray.50" height="80px" py="10px" px="5px">
+                  <Box bg="gray.50" height="80px" py={2} px={1}>
                     <Flex align="center" justify="space-between">
                       <Text
                         fonts="Montserrat"

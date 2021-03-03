@@ -22,14 +22,13 @@ const SingleItemPage = () => {
 
   const { t } = useTranslation();
   return (
-    <Container maxW="1080px" minH="600px" m="auto" my="10px">
+    <Container maxW="6xl" minH="600px" m="auto" my={3}>
       <Box>
-        <SimpleGrid columns={2} spacingX="5px">
-          <Box m="10px" p="10px">
+        <SimpleGrid columns={2} spacingX={1}>
+          <Box m={3} p={3}>
             {/* <ImageCarousel /> */}
             <Image boxSize="500px" src={`${item.imageURL[0]}`}></Image>
           </Box>
-
           <Box px={10}>
             <Tabs>
               <TabList justifyContent="space-around">
@@ -41,7 +40,7 @@ const SingleItemPage = () => {
                   <ItemDetails {...item} />
                 </TabPanel>
                 <TabPanel>
-                  <ItemRequests />
+                  <ItemRequests {...item} />
                   {/* <ItemReports /> */}
                 </TabPanel>
               </TabPanels>

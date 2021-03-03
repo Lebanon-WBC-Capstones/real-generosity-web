@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const Card = ({ imageURL, name, date, id }) => {
   const { t } = useTranslation();
   return (
+    <Link to={`item/${id}`}>
     <Box bg="white" maxW="2xs" borderRadius="lg" boxShadow="md">
       <Box p="4">
         <Image
@@ -53,6 +54,7 @@ const Card = ({ imageURL, name, date, id }) => {
         </Flex>
       </Box>
     </Box>
+    </Link>
   );
 };
 

@@ -18,8 +18,8 @@ export const items = [
     ownerId: '88978628',
     Active: true,
     isDelivered: false,
-    reports: [{ id: '3015' }, { id: '3016' }, { id: '3017' }],
-    requests: [
+    reportsId: [{ id: '3015' }, { id: '3016' }, { id: '3017' }],
+    requestsId: [
       { id: '2010' },
       { id: '2013' },
       { id: '201' },
@@ -43,8 +43,8 @@ export const items = [
     ownerId: '88978628',
     Active: true,
     isDelivered: false,
-    reports: [{ id: '3010' }, { id: '3011' }],
-    requests: [{ id: '2011' }],
+    reportsId: [{ id: '3010' }, { id: '3011' }],
+    requestsId: [{ id: '2011' }],
   },
   {
     id: '103',
@@ -61,7 +61,7 @@ export const items = [
     ownerId: '88978628',
     Active: true,
     isDelivered: false,
-    reports: [],
-    requests: [{ id: '2012' }],
+    reportsId: [],
+    requestsId: [{ id: '2012' }],
   },
 ];
