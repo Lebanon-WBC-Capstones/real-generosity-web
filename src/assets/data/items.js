@@ -4,8 +4,8 @@ export const items = [
     name: 'T-Shirt',
     date: 'Wed May 27 2020 09:59:56 GMT+0530',
     location: {
-      name: 'blabla',
-      coords: { lat: '33.8333', lng: '35.8333' },
+      name: 'Tripoli',
+      coords: { lat: 34.4346, lng: 35.8362 },
     },
     category: 'Clothes',
     imageURL: [
@@ -32,7 +32,10 @@ export const items = [
     id: '102',
     name: 'Sofa',
     date: 'tues May 26 2020 09:59:56 GMT+0530',
-    location: [31.2443, 16.2445],
+    location: {
+      name: 'Zgharta',
+      coords: { lat: 34.3963, lng: 35.8958 },
+    },
     category: 'Furniture',
     imageURL: [
       'https://media.karousell.com/media/photos/products/2020/10/11/used_sofa_1602420898_6ae9d381.jpg',
@@ -50,7 +53,10 @@ export const items = [
     id: '103',
     name: 'Phone',
     date: 'tues May 26 2020 09:59:56 GMT+0530',
-    location: [31.2443, 16.2445],
+    location: {
+      name: 'Anfeh',
+      coords: { lat: 34.3552, lng: 35.732 },
+    },
     category: 'Toys',
     imageURL: [
       'https://i.guim.co.uk/img/media/75412bb0723270b6e0d29b8655c341e2c34c85cc/546_0_2031_2032/master/2031.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=fd9b3dc0572b7bdf3e964621501b6ec2',
