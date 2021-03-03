@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
+import { Box, Flex, Text, Input, Select,Textarea } from '@chakra-ui/react';
 import Dropzonecomp from '../Dropzone/Dropzonecomp';
 import { categories } from '../../assets/data/categories';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +42,7 @@ const AddForm = ({
             maxWidth={72}
             focusBorderColor="green.200"
           >
-            {categories.map((x) => (
+            {categories.slice(1,categories.length).map((x) => (
               <option key={Date.now() + '' + Math.random()}>{x.name}</option>
             ))}
           </Select>
@@ -50,15 +50,15 @@ const AddForm = ({
 
         <Box mt={8} fontSize="lg">
           <Text mb={2}>{t('additem.description')}</Text>
-          <Input
-            value={description}
-            onChange={handleDescriptionChange}
-            size="sm"
-            variant="filled"
-            isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
-          />
+           <Textarea
+                value={description}
+                onChange={handleDescriptionChange}
+                size="sm"
+                variant="filled"
+                isRequired
+                maxWidth={72}
+                focusBorderColor="green.200"
+              />
         </Box>
 
         <Box mt={8} fontSize="lg">
