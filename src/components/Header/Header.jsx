@@ -11,8 +11,10 @@ import {
 } from '@chakra-ui/react';
 import { Search } from 'react-feather';
 import sofa from '../../assets/images/sofa.png';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t } = useTranslation();
   return (
     <Box
       py="10"
@@ -33,7 +35,11 @@ const Header = () => {
         <Flex mx="200px" py="1">
           <InputGroup>
             <InputLeftElement children={<Search color="black" />} />
-            <Input width="400px" bg="whiteAlpha.800" placeholder="Search" />
+            <Input
+              width="400px"
+              bg="whiteAlpha.800"
+              placeholder={t('header.search')}
+            />
           </InputGroup>
         </Flex>
       </Flex>

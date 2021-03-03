@@ -3,6 +3,7 @@ import { Container, Flex, Box, Button } from '@chakra-ui/react';
 import AddForm from '../../components/AddForm';
 import MapForm from '../../components/MapForm';
 import { items } from '../../assets/data/items';
+import { useTranslation } from 'react-i18next';
 
 function AddItemPage() {
   const [title, setTitle] = useState('');
@@ -57,6 +58,7 @@ function AddItemPage() {
     // console.log(items);
   };
 
+  const { t } = useTranslation();
   return (
     <Container my="45px" maxW="1080px">
       <Flex justify="space-between">
@@ -88,7 +90,7 @@ function AddItemPage() {
           colorScheme="green"
           onClick={storeItemsData}
         >
-          Add Item
+          {t('additem.addbutton')}
         </Button>
       </Flex>
     </Container>

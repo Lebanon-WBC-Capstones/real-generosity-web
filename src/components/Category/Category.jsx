@@ -15,8 +15,10 @@ import {
 import { Link } from 'react-router-dom';
 import { Plus } from 'react-feather';
 import { categories } from '../../assets/data/categories';
+import { useTranslation } from 'react-i18next';
 
 const Category = () => {
+  const { t } = useTranslation();
   return (
     <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">

@@ -4,12 +4,17 @@
     "items": "Items",
     "about": "About",
     "contactUs": "Contact Us",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "copy": "All rights reserved"
   },
+  "header": {
+    "search": "Search"
+  },
+
   "aboutUs": {
     "aboutUs": "About us",
     "tab1": "About Real generosity",
-    "tab2": "Our Vales",
+    "tab2": "Our Values",
     "tab3": "How it works",
     "tab4": "FAQ",
     "tab1heading1": "Who we are?",
@@ -35,10 +40,10 @@
     "tab4heading": "Frequently Asked Questions ",
     "q1": "Are ID cards exposed to the public?",
     "a1": "No, ID cards are used only for authentication isuue.  ",
-    "q2": "",
-    "a2": "",
-    "q3": "",
-    "a3": "",
+    "q2": "Who can check my personal information?",
+    "a2": "Only those who have obtained the approval of the request",
+    "q3": "How many times can get a Donation?",
+    "a3": "There is no specific times,it's depends on the donor if he will approve the request or no ",
     "tab3p": "Any further question? you can get in contact with us",
     "here": "here"
   },
@@ -125,5 +130,28 @@
     "donations": "Donations",
     "requests": "Requests",
     "delete": "Delete"
+  },
+  "additem": {
+    "title": "Title",
+    "category": "Category",
+    "description": "Description",
+    "uploadimages": "Upload Images",
+    "addbutton": "Add Item"
+  },
+  "herosec": {
+    "heading1": "Make som",
+    "heading2": " by",
+    "heading3": "giving",
+    "heading4": "eone's",
+    "heading5": "Life",
+    "heading6": "of",
+    "heading7": " yours",
+    "text1": "Help make lebanon a better place",
+    "text2": "one donation at a time",
+    "button": "Donate Now"
+  },
+  "cardlist": {
+    "heading": "latest donations",
+    "heading1": " See more"
   }
 }

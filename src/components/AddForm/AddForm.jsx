@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
 import Dropzonecomp from '../Dropzone/Dropzonecomp';
 import { categories } from '../../assets/data/categories';
+import { useTranslation } from 'react-i18next';
 
 const AddForm = ({
   title,
@@ -13,11 +14,12 @@ const AddForm = ({
   handleDescriptionChange,
   handleUploadChange,
 }) => {
+  const { t } = useTranslation();
   return (
     <Flex fontSize={15} fontWeight={400}>
       <Box width={250}>
         <Box mt={4} fontSize="lg">
-          <Text mb={2}>Title</Text>
+          <Text mb={2}>{t('additem.title')}</Text>
           <Input
             value={title}
             onChange={handleTitleChange}
@@ -30,7 +32,7 @@ const AddForm = ({
         </Box>
 
         <Box mt={8} fontSize="lg">
-          <Text mb={2}>Category</Text>
+          <Text mb={2}>{t('additem.category')}</Text>
           <Select
             value={category}
             onChange={handleCategoryChange}
@@ -47,7 +49,7 @@ const AddForm = ({
         </Box>
 
         <Box mt={8} fontSize="lg">
-          <Text mb={2}>Description</Text>
+          <Text mb={2}>{t('additem.description')}</Text>
           <Input
             value={description}
             onChange={handleDescriptionChange}
@@ -60,7 +62,7 @@ const AddForm = ({
         </Box>
 
         <Box mt={8} fontSize="lg">
-          <Text mb={2}>Upload image</Text>
+          <Text mb={2}>{t('additem.uploadimages')}</Text>
           <Dropzonecomp
             value={picture}
             onChange={handleUploadChange}

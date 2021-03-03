@@ -1,8 +1,10 @@
 import React from 'react';
 import { Box, Flex, HStack, Text } from '@chakra-ui/react';
 import { Facebook, Instagram, GitHub, Twitter } from 'react-feather';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <Box
       py="10"
@@ -19,10 +21,10 @@ const Footer = () => {
         color="gray.500"
         _hover={{ cursor: 'pointer' }}
       >
-        <Text>Home</Text>
-        <Text>Items</Text>
-        <Text>About</Text>
-        <Text>Contact</Text>
+        <Text>{t('navbar.home')}</Text>
+        <Text>{t('navbar.items')}</Text>
+        <Text>{t('navbar.about')}</Text>
+        <Text>{t('navbar.contactUs')}</Text>
       </HStack>
       <HStack mb="10" spacing={50} justify="center">
         <Box color="gray.500" fontSize="sm">
@@ -39,7 +41,7 @@ const Footer = () => {
         </Box>
       </HStack>
       <Flex mr="10" justify="flex-end" color="gray.500">
-        &copy; All rights reserved
+        &copy; {t('navbar.copy')}
       </Flex>
     </Box>
   );
