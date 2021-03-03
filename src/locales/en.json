@@ -59,13 +59,14 @@
     "fullname": "Full Name:",
     "address": "Address:",
     "email": "Email Address:",
+    "password":"Password:",
     "phone": "Phone Number:",
     "idupload": "Kindly, upload your ID card here:",
     "createbutton": "Create Account",
     "paragraph": "Some relatively long heading paragraph sign-in"
   },
   "card": {
-    "more": "more datails"
+    "more": "more details"
   },
   "itemPage": {
     "items": "Items",
