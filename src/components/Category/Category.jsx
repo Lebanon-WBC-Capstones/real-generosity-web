@@ -17,15 +17,24 @@ import { Plus } from 'react-feather';
 import { categories } from '../../assets/data/categories';
 import { useTranslation } from 'react-i18next';
 
-const Category = () => {
+const Category = ({ setCategoryName, setCategoryPic }) => {
   const { t } = useTranslation();
   return (
     <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
-        <Tabs variant="soft-rounded" colorScheme="gray">
+        <Tabs variant="soft-rounded" colorScheme="green">
           <TabList>
-            {categories.map((x) => (
-              <Tab key={Date.now() + '' + Math.random()}>{x.name}</Tab>
+            {categories.map((cat) => (
+              <Tab
+                key={Date.now() + '' + Math.random()}
+                onClick={() => {
+                  setCategoryName(cat.name);
+                  setCategoryPic(cat.imgURL);
+                  // console.log(cat.imgURL);
+                }}
+              >
+                {cat.name}
+              </Tab>
             ))}
           </TabList>
         </Tabs>

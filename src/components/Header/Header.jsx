@@ -13,7 +13,13 @@ import { Search } from 'react-feather';
 import sofa from '../../assets/images/sofa.png';
 import { useTranslation } from 'react-i18next';
 
-const Header = () => {
+const Header = ({
+  categoryName,
+  categoryPic,
+  searchQuery,
+  handleSearchChange,
+  itemsCounter,
+}) => {
   const { t } = useTranslation();
   return (
     <Box
@@ -30,12 +36,14 @@ const Header = () => {
       bg="gray.200"
     >
       <Flex mb="10" color="black" fontWeight={800}>
-        <Text>Furniture</Text>
+        <Text>{categoryName}</Text>
 
         <Flex mx="200px" py="1">
           <InputGroup>
             <InputLeftElement children={<Search color="black" />} />
             <Input
+              value={searchQuery}
+              onChange={handleSearchChange}
               width="400px"
               bg="whiteAlpha.800"
               placeholder={t('header.search')}
@@ -45,11 +53,11 @@ const Header = () => {
       </Flex>
 
       <Flex float="right" my="-180px">
-        <Image src={sofa} maxW="241px" maxH="233px"></Image>
+        <Image src={categoryPic} maxW="241px" maxH="233px"></Image>
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
-          365 results
+          {itemsCounter} items
         </Text>
       </HStack>
     </Box>

@@ -19,7 +19,7 @@ function NavBar() {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
   return (
-    <Box>
+    <Box fontFamily="Montserrat">
       <Flex
         justify="space-between"
         align="center"
@@ -41,10 +41,7 @@ function NavBar() {
             <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
           </Link>
           <Link to="/contactus">
-            <Text _hover={{ color: 'green.400' }}>
-              {' '}
-              {t('navbar.contactUs')}
-            </Text>
+            <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
           </Link>
         </HStack>
 
