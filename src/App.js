@@ -3,7 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
-import firebase, { auth, firestore } from './firebaseConfig';
+import DeployindData from './DeployingData';
+import { auth, firestore } from './firebaseConfig';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
 import AdminPage from './pages/AdminPage';
@@ -15,81 +16,95 @@ import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
-import { Button, HStack, Box } from '@chakra-ui/react';
-import DeployindData from './DeployingData';
+import { Button } from '@chakra-ui/react';
 
-const Item = () => {
-  const itemsRef = firestore.collection('items');
-  const [items, loading] = useCollectionData(itemsRef);
+// const Item = () => {
+//   const itemsRef = firestore.collection('items');
+//   const [items, loading] = useCollectionData(itemsRef);
 
-  if (loading) return <span>loading...</span>;
+//   if (loading) return <span>loading...</span>;
 
-  console.log('items', items);
-  return (
-    <div>
-      {items.map((item) => (
-        <HStack>
-          <Box>{item.uid}</Box>
-          <Box>{item.name}</Box>
-        </HStack>
-      ))}
-    </div>
-  );
-};
+//   console.log('items', items);
+//   return (
+//     <div>
+//       {items.map((item) => (
+//         <HStack>
+//           <Box>{item.uid}</Box>
+//           <Box>{item.name}</Box>
+//         </HStack>
+//       ))}
+//     </div>
+//   );
+// };
 
-const Form = () => {
-  const formRef = React.useRef();
-  if (!auth.currentUser) return null;
-  const { uid } = auth.currentUser;
-  const itemsRef = firestore.collection('items');
+// const Form = () => {
+//   const formRef = React.useRef();
+//   if (!auth.currentUser) return null;
+//   const { uid } = auth.currentUser;
+//   const itemsRef = firestore.collection('items');
 
-  const formSubmit = (e) => {
-    e.preventDefault();
+//   const formSubmit = (e) => {
+//     e.preventDefault();
 
-    const {
-      name: { value: name },
-    } = formRef.current;
-    itemsRef.add({
-      name,
-      uid,
-    });
-  };
+//     const {
+//       name: { value: name },
+//     } = formRef.current;
+//     itemsRef.add({
+//       name,
+//       uid,
+//     });
+//   };
 
-  return (
-    <form ref={formRef} onSubmit={formSubmit}>
-      name
-      <input name="name" type="text" />
-      <button type="submit">submit</button>
-    </form>
-  );
-};
+//   return (
+//     <form ref={formRef} onSubmit={formSubmit}>
+//       name
+//       <input name="name" type="text" />
+//       <button type="submit">submit</button>
+//     </form>
+//   );
+// };
 function App() {
   const [query, setQuery] = useState('');
-  console.log('query', query);
+  const [id, setId] = useState(null);
 
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  console.log('app.js', user);
 
-  console.log('user', user?.uid);
+  // const usersRef = firestore.collection('users').where('uid', '==', user.uid);
+  // const [data, error] = useCollectionData(usersRef);
+  // if (!data || error) {
+  //   console.log('error', error);
+  // }
+  // console.log('data', data);
 
-  const loginFunc = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  };
+  // console.log(data);
+  // const itemsRef = firestore
+  //   .collection('items')
+  //   .get()
+  //   .then((snapshot) => {
+  //     snapshot.forEach((doc) => console.log(doc.id, doc.data()));
+  //   });
 
-  const logoutFunc = () => {
-    auth.signOut();
-  };
+  // console.log('itemsRef', itemsRef);
 
   return (
     <div className="App">
-      <Form />
-      <Item />
-      {!user ? (
-        <Button onClick={loginFunc}>Signin with google</Button>
-      ) : (
-        <Button onClick={logoutFunc}>Sign out</Button>
-      )}
-
+      {/* <Form />
+      <Item /> */}
+      {/* {data.map((d) => {
+        console.log('data', d);
+        return (
+          <div>
+            {d.items.map((item) => {
+              console.log('item', item.id);
+              setId(item.id);
+            })}
+          </div>
+        );
+      })} */}
+      <div>id: {loading || !user ? 'loading... ' : user.uid}</div>
+      <div>email: {loading || !user ? 'loading... ' : user.email}</div>
+      {user ? <Button onClick={() => auth.signOut()}>logout</Button> : null}
       <DeployindData />
       <Router>
         <Suspense fallback="loading">
