@@ -9,6 +9,7 @@ import {
   Flex,
   Input,
   Button,
+  FormControl
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
@@ -18,24 +19,27 @@ function SignUpPage() {
   const { t } = useTranslation();
 
   const [fullName, setFullName] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
   };
-
-  const [address, setAddress] = useState('');
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const [emailAddress, setEmailAddress] = useState('');
   const handleEmailAddressChange = (e) => {
     setEmailAddress(e.target.value);
   };
-
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.target.value);
   };
+
+  const handleSubmit=(e)=>{
+     e.preventDefault();
+     console.log("hi")
+  }
 
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
@@ -60,7 +64,8 @@ function SignUpPage() {
 
         <Flex minH="80vh" align="center" justify="space-between">
           <Box fontSize="4xl">{t('signup.paragraph')}</Box>
-          <Box>
+          
+           <form onSubmit={handleSubmit}>
             <Box mt={4} fontSize="lg">
               <Text mb={2}>{t('signup.fullname')}</Text>
               <Input
@@ -73,11 +78,13 @@ function SignUpPage() {
                 maxWidth={72}
               />
             </Box>
+           
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.address')}</Text>
+              <Text mb={2}>{t('signup.email')}</Text>
               <Input
-                value={address}
-                onChange={handleAddressChange}
+                value={emailAddress}
+                onChange={handleEmailAddressChange}
+                type="email"
                 size="sm"
                 variant="filled"
                 isRequired
@@ -86,11 +93,10 @@ function SignUpPage() {
               />
             </Box>
             <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.email')}</Text>
+              <Text mb={2}>{t('signup.password')}</Text>
               <Input
-                value={emailAddress}
-                onChange={handleEmailAddressChange}
-                type="email"
+                value={password}
+                onChange={handlePasswordChange}
                 size="sm"
                 variant="filled"
                 isRequired
@@ -116,11 +122,11 @@ function SignUpPage() {
               <Dropzonecomp />
             </Box>
             <Box mt={8}>
-              <Button colorScheme="green" w={72}>
+              <Button colorScheme="green" w={72} type="submit">
                 {t('signup.createbutton')}
               </Button>
             </Box>
-          </Box>
+            </form>
         </Flex>
       </GridItem>
     </Grid>
