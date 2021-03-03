@@ -21,43 +21,55 @@ function App() {
     <div className="App">
       <Router>
         <Suspense fallback="loading">
-          <Layout>
-            <Switch>
-              <Route exact path="/">
+          <Switch>
+            <Route exact path="/">
+              <Layout>
                 <HomePage setQuery={setQuery} />
-              </Route>
-              <Route exact path="/auth/signin">
-                <SignInPage />
-              </Route>
-              <Route exact path="/auth/signup">
-                <SignUpPage />
-              </Route>
-              <Route exact path="/add-item">
+              </Layout>
+            </Route>
+            <Route exact path="/auth/signin">
+              <SignInPage />
+            </Route>
+            <Route exact path="/auth/signup">
+              <SignUpPage />
+            </Route>
+            <Route exact path="/add-item">
+              <Layout>
                 <AddItemPage />
-              </Route>
-              <Route exact path="/items">
+              </Layout>
+            </Route>
+            <Route exact path="/items">
+              <Layout>
                 <ItemsPage />
-              </Route>
-              <Route exact path="/item/:id">
+              </Layout>
+            </Route>
+            <Route exact path="/item/:id">
+              <Layout>
                 <SingleItemPage />
-              </Route>
-              <Route exact path="/about">
+              </Layout>
+            </Route>
+            <Route exact path="/about">
+              <Layout>
                 <AboutPage />
-              </Route>
-              <Route exact path="/contactus">
-                <ContactUsPage />
-              </Route>
-              <Route exact path="/profile">
+              </Layout>
+            </Route>
+            <Route exact path="/contactus">
+              <ContactUsPage />
+            </Route>
+            <Route exact path="/profile">
+              <Layout>
                 <ProfilePage />
-              </Route>
-              <Route exact path="/admin">
+              </Layout>
+            </Route>
+            <Route exact path="/admin">
+              <Layout>
                 <AdminPage />
-              </Route>
-              <Route exact path="/profile/settings">
-                <ProfileSettingsPage />
-              </Route>
-            </Switch>
-          </Layout>
+              </Layout>
+            </Route>
+            <Route exact path="/profile/settings">
+              <ProfileSettingsPage />
+            </Route>
+          </Switch>
         </Suspense>
       </Router>
     </div>
