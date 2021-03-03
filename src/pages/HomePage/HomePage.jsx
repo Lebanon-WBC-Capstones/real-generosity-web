@@ -5,19 +5,20 @@ import CategoryCardLayout from '../../components/CategoryCardsLayout';
 import CardList from '../../components/CardList';
 function HomePage({ setQuery }) {
   return (
-    <div>
-      <Box maxWidth="1080px" mx="auto">
-        <Box>
+    
+      <Box>
           <HeroSection />
-        </Box>
-        <Box marginBottom="30px">
+
+        <Box mx="auto" my="36">
           <CategoryCardLayout setQuery={setQuery} />
         </Box>
-        <Box marginBottom="40px">
+
+        <Box mb="20" mx="56">
           <CardList />
         </Box>
+        
       </Box>
-    </div>
+    
   );
 }
 

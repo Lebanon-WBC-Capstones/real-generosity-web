@@ -1,83 +1,47 @@
 import React from 'react';
-import { Box, Button, Flex, Text, Spacer } from '@chakra-ui/react';
-import heroSectionImage from '../../assets/images/hero-section-image.jpg';
+import { Box, Button, Flex, Text, Image } from '@chakra-ui/react';
+import heroSectionImage from '../../assets/images/hero-section-image.png';
+import './HeroSection.css';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+
   return (
-    <Box width="100%">
-      <Flex align="center" justify="space-between">
-        <Box py="56" width="38%" height="5xl" textAlign="right" fontSize="7xl">
-          <Text fontSize="7xl">Make som</Text>
-          <Flex textAlign="right">
-            <Spacer />
-            <Text textAlign="right" pr="18px">
-              by
-            </Text>
-            <Text
-              color="green.400"
-              fontWeight="bold"
-              textAlign="right"
-              pr="18px"
-            >
-              giving
-            </Text>
-          </Flex>
-
-          <Box pr="7" pt="16" pb="10">
-            {/* <Box pt="16" pb="10" width="60%" pl="251px"> */}
-            <Text fontSize="20px" pl="251px">
-              Help make lebanon a better place
-            </Text>
-            <Text fontSize="20px" pl="251px" textAlign="left">
-              one donation at a time
-            </Text>
-          </Box>
-          <Box pr="7">
-            <Link to="/add-item">
-              <Button
-                bg="green.400"
-                textColor="white"
-                py="8"
-                px="20"
-                fontSize="2xl"
-              >
-                Donate Now
-              </Button>
-            </Link>
-          </Box>
-        </Box>
-
-        {/* </Box> */}
-
-        <Box
-          pt="56"
-          pb="80"
-          width="62%"
-          height="5xl"
-          fontSize="7xl"
-          backgroundImage={`url(${heroSectionImage})`}
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-        >
-          <Flex textAlign="left">
-            <Text pr="18px">eone's</Text>
-            <Text color="green.400" fontWeight="bold" textAlign="right">
-              Life
-            </Text>
-          </Flex>
-
-          <Flex textAlign="right">
-            <Text textAlign="right" color="white" pr="18px">
-              of
-            </Text>
-            <Text color="green.400" fontWeight="bold" textAlign="right">
-              yours
-            </Text>
-          </Flex>
-        </Box>
-      </Flex>
-    </Box>
+    <Flex>
+      <Box zIndex="1" mx="52" mb="24">
+        <Text fontSize="7xl" fontWeight="medium" pt="36" textColor="black">
+          {t('heroSection.heroText_1')}
+          <font color="#38A169">
+            {' '}
+            <b>{t('heroSection.heroText_2')}</b>
+          </font>
+          <br /> {t('heroSection.heroText_3')}
+          <font color="#38A169">
+            <b> {t('heroSection.heroText_4')} </b>
+          </font>
+          <font color="white">{t('heroSection.heroText_5')}</font>
+        </Text>
+        <Text fontSize="xl" fontWeight="medium" py="16" textColor="gray.500">
+          {t('heroSection.paragraph_1')}
+          <br />
+          {t('heroSection.paragraph_2')}
+        </Text>
+        <Link to="/auth//add-item">
+          <Button colorScheme="green" py="8" px="20" fontSize="2xl">
+            {t('heroSection.donateButton')}
+          </Button>
+        </Link>
+      </Box>
+      <Image
+        src={heroSectionImage}
+        position="absolute"
+        zIndex="-1"
+        top="0"
+        right="0"
+      />
+    </Flex>
   );
 };
 export default HeroSection;

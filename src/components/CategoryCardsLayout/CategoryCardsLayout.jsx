@@ -7,10 +7,14 @@ import book from '../../assets/images/book.png';
 import toys from '../../assets/images/toys.png';
 import medicalkit from '../../assets/images/medicalkit.png';
 import appliances from '../../assets/images/appliances.png';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const CategoryCardsLayout = ({ setQuery }) => {
+  const { t } = useTranslation();
+
   return (
-    <Flex>
+    <Flex justifyContent="center">
       <Grid
         maxH="72"
         maxW="4xl"
@@ -25,12 +29,14 @@ const CategoryCardsLayout = ({ setQuery }) => {
           rowSpan={12}
           bg="#EAEAF1"
         >
-          <CategoryCard
-            categoryPic={sofa}
-            direction="column"
-            categoryName="Furniture"
-            ml="4"
-          ></CategoryCard>
+          <Link to="/auth//items">
+            <CategoryCard
+              categoryPic={sofa}
+              direction="column"
+              categoryName={t('categoryCards.furniture')}
+              ml="4"
+            ></CategoryCard>
+          </Link>
         </GridItem>
         <GridItem
           onClick={() => setQuery('clothes')}
@@ -39,11 +45,13 @@ const CategoryCardsLayout = ({ setQuery }) => {
           rowSpan={6}
           bg="#F6E8CD"
         >
-          <CategoryCard
-            categoryPic={Clothes}
-            direction="column"
-            categoryName="Clothes"
-          ></CategoryCard>
+          <Link to="/auth//items">
+            <CategoryCard
+              categoryPic={Clothes}
+              direction="column"
+              categoryName={t('categoryCards.clothes')}
+            ></CategoryCard>
+          </Link>
         </GridItem>
         <GridItem
           onClick={() => setQuery('books')}
@@ -52,11 +60,13 @@ const CategoryCardsLayout = ({ setQuery }) => {
           rowSpan={6}
           bg="#CBECE9"
         >
-          <CategoryCard
-            categoryPic={book}
-            direction="column"
-            categoryName="Books"
-          ></CategoryCard>
+          <Link to="/auth//items">
+            <CategoryCard
+              categoryPic={book}
+              direction="column"
+              categoryName={t('categoryCards.books')}
+            ></CategoryCard>
+          </Link>
         </GridItem>
         <GridItem
           onClick={() => setQuery('toys')}
@@ -65,12 +75,14 @@ const CategoryCardsLayout = ({ setQuery }) => {
           rowSpan={6}
           bg="#E6D0EF"
         >
-          <CategoryCard
-            categoryPic={toys}
-            direction="row-reverse"
-            categoryName="Toys"
-            mt="24"
-          ></CategoryCard>
+          <Link to="/auth//items">
+            <CategoryCard
+              categoryPic={toys}
+              direction="row-reverse"
+              categoryName={t('categoryCards.toys')}
+              mt="24"
+            ></CategoryCard>
+          </Link>
         </GridItem>
         <GridItem
           onClick={() => setQuery('medics')}
@@ -79,12 +91,14 @@ const CategoryCardsLayout = ({ setQuery }) => {
           rowSpan={6}
           bg="#F0D0D2"
         >
-          <CategoryCard
-            categoryPic={medicalkit}
-            direction="row-reverse"
-            categoryName="Medics"
-            mt="24"
-          ></CategoryCard>
+          <Link to="/auth//items">
+            <CategoryCard
+              categoryPic={medicalkit}
+              direction="row-reverse"
+              categoryName={t('categoryCards.medics')}
+              mt="24"
+            ></CategoryCard>
+          </Link>
         </GridItem>
         <GridItem
           onClick={() => setQuery('appliances')}
@@ -93,12 +107,14 @@ const CategoryCardsLayout = ({ setQuery }) => {
           rowSpan={6}
           bg="#CFD6F2"
         >
-          <CategoryCard
-            categoryPic={appliances}
-            direction="row-reverse"
-            categoryName="Appliances"
-            mt="24"
-          ></CategoryCard>
+          <Link to="/auth//items">
+            <CategoryCard
+              categoryPic={appliances}
+              direction="row-reverse"
+              categoryName={t('categoryCards.appliances')}
+              mt="24"
+            ></CategoryCard>
+          </Link>
         </GridItem>
       </Grid>
     </Flex>

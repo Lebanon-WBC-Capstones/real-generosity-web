@@ -15,14 +15,15 @@ const CategoryCard = ({ categoryPic, direction, categoryName, ml, mt }) => {
       >
         <Stack direction={direction} mb="4">
           <Image src={categoryPic} maxW="90%" maxH="90%" m="auto" />
-          <Stack>
-            <Flex mt={mt} justify="left">
-              <Text fontWeight={600} ml={ml} mr="2">
-                {categoryName}
-              </Text>
-              <Text color="gray.400">55</Text>
-            </Flex>
-          </Stack>
+
+          <Flex mt={mt} justify="left" spacing="2">
+            <Text fontWeight={600} ml={ml} mr="2">
+              {categoryName}
+            </Text>
+            <Text mr="1" color="gray.400">
+              55
+            </Text>
+          </Flex>
         </Stack>
       </Flex>
     </Link>

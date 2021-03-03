@@ -77,5 +77,38 @@
     "delivered": "Delivered",
     "cancel": "Cancel",
     "deletep": "Are you sure you want to delete?"
+  },
+  "contactUs": {
+    "fullname": "Full Name",
+    "email": "Email Address",
+    "message": "Write your message",
+    "paragraph": "Some relatively long heading paragraph contact Us",
+    "send": "Send"
+  },
+  "heroSection": {
+    "heroText_1": "Make someone's ",
+    "heroText_2": "Life ",
+    "heroText_3": "by",
+    "heroText_4": "Giving ",
+    "heroText_5": "of yours",
+    "paragraph_1": "Help make lebanon a better place",
+    "paragraph_2": "one donation at a time",
+    "donateButton": "Donate Now"
+  },
+  "categoryCards": {
+    "furniture": "Furniture",
+    "clothes": "Clothes",
+    "books": "Books",
+    "toys": "Toys",
+    "medics": "Medics",
+    "appliances": "Appliances"
+  },
+  "editProfile": {
+    "fullname": "Full Name",
+    "address": "Address",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "idupload": "Kindly, upload your new ID card here",
+    "updateInfo": "Update your Info"
   }
 }

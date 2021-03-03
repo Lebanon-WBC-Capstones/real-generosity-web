@@ -76,5 +76,38 @@
     "delivered": "تم التوصيل",
     "cancel": "الغاء",
     "deletep": "هل أنت متأكد من عملية الإلغاء"
+  },
+  "contactUs": {
+    "fullname": "الاسم الكامل",
+    "email": "البريد الالكتروني",
+    "message": "اكتب رسالتك هنا",
+    "paragraph": "مقطعععععععععععععععععععع",
+    "send": "ارسال"
+  },
+  "heroSection": {
+    "heroText_1": "غيّر حياة",
+    "heroText_2": "شخص",
+    "heroText_3": "عبر",
+    "heroText_4": "اعطائك",
+    "heroText_5": " ",
+    "paragraph_1": "ساعد بجعل لبنان مكان أفضل",
+    "paragraph_2": "تبرُّع واحد",
+    "donateButton": "تبرع الآن"
+  },
+  "categoryCards": {
+    "furniture": "أثاث",
+    "clothes": "ثياب",
+    "books": "كتب",
+    "toys": "ألعاب",
+    "medics": " ادوات طبية",
+    "appliances": "أجهزة"
+  },
+  "editProfile": {
+    "fullname": "الاسم الكامل",
+    "address": "العنوان",
+    "email": "البريد الالكتروني",
+    "phone": "رقم الهاتف",
+    "idupload": "حمل بطاقة هويتك الجديدة هنا",
+    "updateInfo": "تحديث المعلومات"
   }
 }
