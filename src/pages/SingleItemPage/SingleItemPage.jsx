@@ -15,7 +15,7 @@ import { useParams } from 'react-router-dom';
 import { items } from '../../assets/data/items';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
-
+import ItemReports from '../../components/ItemReports/ItemReports'
 const SingleItemPage = () => {
   const { id } = useParams();
   const item = items.find((item) => item.id === id);
@@ -30,18 +30,25 @@ const SingleItemPage = () => {
             <Image boxSize="500px" src={`${item.imageURL[0]}`}></Image>
           </Box>
           <Box px={10}>
-            <Tabs>
+            <Tabs varientColor="unstyled" >
               <TabList justifyContent="space-around">
-                <Tab>{t('itemPage.details')}</Tab>
-                <Tab>{t('itemPage.requests')}</Tab>
+                <Tab  _selected={{
+                                borderBottom: "2px solid",
+                                borderBottomColor: "gray.500",
+                                   }}>
+                 {t('itemPage.details')}</Tab>
+                <Tab _selected={{
+                                borderBottom: "2px solid",
+                                borderBottomColor: "gray.500"}}>
+                                  {t('itemPage.requests')}</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
                   <ItemDetails {...item} />
                 </TabPanel>
                 <TabPanel>
-                  <ItemRequests {...item} />
-                  {/* <ItemReports /> */}
+                  {/* <ItemRequests {...item} /> */}
+                  <ItemReports {...item} />
                 </TabPanel>
               </TabPanels>
             </Tabs>

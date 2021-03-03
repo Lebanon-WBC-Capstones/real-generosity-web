@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { requests } from '../../assets/data/requests';
 import moment from 'moment';
 
-const ItemRequests = ({requestsId,id,}) => {
+const ItemRequests = ({requestsId,id}) => {
   const { t } = useTranslation();
 
   const handleDelivered = () => {

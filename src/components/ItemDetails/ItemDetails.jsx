@@ -5,12 +5,18 @@ import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import ReportModal from "../ReportModal/ReportModal";
+import RequestModal from "../RequestModal/RequestModal"
 
 const ItemDetails = ({ category, name, date, description }) => {
   const { t } = useTranslation();
+  
+  const handleEdit=()=>{
+    console.log("edit")
+  }
 
   return (
-    <Flex d="column" maxW="400px" fontSize={18}>
+    <Flex d="column"  fontSize={18}>
       <Flex justify="space-between">
         <Link onClick={() => window.history.back()}>
           <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
@@ -18,7 +24,7 @@ const ItemDetails = ({ category, name, date, description }) => {
           </Button>
         </Link>
         <HStack color="gray" fontSize={12}>
-          <Button leftIcon={<Edit size={15} />} variant="ghost">
+          <Button leftIcon={<Edit size={15} />} variant="ghost" onClick={handleEdit}>
             {t('itemPage.edit')}
           </Button>
         </HStack>
@@ -45,29 +51,24 @@ const ItemDetails = ({ category, name, date, description }) => {
             fonts="Montserrat"
             color="gray.400"
             fontSize="xs"
-            my="10px"
+            my={3}
             textTransform="uppercase"
           >
             {moment(`${date}`).startOf('day').fromNow()}
           </Text>
         </Box>
       </Flex>
-      <Box mb="5" py="10px" minH="100px">
+      <Box mb={1} py={3} minH="100px">
         <Text fontSize="lg">{description}</Text>
       </Box>
 
-      <Button colorScheme="green" w="100%" size="lg">
+      {/* <Button colorScheme="green" w="100%" size="lg">
         {t('itemPage.request')}
-      </Button>
+      </Button> */}
+      <RequestModal />
 
       <Flex justify="space-between" pt={50}>
-        <Button
-          color="red"
-          leftIcon={<AlertCircle size={15} color="red" />}
-          variant="ghost"
-        >
-          {t('itemPage.report')}
-        </Button>
+        <ReportModal />
         <DeleteModal />
       </Flex>
     </Flex>

@@ -1,5 +1,6 @@
 import React from "react";
-import {Info} from 'react-feather';
+import {Info,AlertCircle} from 'react-feather';
+import { useTranslation } from 'react-i18next';
 import {
   Modal,
   ModalOverlay,
@@ -16,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 const ReportModal = () => {
+  const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
 
@@ -28,7 +30,7 @@ const ReportModal = () => {
 
   return (
     <>
-      <HStack
+      {/* <HStack
         fontSize="xs"
         fontWeight="normal"
         mb="4"
@@ -38,9 +40,17 @@ const ReportModal = () => {
         aria-label="Focus moved to this box"
         onClick={onOpen}
       >
-       <Info color="red" />
+        <Info color="red" />
         <Text fontSize="medium" textColor="red">Report</Text>
-      </HStack>
+      </HStack> */}
+      <Button
+          color="red"
+          leftIcon={<AlertCircle size={15} color="red" />}
+          variant="ghost"
+          onClick={onOpen}
+        >
+          {t('itemPage.report')}
+        </Button>
         
       <Modal 
       size="xl"
@@ -67,7 +77,7 @@ const ReportModal = () => {
 
           <ModalFooter fontSize="medium" justifyContent="space-evenly">
           <Button bg="#FF0000" textColor="white" px="12" py="4" 
-            onClick={handleRequest} >Report</Button>
+            onClick={handleRequest}>Report</Button>
             <Button variant="ghost" px="12" py="4" onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
