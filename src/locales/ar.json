@@ -109,5 +109,20 @@
     "phone": "رقم الهاتف",
     "idupload": "حمل بطاقة هويتك الجديدة هنا",
     "updateInfo": "تحديث المعلومات"
+  },
+  "profilePage": {
+    "editProfile": "تعديل الحساب",
+    "donations": "التبرعات",
+    "requests": "الطلبات",
+    "search": "بحث"
+  },
+  "adminPage": {
+    "admin": "المشرف",
+    "users": "المستخدمين",
+    "reports": "الابلاغات",
+    "search": "بحث",
+    "donations": "التبرعات",
+    "requests": "الطلبات",
+    "delete": "مسح"
   }
 }

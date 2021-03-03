@@ -13,14 +13,16 @@ import {
 import React from 'react';
 import { Search } from 'react-feather';
 import Card from '../Card';
+import { useTranslation } from 'react-i18next';
 
 const ProfileTaskbars = () => {
+  const { t } = useTranslation();
   return (
     <Box>
       <Tabs>
         <TabList justifyContent="space-around">
-          <Tab>Donations</Tab>
-          <Tab>Requests</Tab>
+          <Tab>{t('profilePage.donations')} </Tab>
+          <Tab>{t('profilePage.requests')} </Tab>
         </TabList>
 
         <TabPanels>

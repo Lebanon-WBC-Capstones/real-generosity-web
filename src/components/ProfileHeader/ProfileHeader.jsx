@@ -9,8 +9,11 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { MapPin, Phone } from 'react-feather';
+import { useTranslation } from 'react-i18next';
+import { users } from '../../assets/data/users';
 
 const ProfileHeader = () => {
+  const { t } = useTranslation();
   return (
     <Box>
       <HStack d="flex" justifyContent="center" spacing="40px">
@@ -22,7 +25,7 @@ const ProfileHeader = () => {
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
             <Text fontSize="2xl" fontWeight="semibold" color="black.500">
-              User Name
+              {users[0].name}
             </Text>
             <Button
               rounded="5px"
@@ -34,12 +37,12 @@ const ProfileHeader = () => {
               borderColor="black"
               variant="outline"
             >
-              Edit Profile
+              {t('profilePage.editProfile')}
             </Button>
           </HStack>
           <VStack spacing="6px" align="right">
             <Text fontSize="11px" fontWeight="semibold">
-              'N' Donations
+              {users[0].itemsDonated.length} {t('profilePage.donations')}
             </Text>
             <HStack color="gray.500">
               <MapPin size="11" />
@@ -47,7 +50,7 @@ const ProfileHeader = () => {
             </HStack>
             <HStack color="black">
               <Phone size="11" />
-              <Box fontSize="11px">Number</Box>
+              <Box fontSize="11px">{users[0].mobileNumber}</Box>
             </HStack>
           </VStack>
         </Grid>

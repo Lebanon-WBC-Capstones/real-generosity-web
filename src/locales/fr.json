@@ -57,5 +57,21 @@
     "idupload": "SVP, télécharger ici votre Carte d'Identification:",
     "createbutton": "Créer Un Compte",
     "paragraph": "Un long paragraphe sign up"
+  },
+  "profilePage": {
+    "editProfile": "Modifier le Profil",
+    "donations": "Dons",
+    "requests": "Requêtes",
+    "search": "Rechercher"
+  },
+
+  "adminPage": {
+    "admin": "Admin",
+    "users": "Usagers",
+    "reports": "Rapports",
+    "search": "Rechercher",
+    "donations": "Dons",
+    "requests": "Requêtes",
+    "delete": "Effacer"
   }
 }
