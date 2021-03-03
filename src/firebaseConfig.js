@@ -1,9 +1,6 @@
-import dotenv from 'dotenv';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-
-dotenv.config();
 
 const firebaseConfig = {
   // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,12 +9,18 @@ const firebaseConfig = {
   // storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   // messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   // appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  apiKey: 'AIzaSyC4edsRlUvSF_Cu26vsIHVAZI7KBvsJDYA',
-  authDomain: 'real-generosity-3916e.firebaseapp.com',
-  projectId: 'real-generosity-3916e',
-  storageBucket: 'real-generosity-3916e.appspot.com',
-  messagingSenderId: '237589675652',
-  appId: '1:237589675652:web:d723ac74d3d9b31c758cd1',
+  // apiKey: 'AIzaSyC4edsRlUvSF_Cu26vsIHVAZI7KBvsJDYA',
+  // authDomain: 'real-generosity-3916e.firebaseapp.com',
+  // projectId: 'real-generosity-3916e',
+  // storageBucket: 'real-generosity-3916e.appspot.com',
+  // messagingSenderId: '237589675652',
+  // appId: '1:237589675652:web:d723ac74d3d9b31c758cd1',
+  apiKey: 'AIzaSyAVeBz1hF0f1LHH0G3FaiajieevZPUDs6s',
+  authDomain: 'real-generosity-app.firebaseapp.com',
+  projectId: 'real-generosity-app',
+  storageBucket: 'real-generosity-app.appspot.com',
+  messagingSenderId: '180908185202',
+  appId: '1:180908185202:web:f92d35f0c0660f412354eb',
 };
 
 // Initialize Firebase
