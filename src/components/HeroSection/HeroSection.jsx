@@ -28,7 +28,7 @@ const HeroSection = () => {
           <br />
           {t('heroSection.paragraph_2')}
         </Text>
-        <Link to="/auth//add-item">
+        <Link to="/add-item">
           <Button colorScheme="green" py="8" px="20" fontSize="2xl">
             {t('heroSection.donateButton')}
           </Button>
