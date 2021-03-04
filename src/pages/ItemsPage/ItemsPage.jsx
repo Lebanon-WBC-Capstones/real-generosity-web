@@ -13,14 +13,14 @@ const ItemsPage = () => {
   const [itemsCounter, setItemsCounter] = useState(0);
 
   const { category } = useParams();
-  console.log('category', category);
+  // console.log('category', category);
 
-  // const filtered = items.filter((item) =>
-  //   item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
+  const filteredSearch = items.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const filteredCategory = items.filter((item) =>
-    item.category.toLowerCase().includes(categoryName.toLowerCase())
+    item.category.toLowerCase().includes(`${category}`.toLowerCase())
   );
 
   const handleSearchChange = (e) => {
@@ -47,15 +47,17 @@ const ItemsPage = () => {
 
       <Flex justify="space-between">
         <Box w="50%">
-          {categoryName === 'all' ? (
-            <ItemsList filtered={items} />
+          {searchQuery ? (
+            <ItemsList
+              filtered={filteredSearch}
+              setItemsCounter={setItemsCounter}
+            />
+          ) : `${category}` === 'undefined' || `${category}` === 'all' ? (
+            <ItemsList filtered={items} setItemsCounter={setItemsCounter} />
           ) : (
             <ItemsList
               filtered={filteredCategory}
-              searchQuery={searchQuery}
-              itemsCounter={itemsCounter}
               setItemsCounter={setItemsCounter}
-              categoryName={categoryName}
             />
           )}
         </Box>
