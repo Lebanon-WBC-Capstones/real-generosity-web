@@ -16,7 +16,7 @@ import { items } from '../../assets/data/items';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
 import Carouselimg from '../../components/Carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const SingleItemPage = () => {
   const { id } = useParams();
   const item = items.find((item) => item.id === id);
@@ -27,9 +27,7 @@ const SingleItemPage = () => {
       <Box>
         <SimpleGrid columns={2} spacingX="5px">
           <Box m="10px" p="10px">
-           
-            <Carouselimg/>
-           
+            <Carouselimg />
           </Box>
 
           <Box px={10}>

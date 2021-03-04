@@ -85,8 +85,7 @@
     "uploadimages": " Télécharge Images",
     "addbutton": "Ajouter un élément"
   },
-  
-  
+
   "heroSection": {
     "heroText_1": "Change la vie",
     "heroText_2": " de quelqu'un",
@@ -128,6 +127,4 @@
     "heading": "les dernières dons",
     "heading1": "explorer plus"
   }
- 
-  
 }

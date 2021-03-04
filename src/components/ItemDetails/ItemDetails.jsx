@@ -25,7 +25,7 @@ const ItemDetails = ({ category, name, date, description }) => {
       </Flex>
 
       <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
-        {category} 
+        {category}
       </Badge>
 
       <Box color="black" fontWeight="bold" letterSpacing="wide" fontSize="3xl">

@@ -22,24 +22,44 @@ const Footer = () => {
         color="gray.500"
         _hover={{ cursor: 'pointer' }}
       >
-        
-        <Link to="/"> <Text>{t('navbar.home')}</Text></Link>
-        <Link to="/items"> <Text>{t('navbar.items')}</Text></Link>
-        <Link to="/about"><Text>{t('navbar.about')}</Text></Link>
-        <Link to="/contactus"> <Text>{t('navbar.contactUs')}</Text></Link>
+        <Link to="/">
+          {' '}
+          <Text>{t('navbar.home')}</Text>
+        </Link>
+        <Link to="/items">
+          {' '}
+          <Text>{t('navbar.items')}</Text>
+        </Link>
+        <Link to="/about">
+          <Text>{t('navbar.about')}</Text>
+        </Link>
+        <Link to="/contactus">
+          {' '}
+          <Text>{t('navbar.contactUs')}</Text>
+        </Link>
       </HStack>
       <HStack mb="10" spacing={50} justify="center">
         <Box color="gray.500" fontSize="sm">
-        <a href="http://www.facebook.com"> <Facebook/></a>
+          <a href="http://www.facebook.com">
+            {' '}
+            <Facebook />
+          </a>
         </Box>
         <Box color="gray.500" fontSize="sm">
-        <a href="http://www.instagram.com"><Instagram /></a>
+          <a href="http://www.instagram.com">
+            <Instagram />
+          </a>
         </Box>
         <Box color="gray.500" fontSize="sm">
-        <a href="http://www.github.com"><GitHub /></a>
+          <a href="http://www.github.com">
+            <GitHub />
+          </a>
         </Box>
         <Box color="gray.500" fontSize="sm">
-        <a href="http://www.twitter.com"> <Twitter /></a>
+          <a href="http://www.twitter.com">
+            {' '}
+            <Twitter />
+          </a>
         </Box>
       </HStack>
       <Flex mr="10" justify="flex-end" color="gray.500">
