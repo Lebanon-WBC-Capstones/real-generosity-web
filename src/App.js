@@ -1,22 +1,19 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
-import ItemsPage from './pages/ItemsPage';
-import HomePage from './pages/HomePage';
-import SignUpPage from './pages/SignUpPage';
-import SignInPage from './pages/SignInPage';
-import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
-import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage';
-import ContactUsPage from './pages/ContactUsPage';
 import AdminPage from './pages/AdminPage';
+import ContactUsPage from './pages/ContactUsPage';
+import HomePage from './pages/HomePage';
+import ItemsPage from './pages/ItemsPage';
+import ProfilePage from './pages/ProfilePage';
+import ProfileSettingsPage from './pages/ProfileSettingsPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
+import SingleItemPage from './pages/SingleItemPage';
 
 function App() {
-  const [query, setQuery] = useState('');
-  console.log('query', query);
-
   return (
     <div className="App">
       <Router>
@@ -24,7 +21,7 @@ function App() {
           <Layout>
             <Switch>
               <Route exact path="/">
-                <HomePage setQuery={setQuery} />
+                <HomePage />
               </Route>
               <Route exact path="/auth/signin">
                 <SignInPage />
@@ -38,7 +35,7 @@ function App() {
               <Route exact path="/items">
                 <ItemsPage />
               </Route>
-              <Route path="/items/:category">
+              <Route exact path="/items/:category">
                 <ItemsPage />
               </Route>
               <Route exact path="/item/:id">
