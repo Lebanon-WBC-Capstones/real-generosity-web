@@ -1,44 +1,32 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Box,
-  Image,
-  Text,
+  Button,
+  Flex,
   Grid,
   GridItem,
-  Flex,
+  Image,
   Input,
-  Button,
+  Text,
 } from '@chakra-ui/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import proto from '../../assets/images/proto.png';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
-import { useTranslation } from 'react-i18next';
 
 function SignUpPage() {
   const { t } = useTranslation();
+  const { register, handleSubmit } = useForm();
+  const [image, setImage] = React.useState();
 
-  const [fullName, setFullName] = useState('');
-  const handleFullNameChange = (e) => {
-    setFullName(e.target.value);
-  };
-
-  const [address, setAddress] = useState('');
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const [emailAddress, setEmailAddress] = useState('');
-  const handleEmailAddressChange = (e) => {
-    setEmailAddress(e.target.value);
-  };
-
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
+  const onSubmit = (data) => {
+    data.image = image;
+    console.log(data);
   };
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
+    <Grid templateColumns="repeat(3, 1fr)" gap={4}>
       <GridItem colSpan={1}>
         <Image fit="contain" src={proto} alt="sign up img" />
       </GridItem>
@@ -61,65 +49,68 @@ function SignUpPage() {
         <Flex minH="80vh" align="center" justify="space-between">
           <Box fontSize="4xl">{t('signup.paragraph')}</Box>
           <Box>
-            <Box mt={4} fontSize="lg">
-              <Text mb={2}>{t('signup.fullname')}</Text>
-              <Input
-                value={fullName}
-                onChange={handleFullNameChange}
-                size="sm"
-                variant="filled"
-                isRequired
-                focusBorderColor="green.200"
-                maxWidth={72}
-              />
-            </Box>
-            <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.address')}</Text>
-              <Input
-                value={address}
-                onChange={handleAddressChange}
-                size="sm"
-                variant="filled"
-                isRequired
-                maxWidth={72}
-                focusBorderColor="green.200"
-              />
-            </Box>
-            <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.email')}</Text>
-              <Input
-                value={emailAddress}
-                onChange={handleEmailAddressChange}
-                type="email"
-                size="sm"
-                variant="filled"
-                isRequired
-                maxWidth={72}
-                focusBorderColor="green.200"
-              />
-            </Box>
-            <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.phone')}</Text>
-              <Input
-                value={phoneNumber}
-                onChange={handlePhoneNumberChange}
-                type="tel"
-                size="sm"
-                variant="filled"
-                isRequired
-                maxWidth={72}
-                focusBorderColor="green.200"
-              />
-            </Box>
-            <Box mt={8} fontSize="lg">
-              <Text mb={2}>{t('signup.idupload')}</Text>
-              <Dropzonecomp />
-            </Box>
-            <Box mt={8}>
-              <Button colorScheme="green" w={72}>
-                {t('signup.createbutton')}
-              </Button>
-            </Box>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Box mt={4} fontSize="lg">
+                <Text mb={2}>{t('signup.fullname')}</Text>
+                <Input
+                  size="sm"
+                  name="name"
+                  variant="filled"
+                  isRequired
+                  focusBorderColor="green.200"
+                  maxWidth={72}
+                  ref={register}
+                />
+              </Box>
+
+              <Box mt={8} fontSize="lg">
+                <Text mb={2}>{t('signup.email')}</Text>
+                <Input
+                  type="email"
+                  size="sm"
+                  name="email"
+                  variant="filled"
+                  isRequired
+                  maxWidth={72}
+                  ref={register}
+                  focusBorderColor="green.200"
+                />
+              </Box>
+              <Box mt={8} fontSize="lg">
+                <Text mb={2}>Password</Text>
+                <Input
+                  size="sm"
+                  name="password"
+                  variant="filled"
+                  isRequired
+                  maxWidth={72}
+                  ref={register}
+                  focusBorderColor="green.200"
+                />
+              </Box>
+              <Box mt={8} fontSize="lg">
+                <Text mb={2}>{t('signup.phone')}</Text>
+                <Input
+                  type="tel"
+                  size="sm"
+                  name="phone"
+                  variant="filled"
+                  isRequired
+                  maxWidth={72}
+                  ref={register}
+                  focusBorderColor="green.200"
+                />
+              </Box>
+              <Box mt={8} fontSize="lg">
+                <Text mb={2}>{t('signup.idupload')}</Text>
+                <Dropzonecomp dropzoneRef={register} setImage={setImage} />
+              </Box>
+              <Box mt={8}>
+                <Button type="submit" colorScheme="green" w={72}>
+                  {t('signup.createbutton')}
+                </Button>
+              </Box>
+            </form>
           </Box>
         </Flex>
       </GridItem>
