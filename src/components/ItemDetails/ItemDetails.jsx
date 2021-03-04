@@ -23,11 +23,12 @@ const ItemDetails = ({ category, name, date, description }) => {
             {t('itemPage.items')}
           </Button>
         </Link>
-        <HStack color="gray" fontSize={12}>
+       
+        
           <Button leftIcon={<Edit size={15} />} variant="ghost" onClick={handleEdit}>
             {t('itemPage.edit')}
           </Button>
-        </HStack>
+          
       </Flex>
 
       <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
@@ -38,16 +39,13 @@ const ItemDetails = ({ category, name, date, description }) => {
         {name}
       </Box>
       <Flex justify="space-between">
-        <Box my="5px">
-          <HStack color="gray.500">
+          <HStack color="gray.500"> my={1}
             <MapPin />
             <Box fontSize="md" color="gray.500">
               Tripoli,mina
             </Box>
           </HStack>
-        </Box>
-        <Box>
-          <Text
+         <Text
             fonts="Montserrat"
             color="gray.400"
             fontSize="xs"
@@ -56,15 +54,12 @@ const ItemDetails = ({ category, name, date, description }) => {
           >
             {moment(`${date}`).startOf('day').fromNow()}
           </Text>
-        </Box>
+     
       </Flex>
       <Box mb={1} py={3} minH="100px">
         <Text fontSize="lg">{description}</Text>
       </Box>
 
-      {/* <Button colorScheme="green" w="100%" size="lg">
-        {t('itemPage.request')}
-      </Button> */}
       <RequestModal />
 
       <Flex justify="space-between" pt={50}>

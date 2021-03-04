@@ -16,6 +16,7 @@ import {
 const DeleteModal = () => {
   const handleDelete = () => {
     console.log('deleted');
+    onClose()
   };
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();

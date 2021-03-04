@@ -41,25 +41,29 @@ const SingleItemPage = () => {
                                 borderBottom: "2px solid",
                                 borderBottomColor: "gray.500"}}>
                                   {t('itemPage.requests')}</Tab>
+                <Tab _selected={{
+                                borderBottom: "2px solid",
+                                borderBottomColor: "gray.500"}}>
+                                  {t('itemPage.reports')}</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
                   <ItemDetails {...item} />
                 </TabPanel>
                 <TabPanel>
-                  {/* <ItemRequests {...item} /> */}
-                  <ItemReports {...item} />
+                  <ItemRequests {...item} /> 
+                </TabPanel>
+                <TabPanel>
+                <ItemReports {...item} />
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </Box>
         </SimpleGrid>
-        {/* <Box> */}
-        {/* <ItemsMap /> */}
-        {/* </Box>  */}
       </Box>
     </Container>
   );
 };
 
 export default SingleItemPage;
+

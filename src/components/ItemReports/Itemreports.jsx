@@ -8,6 +8,7 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react';
 import {reports} from '../../assets/data/reports';
+import {users} from '../../assets/data/users'
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import DeleteModal from '../DeleteModal/DeleteModal';
@@ -82,7 +83,7 @@ const ItemReports = ({reportsId,id}) => {
                                 fontWeight="semibold"
                                 as="h3"
                               >
-                                {repor.reporterId}
+                                {users.find(user=>user.id===repor.reporterId).name}
                               </Text>
                               <Text
                                 fonts="Montserrat"

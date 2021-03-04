@@ -26,7 +26,7 @@ const RequestModal = () => {
 
   return (
     <>
-      <Button bg="#00D870" textColor="white" px="36" py="5"
+      {/* <Button bg="#00D870" textColor="white" px="36" py="5"
         fontSize="md"
         fontWeight="semibold"
         mb="4"
@@ -37,15 +37,16 @@ const RequestModal = () => {
         onClick={onOpen}
         >
           Request 
-        </Button>
-       
-        
-      <Modal 
-      size="xl"
-      finalFocusRef={finalRef} 
-      isOpen={isOpen} 
-      onClose={onClose}
-      blockScrollOnMount={false}>
+        </Button> */}
+      <Button colorScheme="green" ref={finalRef}  onClick={onOpen} w="100%" size="lg">
+       Request
+      </Button>
+       <Modal 
+           size="xl"
+           finalFocusRef={finalRef} 
+           isOpen={isOpen} 
+           onClose={onClose}
+          blockScrollOnMount={false}>
         <ModalOverlay />
         <ModalContent >
            <ModalBody pt="14" pb="4">

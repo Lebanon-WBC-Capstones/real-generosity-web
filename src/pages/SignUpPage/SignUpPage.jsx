@@ -8,8 +8,7 @@ import {
   GridItem,
   Flex,
   Input,
-  Button,
-  FormControl
+  Button
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
 import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
@@ -38,7 +37,7 @@ function SignUpPage() {
 
   const handleSubmit=(e)=>{
      e.preventDefault();
-     console.log("hi")
+     console.log("signup")
   }
 
   return (
@@ -49,7 +48,9 @@ function SignUpPage() {
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
+        <Link to="/">
           <Box fontSize="4xl">LOGO</Box>
+          </Link>
           <Link to="/auth/signin">
             <Button
               variant="outline"

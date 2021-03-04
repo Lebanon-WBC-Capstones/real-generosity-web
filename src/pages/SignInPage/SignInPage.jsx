@@ -18,15 +18,19 @@ function SignInPage() {
   const { t } = useTranslation();
 
   const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+
   const handleAuthEmailChange = (e) => {
     setAuthEmail(e.target.value);
   };
-
-  const [authPassword, setAuthPassword] = useState('');
   const handleAuthPasswordChange = (e) => {
     setAuthPassword(e.target.value);
   };
 
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log("signin")
+  }
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
       <GridItem colSpan={1}>
@@ -35,7 +39,9 @@ function SignInPage() {
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
+        <Link to="/">
           <Box fontSize="4xl">LOGO</Box>
+          </Link>
           <Link to="/auth/signup">
             <Button
               variant="outline"
@@ -51,6 +57,7 @@ function SignInPage() {
         <Flex minH="80vh" align="center" justify="space-between">
           <Box fontSize="4xl">{t('signin.paragraph')}</Box>
           <Box>
+             <form onSubmit={handleSubmit}>
             <Box mt={4} fontSize="lg">
               <Text mb={2}>{t('signin.email')}</Text>
               <Input
@@ -90,11 +97,11 @@ function SignInPage() {
             </Box>
 
             <Box mt={8}>
-              <Button colorScheme="green" w={72}>
+              <Button colorScheme="green" w={72} type="submit">
                 {t('signin.signinbutton')}
               </Button>
             </Box>
-
+            </form>
             <Box mt={8}>
               <GoogleButton
                 type="light"

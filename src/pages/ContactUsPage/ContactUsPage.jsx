@@ -31,6 +31,11 @@ function ContactUsPage() {
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
+
+  const handleSubmitMessage=(e)=>{
+    e.preventDefault()
+    console.log("contact us message")
+  }
   return (
 <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
       <GridItem colSpan={1}>
@@ -39,8 +44,10 @@ function ContactUsPage() {
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
+          <Link to="/">
           <Box fontSize="4xl">LOGO</Box>
-          <Link to="/auth/login">
+          </Link>
+          <Link to="/auth/signin">
             <Button
               variant="outline"
               colorScheme="black"
@@ -54,6 +61,7 @@ function ContactUsPage() {
 
         <Flex minH="80vh" align="center" justify="space-between">
           <Box fontSize="4xl">{t('contactUs.paragraph')}</Box>
+          <form onSubmit={handleSubmitMessage}>
           <Box>
             <Box mt={4} fontSize="lg">
               <Text mb={2}>{t('contactUs.fullname')}</Text>
@@ -95,11 +103,13 @@ function ContactUsPage() {
             </Box>
 
             <Box mt={8}>
-              <Button colorScheme="green" w={72}>
+              <Button colorScheme="green" w={72} type="submit">
                 {t('contactUs.send')}
               </Button>
             </Box>
+            
           </Box>
+          </form>
         </Flex>
       </GridItem>
     </Grid>

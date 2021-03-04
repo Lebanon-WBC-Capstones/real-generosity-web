@@ -1,5 +1,5 @@
-import React from "react";
-import {Info,AlertCircle} from 'react-feather';
+import React,{useState, useRef} from "react";
+import {AlertCircle} from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import {
   Modal,
@@ -7,7 +7,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalBody,
-  HStack,
   Button,
   Text,
   Select,
@@ -19,13 +18,11 @@ import {
 const ReportModal = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const finalRef = React.useRef();
-
-  let [value, setValue] = React.useState("")
-
+  const finalRef = useRef();
+  const [reportMessage, setReportMessage] = useState("")
   let handleRequest = (e) => {
-    let inputValue = e.target.value;
-    setValue(inputValue);
+    console.log(reportMessage);
+    onClose()
   }
 
   return (
@@ -64,7 +61,8 @@ const ReportModal = () => {
              <VStack>
               <Text fontSize="large">Reason for Reporting</Text>
                <Select 
-                placeholder="Select option"
+               placeholder="Select option"
+               onChange={(e)=>setReportMessage(e.target.value)}
                 size="sm" 
                 maxW="96" 
                 focusBorderColor="green.200">

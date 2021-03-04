@@ -45,7 +45,7 @@ export const requests = [
     requesterId: '201',
     requestedId: '102',
     isApproved: false,
-    requestReason: 'want to transfer to a new house',
+    requestReason: 'wanna move to a new house',
     dateOfRequest: 'Sun May 28 2020 04:59:56 GMT+0530',
   },
 
@@ -54,7 +54,7 @@ export const requests = [
     requesterId: '202',
     requestedId: '103',
     isApproved: false,
-    requestReason: 'my son want it',
+    requestReason: 'my son want a new toy and can not afford one',
     dateOfRequest: 'Sun May 28 2020 03:59:56 GMT+0530',
   },
 ];

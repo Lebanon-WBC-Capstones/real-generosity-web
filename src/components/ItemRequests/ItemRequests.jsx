@@ -18,15 +18,15 @@ const ItemRequests = ({requestsId,id}) => {
   };
 
   return (
-    <Flex d="column" fontSize={18}>
+    <Flex d="column" fontSize={18} >
       <Box py={5}>
         <Text fontWeight="bold" fontSize={12}>
           {requestsId.length} {t('itemPage.requests')}
         </Text>
       </Box>
       <Box
-        maxH="300px"
-        style={requestsId.length >= 3 ? { overflow: 'auto' } : {}}
+       maxH={300}
+       style={requestsId.length >= 3 ? { overflow: 'auto' } : {}}
       >
         <SimpleGrid spacing={5}>
           {requests  &&
@@ -34,17 +34,27 @@ const ItemRequests = ({requestsId,id}) => {
               .filter((r) => r.requestedId ===id)
               .map((request) => {
                 return (
-                  <Box bg="gray.50" height="80px" py={2} px={1}>
-                    <Flex align="center" justify="space-between">
+                  <Box bg="gray.50"  py={2} px={2}>
                       <Text
                         fonts="Montserrat"
                         fontSize="lg"
                         fontWeight="semibold"
                         as="h3"
                       >
-                        {t('itemPage.reason')} {request.requestReason}
-                      </Text>
-                      <Box>
+                       {request.requestReason}
+                      </Text>     
+                    <Flex align="center" justify="space-between">
+                    <Text
+                      fonts="Montserrat"
+                      color="gray.400"
+                      fontSize="xs"
+                      textTransform="uppercase"
+                    >
+                      {moment(`${request.dateOfRequest}`)
+                        .startOf('day')
+                        .fromNow()}
+                    </Text>
+                    <Box>
                         <Button
                           fontSize="xs"
                           variant="ghost"
@@ -62,16 +72,6 @@ const ItemRequests = ({requestsId,id}) => {
                         </Button>
                       </Box>
                     </Flex>
-                    <Text
-                      fonts="Montserrat"
-                      color="gray.400"
-                      fontSize="xs"
-                      textTransform="uppercase"
-                    >
-                      {moment(`${request.dateOfRequest}`)
-                        .startOf('day')
-                        .fromNow()}
-                    </Text>
                   </Box>
                 );
               })}

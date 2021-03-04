@@ -7,22 +7,20 @@ import { useTranslation } from 'react-i18next';
 
 function AddItemPage() {
   const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [picture, setPicture] = useState([]);
+
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
-
-  const [category, setCategory] = useState('');
-  const handleCategoryChange = (e) => {
+ const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
-
-  const [description, setDescription] = useState('');
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
-
-  const [picture, setPicture] = useState([]);
-  const handleUploadChange = (e) => {
+ const handleUploadChange = (e) => {
     setPicture(e.target.files[0]);
   };
   console.log(picture);
@@ -60,9 +58,9 @@ function AddItemPage() {
 
   const { t } = useTranslation();
   return (
-    <Container my="45px" maxW="1080px">
-      <Flex justify="space-between">
-        <Box maxW="60%" maxH="60vh" ml={10} mt={8}>
+    <Container my={6} maxW="6xl">
+      <Flex align="center" justify="space-between">
+        <Box mt={8}>
           <MapForm
             currentPosition={currentPosition}
             setCurrentPosition={setCurrentPosition}
@@ -70,7 +68,7 @@ function AddItemPage() {
             setCityName={setCityName}
           />
         </Box>
-        <Box ml={50}>
+        <Box>
           <AddForm
             title={title}
             category={category}
@@ -83,16 +81,18 @@ function AddItemPage() {
           />
         </Box>
       </Flex>
-      <Flex mt={8} ml={200}>
+      
+        <Box mt={8} ml={300}>
         <Button
-          width={550}
+          width={500}
           size="md"
           colorScheme="green"
           onClick={storeItemsData}
         >
           {t('additem.addbutton')}
         </Button>
-      </Flex>
+        </Box>
+     
     </Container>
   );
 }
