@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const firebaseConfig = {
   // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -16,12 +17,13 @@ const firebaseConfig = {
   projectId: 'real-generosity-app',
   storageBucket: 'real-generosity-app.appspot.com',
   messagingSenderId: '180908185202',
-  appId: '1:180908185202:web:f92d35f0c0660f412354eb',
+  appId: '1:180908185202:web:cae2fb7a165e3d212354eb',
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-export default firebase;
 
+export default firebase;
 export const firestore = firebase.firestore();
 export const auth = firebase.auth();
+export const storage = firebase.storage();
