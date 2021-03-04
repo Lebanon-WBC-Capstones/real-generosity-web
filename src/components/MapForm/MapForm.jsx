@@ -24,17 +24,17 @@ const MapForm = ({ currentPosition, setCurrentPosition, setCityName }) => {
       });
   };
 
-  const success = () => {
-    const currentPos = {
-      lat: 34.4346,
-      lng: 35.8362,
-    };
-    setCurrentPosition(currentPos);
+  // const success = () => {
+  const currentPos = {
+    lat: 34.4346,
+    lng: 35.8362,
   };
+  //   setCurrentPosition(currentPos);
+  // };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
-  }, [success]);
+    navigator.geolocation.getCurrentPosition(setCurrentPosition(currentPos));
+  }, []);
 
   return (
     <div>
