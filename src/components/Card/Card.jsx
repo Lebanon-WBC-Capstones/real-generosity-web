@@ -48,7 +48,7 @@ const Card = ({ imageURL, name, date, id }) => {
             <Box fontSize="sm">Location</Box>
           </HStack>
           <Box fonts="Montserrat" color="blue.500" fontSize="sm">
-            <Link to={`item/${id}`}>{t('card.more')}</Link>
+            <Link to={`/item/${id}`}>{t('card.more')}</Link>
           </Box>
         </Flex>
       </Box>
