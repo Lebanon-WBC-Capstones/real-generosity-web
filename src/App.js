@@ -1,18 +1,17 @@
 import React, { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/Layout';
-import ItemsPage from './pages/ItemsPage';
-import HomePage from './pages/HomePage';
-import SignUpPage from './pages/SignUpPage';
-import SignInPage from './pages/SignInPage';
-import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
-import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage';
-import ContactUsPage from './pages/ContactUsPage';
 import AdminPage from './pages/AdminPage';
-import { DeployingData } from './services/deploy';
+import ContactUsPage from './pages/ContactUsPage';
+import HomePage from './pages/HomePage';
+import ItemsPage from './pages/ItemsPage';
+import ProfilePage from './pages/ProfilePage';
+import ProfileSettingsPage from './pages/ProfileSettingsPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
+import SingleItemPage from './pages/SingleItemPage';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -20,7 +19,6 @@ function App() {
 
   return (
     <div className="App">
-      <DeployingData />
       <Router>
         <Suspense fallback="loading">
           <Layout>
