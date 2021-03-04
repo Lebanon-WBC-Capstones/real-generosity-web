@@ -1,21 +1,21 @@
-import React from 'react';
 import { Box, Grid } from '@chakra-ui/react';
+import React from 'react';
 import Card from '../Card';
-import { items } from '../../assets/data/items';
 
-const ItemsList = ({ searchQuery, setItemsCounter, categoryName }) => {
-  const filtered = items.filter((item) => {
-    return item.name.toLowerCase().includes(searchQuery.toLowerCase());
-  });
-
-  const filteredCategory = items.filter((item) => {
-    return item.category.toLowerCase().includes(categoryName.toLowerCase());
-  });
-
+const ItemsList = ({
+  filtered,
+  searchQuery,
+  setItemsCounter,
+  categoryName,
+}) => {
+  console.log(filtered);
   return (
     <Box maxWidth="540px" bg="white" borderRadius="1px">
       <Grid templateColumns="repeat(2, 0.5fr)" gap={1} my="4px">
-        {searchQuery
+        {filtered.map((f) => (
+          <Card {...f} />
+        ))}
+        {/* {searchQuery
           ? filtered.map((item) => {
               setItemsCounter(filtered.length);
               return <Card key={Date.now() + '' + Math.random()} {...item} />;
@@ -28,7 +28,7 @@ const ItemsList = ({ searchQuery, setItemsCounter, categoryName }) => {
           : items.map((item) => {
               setItemsCounter(filtered.length);
               return <Card key={Date.now() + '' + Math.random()} {...item} />;
-            })}
+            })} */}
       </Grid>
     </Box>
   );
