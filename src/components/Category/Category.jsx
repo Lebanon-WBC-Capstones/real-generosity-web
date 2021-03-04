@@ -19,22 +19,24 @@ import { useTranslation } from 'react-i18next';
 
 const Category = ({ setCategoryName, setCategoryPic }) => {
   const { t } = useTranslation();
+
   return (
     <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
         <Tabs variant="soft-rounded" colorScheme="green">
           <TabList>
             {categories.map((cat) => (
-              <Tab
-                key={Date.now() + '' + Math.random()}
-                onClick={() => {
-                  setCategoryName(cat.name);
-                  setCategoryPic(cat.imgURL);
-                  // console.log(cat.imgURL);
-                }}
-              >
-                {cat.name}
-              </Tab>
+              <Link to={`items/${cat.name}`}>
+                <Tab
+                  key={Date.now() + '' + Math.random()}
+                  onClick={() => {
+                    setCategoryName(cat.name);
+                    setCategoryPic(cat.imgURL);
+                  }}
+                >
+                  {cat.name}
+                </Tab>
+              </Link>
             ))}
           </TabList>
         </Tabs>

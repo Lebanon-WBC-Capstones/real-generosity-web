@@ -39,10 +39,11 @@ const ItemsPage = () => {
             searchQuery={searchQuery}
             itemsCounter={itemsCounter}
             setItemsCounter={setItemsCounter}
+            categoryName={categoryName}
           />
         </Box>
         <Box w="50%" ml={30}>
-          <ItemsMap />
+          {/* <ItemsMap /> */}
         </Box>
       </Flex>
     </Container>

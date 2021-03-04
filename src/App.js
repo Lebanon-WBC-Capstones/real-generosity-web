@@ -38,6 +38,9 @@ function App() {
               <Route exact path="/items">
                 <ItemsPage />
               </Route>
+              <Route path="/items/:category">
+                <ItemsPage />
+              </Route>
               <Route exact path="/item/:id">
                 <SingleItemPage />
               </Route>
