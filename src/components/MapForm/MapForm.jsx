@@ -34,7 +34,7 @@ const MapForm = ({ currentPosition, setCurrentPosition, setCityName }) => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-  }, []);
+  }, [success]);
 
   return (
     <div>

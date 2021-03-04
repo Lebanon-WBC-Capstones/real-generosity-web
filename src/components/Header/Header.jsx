@@ -10,7 +10,7 @@ import {
   InputGroup,
 } from '@chakra-ui/react';
 import { Search } from 'react-feather';
-import sofa from '../../assets/images/sofa.png';
+
 import { useTranslation } from 'react-i18next';
 
 const Header = ({
