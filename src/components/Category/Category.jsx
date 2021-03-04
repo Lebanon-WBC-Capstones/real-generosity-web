@@ -1,45 +1,35 @@
-import React from 'react';
 import {
   Box,
-  HStack,
-  Text,
-  MenuButton,
-  MenuList,
-  Menu,
-  MenuItem,
   Button,
-  Tabs,
-  TabList,
-  Tab,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { Plus } from 'react-feather';
+import { Link } from 'react-router-dom';
 import { categories } from '../../assets/data/categories';
-import { useTranslation } from 'react-i18next';
 
 const Category = ({ setCategoryName, setCategoryPic }) => {
-  const { t } = useTranslation();
-
   return (
-    <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
+    <Box py="10" width={1080} fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
-        <Tabs variant="soft-rounded" colorScheme="green">
-          <TabList>
-            {categories.map((cat) => (
-              <Link to={`items/${cat.name}`}>
-                <Tab
-                  key={Date.now() + '' + Math.random()}
-                  onClick={() => {
-                    setCategoryName(cat.name);
-                    setCategoryPic(cat.imgURL);
-                  }}
-                >
-                  {cat.name}
-                </Tab>
-              </Link>
-            ))}
-          </TabList>
-        </Tabs>
+        {categories.map((cat) => (
+          <Link to={`/items/${cat.name}`}>
+            <Button
+              key={Date.now() + '' + Math.random()}
+              onClick={() => {
+                setCategoryName(cat.name);
+                setCategoryPic(cat.imgURL);
+              }}
+            >
+              {cat.name}
+            </Button>
+          </Link>
+        ))}
 
         <HStack>
           <Menu>
