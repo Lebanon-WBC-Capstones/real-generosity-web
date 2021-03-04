@@ -26,6 +26,7 @@
     "react-feather": "^2.0.9",
     "react-firebase-hooks": "^3.0.1",
     "react-google-button": "^0.7.2",
+    "react-hook-form": "^6.15.4",
     "react-i18next": "^11.8.7",
     "react-image-gallery": "^1.0.8",
     "react-moment": "^1.1.1",
