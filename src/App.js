@@ -12,6 +12,7 @@ import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
+import { DeployingData } from './services/deploy';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <DeployingData />
       <Router>
         <Suspense fallback="loading">
           <Layout>

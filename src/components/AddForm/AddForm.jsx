@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
+import { Box, Flex, Text, Input, Select,Textarea } from '@chakra-ui/react';
 import Dropzonecomp from '../Dropzone/Dropzonecomp';
-import { categories } from '../../assets/data/categories';
 import { useTranslation } from 'react-i18next';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { firestore } from '../../services/firebase';
 
 const AddForm = ({
   title,
@@ -15,6 +16,10 @@ const AddForm = ({
   handleUploadChange,
 }) => {
   const { t } = useTranslation();
+  const categories = firestore.collection('categories')
+  const [categorieslist,loading,error]=useCollectionData(categories)
+    if (error) console.error(error)
+    if (loading) return <>loading ...</>
   return (
     <Flex fontSize={15} fontWeight={400}>
       <Box width={250}>
@@ -42,15 +47,15 @@ const AddForm = ({
             maxWidth={72}
             focusBorderColor="green.200"
           >
-            {categories.map((x) => (
-              <option key={Date.now() + '' + Math.random()}>{x.name}</option>
+            {categorieslist.slice(1,categorieslist.length).map((category) => (
+              <option key={Date.now() + '' + Math.random()}>{category.name}</option>
             ))}
           </Select>
         </Box>
 
         <Box mt={8} fontSize="lg">
           <Text mb={2}>{t('additem.description')}</Text>
-          <Input
+          <Textarea
             value={description}
             onChange={handleDescriptionChange}
             size="sm"
