@@ -47,7 +47,9 @@ function SignUpPage() {
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
+          <Link to="/">
           <Box fontSize="4xl">LOGO</Box>
+          </Link>
           <Link to="/auth/signin">
             <Button
               variant="outline"
