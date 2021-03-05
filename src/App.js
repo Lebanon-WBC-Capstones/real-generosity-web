@@ -1,5 +1,10 @@
 import React, { Suspense, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import Layout from './components/Layout';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
@@ -13,8 +18,10 @@ import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
 import { DeployingData } from './services/deploy';
+import { useAuth } from './contexts/AuthContext';
 
 function App() {
+  const currentUser = useAuth();
   const [query, setQuery] = useState('');
   console.log('query', query);
 
@@ -35,7 +42,7 @@ function App() {
                 <SignUpPage />
               </Route>
               <Route exact path="/add-item">
-                <AddItemPage />
+                {currentUser ? <AddItemPage /> : <Redirect to="/auth/signin" />}
               </Route>
               <Route exact path="/items">
                 <ItemsPage />
