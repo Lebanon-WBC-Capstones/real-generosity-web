@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 
-const ItemDetails = ({ category, title, createdAt, description }) => {
+const ItemDetails = ({ isOwner, category, title, createdAt, description }) => {
   const history = useHistory();
   const { t } = useTranslation();
 
@@ -22,11 +22,11 @@ const ItemDetails = ({ category, title, createdAt, description }) => {
           {t('itemPage.items')}
         </Button>
 
-        <HStack color="gray" fontSize={12}>
-          <Button leftIcon={<Edit size={15} />} variant="ghost">
+        {isOwner && (
+          <Button color="gray" leftIcon={<Edit size={15} />} variant="ghost">
             {t('itemPage.edit')}
           </Button>
-        </HStack>
+        )}
       </Flex>
 
       <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
@@ -66,14 +66,16 @@ const ItemDetails = ({ category, title, createdAt, description }) => {
       </Button>
 
       <Flex justify="space-between" pt={50}>
-        <Button
-          color="red"
-          leftIcon={<AlertCircle size={15} color="red" />}
-          variant="ghost"
-        >
-          {t('itemPage.report')}
-        </Button>
-        <DeleteModal />
+        {isOwner || (
+          <Button
+            color="red"
+            leftIcon={<AlertCircle size={15} color="red" />}
+            variant="ghost"
+          >
+            {t('itemPage.report')}
+          </Button>
+        )}
+        {isOwner && <DeleteModal />}
       </Flex>
     </Flex>
   );

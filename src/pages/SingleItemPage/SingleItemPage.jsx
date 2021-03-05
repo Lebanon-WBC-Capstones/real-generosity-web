@@ -27,6 +27,8 @@ const SingleItemPage = () => {
   const [item, loading, error] = useDocumentData(query);
   const { t } = useTranslation();
 
+  const isOwner = item && item.uid === currentUser.uid;
+
   if (error) return 'an error has occured...';
 
   if (loading) {
@@ -47,7 +49,7 @@ const SingleItemPage = () => {
         <Image boxSize="500px" src={item.image_url}></Image>
 
         <Box px={10}>
-          {currentUser && currentUser.uid === item.uid ? (
+          {isOwner ? (
             <Tabs>
               <TabList justifyContent="space-around">
                 <Tab>{t('itemPage.details')}</Tab>
@@ -55,7 +57,7 @@ const SingleItemPage = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <ItemDetails {...item} />
+                  <ItemDetails isOwner={isOwner} {...item} />
                 </TabPanel>
                 <TabPanel>
                   <ItemRequests />
