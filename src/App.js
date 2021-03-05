@@ -47,13 +47,13 @@ function App() {
               <Route exact path="/contactus">
                 <ContactUsPage />
               </Route>
-              <Route exact path="/profile">
+              <Route exact path="/profile/:uid">
                 <ProfilePage />
               </Route>
               <Route exact path="/admin">
                 <AdminPage />
               </Route>
-              <Route exact path="/profile/settings">
+              <Route exact path="/profile/:uid/settings">
                 <ProfileSettingsPage />
               </Route>
             </Switch>
