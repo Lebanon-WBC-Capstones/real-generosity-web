@@ -31,7 +31,7 @@ export const items = [
   {
     id: '102',
     name: 'Sofa',
-    date: 'tues May 26 2020 09:59:56 GMT+0530',
+    date: 'tues Sep 8 2020 09:59:56 GMT+0530',
     location: [31.2443, 16.2445],
     category: 'Furniture',
     imageURL: [
@@ -68,7 +68,7 @@ export const items = [
   {
     id: '104',
     name: 'Phone 2',
-    date: 'tues May 26 2020 09:59:56 GMT+0530',
+    date: 'fri May 29 2020 09:59:56 GMT+0530',
     location: [31.2443, 16.2445],
     category: 'Toys',
     imageURL: [
@@ -87,7 +87,7 @@ export const items = [
   {
     id: '105',
     name: 'book1',
-    date: 'tues May 26 2020 09:59:56 GMT+0530',
+    date: 'mon May 25 2020 09:59:56 GMT+0530',
     location: [31.2443, 16.2445],
     category: 'Books',
     imageURL: [
@@ -106,7 +106,7 @@ export const items = [
   {
     id: '106',
     name: 'book 444',
-    date: 'tues May 26 2020 09:59:56 GMT+0530',
+    date: 'wed Mar 3 2021 09:59:56 GMT+0530',
     location: [31.2443, 16.2445],
     category: 'Books',
     imageURL: [
