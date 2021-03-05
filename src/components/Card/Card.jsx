@@ -1,15 +1,15 @@
-import { Box, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import moment from 'moment';
 import React from 'react';
 import { MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-const Card = ({ imageURL, name, date, id }) => {
+const Card = ({ name, date, id }) => {
   const { t } = useTranslation();
   return (
     <Box bg="white" maxW="2xs" borderRadius="lg" boxShadow="md">
-      <Box p="4">
+      {/* <Box p="4">
         <Image
           objectFit="cover"
           width="250px"
@@ -19,7 +19,7 @@ const Card = ({ imageURL, name, date, id }) => {
           src={imageURL[0]}
           alt="item image"
         />
-      </Box>
+      </Box> */}
 
       <Box px="4" pb="4">
         <Flex mb="4" align="center" justify="space-between">
