@@ -13,10 +13,12 @@ import {
   Button,
   Avatar,
   Icon,
+  IconButton,
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
+import { MoreHorizontal, User, LogOut } from 'react-feather';
 
 function NavBar() {
   const user = useAuth();
@@ -110,14 +112,24 @@ function NavBar() {
                 name={user.email.charAt(0).toUpperCase()}
                 bg="green.500"
               ></Avatar>
-              <Button
-                onClick={() => auth.signOut()}
-                variant="solid"
-                colorScheme="whiteAlpha"
-                ml={2}
-              >
-                Log out
-              </Button>
+
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<MoreHorizontal color="white" />}
+                  size="md"
+                  variant="ghost"
+                />
+                <MenuList>
+                  <Link to={`/profile/${user.uid}`}>
+                    <MenuItem icon={<User />}>Profile</MenuItem>
+                  </Link>
+                  <MenuItem onClick={() => auth.signOut()} icon={<LogOut />}>
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </>
           ) : (
             <Link to="/auth/signin">
