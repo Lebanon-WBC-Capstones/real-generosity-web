@@ -8,50 +8,63 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  Skeleton,
+  GridItem,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { items } from '../../assets/data/items';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
+import { firestore } from '../../services/firebase';
 
 const SingleItemPage = () => {
   const { id } = useParams();
-  const item = items.find((item) => item.id === id);
-
+  const query = firestore.collection('items').doc(id);
+  const [item, loading, error] = useDocumentData(query);
   const { t } = useTranslation();
-  return (
-    <Container maxW="1080px" minH="600px" m="auto" my="10px">
-      <Box>
-        <SimpleGrid columns={2} spacingX="5px">
-          <Box m="10px" p="10px">
-            {/* <ImageCarousel /> */}
-            <Image boxSize="500px" src={`${item.imageURL[0]}`}></Image>
-          </Box>
 
-          <Box px={10}>
-            <Tabs>
-              <TabList justifyContent="space-around">
-                <Tab>{t('itemPage.details')}</Tab>
-                <Tab>{t('itemPage.requests')}</Tab>
-              </TabList>
-              <TabPanels>
-                <TabPanel>
-                  <ItemDetails {...item} />
-                </TabPanel>
-                <TabPanel>
-                  <ItemRequests />
-                  {/* <ItemReports /> */}
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </Box>
+  if (error) return 'an error has occured...';
+
+  if (loading) {
+    return (
+      <Container maxW="1080px" minH="600px" mx="auto" my={24}>
+        <SimpleGrid columns={2}>
+          <Skeleton boxSize="500px" />
+          <GridItem placeSelf={'center'}>loading details...</GridItem>
         </SimpleGrid>
-        {/* <Box> */}
-        {/* <ItemsMap /> */}
-        {/* </Box>  */}
-      </Box>
+      </Container>
+    );
+  }
+
+  return (
+    <Container maxW="1080px" minH="600px" mx="auto" my={24}>
+      <SimpleGrid columns={2}>
+        {/* <ImageCarousel /> */}
+        <Image boxSize="500px" src={item.image_url}></Image>
+
+        <Box px={10}>
+          <Tabs>
+            <TabList justifyContent="space-around">
+              <Tab>{t('itemPage.details')}</Tab>
+              <Tab>{t('itemPage.requests')}</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <ItemDetails {...item} />
+              </TabPanel>
+              <TabPanel>
+                <ItemRequests />
+                {/* <ItemReports /> */}
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
+      </SimpleGrid>
+      {/* <Box> */}
+      {/* <ItemsMap /> */}
+      {/* </Box>  */}
     </Container>
   );
 };
