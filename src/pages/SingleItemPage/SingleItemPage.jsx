@@ -18,9 +18,11 @@ import { useParams } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
 import { firestore } from '../../services/firebase';
+import { useAuth } from '../../contexts/AuthContext';
 
 const SingleItemPage = () => {
   const { id } = useParams();
+  const currentUser = useAuth();
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
   const { t } = useTranslation();
@@ -45,21 +47,25 @@ const SingleItemPage = () => {
         <Image boxSize="500px" src={item.image_url}></Image>
 
         <Box px={10}>
-          <Tabs>
-            <TabList justifyContent="space-around">
-              <Tab>{t('itemPage.details')}</Tab>
-              <Tab>{t('itemPage.requests')}</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <ItemDetails {...item} />
-              </TabPanel>
-              <TabPanel>
-                <ItemRequests />
-                {/* <ItemReports /> */}
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+          {currentUser && currentUser.uid === item.uid ? (
+            <Tabs>
+              <TabList justifyContent="space-around">
+                <Tab>{t('itemPage.details')}</Tab>
+                <Tab>{t('itemPage.requests')}</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <ItemDetails {...item} />
+                </TabPanel>
+                <TabPanel>
+                  <ItemRequests />
+                  {/* <ItemReports /> */}
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          ) : (
+            <ItemDetails {...item} />
+          )}
         </Box>
       </SimpleGrid>
       {/* <Box> */}
