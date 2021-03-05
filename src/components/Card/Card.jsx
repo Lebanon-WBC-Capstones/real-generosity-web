@@ -1,11 +1,12 @@
 import { Box, Flex, HStack, Text, VStack, Image } from '@chakra-ui/react';
-import moment from 'moment';
 import React from 'react';
 import { MapPin } from 'react-feather';
 // import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { convertTimestamp } from '../../helpers/convertTimestamp';
 
 const Card = ({ title, id, createdAt, image_url }) => {
+  console.log('item id', id);
   // const { t } = useTranslation();
   return (
     <Link to={`/item/${id}`}>
@@ -38,7 +39,7 @@ const Card = ({ title, id, createdAt, image_url }) => {
                 fontSize="xs"
                 textTransform="uppercase"
               >
-                {moment(``).startOf('day').fromNow()}
+                {convertTimestamp(createdAt)}
               </Text>
             </VStack>
           </Flex>
@@ -47,9 +48,7 @@ const Card = ({ title, id, createdAt, image_url }) => {
               <MapPin />
               <Box fontSize="sm">Location</Box>
             </HStack>
-            <Box fonts="Montserrat" color="blue.500" fontSize="sm">
-              {/* <Link to={`item/`}>{t('card.more')}</Link> */}
-            </Box>
+            <Box fonts="Montserrat" color="blue.500" fontSize="sm"></Box>
           </Flex>
         </Box>
       </Box>
