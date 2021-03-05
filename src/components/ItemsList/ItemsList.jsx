@@ -9,7 +9,7 @@ const ItemsList = ({ filtered, setItemsCounter }) => {
     <Box maxWidth="540px" bg="white" borderRadius="1px">
       <Grid templateColumns="repeat(2, 0.5fr)" gap={1} my="4px">
         {filtered.map((f) => (
-          <Card {...f} />
+          <Card {...f} key={Date.now() + '' + Math.random()} />
         ))}
 
         {/* {searchQuery

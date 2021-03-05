@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Image,
   SimpleGrid,
   Tab,
   TabList,

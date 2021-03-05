@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Button } from '@chakra-ui/react';
+import { Box, Container, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { items } from '../../assets/data/items';
 import Category from '../../components/Category';
@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import ItemsList from '../../components/ItemsList';
 import { useParams } from 'react-router-dom';
 import { categories } from '../../assets/data/categories';
-import ItemsMap from '../../components/ItemsMap';
+// import ItemsMap from '../../components/ItemsMap';
 
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('all');
@@ -90,7 +90,7 @@ const ItemsPage = () => {
           )}
         </Box>
         <Box w="50%" ml={30}>
-          <ItemsMap />
+          {/* <ItemsMap /> */}
         </Box>
       </Flex>
     </Container>

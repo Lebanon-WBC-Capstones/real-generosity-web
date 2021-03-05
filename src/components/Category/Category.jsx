@@ -54,10 +54,16 @@ const Category = ({
               </Flex>
             </MenuButton>
             <MenuList minW="max-content">
-              <MenuItem onClick={oldest ? toggleSort : null}>
+              <MenuItem
+                key={Date.now() + '' + Math.random()}
+                onClick={oldest ? toggleSort : null}
+              >
                 <Box _hover={{ color: 'green.400' }}>By Newest</Box>
               </MenuItem>
-              <MenuItem onClick={oldest ? null : toggleSort}>
+              <MenuItem
+                key={Date.now() + '' + Math.random()}
+                onClick={oldest ? null : toggleSort}
+              >
                 <Box _hover={{ color: 'green.400' }}>By Oldest</Box>
               </MenuItem>
             </MenuList>
