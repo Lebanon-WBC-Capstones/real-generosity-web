@@ -13,16 +13,30 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import proto from '../../assets/images/proto.png';
-import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
+import { auth, firestore } from '../../services/firebase';
+import { useHistory } from 'react-router-dom';
+// import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
 
 function SignUpPage() {
   const { t } = useTranslation();
   const { register, handleSubmit } = useForm();
-  const [image, setImage] = React.useState();
+  const history = useHistory();
+  // const [image, setImage] = React.useState();
 
-  const onSubmit = (data) => {
-    data.image = image;
-    console.log(data);
+  const onSubmit = async ({ fullname, email, password }) => {
+    console.log('registration in process...');
+    // data.image = image;
+    // console.log(email, password);
+    const { user } = await auth.createUserWithEmailAndPassword(email, password);
+    await firestore.collection('users').doc(user.uid).set({
+      fullname,
+      email,
+      role: 'user',
+      uid: user.uid,
+      isApproved: false,
+    });
+    console.log('registered user...', user);
+    history.push('/');
   };
 
   return (
@@ -51,10 +65,10 @@ function SignUpPage() {
           <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box mt={4} fontSize="lg">
-                <Text mb={2}>{t('signup.fullname')}</Text>
+                <Text mb={2}>full name</Text>
                 <Input
                   size="sm"
-                  name="name"
+                  name="fullname"
                   variant="filled"
                   isRequired
                   focusBorderColor="green.200"
@@ -62,6 +76,18 @@ function SignUpPage() {
                   ref={register}
                 />
               </Box>
+              {/* <Box mt={4} fontSize="lg">
+                <Text mb={2}>last name</Text>
+                <Input
+                  size="sm"
+                  name="lastname"
+                  variant="filled"
+                  isRequired
+                  focusBorderColor="green.200"
+                  maxWidth={72}
+                  ref={register}
+                />
+              </Box> */}
 
               <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.email')}</Text>
@@ -88,7 +114,7 @@ function SignUpPage() {
                   focusBorderColor="green.200"
                 />
               </Box>
-              <Box mt={8} fontSize="lg">
+              {/* <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.phone')}</Text>
                 <Input
                   type="tel"
@@ -104,7 +130,7 @@ function SignUpPage() {
               <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.idupload')}</Text>
                 <Dropzonecomp dropzoneRef={register} setImage={setImage} />
-              </Box>
+              </Box> */}
               <Box mt={8}>
                 <Button type="submit" colorScheme="green" w={72}>
                   {t('signup.createbutton')}
