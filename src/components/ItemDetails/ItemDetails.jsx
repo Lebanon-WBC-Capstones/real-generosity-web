@@ -1,22 +1,27 @@
 import { Badge, Box, Button, Flex, HStack, Text } from '@chakra-ui/react';
-import moment from 'moment';
+
 import React from 'react';
 import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import { convertTimestamp } from '../../helpers/convertTimestamp';
 
-const ItemDetails = ({ category, name, date, description }) => {
+const ItemDetails = ({ category, title, createdAt, description }) => {
+  const history = useHistory();
   const { t } = useTranslation();
 
   return (
     <Flex d="column" maxW="400px" fontSize={18}>
       <Flex justify="space-between">
-        <Link onClick={() => window.history.back()}>
-          <Button leftIcon={<ArrowLeft size={15} />} variant="ghost">
-            {t('itemPage.items')}
-          </Button>
-        </Link>
+        <Button
+          onClick={() => history.goBack()}
+          leftIcon={<ArrowLeft size={15} />}
+          variant="ghost"
+        >
+          {t('itemPage.items')}
+        </Button>
+
         <HStack color="gray" fontSize={12}>
           <Button leftIcon={<Edit size={15} />} variant="ghost">
             {t('itemPage.edit')}
@@ -29,7 +34,7 @@ const ItemDetails = ({ category, name, date, description }) => {
       </Badge>
 
       <Box color="black" fontWeight="bold" letterSpacing="wide" fontSize="3xl">
-        {name}
+        {title}
       </Box>
       <Flex justify="space-between">
         <Box my="5px">
@@ -48,7 +53,7 @@ const ItemDetails = ({ category, name, date, description }) => {
             my="10px"
             textTransform="uppercase"
           >
-            {moment(`${date}`).startOf('day').fromNow()}
+            {convertTimestamp(createdAt)}
           </Text>
         </Box>
       </Flex>
