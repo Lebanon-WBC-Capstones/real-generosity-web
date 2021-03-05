@@ -4,31 +4,24 @@ import firebase, { firestore } from './firebase';
 
 const categoriesData = [
   {
-    id: '0',
     name: 'all',
   },
   {
-    id: '1',
     name: 'furniture',
   },
   {
-    id: '2',
     name: 'clothes',
   },
   {
-    id: '3',
     name: 'books',
   },
   {
-    id: '4',
     name: 'toys',
   },
   {
-    id: '5',
     name: 'medics',
   },
   {
-    id: '6',
     name: 'appliances',
   },
 ];
@@ -52,6 +45,7 @@ const usersData = [
   {
     name: 'admin',
     uid: 'cdzPSpkyjnWdzWdgmXrViorrrRI3',
+    // email: 'skiastep@gmail.com',
     idCard_url: [
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
@@ -63,6 +57,7 @@ const usersData = [
   {
     name: 'user 1',
     uid: 'SQZrKjfIxGcyBCLbnVXG78ief882',
+    // email: "skybar_beirut@live.com",
     idCard_url: [
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
@@ -74,6 +69,7 @@ const usersData = [
   {
     name: 'user 2',
     uid: 'IS7jkntzkLX8WIKyW40dyfEZru12',
+    // email: 'lol@mail.com',
     idCard_url: [
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
@@ -85,6 +81,7 @@ const usersData = [
   {
     name: 'user 3',
     uid: 'tTDecstMTESPLomin6UBB8FT3Uh1',
+    // email: "test@mail.com",
     idCard_url: [
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
       'https://imcdn.org/uploads/2017/08/lebanese-id-card.jpg',
@@ -99,7 +96,7 @@ const itemsData = [
   {
     title: 'Red t-shirt',
     description: '',
-    category: '2',
+    category: 'clothes',
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     location: [],
     uid: 'SQZrKjfIxGcyBCLbnVXG78ief882',
@@ -112,7 +109,7 @@ const itemsData = [
   {
     title: 'Hoodie, sweater and jeans',
     description: 'some random description',
-    category: '2',
+    category: 'clothes',
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     location: [],
     uid: 'SQZrKjfIxGcyBCLbnVXG78ief882',
@@ -126,7 +123,7 @@ const itemsData = [
   {
     title: 'Blouse',
     description: 'some random description',
-    category: '2',
+    category: 'clothes',
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     location: [],
     uid: 'IS7jkntzkLX8WIKyW40dyfEZru12',
@@ -140,7 +137,7 @@ const itemsData = [
   {
     title: 'Cooking kit',
     description: 'some random description',
-    category: '6',
+    category: 'appliances',
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     location: [],
     uid: 'tTDecstMTESPLomin6UBB8FT3Uh1',
@@ -154,7 +151,7 @@ const itemsData = [
   {
     title: 'Matt Ridley',
     description: 'some random description',
-    category: '3',
+    category: 'books',
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     location: [],
     uid: 'tTDecstMTESPLomin6UBB8FT3Uh1',
@@ -169,20 +166,20 @@ const itemsData = [
 
 const requests = [
   {
-    requester: '',
-    requestee: '',
+    requester: 'tTDecstMTESPLomin6UBB8FT3Uh1',
+    requestee: 'tTDecstMTESPLomin6UBB8FT3Uh1',
     isApproved: false,
-    reason: '',
-    createdAt: '',
+    reason: 'random reason',
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
   },
 ];
 
 const reports = [
   {
-    reporter: '',
-    reportee: '',
-    reason: '',
-    createdAt: '',
+    reporter: 'tTDecstMTESPLomin6UBB8FT3Uh1',
+    reportee: 'SQZrKjfIxGcyBCLbnVXG78ief882',
+    reason: 'random reason',
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
   },
 ];
 
