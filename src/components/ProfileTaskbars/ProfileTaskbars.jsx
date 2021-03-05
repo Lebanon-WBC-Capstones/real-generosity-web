@@ -14,9 +14,20 @@ import React from 'react';
 import { Search } from 'react-feather';
 import Card from '../Card';
 import { useTranslation } from 'react-i18next';
+import { firestore } from '../../services/firebase';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useParams } from 'react-router-dom';
 
 const ProfileTaskbars = () => {
   const { t } = useTranslation();
+  const { uid } = useParams();
+  const items = firestore.collection('items')
+  const [itemslist,loading,error]=useCollectionData(items)
+    console.log(loading)
+    console.log("items",itemslist)
+    if (error) console.error(error)
+    if (loading) return <>loading ...</>
+
   return (
     <Box>
       <Tabs>
@@ -37,12 +48,8 @@ const ProfileTaskbars = () => {
             </InputGroup>
 
             <SimpleGrid columns={4} gap={4}>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              {itemslist.filter(item=>item.uid===uid)
+                        .map(ite=><card {...ite} />)}
             </SimpleGrid>
           </TabPanel>
           {/* Requests panel  */}
