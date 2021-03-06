@@ -43,7 +43,7 @@ const SingleItemPage = () => {
   const [item, loading, error] = useDocumentData(query);
   const { t } = useTranslation();
 
-  const isOwner = item && item.uid === currentUser.uid;
+  const isOwner = item && item?.uid === currentUser?.uid;
 
   if (error) return 'an error has occured...';
 

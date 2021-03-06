@@ -17,7 +17,7 @@ import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
-import { DeployingData } from './services/deploy';
+// import { DeployingData } from './services/deploy';
 import { useAuth } from './contexts/AuthContext';
 
 function App() {

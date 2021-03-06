@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -22,7 +22,17 @@ import { MoreHorizontal, User, LogOut } from 'react-feather';
 
 function NavBar() {
   const user = useAuth();
+  const history = useHistory();
   console.log('context user', user);
+
+  const logOut = async () => {
+    try {
+      await auth.signOut();
+      history.push('/auth/signin');
+    } catch (error) {
+      console.log('an error has occured...', error);
+    }
+  };
 
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
@@ -122,7 +132,7 @@ function NavBar() {
                   <Link to={`/profile/${user.uid}`}>
                     <MenuItem icon={<User />}>Profile</MenuItem>
                   </Link>
-                  <MenuItem onClick={() => auth.signOut()} icon={<LogOut />}>
+                  <MenuItem onClick={logOut} icon={<LogOut />}>
                     Logout
                   </MenuItem>
                 </MenuList>
