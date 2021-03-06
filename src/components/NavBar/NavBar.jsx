@@ -9,141 +9,157 @@ import {
   Box,
   Flex,
   Text,
-  HStack,
   Button,
-  Avatar,
   Icon,
-  IconButton,
 } from '@chakra-ui/react';
-import { Globe } from 'react-feather';
-import { auth } from '../../services/firebase';
-import { useAuth } from '../../contexts/AuthContext';
-import { MoreHorizontal, User, LogOut } from 'react-feather';
+import { Globe, X, AlignLeft } from 'react-feather';
 
-function NavBar() {
-  const user = useAuth();
-  console.log('context user', user);
+const MenuItems = ({ children, to = "/", ...rest }) => {
+
+  return (
+    <Text
+      mb={{ base: 8, sm: 0 }}
+      mr={{ base: 0, sm: 8 }}
+      display="block"
+      color={["white", "gray.400", "gray.400", "gray.400"]}
+      fontWeight="medium"
+      {...rest}
+    >
+      <Link to={to} _hover={{ color: 'green.400' }}>{children}</Link>
+    </Text>
+  )
+}
+
+
+function NavBar(props) {
 
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
+  const [show, setShow] = useState(false);
+  const toggleMenu = () => setShow(!show);
+
   return (
-    <Box fontFamily="Montserrat">
-      <Flex
-        justify="space-between"
-        align="center"
-        mx={16}
-        mt={3}
-        fontSize="md"
-        fontWeight="medium"
+
+    <Flex
+      mb={8}
+      px={["2", "2", "10", "14"]}
+      pt={2}
+      w="100%"
+      wrap="wrap"
+      justify="space-between"
+      align="center"
+      fontSize="md"
+      fontWeight="medium"
+      bgColor={{ base: show ? "green.400" : "transparent", md: "transparent" }}
+      {...props}
+    >
+
+      <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
+        {show ? <X size={15} color="white" /> : <Button
+          p={2}
+          borderRadius="md"
+        ><AlignLeft /></Button>}
+      </Box>
+
+      <Box fontSize="2xl" display={{ base: "none", md: "block" }} textColor="black">LOGO</Box>
+
+      <Box
+        display={{ base: show ? "block" : "none", md: "block" }}
+        flexBasis={{ base: "100%", md: "auto" }}
+        position="inherit"
       >
-        <Box fontSize="2xl">LOGO</Box>
-
-        <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
-          <Link to="/">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.home')}</Text>
-          </Link>
-          <Link to="/items">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.items')}</Text>
-          </Link>
-          <Link to="/about">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
-          </Link>
-          <Link to="/contactus">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
-          </Link>
-        </HStack>
-
-        <Flex>
-          <Menu>
-            <MenuButton
-              p={2}
-              transition="all 0.2s"
-              borderRadius="md"
-              _hover={{ bg: 'gray.100', color: 'green.400' }}
-              _expanded={{ bg: 'gray.100' }}
-            >
-              <Box color="gray.400">
-                <Icon as={Globe} mr={0.5} /> {lang}
-              </Box>
-            </MenuButton>
-            <MenuList minW="max-content">
-              <MenuItem
-                onClick={() => {
-                  i18n.changeLanguage('en');
-                  document.body.dir = i18n.dir();
-                  setLang('EN');
-                }}
-              >
-                <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  English
-                </Box>
-              </MenuItem>
-
-              <MenuItem
-                onClick={() => {
-                  i18n.changeLanguage('fr');
-                  document.body.dir = i18n.dir();
-                  setLang('FR');
-                }}
-              >
-                <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  French
-                </Box>
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  i18n.changeLanguage('ar');
-                  document.body.dir = i18n.dir();
-                  setLang('ع');
-                }}
-              >
-                <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  العربية
-                </Box>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-          {user ? (
-            <>
-              <Avatar
-                name={user.email.charAt(0).toUpperCase()}
-                bg="green.500"
-              ></Avatar>
-
-              <Menu>
-                <MenuButton
-                  as={IconButton}
-                  aria-label="Options"
-                  icon={<MoreHorizontal color="white" />}
-                  size="md"
-                  variant="ghost"
-                />
-                <MenuList>
-                  <Link to={`/profile/${user.uid}`}>
-                    <MenuItem icon={<User />}>Profile</MenuItem>
-                  </Link>
-                  <MenuItem onClick={() => auth.signOut()} icon={<LogOut />}>
-                    Logout
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </>
-          ) : (
-            <Link to="/auth/signin">
-              <Button
-                variant="outline"
-                _hover={{ bg: 'green.400', color: 'white' }}
-                _focus={{ boxShadow: 'none' }}
-                colorScheme="black"
-                ml={2}
-              >
-                {t('navbar.getStarted')}
-              </Button>
-            </Link>
-          )}
+        <Flex
+          align={["center", "center", "center", "center"]}
+          justify={["center", "space-between", "space-between", "space-between"]}
+          direction={["column", "row", "row", "row"]}
+          pt={[4, 4, 0, 0]}
+          _hover={{ cursor: 'pointer' }}
+          position="relative"
+          zIndex="2"
+        >
+          <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
+          <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
+          <MenuItems to="/about" _hover={{ color: 'green.400' }}>{t('navbar.about')} </MenuItems>
+          <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
         </Flex>
+      </Box>
+
+      <Flex
+        align={["center", "center", "center", "center"]}
+        justify={["center", "space-between", "space-between", "space-between"]}
+        direction="row"
+        _hover={{ cursor: 'pointer' }}
+        display={{ base: show ? "none" : "block", md: "block" }}
+      >
+        <Menu>
+          <MenuButton
+            p={2}
+            transition="all 0.2s"
+            borderRadius="md"
+            _hover={{ bg: 'gray.100', color: 'green.400' }}
+            _expanded={{ bg: 'gray.100' }}
+          >
+            <Box color="gray.400">
+              <Icon as={Globe} mr={0.5} /> {lang}
+            </Box>
+          </MenuButton>
+          <MenuList minW="max-content">
+            <MenuItem
+              onClick={() => {
+                i18n.changeLanguage('en');
+                document.body.dir = i18n.dir();
+                setLang('EN');
+              }}
+            >
+              <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                EN
+                </Box>
+            </MenuItem>
+
+            <MenuItem
+              onClick={() => {
+                i18n.changeLanguage('fr');
+                document.body.dir = i18n.dir();
+                setLang('FR');
+              }}
+            >
+              <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                FR
+                </Box>
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                i18n.changeLanguage('ar');
+                document.body.dir = i18n.dir();
+                setLang('ع');
+              }}
+            >
+              <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                ع
+                </Box>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+        <Link to="/auth/signin">
+          <Button
+            variant="outline"
+            _hover={{ bg: 'green.400', color: 'white' }}
+            _focus={{ boxShadow: 'none' }}
+            colorScheme="black"
+            bg="white"
+            ml={2}
+          >
+            {t('navbar.getStarted')}
+          </Button>
+        </Link>
+
+
       </Flex>
-    </Box>
+
+
+    </Flex>
+
+
   );
 }
 
