@@ -1,22 +1,25 @@
-import React from 'react';
 import {
   Box,
   Container,
-  Text,
   Input,
   Select,
+  Text,
   Textarea,
 } from '@chakra-ui/react';
-import Dropzonecomp from '../Dropzone/Dropzonecomp';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useTranslation } from 'react-i18next';
 import { firestore } from '../../services/firebase';
+import Dropzonecomp from '../Dropzone/Dropzonecomp';
 
 const AddForm = ({ register, setImage }) => {
   const { t } = useTranslation();
 
-  const categories = firestore.collection('categories');
-  const [categorieslist, loading, error] = useCollectionData(categories);
+  //get all categories
+  const categoriesRef = firestore.collection('categories');
+  const query = categoriesRef.where('name', '>', 'all');
+  const [categories, loading, error] = useCollectionData(query);
+
   if (error) console.error(error);
   if (loading) return <>loading ...</>;
 
@@ -27,12 +30,12 @@ const AddForm = ({ register, setImage }) => {
           <Text mb={2}>{t('additem.title')}</Text>
           <Input
             name="title"
+            boxShadow="inner"
             ref={register}
             type="text"
             size="md"
             variant="filled"
             isRequired
-            focusBorderColor="green.200"
           />
         </Box>
 
@@ -40,16 +43,17 @@ const AddForm = ({ register, setImage }) => {
           <Text mb={2}>{t('additem.category')}</Text>
           <Select
             name="category"
+            boxShadow="inner"
             ref={register}
             size="md"
             variant="filled"
             isRequired
-            focusBorderColor="green.200"
           >
-            {categorieslist.slice(1, categorieslist.length).map((category) => (
-              <option key={Date.now() + '' + Math.random()}>
-                {category.name}
-              </option>
+            <option defaultValue hidden>
+              Please select a category
+            </option>
+            {categories.map((category, index) => (
+              <option key={index}>{category.name}</option>
             ))}
           </Select>
         </Box>
@@ -58,11 +62,11 @@ const AddForm = ({ register, setImage }) => {
           <Text mb={2}>{t('additem.description')}</Text>
           <Textarea
             name="description"
+            boxShadow="inner"
             ref={register}
             size="md"
             variant="filled"
             isRequired
-            focusBorderColor="green.200"
           />
         </Box>
 
