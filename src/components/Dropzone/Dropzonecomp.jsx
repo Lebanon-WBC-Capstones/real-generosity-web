@@ -5,7 +5,6 @@ import { Plus } from 'react-feather';
 import { Icon } from '@chakra-ui/react';
 
 function Dropzonecomp({ dropzoneRef, setImage }) {
-  
   const onDrop = useCallback(
     (acceptedFiles) => {
       // Do something with the files
@@ -25,8 +24,8 @@ function Dropzonecomp({ dropzoneRef, setImage }) {
         <input
           name="image"
           {...getInputProps()}
-           dropzoneRef={dropzoneRef}
-           className="dropzone"
+          dropzoneRef={dropzoneRef}
+          className="dropzone"
         />
         <Icon my="auto" as={Plus} />
       </div>

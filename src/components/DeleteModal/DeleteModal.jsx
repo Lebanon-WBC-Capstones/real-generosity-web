@@ -13,10 +13,10 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-const DeleteModal = ({handleDelete}) => {
+const DeleteModal = ({ handleDelete }) => {
   const handleClick = () => {
-     handleDelete()
-     onClose()
+    handleDelete();
+    onClose();
   };
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();

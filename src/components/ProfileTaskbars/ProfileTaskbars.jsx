@@ -21,12 +21,12 @@ import { useParams } from 'react-router-dom';
 const ProfileTaskbars = () => {
   const { t } = useTranslation();
   const { uid } = useParams();
-  const items = firestore.collection('items')
-  const [itemslist,loading,error]=useCollectionData(items)
-    console.log(loading)
-    console.log("items",itemslist)
-    if (error) console.error(error)
-    if (loading) return <>loading ...</>
+  const items = firestore.collection('items');
+  const [itemslist, loading, error] = useCollectionData(items);
+  console.log(loading);
+  console.log('items', itemslist);
+  if (error) console.error(error);
+  if (loading) return <>loading ...</>;
 
   return (
     <Box>
@@ -48,8 +48,11 @@ const ProfileTaskbars = () => {
             </InputGroup>
 
             <SimpleGrid columns={4} gap={4}>
-              {itemslist.filter(item=>item.uid===uid)
-                        .map(ite=><card {...ite} />)}
+              {itemslist
+                .filter((item) => item.uid === uid)
+                .map((ite) => (
+                  <card {...ite} />
+                ))}
             </SimpleGrid>
           </TabPanel>
           {/* Requests panel  */}

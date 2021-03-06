@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 function AddItemPage() {
-
   // const [title, setTitle] = useState('');
   // const handleTitleChange = (e) => {
   //   setTitle(e.target.value);
@@ -28,48 +27,40 @@ function AddItemPage() {
   // };
   // console.log(picture);
 
-   const [currentPosition, setCurrentPosition] = useState({});
+  const [currentPosition, setCurrentPosition] = useState({});
 
-   const [cityName, setCityName] = useState('');
+  const [cityName, setCityName] = useState('');
 
   const { t } = useTranslation();
   const { register, handleSubmit } = useForm();
   const [image, setImage] = React.useState();
-  const onSubmit=(data)=>{
+  const onSubmit = (data) => {
     data.image = image;
     console.log(data);
-  }
+  };
   return (
     <Container my="45px" maxW="5xl">
-     <form onSubmit={handleSubmit(onSubmit)}>
-      <Flex justify="space-between">
-        <Box maxW='50vw' maxH="60vh" ml={10} mt={8}>
-           <MapForm
-             currentPosition={currentPosition}
-             setCurrentPosition={setCurrentPosition}
-             cityName={cityName}
-             setCityName={setCityName}
-            register={register}
-          /> 
-        </Box>
-        <Box maxW='50vw' >
-          <AddForm
-          register={register}
-          setImage={setImage}
-          />
-        </Box>
-      </Flex>
-      
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Flex justify="space-between">
+          <Box maxW="50vw" maxH="60vh" ml={10} mt={8}>
+            <MapForm
+              currentPosition={currentPosition}
+              setCurrentPosition={setCurrentPosition}
+              cityName={cityName}
+              setCityName={setCityName}
+              register={register}
+            />
+          </Box>
+          <Box maxW="50vw">
+            <AddForm register={register} setImage={setImage} />
+          </Box>
+        </Flex>
+
         <Box mt={8} ml={200}>
-        <Button
-          width={550}
-          size="md"
-          colorScheme="green"
-          type="submit"
-        >
-          {t('additem.addbutton')}
-        </Button></Box>
-      
+          <Button width={550} size="md" colorScheme="green" type="submit">
+            {t('additem.addbutton')}
+          </Button>
+        </Box>
       </form>
     </Container>
   );
