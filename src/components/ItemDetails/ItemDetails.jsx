@@ -5,9 +5,10 @@ import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import RequestModal from '../RequestModal'
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 
-const ItemDetails = ({ isOwner, category, title, createdAt, description }) => {
+const ItemDetails = ({ isOwner,handleDelete,setValue,handleChange,handleRequest, category, title, createdAt, description }) => {
   const history = useHistory();
   const { t } = useTranslation();
 
@@ -60,10 +61,11 @@ const ItemDetails = ({ isOwner, category, title, createdAt, description }) => {
       <Box mb="5" py="10px" minH="100px">
         <Text fontSize="lg">{description}</Text>
       </Box>
-
-      <Button colorScheme="green" w="100%" size="lg">
-        {t('itemPage.request')}
-      </Button>
+   {isOwner || 
+      <RequestModal   setValue={setValue}
+                     handleChange={handleChange}
+                     handleRequest={handleRequest}
+                     />} 
 
       <Flex justify="space-between" pt={50}>
         {isOwner || (
@@ -75,7 +77,7 @@ const ItemDetails = ({ isOwner, category, title, createdAt, description }) => {
             {t('itemPage.report')}
           </Button>
         )}
-        {isOwner && <DeleteModal />}
+        {isOwner && <DeleteModal handleDelete={handleDelete}/>}
       </Flex>
     </Flex>
   );
