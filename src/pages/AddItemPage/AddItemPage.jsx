@@ -1,42 +1,47 @@
+import { Box, Button, Container, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Container, Flex, Box, Button } from '@chakra-ui/react';
-import AddForm from '../../components/AddForm';
-import MapForm from '../../components/MapForm';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import AddForm from '../../components/AddForm';
+import MapForm from '../../components/MapForm';
+import { useAuth } from '../../contexts/AuthContext';
+import firebase, { firestore } from '../../services/firebase';
+import { useHistory } from 'react-router-dom';
 
 function AddItemPage() {
-  // const [title, setTitle] = useState('');
-  // const handleTitleChange = (e) => {
-  //   setTitle(e.target.value);
-  // };
-
-  // const [category, setCategory] = useState('');
-  // const handleCategoryChange = (e) => {
-  //   setCategory(e.target.value);
-  // };
-
-  // const [description, setDescription] = useState('');
-  // const handleDescriptionChange = (e) => {
-  //   setDescription(e.target.value);
-  // };
-
-  // const [picture, setPicture] = useState([]);
-  // const handleUploadChange = (e) => {
-  //   setPicture(e.target.files[0]);
-  // };
-  // console.log(picture);
-
+  const user = useAuth();
+  const history = useHistory();
   const [currentPosition, setCurrentPosition] = useState({});
-
   const [cityName, setCityName] = useState('');
+  const { register, handleSubmit, reset } = useForm();
+  const [image, setImage] = React.useState();
+
+  console.log('image_url', image);
+
+  const itemsRef = firestore.collection('items');
 
   const { t } = useTranslation();
-  const { register, handleSubmit } = useForm();
-  const [image, setImage] = React.useState();
-  const onSubmit = (data) => {
-    data.image = image;
-    console.log(data);
+
+  const onSubmit = async (data) => {
+    const { title, category, description } = data;
+    try {
+      //insert a new document in firestore
+      const doc = await itemsRef.add({
+        title,
+        category,
+        description,
+        image_url: image,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: user.uid,
+      });
+      //grab the document id
+      const docId = await doc.id;
+      //redirect user to the relevant item page
+      history.push(`/item/${docId}`);
+    } catch (error) {
+      console.log('an error has occured...', error);
+    }
+    reset();
   };
   return (
     <Container my="45px" maxW="5xl">
