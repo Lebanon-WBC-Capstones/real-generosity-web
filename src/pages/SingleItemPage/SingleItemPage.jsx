@@ -20,7 +20,23 @@ import ItemRequests from '../../components/ItemRequests';
 import { firestore } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 
+
+
 const SingleItemPage = () => {
+   // delete item function 
+    const handleDelete=()=>{
+      console.log("item deleted")
+    }
+    // requestModal functions
+    const [value, setValue] = React.useState("")
+    const handleChange = (e) => {
+      setValue(e.target.value);
+            } 
+    const handleRequest=()=>{
+              console.log(value)
+            }
+   
+  //query the item from firebase
   const { id } = useParams();
   const currentUser = useAuth();
   const query = firestore.collection('items').doc(id);
@@ -57,16 +73,25 @@ const SingleItemPage = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <ItemDetails isOwner={isOwner} {...item} />
+                  <ItemDetails isOwner={isOwner} 
+                                {...item}  
+                                handleDelete={handleDelete}
+                                setValue={setValue}
+                                handleChange={handleChange}
+                                handleRequest={handleRequest}/>
                 </TabPanel>
                 <TabPanel>
                   <ItemRequests />
-                  {/* <ItemReports /> */}
+                  {/* <ItemReports handleDelete={handleDelete} /> */}
                 </TabPanel>
               </TabPanels>
             </Tabs>
           ) : (
-            <ItemDetails {...item} />
+            <ItemDetails {...item} 
+                        setValue={setValue}
+                         handleChange={handleChange}
+                         handleRequest={handleRequest}
+                         handleDelete={handleDelete}/>
           )}
         </Box>
       </SimpleGrid>
