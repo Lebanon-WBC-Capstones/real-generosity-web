@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import proto from '../../assets/images/proto.png';
 import { auth, firestore } from '../../services/firebase';
 import { useHistory } from 'react-router-dom';
-// import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
+// import Dropzone from '../../components/Dropzone';
 
 function SignUpPage() {
   const { t } = useTranslation();
@@ -131,7 +131,7 @@ function SignUpPage() {
               </Box>
               <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.idupload')}</Text>
-                <Dropzonecomp dropzoneRef={register} setImage={setImage} />
+                <Dropzone dropzoneRef={register} setImage={setImage} />
               </Box> */}
               <Box mt={8}>
                 <Button type="submit" colorScheme="green" w={72}>

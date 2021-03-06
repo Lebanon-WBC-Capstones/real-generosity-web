@@ -10,7 +10,7 @@ import React from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useTranslation } from 'react-i18next';
 import { firestore } from '../../services/firebase';
-import Dropzonecomp from '../Dropzone/Dropzonecomp';
+import Dropzone from '../Dropzone';
 
 const AddForm = ({ register, setImage }) => {
   const { t } = useTranslation();
@@ -72,7 +72,7 @@ const AddForm = ({ register, setImage }) => {
 
         <Box mt={8} fontSize="lg">
           <Text mb={2}>{t('additem.uploadimages')}</Text>
-          <Dropzonecomp dropzoneRef={register} setImage={setImage} />
+          <Dropzone dropzoneRef={register} setImage={setImage} />
         </Box>
       </Box>
     </Container>

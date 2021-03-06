@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, HStack, Text, Input, Button, Image } from '@chakra-ui/react';
-import Dropzonecomp from '../../components/Dropzone/Dropzonecomp';
+import Dropzone from '../../components/Dropzone';
 import proto from '../../assets/images/proto.png';
 import { useTranslation } from 'react-i18next';
 
@@ -88,7 +88,7 @@ function EditProfile() {
 
         <Box mt={8} fontSize="lg" maxW={72} mx="auto">
           <Text mb={2}>ID card</Text>
-          <Dropzonecomp onChange={selectIdCard} />
+          <Dropzone onChange={selectIdCard} />
         </Box>
 
         <Box mt={8} maxW={72} mx="auto">
