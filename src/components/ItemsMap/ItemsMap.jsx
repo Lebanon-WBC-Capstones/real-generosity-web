@@ -1,30 +1,18 @@
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { items } from '../../assets/data/items';
-export const ItemsMap = () => {
-  const defaultCenter = {
-    lat: 34.4346,
-    lng: 35.8362,
-  };
-  const mapStyles = {
-    height: '80vh',
-    width: '40vw',
-  };
 
+export const ItemsMap = ({ coords, initialCenter, mapSize, mapZoom }) => {
   const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   return (
     <div>
       <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={11}
-          center={defaultCenter}
+          mapContainerStyle={mapSize}
+          zoom={mapZoom}
+          center={initialCenter}
         >
-          {items.map((item) => {
+          {coords.map((item) => {
             return (
-              <Marker
-                key={Date.now() + '' + Math.random()}
-                position={item.location.coords}
-              />
+              <Marker key={Date.now() + '' + Math.random()} position={item} />
             );
           })}
         </GoogleMap>
