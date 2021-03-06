@@ -62,7 +62,7 @@ const SingleItemPage = () => {
     <Container maxW="1080px" minH="600px" mx="auto" my={24}>
       <SimpleGrid columns={2}>
         {/* <ImageCarousel /> */}
-        <Image boxSize="500px" src={item.image_url}></Image>
+        <Image boxSize="500px" objectFit={'cover'} src={item.image_url}></Image>
 
         <Box px={10}>
           {isOwner ? (
