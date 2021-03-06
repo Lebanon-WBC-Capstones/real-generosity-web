@@ -85,17 +85,33 @@
     "uploadimages": " Télécharge Images",
     "addbutton": "Ajouter un élément"
   },
-  "herosec": {
-    "heading1": "faire la",
-    "heading2": " en ",
-    "heading3": "donnant",
-    "heading4": "vie de ",
-    "heading5": "de quelqu'un",
-    "heading6": "la",
-    "heading7": " vôtre",
-    "text1": "Aidez à faire du Liban un meilleur endroit",
-    "text2": "un don à la fois",
-    "button": "Faire un Don maintenant"
+
+  "contactUs": {
+    "fullname": "Full Name",
+    "email": "Email Address",
+    "message": "Write your message",
+    "paragraph": "Some relatively long heading paragraph contact Us",
+    "send": "Send",
+    "alert":"your message has been sent successfully"
+  },
+
+  "heroSection": {
+    "heroText_1": "Change la vie",
+    "heroText_2": " de quelqu'un",
+    "heroText_3": " en donnant",
+    "heroText_4": "la",
+    "heroText_5": " vôtre",
+    "paragraph_1": "Aidez à faire du Liban un meilleur endroit",
+    "paragraph_2": "un don à la fois ",
+    "donateButton": "Faire un Don maintenant "
+  },
+  "categoryCards": {
+    "furniture": "fourniture",
+    "clothes": "vêtements",
+    "books": "livres",
+    "toys": "jouets",
+    "medics": "médecins",
+    "appliances": "Dispositifs"
   },
   "itemPage": {
     "items": "éléments",

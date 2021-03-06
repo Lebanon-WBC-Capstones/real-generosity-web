@@ -1,98 +1,72 @@
+import { Box, Button, Container, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Container, Flex, Box, Button } from '@chakra-ui/react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import AddForm from '../../components/AddForm';
 import MapForm from '../../components/MapForm';
-import { items } from '../../assets/data/items';
-import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../contexts/AuthContext';
+import firebase, { firestore } from '../../services/firebase';
+import { useHistory } from 'react-router-dom';
 
 function AddItemPage() {
-  const [title, setTitle] = useState('');
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const [category, setCategory] = useState('');
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-
-  const [description, setDescription] = useState('');
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
-
-  const [picture, setPicture] = useState([]);
-  const handleUploadChange = (e) => {
-    setPicture(e.target.files[0]);
-  };
-  console.log(picture);
-
+  const user = useAuth();
+  const history = useHistory();
   const [currentPosition, setCurrentPosition] = useState({});
-
   const [cityName, setCityName] = useState('');
+  const { register, handleSubmit, reset } = useForm();
+  const [image, setImage] = React.useState();
 
-  const storeItemsData = () => {
-    items.push({
-      id: '',
-      name: title,
-      date: 'Wed May 27 2020 09:59:56 GMT+0530',
-      location: {
-        name: cityName,
-        coords: { lat: currentPosition.lat, Ing: currentPosition.lng },
-      },
-      category: category,
-      imageURL: [],
-      description: description,
-      ownerId: ' ',
-      Active: true,
-      isDelivered: false,
-      reports: [],
-      requests: [],
-    });
-    setTitle('');
-    setCategory('');
-    setDescription('');
-    setPicture([]);
-    setCurrentPosition({});
-    setCityName('');
-    // console.log(items);
-  };
+  console.log('image_url', image);
+
+  const itemsRef = firestore.collection('items');
 
   const { t } = useTranslation();
+
+  const onSubmit = async (data) => {
+    const { title, category, description } = data;
+    try {
+      //insert a new document in firestore
+      const doc = await itemsRef.add({
+        title,
+        category,
+        description,
+        image_url: image,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: user.uid,
+      });
+      //grab the document id
+      const docId = await doc.id;
+      //redirect user to the relevant item page
+      history.push(`/item/${docId}`);
+    } catch (error) {
+      console.log('an error has occured...', error);
+    }
+    reset();
+  };
   return (
-    <Container my="45px" maxW="1080px">
-      <Flex justify="space-between">
-        <Box maxW="60%" maxH="60vh" ml={10} mt={8}>
-          <MapForm
-            currentPosition={currentPosition}
-            setCurrentPosition={setCurrentPosition}
-            cityName={cityName}
-            setCityName={setCityName}
-          />
+    <Container my="45px" maxW="5xl">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Flex justify="space-between">
+          <Box maxW="50vw" maxH="60vh" ml={10} mt={8}>
+            <MapForm
+              currentPosition={currentPosition}
+              setCurrentPosition={setCurrentPosition}
+              cityName={cityName}
+              setCityName={setCityName}
+              register={register}
+            />
+          </Box>
+          <Box maxW="50vw">
+            <AddForm register={register} setImage={setImage} />
+          </Box>
+        </Flex>
+
+        <Box mt={8} ml={200}>
+          <Button width={550} size="md" colorScheme="green" type="submit">
+            {t('additem.addbutton')}
+          </Button>
         </Box>
-        <Box ml={50}>
-          <AddForm
-            title={title}
-            category={category}
-            description={description}
-            picture={picture}
-            handleTitleChange={handleTitleChange}
-            handleCategoryChange={handleCategoryChange}
-            handleDescriptionChange={handleDescriptionChange}
-            handleUploadChange={handleUploadChange}
-          />
-        </Box>
-      </Flex>
-      <Flex mt={8} ml={200}>
-        <Button
-          width={550}
-          size="md"
-          colorScheme="green"
-          onClick={storeItemsData}
-        >
-          {t('additem.addbutton')}
-        </Button>
-      </Flex>
+      </form>
     </Container>
   );
 }

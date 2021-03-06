@@ -8,14 +8,14 @@ import { useTranslation } from 'react-i18next';
 const CardList = () => {
   const { t } = useTranslation();
   return (
-    <Box maxWidth="1080px" mx="auto">
+    <Box maxWidth="4xl" mx="auto">
       <Box d="flex" justifyContent="space-between" fontSize="md" mb="5px">
         <Box>
           <Heading size="md">{t('cardlist.heading')}</Heading>
         </Box>
         <Box>
           <Link to="/items">
-            <Heading size="md" color="blue.400" textDecoration="underline">
+            <Heading size="md" color="blue.400">
               {t('cardlist.heading1')}
             </Heading>
           </Link>

@@ -1,21 +1,23 @@
 import React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import sofa from '../../assets/images/sofa.png';
-export default function CarouselComponent() {
+import { Box, Image } from '@chakra-ui/react';
+import { items } from '../../assets/data/items';
+import { useParams } from 'react-router-dom';
+const Carouselimg = () => {
+  const { id } = useParams();
+  const item = items.find((item) => item.id === id);
   return (
-    <div class="carousel-wrapper">
-      <Carousel infiniteLoop useKeyboardArrows autoPlay>
-        <div>
-          <img src={sofa} />
-        </div>
-        <div>
-          <img src={sofa} />
-        </div>
-        <div>
-          <img src={sofa} />
-        </div>
-      </Carousel>
-    </div>
+    <Carousel autoPlay>
+      <Box>
+        <Image boxSize="500px" src={`${item.imageURL[0]}`}></Image>
+      </Box>
+      <Box>
+        <Image boxSize="500px" src={`${item.imageURL[2]}`}></Image>
+      </Box>
+      <Box>
+        <Image boxSize="500px" src={`${item.imageURL[2]}`}></Image>
+      </Box>
+    </Carousel>
   );
-}
+};
+export default Carouselimg;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -11,15 +11,33 @@ import {
   Text,
   HStack,
   Button,
+  Avatar,
   Icon,
+  IconButton,
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
+import { auth } from '../../services/firebase';
+import { useAuth } from '../../contexts/AuthContext';
+import { MoreHorizontal, User, LogOut } from 'react-feather';
 
 function NavBar() {
+  const user = useAuth();
+  const history = useHistory();
+  console.log('context user', user);
+
+  const logOut = async () => {
+    try {
+      await auth.signOut();
+      history.push('/auth/signin');
+    } catch (error) {
+      console.log('an error has occured...', error);
+    }
+  };
+
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
   return (
-    <Box>
+    <Box fontFamily="Montserrat">
       <Flex
         justify="space-between"
         align="center"
@@ -41,10 +59,7 @@ function NavBar() {
             <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
           </Link>
           <Link to="/contactus">
-            <Text _hover={{ color: 'green.400' }}>
-              {' '}
-              {t('navbar.contactUs')}
-            </Text>
+            <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
           </Link>
         </HStack>
 
@@ -70,7 +85,7 @@ function NavBar() {
                 }}
               >
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  EN
+                  English
                 </Box>
               </MenuItem>
 
@@ -82,7 +97,7 @@ function NavBar() {
                 }}
               >
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  FR
+                  French
                 </Box>
               </MenuItem>
               <MenuItem
@@ -93,22 +108,49 @@ function NavBar() {
                 }}
               >
                 <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  ع
+                  العربية
                 </Box>
               </MenuItem>
             </MenuList>
           </Menu>
-          <Link to="/auth/signin">
-            <Button
-              variant="outline"
-              _hover={{ bg: 'green.400', color: 'white' }}
-              _focus={{ boxShadow: 'none' }}
-              colorScheme="black"
-              ml={2}
-            >
-              {t('navbar.getStarted')}
-            </Button>
-          </Link>
+          {user ? (
+            <>
+              <Avatar
+                name={user.email.charAt(0).toUpperCase()}
+                bg="green.500"
+              ></Avatar>
+
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<MoreHorizontal color="white" />}
+                  size="md"
+                  variant="ghost"
+                />
+                <MenuList>
+                  <Link to={`/profile/${user.uid}`}>
+                    <MenuItem icon={<User />}>Profile</MenuItem>
+                  </Link>
+                  <MenuItem onClick={logOut} icon={<LogOut />}>
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </>
+          ) : (
+            <Link to="/auth/signin">
+              <Button
+                variant="outline"
+                _hover={{ bg: 'green.400', color: 'white' }}
+                _focus={{ boxShadow: 'none' }}
+                colorScheme="black"
+                ml={2}
+              >
+                {t('navbar.getStarted')}
+              </Button>
+            </Link>
+          )}
         </Flex>
       </Flex>
     </Box>

@@ -3,8 +3,8 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const MapForm = ({ currentPosition, setCurrentPosition, setCityName }) => {
   const mapStyles = {
-    height: '55vh',
-    width: '50vw',
+    height: '60vh',
+    width: '35vw',
   };
 
   const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -24,17 +24,16 @@ const MapForm = ({ currentPosition, setCurrentPosition, setCityName }) => {
       });
   };
 
-  const success = () => {
-    const currentPos = {
-      lat: 34.4346,
-      lng: 35.8362,
-    };
-    setCurrentPosition(currentPos);
-  };
-
   useEffect(() => {
+    const success = () => {
+      const currentPos = {
+        lat: 34.4346,
+        lng: 35.8362,
+      };
+      setCurrentPosition(currentPos);
+    };
     navigator.geolocation.getCurrentPosition(success);
-  }, []);
+  }, [setCurrentPosition]);
 
   return (
     <div>

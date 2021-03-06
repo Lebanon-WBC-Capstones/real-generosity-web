@@ -5,10 +5,18 @@ import NavBar from '../NavBar';
 
 function Layout({ children }) {
   return (
-    <Flex minH="100vh" direction="column">
+    <Flex
+      minH="100vh"
+      direction="column"
+      justify="space-evenly"
+      maxW={{ xl: "1200px" }}
+      m="0 auto"
+    >
+
       <NavBar />
       <Box flex="1">{children}</Box>
       <Footer />
+
     </Flex>
   );
 }

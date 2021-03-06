@@ -1,31 +1,40 @@
-import React from 'react';
 import {
   Box,
-  HStack,
-  Text,
-  MenuButton,
-  MenuList,
-  Menu,
-  MenuItem,
   Button,
-  Tabs,
-  TabList,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Tab,
+  TabList,
+  Tabs,
+  Text,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { Plus } from 'react-feather';
+import { Link } from 'react-router-dom';
 import { categories } from '../../assets/data/categories';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
-const Category = () => {
-  const { t } = useTranslation();
+const Category = ({ setCategoryName, setCategoryPic }) => {
+  // const { t } = useTranslation();
   return (
     <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
-        <Tabs variant="soft-rounded" colorScheme="gray">
+        <Tabs variant="soft-rounded" colorScheme="green">
           <TabList>
-            {categories.map((x) => (
-              <Tab key={Date.now() + '' + Math.random()}>{x.name}</Tab>
+            {categories.map((cat) => (
+              <Tab
+                key={Date.now() + '' + Math.random()}
+                onClick={() => {
+                  setCategoryName(cat.name);
+                  setCategoryPic(cat.imgURL);
+                  // console.log(cat.imgURL);
+                }}
+              >
+                {cat.name}
+              </Tab>
             ))}
           </TabList>
         </Tabs>
@@ -40,7 +49,7 @@ const Category = () => {
               _expanded={{ bg: 'gray.100' }}
             >
               <Box>
-                <Text> Newest</Text>
+                <Text>Newest</Text>
               </Box>
             </MenuButton>
             <MenuList minW="max-content">

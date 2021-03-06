@@ -1,83 +1,81 @@
+import {
+  Box,
+  Container,
+  Input,
+  Select,
+  Text,
+  Textarea,
+} from '@chakra-ui/react';
 import React from 'react';
-import { Box, Flex, Text, Input, Select } from '@chakra-ui/react';
-import Dropzonecomp from '../Dropzone/Dropzonecomp';
-import { categories } from '../../assets/data/categories';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useTranslation } from 'react-i18next';
+import { firestore } from '../../services/firebase';
+import Dropzone from '../Dropzone';
 
-const AddForm = ({
-  title,
-  category,
-  description,
-  picture,
-  handleTitleChange,
-  handleCategoryChange,
-  handleDescriptionChange,
-  handleUploadChange,
-}) => {
+const AddForm = ({ register, setImage }) => {
   const { t } = useTranslation();
+
+  //get all categories
+  const categoriesRef = firestore.collection('categories');
+  const query = categoriesRef.where('name', '>', 'all');
+  const [categories, loading, error] = useCollectionData(query);
+
+  if (error) console.error(error);
+  if (loading) return <>loading ...</>;
+
   return (
-    <Flex fontSize={15} fontWeight={400}>
-      <Box width={250}>
+    <Container fontSize={15} fontWeight={400} width={400}>
+      <Box>
         <Box mt={4} fontSize="lg">
           <Text mb={2}>{t('additem.title')}</Text>
           <Input
-            value={title}
-            onChange={handleTitleChange}
-            size="sm"
+            name="title"
+            boxShadow="inner"
+            ref={register}
+            type="text"
+            size="md"
             variant="filled"
             isRequired
-            focusBorderColor="green.200"
-            maxWidth={72}
           />
         </Box>
 
         <Box mt={8} fontSize="lg">
           <Text mb={2}>{t('additem.category')}</Text>
           <Select
-            value={category}
-            onChange={handleCategoryChange}
-            size="sm"
+            name="category"
+            boxShadow="inner"
+            ref={register}
+            size="md"
             variant="filled"
             isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
           >
-            {categories.map((x) => (
-              <option key={Date.now() + '' + Math.random()}>{x.name}</option>
+            <option defaultValue hidden>
+              Please select a category
+            </option>
+            {categories.map((category, index) => (
+              <option key={index}>{category.name}</option>
             ))}
           </Select>
         </Box>
 
         <Box mt={8} fontSize="lg">
           <Text mb={2}>{t('additem.description')}</Text>
-          <Input
-            value={description}
-            onChange={handleDescriptionChange}
-            size="sm"
+          <Textarea
+            name="description"
+            boxShadow="inner"
+            ref={register}
+            size="md"
             variant="filled"
             isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
           />
         </Box>
 
         <Box mt={8} fontSize="lg">
           <Text mb={2}>{t('additem.uploadimages')}</Text>
-          <Dropzonecomp
-            value={picture}
-            onChange={handleUploadChange}
-            size="sm"
-            variant="filled"
-            isRequired
-            maxWidth={72}
-            focusBorderColor="green.200"
-          />
+          <Dropzone dropzoneRef={register} setImage={setImage} />
         </Box>
-        {/* <Box mt={8} mr={80} width={350}>
-          <Button colorScheme="green">Add Item</Button>
-        </Box> */}
       </Box>
-    </Flex>
+    </Container>
   );
 };
 
