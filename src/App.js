@@ -1,63 +1,86 @@
 import React, { Suspense, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import Layout from './components/Layout';
-import ItemsPage from './pages/ItemsPage';
-import HomePage from './pages/HomePage';
-import SignUpPage from './pages/SignUpPage';
-import SignInPage from './pages/SignInPage';
-import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
-import ProfileSettingsPage from './pages/ProfileSettingsPage';
-import SingleItemPage from './pages/SingleItemPage';
-import ContactUsPage from './pages/ContactUsPage';
 import AdminPage from './pages/AdminPage';
+import ContactUsPage from './pages/ContactUsPage';
+import HomePage from './pages/HomePage';
+import ItemsPage from './pages/ItemsPage';
+import ProfilePage from './pages/ProfilePage';
+import ProfileSettingsPage from './pages/ProfileSettingsPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
+import SingleItemPage from './pages/SingleItemPage';
+import { DeployingData } from './services/deploy';
+import { useAuth } from './contexts/AuthContext';
 
 function App() {
+  const currentUser = useAuth();
   const [query, setQuery] = useState('');
   console.log('query', query);
 
   return (
     <div className="App">
+      {/* <DeployingData /> */}
       <Router>
         <Suspense fallback="loading">
-          <Layout>
-            <Switch>
-              <Route exact path="/">
+          <Switch>
+            <Route exact path="/">
+              <Layout>
                 <HomePage setQuery={setQuery} />
-              </Route>
-              <Route exact path="/auth/signin">
-                <SignInPage />
-              </Route>
-              <Route exact path="/auth/signup">
-                <SignUpPage />
-              </Route>
-              <Route exact path="/add-item">
-                <AddItemPage />
-              </Route>
-              <Route exact path="/items">
+              </Layout>
+            </Route>
+            <Route exact path="/auth/signin">
+              <SignInPage />
+            </Route>
+            <Route exact path="/auth/signup">
+              <SignUpPage />
+            </Route>
+            <Route exact path="/add-item">
+              <Layout>
+                {currentUser ? <AddItemPage /> : <Redirect to="/auth/signin" />}
+              </Layout>
+            </Route>
+            <Route exact path="/items">
+              <Layout>
                 <ItemsPage />
-              </Route>
-              <Route exact path="/item/:id">
+              </Layout>
+            </Route>
+            <Route exact path="/item/:id">
+              <Layout>
                 <SingleItemPage />
-              </Route>
-              <Route exact path="/about">
+              </Layout>
+            </Route>
+            <Route exact path="/about">
+              <Layout>
                 <AboutPage />
-              </Route>
-              <Route exact path="/contactus">
-                <ContactUsPage />
-              </Route>
-              <Route exact path="/profile">
+              </Layout>
+            </Route>
+            <Route exact path="/contactus">
+              <ContactUsPage />
+            </Route>
+            <Route exact path="/profile/:uid">
+              <Layout>
                 <ProfilePage />
-              </Route>
-              <Route exact path="/admin">
+              </Layout>
+            </Route>
+            <Route exact path="/admin">
+              <Layout>
                 <AdminPage />
-              </Route>
-              <Route exact path="/profile/settings">
+              </Layout>
+            </Route>
+            <Route exact path="/profile/:uid/settings">
+              <Layout>
                 <ProfileSettingsPage />
-              </Route>
-            </Switch>
-          </Layout>
+              </Layout>
+            </Route>
+          </Switch>
         </Suspense>
       </Router>
     </div>

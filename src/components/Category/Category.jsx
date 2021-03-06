@@ -1,19 +1,19 @@
-import React from 'react';
 import {
   Box,
-  HStack,
-  Text,
-  MenuButton,
-  MenuList,
-  Menu,
-  MenuItem,
   Button,
-  Tabs,
-  TabList,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Tab,
+  TabList,
+  Tabs,
+  Text,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { Plus } from 'react-feather';
+import { Link } from 'react-router-dom';
 import { categories } from '../../assets/data/categories';
 // import { useTranslation } from 'react-i18next';
 

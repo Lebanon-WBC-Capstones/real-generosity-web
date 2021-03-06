@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import {
   Box,
   Image,
-  Text,
   Grid,
   GridItem,
   Flex,
   Input,
+  Text,
   Textarea,
   Button,
 } from '@chakra-ui/react';
@@ -32,14 +32,16 @@ function ContactUsPage() {
     setMessage(e.target.value);
   };
   return (
-<Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
+    <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
       <GridItem colSpan={1}>
         <Image fit="contain" src={proto} alt="contact us img" />
       </GridItem>
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
-          <Box fontSize="4xl">LOGO</Box>
+          <Link to="/">
+            <Box fontSize="4xl">LOGO</Box>
+          </Link>
           <Link to="/auth/login">
             <Button
               variant="outline"
@@ -67,7 +69,7 @@ function ContactUsPage() {
                 maxWidth={72}
               />
             </Box>
-            
+
             <Box mt={8} fontSize="lg">
               <Text mb={2}>{t('contactUs.email')}</Text>
               <Input

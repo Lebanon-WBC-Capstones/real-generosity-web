@@ -1,12 +1,20 @@
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
-import { Box, Button, Flex, Text, Image } from '@chakra-ui/react';
-import heroSectionImage from '../../assets/images/hero-section-image.png';
-import './HeroSection.css';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import heroSectionImage from '../../assets/images/hero-section-image.png';
+import { useAuth } from '../../contexts/AuthContext';
+import './HeroSection.css';
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const history = useHistory();
+
+  const currentUser = useAuth();
+
+  const handleClick = () => {
+    currentUser ? history.push('/add-item') : history.push('/auth/signin');
+  };
 
   return (
     <Flex>
@@ -28,11 +36,16 @@ const HeroSection = () => {
           <br />
           {t('heroSection.paragraph_2')}
         </Text>
-        <Link to="/add-item">
-          <Button colorScheme="green" py="8" px="20" fontSize="2xl">
-            {t('heroSection.donateButton')}
-          </Button>
-        </Link>
+
+        <Button
+          onClick={handleClick}
+          colorScheme="green"
+          py="8"
+          px="20"
+          fontSize="2xl"
+        >
+          {t('heroSection.donateButton')}
+        </Button>
       </Box>
       <Image
         src={heroSectionImage}

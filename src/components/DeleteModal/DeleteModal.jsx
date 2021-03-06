@@ -13,9 +13,10 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-const DeleteModal = () => {
-  const handleDelete = () => {
-    console.log('deleted');
+const DeleteModal = ({handleDelete}) => {
+  const handleClick = () => {
+     handleDelete()
+     onClose()
   };
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -49,7 +50,7 @@ const DeleteModal = () => {
               textColor="white"
               px="12"
               py="4"
-              onClick={handleDelete}
+              onClick={handleClick}
             >
               {t('itemPage.delete')}
             </Button>

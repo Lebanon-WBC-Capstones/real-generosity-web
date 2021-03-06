@@ -4,6 +4,8 @@ import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import Header from '../../components/Header';
 import Category from '../../components/Category';
 import ItemsList from '../../components/ItemsList';
+import { firestore } from '../../services/firebase';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('All');
@@ -14,6 +16,10 @@ const ItemsPage = () => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
+  const query = firestore.collection('items');
+  const [items, loading, error] = useCollection(query);
+
+  if (error) return 'an error has occured...';
 
   return (
     <Container my="45px" maxW="1080px" fontFamily="Montserrat">
@@ -26,6 +32,7 @@ const ItemsPage = () => {
           itemsCounter={itemsCounter}
         />
       </Box>
+
       <Box mb="45px">
         <Category
           setCategoryName={setCategoryName}
@@ -35,11 +42,8 @@ const ItemsPage = () => {
 
       <Flex justify="space-between">
         <Box w="50%">
-          <ItemsList
-            searchQuery={searchQuery}
-            itemsCounter={itemsCounter}
-            setItemsCounter={setItemsCounter}
-          />
+          {loading && 'loading...'}
+          {items && <ItemsList items={items.docs} />}
         </Box>
         <Box w="50%" ml={30}>
           <ItemsMap />

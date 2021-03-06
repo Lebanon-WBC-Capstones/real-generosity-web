@@ -4,12 +4,15 @@ import App from './App';
 import './i18n';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <AuthProvider>
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
