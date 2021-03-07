@@ -1,12 +1,12 @@
-import { Box, SimpleGrid, Heading } from '@chakra-ui/react';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
-import Card from '../Card';
-import { Link } from 'react-router-dom';
-import { items } from '../../assets/data/items';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import Card from '../../components/Card';
 
-const CardList = () => {
+const CardList = ({ items }) => {
   const { t } = useTranslation();
+
   return (
     <Box maxWidth="4xl" mx="auto">
       <Box d="flex" justifyContent="space-between" fontSize="md" mb="5px">
@@ -22,9 +22,11 @@ const CardList = () => {
         </Box>
       </Box>
       <SimpleGrid spacing={2} bg="white" columns={[1, 2, 3, 4]}>
-        {items.slice(0, 4).map((item) => (
-          <Card {...item} />
-        ))}
+        {items.map((item) => {
+          console.log(item.data());
+          console.log(item.id);
+          return <Card key={item.id} id={item.id} {...item.data()} />;
+        })}
       </SimpleGrid>
     </Box>
   );
