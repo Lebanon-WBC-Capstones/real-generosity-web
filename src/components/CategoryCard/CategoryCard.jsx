@@ -8,7 +8,7 @@ const CategoryCard = ({ categoryPic, direction, categoryName, ml, mt }) => {
       <Flex
         mb="4"
         fontSize="md"
-        Width="100%"
+        width="100%"
         height="100%"
         justifyContent="center"
         _hover={{ cursor: 'pointer' }}
