@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import {
+  Box,
+  Button,
+  CloseButton,
+  Flex,
+  Icon, 
   Menu,
   MenuButton,
+  MenuItem, 
   MenuList,
-  MenuItem,
-  Box,
-  Flex,
-  Text,
-  Button,
-  Icon,
+  Text
 } from '@chakra-ui/react';
-import { Globe, X, AlignLeft } from 'react-feather';
+import React, { useState } from 'react';
+import { AlignLeft, Globe } from 'react-feather';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const MenuItems = ({ children, to = "/", ...rest }) => {
 
   return (
     <Text
       mb={{ base: 8, sm: 0 }}
-      mr={{ base: 0, sm: 8 }}
+      mx={{ base: 0, sm: 8 }}
       display="block"
-      color={["white", "gray.400", "gray.400", "gray.400"]}
+      color={["white", "white", "gray.400", "gray.400"]}
       fontWeight="medium"
       {...rest}
     >
@@ -44,6 +45,7 @@ function NavBar(props) {
       mb={8}
       px={["2", "2", "10", "14"]}
       pt={2}
+      pb={["0", "8", "0", "0"]}
       w="100%"
       wrap="wrap"
       justify="space-between"
@@ -55,7 +57,7 @@ function NavBar(props) {
     >
 
       <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
-        {show ? <X size={15} color="white" /> : <Button
+        {show ? <CloseButton size="md" color="white" /> : <Button
           p={2}
           borderRadius="md"
         ><AlignLeft /></Button>}
@@ -65,8 +67,11 @@ function NavBar(props) {
 
       <Box
         display={{ base: show ? "block" : "none", md: "block" }}
+        opacity={{base: show ? "1" : "0", md: "1"}}
+        animateOpacity
         flexBasis={{ base: "100%", md: "auto" }}
         position="inherit"
+        height={{base: show ? "100vh": "auto", sm: show ?"10vh": "auto", md:"auto"}}
       >
         <Flex
           align={["center", "center", "center", "center"]}
@@ -74,8 +79,7 @@ function NavBar(props) {
           direction={["column", "row", "row", "row"]}
           pt={[4, 4, 0, 0]}
           _hover={{ cursor: 'pointer' }}
-          position="relative"
-          zIndex="2"
+          
         >
           <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
           <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
