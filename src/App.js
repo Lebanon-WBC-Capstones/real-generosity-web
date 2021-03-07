@@ -13,11 +13,11 @@ import ContactUsPage from './pages/ContactUsPage';
 import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
 import ProfilePage from './pages/ProfilePage';
-import ProfileSettingsPage from './pages/ProfileSettingsPage';
+import EditProfilePage from './pages/EditProfile';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
-// import { DeployingData } from './services/deploy';
+//import { DeployingData } from './services/deploy';
 import { useAuth } from './contexts/AuthContext';
 
 function App() {
@@ -77,7 +77,7 @@ function App() {
             </Route>
             <Route exact path="/profile/:uid/settings">
               <Layout>
-                <ProfileSettingsPage />
+                <EditProfilePage />
               </Layout>
             </Route>
           </Switch>
