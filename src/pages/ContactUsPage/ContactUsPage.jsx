@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import emailjs from 'emailjs-com';
+import GetStartedBtn from "../../components/GetStartedBtn/GetStartedBtn"
 import {
   Box,
   Image,
@@ -12,13 +15,12 @@ import {
   Button,
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
-import { useTranslation } from 'react-i18next';
-import emailjs from 'emailjs-com';
+
 
  function ContactUsPage() {
   const { t } = useTranslation();
-
-  const sendEmail=(e)=>{
+ 
+ const sendEmail=(e)=>{
     e.preventDefault();
 
      emailjs.sendForm('real_generosity', 'template_in561cn', e.target, 'user_0AZ26wMMAKxuuS0KdvVRX')
@@ -45,16 +47,7 @@ import emailjs from 'emailjs-com';
           <Link to="/">
             <Box fontSize="4xl">LOGO</Box>
           </Link>
-          <Link to="/auth/login">
-            <Button
-              variant="outline"
-              colorScheme="black"
-              _hover={{ bg: 'green.500', color: 'white' }}
-              _focus={{ boxShadow: 'none' }}
-            >
-              {t('signin.signinbutton')}
-            </Button>
-          </Link>
+           <GetStartedBtn />
         </Flex>
 
         <Flex minH="80vh" align="center" justify="space-between">
