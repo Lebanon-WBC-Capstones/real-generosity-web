@@ -24,8 +24,6 @@ const ProfileTaskbars = () => {
   const { uid } = useParams();
   const items = firestore.collection('items').where('uid','==',uid);
   const [itemslist, loading, error] = useCollection(items);
-  console.log(loading);
-  console.log('items', itemslist);
   if (error) console.error(error);
   if (loading) return <>loading ...</>;
 
