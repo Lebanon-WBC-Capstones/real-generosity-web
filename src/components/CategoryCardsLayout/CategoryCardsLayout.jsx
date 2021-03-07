@@ -10,7 +10,7 @@ import appliances from '../../assets/images/appliances.png';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-const CategoryCardsLayout = ({ setQuery }) => {
+const CategoryCardsLayout = () => {
   const { t } = useTranslation();
 
   return (
@@ -22,13 +22,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
         templateColumns="repeat(25, 1fr)"
         gap={4}
       >
-        <GridItem
-          onClick={() => setQuery('furniture')}
-          borderRadius="xl"
-          colSpan={8}
-          rowSpan={12}
-          bg="#EAEAF1"
-        >
+        <GridItem borderRadius="xl" colSpan={8} rowSpan={12} bg="#EAEAF1">
           <Link to="/auth//items">
             <CategoryCard
               categoryPic={sofa}
@@ -38,13 +32,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
             ></CategoryCard>
           </Link>
         </GridItem>
-        <GridItem
-          onClick={() => setQuery('clothes')}
-          borderRadius="xl"
-          colSpan={5}
-          rowSpan={6}
-          bg="#F6E8CD"
-        >
+        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#F6E8CD">
           <Link to="/auth//items">
             <CategoryCard
               categoryPic={Clothes}
@@ -53,13 +41,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
             ></CategoryCard>
           </Link>
         </GridItem>
-        <GridItem
-          onClick={() => setQuery('books')}
-          borderRadius="xl"
-          colSpan={5}
-          rowSpan={6}
-          bg="#CBECE9"
-        >
+        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#CBECE9">
           <Link to="/auth//items">
             <CategoryCard
               categoryPic={book}
@@ -68,13 +50,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
             ></CategoryCard>
           </Link>
         </GridItem>
-        <GridItem
-          onClick={() => setQuery('toys')}
-          borderRadius="xl"
-          colSpan={7}
-          rowSpan={6}
-          bg="#E6D0EF"
-        >
+        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#E6D0EF">
           <Link to="/auth//items">
             <CategoryCard
               categoryPic={toys}
@@ -84,13 +60,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
             ></CategoryCard>
           </Link>
         </GridItem>
-        <GridItem
-          onClick={() => setQuery('medics')}
-          borderRadius="xl"
-          colSpan={7}
-          rowSpan={6}
-          bg="#F0D0D2"
-        >
+        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#F0D0D2">
           <Link to="/auth//items">
             <CategoryCard
               categoryPic={medicalkit}
@@ -100,13 +70,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
             ></CategoryCard>
           </Link>
         </GridItem>
-        <GridItem
-          onClick={() => setQuery('appliances')}
-          borderRadius="xl"
-          colSpan={10}
-          rowSpan={6}
-          bg="#CFD6F2"
-        >
+        <GridItem borderRadius="xl" colSpan={10} rowSpan={6} bg="#CFD6F2">
           <Link to="/auth//items">
             <CategoryCard
               categoryPic={appliances}
