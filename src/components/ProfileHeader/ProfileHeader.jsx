@@ -12,7 +12,7 @@ import { MapPin, Phone } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 
 const ProfileHeader = () => {
   const { t } = useTranslation();
@@ -40,9 +40,9 @@ const ProfileHeader = () => {
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
             <Text fontSize="2xl" fontWeight="semibold" color="black.500">
-              {/* {users[0].name} */}
               {fullname}
             </Text>
+            <Link to={`/profile/${uid}/settings`}>
             <Button
               rounded="5px"
               size="xs"
@@ -55,12 +55,10 @@ const ProfileHeader = () => {
             >
               {t('profilePage.editProfile')}
             </Button>
+            </Link>
           </HStack>
           <VStack spacing="6px" align="right">
             <Text fontSize="11px" fontWeight="semibold">
-              {t('profilePage.donations')}
-              {/* {users[0].itemsDonated.length}  */}
-              {/* items donated */}
               {email}
             </Text>
             <HStack color="gray.500">
@@ -70,7 +68,6 @@ const ProfileHeader = () => {
             <HStack color="black">
               <Phone size="11" />
               <Box fontSize="11px">
-                {/* {users[0].mobileNumber} */}
                 {phoneNumber}
               </Box>
             </HStack>
