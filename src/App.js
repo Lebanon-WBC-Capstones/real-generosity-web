@@ -1,11 +1,13 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
-  Redirect,
 } from 'react-router-dom';
 import Layout from './components/Layout';
+// import { DeployingData } from './services/deploy';
+import { useAuth } from './contexts/AuthContext';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
 import AdminPage from './pages/AdminPage';
@@ -17,13 +19,9 @@ import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
-// import { DeployingData } from './services/deploy';
-import { useAuth } from './contexts/AuthContext';
 
 function App() {
   const currentUser = useAuth();
-  const [query, setQuery] = useState('');
-  console.log('query', query);
 
   return (
     <div className="App">
@@ -33,7 +31,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Layout>
-                <HomePage setQuery={setQuery} />
+                <HomePage />
               </Layout>
             </Route>
             <Route exact path="/auth/signin">
