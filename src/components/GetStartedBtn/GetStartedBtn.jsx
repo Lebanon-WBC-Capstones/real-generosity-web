@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link,  useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MoreHorizontal, User, LogOut } from 'react-feather';
+import { ChevronDown, User, LogOut,Bell,Gift,ShoppingBag,AlertCircle} from 'react-feather';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import {
@@ -33,19 +33,40 @@ import {
           <>
     {user ? (
           <HStack>
+               <Menu border="1px">
+             
+               <MenuButton
+                  as={IconButton}
+                  color="gray.400"
+                  aria-label="Options"
+                  icon={<Bell  />}
+                  size="md"
+                  variant="ghost"
+
+                />
+               
+                <MenuList>
+                  
+                    <MenuItem icon={<Gift />}> approval</MenuItem>
+                    <MenuItem icon={<ShoppingBag />}>request</MenuItem>
+                    <MenuItem icon={<AlertCircle />}> report</MenuItem>
+                </MenuList>
+              </Menu>
               <Avatar
                 name={user.email.charAt(0).toUpperCase()}
                 bg="green.500"
               ></Avatar>
 
-              <Menu border="1px">
+              <Menu>
                 <MenuButton
                   as={IconButton}
                   aria-label="Options"
-                  icon={<MoreHorizontal color="#718096" />}
+                  icon={< ChevronDown  />}
                   size="md"
                   variant="ghost"
+                  color="gray.400"
                 />
+                
                 <MenuList>
                   <Link to={`/profile/${user.uid}`}>
                     <MenuItem icon={<User />}>Profile</MenuItem>
@@ -55,6 +76,7 @@ import {
                   </MenuItem>
                 </MenuList>
               </Menu>
+           
               </HStack>
            
           ) : (
