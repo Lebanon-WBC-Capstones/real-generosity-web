@@ -1,14 +1,12 @@
 import { Badge, Box, Button, Flex, HStack, Text } from '@chakra-ui/react';
-
 import React from 'react';
 import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
-import DeleteModal from '../DeleteModal/DeleteModal';
-import RequestModal from '../RequestModal';
+import { useHistory } from 'react-router-dom';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 import { useLocation } from '../../hooks/useLocation';
-import { firestore } from '../../services/firebase';
+import DeleteModal from '../DeleteModal/DeleteModal';
+import RequestModal from '../RequestModal';
 
 const ItemDetails = ({
   isOwner,
@@ -20,13 +18,12 @@ const ItemDetails = ({
   title,
   createdAt,
   description,
+  location,
 }) => {
   const history = useHistory();
-  const { id } = useParams();
   const { t } = useTranslation();
 
-  const query = firestore.collection('items').doc(id);
-  const { cityName, isLoading } = useLocation(query);
+  const { cityName, isLoading } = useLocation(location);
 
   console.log('item details city name', cityName);
 
