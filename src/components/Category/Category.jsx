@@ -20,7 +20,7 @@ import { categories } from '../../assets/data/categories';
 const Category = ({ setCategoryName, setCategoryPic }) => {
   // const { t } = useTranslation();
   return (
-    <Box py="10" width={1080} as="Category" fontSize={15} fontWeight={400}>
+    <Box py="10" width={1080} fontSize={15} fontWeight={400}>
       <HStack spacing={10} mb="10" color="black">
         <Tabs variant="soft-rounded" colorScheme="green">
           <TabList>

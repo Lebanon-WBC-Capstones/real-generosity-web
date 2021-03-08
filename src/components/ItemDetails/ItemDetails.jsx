@@ -1,12 +1,12 @@
 import { Badge, Box, Button, Flex, HStack, Text } from '@chakra-ui/react';
-
 import React from 'react';
 import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import { convertTimestamp } from '../../helpers/convertTimestamp';
+import { useLocation } from '../../hooks/useLocation';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import RequestModal from '../RequestModal';
-import { convertTimestamp } from '../../helpers/convertTimestamp';
 
 const ItemDetails = ({
   isOwner,
@@ -18,9 +18,14 @@ const ItemDetails = ({
   title,
   createdAt,
   description,
+  location,
 }) => {
   const history = useHistory();
   const { t } = useTranslation();
+
+  const { cityName, isLoading } = useLocation(location);
+
+  console.log('item details city name', cityName);
 
   return (
     <Flex d="column" maxW="400px" fontSize={18}>
@@ -52,7 +57,8 @@ const ItemDetails = ({
           <HStack color="gray.500">
             <MapPin />
             <Box fontSize="md" color="gray.500">
-              Tripoli,mina
+              {isLoading && 'fetching address...'}
+              {cityName || 'no address has been supplied yet'}
             </Box>
           </HStack>
         </Box>

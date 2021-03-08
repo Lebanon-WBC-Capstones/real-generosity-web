@@ -21,27 +21,33 @@ import ItemRequests from '../../components/ItemRequests';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { firestore } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
+import { useLocation } from '../../hooks/useLocation';
 
 const SingleItemPage = () => {
+  //query the item from firebase
+  const { t } = useTranslation();
+  const { id } = useParams();
+  const currentUser = useAuth();
+  const query = firestore.collection('items').doc(id);
+  const [item, loading, error] = useDocumentData(query);
+  const [value, setValue] = React.useState('');
+
+  const { cityName, isLoading } = useLocation(query);
+  console.log('city name', cityName);
+
+  console.log(item);
+
   // delete item function
   const handleDelete = () => {
     console.log('item deleted');
   };
   // requestModal functions
-  const [value, setValue] = React.useState('');
   const handleChange = (e) => {
     setValue(e.target.value);
   };
   const handleRequest = () => {
     console.log(value);
   };
-
-  //query the item from firebase
-  const { id } = useParams();
-  const currentUser = useAuth();
-  const query = firestore.collection('items').doc(id);
-  const [item, loading, error] = useDocumentData(query);
-  const { t } = useTranslation();
 
   const isOwner = item && item?.uid === currentUser?.uid;
 
@@ -90,6 +96,8 @@ const SingleItemPage = () => {
             </Tabs>
           ) : (
             <ItemDetails
+              cityName={cityName}
+              isLoading={isLoading}
               {...item}
               setValue={setValue}
               handleChange={handleChange}

@@ -1,13 +1,13 @@
-import { Box, Flex, HStack, Text, VStack, Image } from '@chakra-ui/react';
+import { Box, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { MapPin } from 'react-feather';
-// import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
+import { useLocation } from '../../hooks/useLocation';
 
-const Card = ({ title, id, createdAt, image_url }) => {
-  console.log('item id', id);
-  // const { t } = useTranslation();
+const Card = ({ title, id, createdAt, image_url, location }) => {
+  const { cityName, isLoading } = useLocation(location);
+
   return (
     <Link to={`/item/${id}`}>
       <Box bg="white" maxW="2xs" borderRadius="lg" boxShadow="md">
@@ -46,7 +46,9 @@ const Card = ({ title, id, createdAt, image_url }) => {
           <Flex align="center" justify="space-between">
             <HStack color="gray.500">
               <MapPin />
-              <Box fontSize="sm">Location</Box>
+              <Box fontSize="sm">
+                {!isLoading ? cityName : 'querying the location..'}
+              </Box>
             </HStack>
             <Box fonts="Montserrat" color="blue.500" fontSize="sm"></Box>
           </Flex>

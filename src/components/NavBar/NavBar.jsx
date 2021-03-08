@@ -19,7 +19,7 @@ function NavBar() {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
   return (
-    <Box fontFamily="Montserrat">
+    <Box as="nav" fontFamily="Montserrat">
       <Flex
         justify="space-between"
         align="center"

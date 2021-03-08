@@ -1,35 +1,42 @@
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { items } from '../../assets/data/items';
-export const ItemsMap = () => {
-  const defaultCenter = {
-    lat: 34.4346,
-    lng: 35.8362,
-  };
-  const mapStyles = {
-    height: '80vh',
-    width: '40vw',
-  };
+import React from 'react';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-  return (
+const center = {
+  lat: 34.4346,
+  lng: 35.8362,
+};
+const mapStyles = {
+  height: '80vh',
+  width: '500px',
+};
+
+export const ItemsMap = ({ items }) => {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  });
+
+  const render = React.useRef(0);
+  console.log('ItemsMap.jsx has re-rendered: ', render.current++);
+
+  return isLoaded ? (
     <div>
-      <LoadScript googleMapsApiKey={apiKey}>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={11}
-          center={defaultCenter}
-        >
-          {items.map((item) => {
-            return (
-              <Marker
-                key={Date.now() + '' + Math.random()}
-                position={item.location.coords}
-              />
-            );
-          })}
-        </GoogleMap>
-      </LoadScript>
+      <GoogleMap mapContainerStyle={mapStyles} zoom={11} center={center}>
+        {items.map((item) => {
+          return (
+            <Marker
+              key={item.id}
+              position={{
+                lat: item.data().location?.latitude,
+                lng: item.data().location?.longitude,
+              }}
+            />
+          );
+        })}
+      </GoogleMap>
     </div>
+  ) : (
+    <>map is loading...</>
   );
 };
-export default ItemsMap;
+export default React.memo(ItemsMap);

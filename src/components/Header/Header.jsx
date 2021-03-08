@@ -18,7 +18,6 @@ const Header = ({
   categoryPic,
   searchQuery,
   handleSearchChange,
-  itemsCounter,
 }) => {
   const { t } = useTranslation();
   return (
@@ -57,7 +56,7 @@ const Header = ({
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
-          {itemsCounter} items
+          items
         </Text>
       </HStack>
     </Box>

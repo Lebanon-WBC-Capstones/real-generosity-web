@@ -1,25 +1,31 @@
+import { Box, Container, Flex, Grid, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Container, Flex, Box } from '@chakra-ui/react';
-import ItemsMap from '../../components/ItemsMap/ItemsMap';
-import Header from '../../components/Header';
+import { useCollectionOnce } from 'react-firebase-hooks/firestore';
 import Category from '../../components/Category';
+import Header from '../../components/Header';
 import ItemsList from '../../components/ItemsList';
+import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import { firestore } from '../../services/firebase';
-import { useCollection } from 'react-firebase-hooks/firestore';
 
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('All');
   const [categoryPic, setCategoryPic] = useState();
   const [searchQuery, setSearchQuery] = useState('');
-  const [itemsCounter, setItemsCounter] = useState(0);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
   const query = firestore.collection('items');
-  const [items, loading, error] = useCollection(query);
+  const [items, loading, error] = useCollectionOnce(query);
 
   if (error) return 'an error has occured...';
+
+  if (loading)
+    return (
+      <Grid minH="100vh" placeContent="center">
+        <Text fontSize="6xl">Loading...</Text>
+      </Grid>
+    );
 
   return (
     <Container my="45px" maxW="1080px" fontFamily="Montserrat">
@@ -29,7 +35,6 @@ const ItemsPage = () => {
           categoryPic={categoryPic}
           searchQuery={searchQuery}
           handleSearchChange={handleSearchChange}
-          itemsCounter={itemsCounter}
         />
       </Box>
 
@@ -42,11 +47,10 @@ const ItemsPage = () => {
 
       <Flex justify="space-between">
         <Box w="50%">
-          {loading && 'loading...'}
-          {items && <ItemsList items={items.docs} />}
+          <ItemsList items={items.docs} />
         </Box>
         <Box w="50%" ml={30}>
-          <ItemsMap />
+          <ItemsMap items={items.docs} />
         </Box>
       </Flex>
     </Container>

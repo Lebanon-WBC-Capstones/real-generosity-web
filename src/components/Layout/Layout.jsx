@@ -8,15 +8,13 @@ function Layout({ children }) {
     <Flex
       minH="100vh"
       direction="column"
-      justify="space-evenly"
-      maxW={{ xl: "1200px" }}
+      justify="space-between"
+      maxW={{ xl: '1200px' }}
       m="0 auto"
     >
-
       <NavBar />
       <Box flex="1">{children}</Box>
       <Footer />
-
     </Flex>
   );
 }
