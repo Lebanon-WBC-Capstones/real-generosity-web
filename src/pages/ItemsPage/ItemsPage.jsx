@@ -1,22 +1,23 @@
 import { Box, Container, Flex, Grid, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useCollectionOnce } from 'react-firebase-hooks/firestore';
-import Category from '../../components/Category';
+import Filters from '../../components/Filters';
 import Header from '../../components/Header';
 import ItemsList from '../../components/ItemsList';
 import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import { firestore } from '../../services/firebase';
 
+const itemsRef = firestore.collection('items');
+
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('All');
-  const [categoryPic, setCategoryPic] = useState();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [items, loading, error] = useCollectionOnce(itemsRef);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-  const query = firestore.collection('items');
-  const [items, loading, error] = useCollectionOnce(query);
+  const query = itemsRef.where('category', '==', categoryName.toLowerCase());
+  const [filteredItems, catLoading] = useCollectionOnce(query);
+
+  const renders = React.useRef(0);
+  console.log('ItemsPage.jsx render... ', renders.current++);
 
   if (error) return 'an error has occured...';
 
@@ -30,27 +31,30 @@ const ItemsPage = () => {
   return (
     <Container my="45px" maxW="1080px" fontFamily="Montserrat">
       <Box mb="45px">
-        <Header
-          categoryName={categoryName}
-          categoryPic={categoryPic}
-          searchQuery={searchQuery}
-          handleSearchChange={handleSearchChange}
-        />
+        <Header categoryName={categoryName} />
       </Box>
 
       <Box mb="45px">
-        <Category
-          setCategoryName={setCategoryName}
-          setCategoryPic={setCategoryPic}
-        />
+        <Filters setCategoryName={setCategoryName} />
       </Box>
 
       <Flex justify="space-between">
         <Box w="50%">
-          <ItemsList items={items.docs} />
+          {/* non filtered categories */}
+          {categoryName === 'All' && <ItemsList items={items.docs} />}
+
+          {/* filtered categories  */}
+          {filteredItems && <ItemsList items={filteredItems.docs} />}
+          {catLoading && `loading category: ${categoryName}`}
         </Box>
         <Box w="50%" ml={30}>
-          <ItemsMap items={items.docs} />
+          {/* non filtered categories */}
+          {categoryName === 'All' && <ItemsMap items={items.docs} />}
+
+          {/* filtered categories  */}
+          {filteredItems && categoryName !== 'All' && (
+            <ItemsMap items={filteredItems.docs} />
+          )}
         </Box>
       </Flex>
     </Container>
