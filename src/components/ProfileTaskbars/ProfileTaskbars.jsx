@@ -1,6 +1,5 @@
 import {
   Box,
-  Text,
   Input,
   InputGroup,
   InputLeftElement,

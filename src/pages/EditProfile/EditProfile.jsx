@@ -8,6 +8,7 @@ function EditProfile() {
   const { t } = useTranslation();
 
   const [idCard, setIdCard] = useState(null);
+  console.log(idCard);
   const selectIdCard = (e) => {
     setIdCard(e.target.value);
   };

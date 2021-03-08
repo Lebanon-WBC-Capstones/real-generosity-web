@@ -15,8 +15,8 @@ function ProfilePage() {
 
   //query donations from firebase
   const items = firestore.collection('items').where('uid', '==', uid);
-  const [donations, donationsloading, donationserror] = useCollection(items);
-
+  const [donations, donationsLoading, donationsError] = useCollection(items);
+  console.log(donationsError);
   //query requests from firebase
 
   if (error) console.error(error);
@@ -36,7 +36,7 @@ function ProfilePage() {
       <ProfileTaskbars
         uid={uid}
         donations={donations}
-        donationsloading={donationsloading}
+        donationsloading={donationsLoading}
       />
     </SimpleGrid>
   );
