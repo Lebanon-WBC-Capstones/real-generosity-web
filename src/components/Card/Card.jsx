@@ -47,7 +47,8 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
             <HStack color="gray.500">
               <MapPin />
               <Box fontSize="sm">
-                {!isLoading ? cityName : 'querying the location..'}
+                {isLoading && 'loading location..'}
+                {cityName ? cityName : 'no location..'}
               </Box>
             </HStack>
             <Box fonts="Montserrat" color="blue.500" fontSize="sm"></Box>
