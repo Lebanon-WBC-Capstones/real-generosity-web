@@ -1,30 +1,29 @@
 import {
   Box,
   Container,
+  GridItem,
   Image,
   SimpleGrid,
+  Skeleton,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Skeleton,
-  GridItem,
 } from '@chakra-ui/react';
 import React from 'react';
 import {
-  useDocumentData,
   useCollectionData,
+  useDocumentData,
 } from 'react-firebase-hooks/firestore';
 import { useTranslation } from 'react-i18next';
+// import Carouselimg from '../../components/Carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useParams } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
-// import Carouselimg from '../../components/Carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { firestore } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
-import { useLocation } from '../../hooks/useLocation';
+import { firestore } from '../../services/firebase';
 
 const SingleItemPage = () => {
   //query the item from firebase
@@ -37,8 +36,6 @@ const SingleItemPage = () => {
   const [item, loading, error] = useDocumentData(query);
 
   const [value, setValue] = React.useState('');
-
-  const { cityName, isLoading } = useLocation(query);
 
   //item requests
   const requestsRef = firestore.collection('requests');
@@ -107,8 +104,6 @@ const SingleItemPage = () => {
             </Tabs>
           ) : (
             <ItemDetails
-              cityName={cityName}
-              isLoading={isLoading}
               {...item}
               setValue={setValue}
               handleChange={handleChange}
