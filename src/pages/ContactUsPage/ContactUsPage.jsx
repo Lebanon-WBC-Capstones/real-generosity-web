@@ -3,48 +3,50 @@ import { Link } from 'react-router-dom';
 import {
   Box,
   Image,
+  Text,
   Grid,
   GridItem,
   Flex,
   Input,
-  Text,
   Textarea,
   Button,
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
 import { useTranslation } from 'react-i18next';
-import emailjs from 'emailjs-com';
 
- function ContactUsPage() {
+function ContactUsPage(props) {
   const { t } = useTranslation();
 
-  const sendEmail=(e)=>{
-    e.preventDefault();
+  const [fullName, setFullName] = useState('');
+  const handleFullNameChange = (e) => {
+    setFullName(e.target.value);
+  };
 
-     emailjs.sendForm('real_generosity', 'template_in561cn', e.target, 'user_0AZ26wMMAKxuuS0KdvVRX')
+  const [emailAddress, setEmailAddress] = useState('');
+  const handleEmailAddressChange = (e) => {
+    setEmailAddress(e.target.value);
+  };
 
-    .then((result) => {
-        alert(`${t('contactUs.alert')}`);
-       
-    }, (error) => {
-        alert(error.message)
-        
-    });
-    e.target.reset()
-
-
-}
+  const [message, setMessage] = useState('');
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
+  };
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
-      <GridItem colSpan={1}>
-        <Image fit="contain" src={proto} alt="contact us img" />
+<Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat"   
+maxW={[
+      "auto",    // 0-30em
+      "auto",    // 30em-48em
+      "auto",    // 48em-62em
+      "1400px",  // 62em+
+    ]}   
+>   
+      <GridItem colSpan={1} display={{ base: "none", md: "block" }} >
+        <Image fit="contain" src={proto} alt="contact us img"  />
       </GridItem>
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
-        <Flex justify="space-between">
-          <Link to="/">
-            <Box fontSize="4xl">LOGO</Box>
-          </Link>
+        <Flex justify="space-between" display={[ "none", "none", "none","block" ]}>
+          <Box fontSize="4xl">LOGO</Box>
           <Link to="/auth/login">
             <Button
               variant="outline"
@@ -57,53 +59,53 @@ import emailjs from 'emailjs-com';
           </Link>
         </Flex>
 
-        <Flex minH="80vh" align="center" justify="space-between">
-          <Box fontSize="4xl">{t('contactUs.paragraph')}</Box>
+        <Flex minH="80vh" align="center" justify={["center", "space-between", "flex-end", "flex-end"]}>
+          <Box  maxWidth={["20","28","36","72"]}fontSize={["sm","md","md","4xl"]}  display={{ base: "none", md: "block" }}>{t('contactUs.paragraph')}</Box>
           <Box>
-            <form  onSubmit={sendEmail}>
-            <Box mt={4} fontSize="lg">
+            <Box mt={4} fontSize={["xx-small","md","md","lg"]} >
               <Text mb={2}>{t('contactUs.fullname')}</Text>
               <Input
-                type="text"
+                value={fullName}
+                onChange={handleFullNameChange}
                 size="sm"
                 variant="filled"
                 isRequired
                 focusBorderColor="green.200"
-                maxWidth={72}
-                name="name"
+                maxWidth={["38","28","48","72"]}
               />
             </Box>
-
-            <Box mt={8} fontSize="lg">
+            
+            <Box mt={8} fontSize={["xx-small","md","md","lg"]}>
               <Text mb={2}>{t('contactUs.email')}</Text>
               <Input
+                value={emailAddress}
+                onChange={handleEmailAddressChange}
                 type="email"
                 size="sm"
                 variant="filled"
                 isRequired
-                maxWidth={72}
+                maxWidth={["38","28","48","72"]}
                 focusBorderColor="green.200"
-                name="email"
               />
             </Box>
-            <Box mt={8} fontSize="lg">
+            <Box mt={8} fontSize={["xx-small","md","md","lg"]}>
               <Text mb={2}>{t('contactUs.message')}</Text>
               <Textarea
+                value={message}
+                onChange={handleMessageChange}
                 size="sm"
                 variant="filled"
                 isRequired
-                maxWidth={72}
+                maxWidth={["38","28","48","72"]}
                 focusBorderColor="green.200"
-                name="message"
               />
             </Box>
 
-            <Box mt={8}>
-              <Button type="submit" value="send" colorScheme="green" w={72} type="submit">
+            <Box mt={8} >
+              <Button colorScheme="green" w={["48","40","40","72"]} fontSize={["xx-small","md","md","lg"]} >
                 {t('contactUs.send')}
               </Button>
             </Box>
-            </form>
           </Box>
         </Flex>
       </GridItem>
