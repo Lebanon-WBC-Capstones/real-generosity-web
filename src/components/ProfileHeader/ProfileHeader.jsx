@@ -10,25 +10,11 @@ import {
 import React from 'react';
 import { MapPin, Phone } from 'react-feather';
 import { useTranslation } from 'react-i18next';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
-import { firestore } from '../../services/firebase';
-import { useParams,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({fullname,email,phoneNumber, uid}) => {
   const { t } = useTranslation();
-  const { uid } = useParams();
-
-  const query = firestore.collection('users').doc(uid);
-  const [data, loading, error] = useDocumentData(query);
-
-  console.log('loading', loading);
-  console.log('user data', data);
-
-  if (error) console.error(error);
-
-  if (loading) return <>loading...</>;
-
-  const { fullname, email, phoneNumber } = data;
+  
   return (
     <Box>
       <HStack d="flex" justifyContent="center" spacing="40px">

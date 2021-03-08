@@ -15,17 +15,9 @@ import React from 'react';
 import { Search } from 'react-feather';
 import Card from '../Card';
 import { useTranslation } from 'react-i18next';
-import { firestore } from '../../services/firebase';
-import { useCollection } from 'react-firebase-hooks/firestore';
-import { useParams } from 'react-router-dom';
 
-const ProfileTaskbars = () => {
+const ProfileTaskbars = ({donations,donationsloading}) => {
   const { t } = useTranslation();
-  const { uid } = useParams();
-  const items = firestore.collection('items').where('uid','==',uid);
-  const [itemslist, loading, error] = useCollection(items);
-  if (error) console.error(error);
-  if (loading) return <>loading ...</>;
 
   return (
     <Box>
@@ -47,10 +39,11 @@ const ProfileTaskbars = () => {
             </InputGroup>
 
             <SimpleGrid columns={4} gap={4}>
-             {itemslist? 
-             itemslist.docs
+             {donationsloading && "loading ..."}
+             {donations &&
+             donations.docs
                       .map(item=>{return(<Card key={item.id} id={item.id} {...item.data()} />)})
-                      :(<Text>no donations yet</Text>)}
+                     }
             </SimpleGrid>
           </TabPanel>
           {/* Requests panel  */}
