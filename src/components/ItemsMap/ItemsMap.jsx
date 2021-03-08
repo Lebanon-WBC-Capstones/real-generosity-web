@@ -23,7 +23,15 @@ export const ItemsMap = ({ items }) => {
     <div>
       <GoogleMap mapContainerStyle={mapStyles} zoom={11} center={center}>
         {items.map((item) => {
-          return <Marker key={item.id} position={item.data().location} />;
+          return (
+            <Marker
+              key={item.id}
+              position={{
+                lat: item.data().location?.latitude,
+                lng: item.data().location?.longitude,
+              }}
+            />
+          );
         })}
       </GoogleMap>
     </div>
