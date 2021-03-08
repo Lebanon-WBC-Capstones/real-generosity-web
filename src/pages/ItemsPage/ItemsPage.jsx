@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Grid, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Skeleton } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useCollectionOnce } from 'react-firebase-hooks/firestore';
 import Filters from '../../components/Filters';
@@ -23,9 +23,14 @@ const ItemsPage = () => {
 
   if (loading)
     return (
-      <Grid minH="100vh" placeContent="center">
-        <Text fontSize="6xl">Loading...</Text>
-      </Grid>
+      <Container centerContent minH="100vh">
+        <Skeleton w={1080} my={50} h={200} />
+        <Skeleton w={1080} mb={50} h={50} />
+        <Flex>
+          <Skeleton mr={30} w={500} h="80vh" />
+          <Skeleton w={500} h="80vh" />
+        </Flex>
+      </Container>
     );
 
   return (
