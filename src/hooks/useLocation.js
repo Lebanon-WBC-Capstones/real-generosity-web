@@ -14,7 +14,8 @@ export const useLocation = (loc) => {
         const result = await (
           await fetch(
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${loc.latitude},${loc.longitude}
-                &key=${API_KEY}`
+                &key=${API_KEY}`,
+            { cache: 'force-cache' }
           )
         ).json();
 
