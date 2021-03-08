@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link,  useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, User, LogOut,Bell,Gift,ShoppingBag,AlertCircle} from 'react-feather';
+import {  User, LogOut,Bell,Gift,ShoppingBag,AlertCircle} from 'react-feather';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import {
@@ -12,7 +12,7 @@ import {
     Button,
     Avatar,
     IconButton,
-    HStack
+    HStack,
   } from '@chakra-ui/react';
 
   const GetStartedBtn=()=>{
@@ -37,7 +37,7 @@ import {
              
                <MenuButton
                   as={IconButton}
-                  color="gray.400"
+                  color="black"
                   aria-label="Options"
                   icon={<Bell  />}
                   size="md"
@@ -52,27 +52,24 @@ import {
                     <MenuItem icon={<AlertCircle />}> report</MenuItem>
                 </MenuList>
               </Menu>
-              <Avatar
-                name={user.email.charAt(0).toUpperCase()}
-                bg="green.500"
-              ></Avatar>
+           
 
               <Menu>
-                <MenuButton
+              <MenuButton
                   as={IconButton}
+                  color="black"
                   aria-label="Options"
-                  icon={< ChevronDown  />}
+                  icon={<Avatar  size="sm" bg="black" />}
                   size="md"
                   variant="ghost"
-                  color="gray.400"
+
                 />
-                
                 <MenuList>
                   <Link to={`/profile/${user.uid}`}>
-                    <MenuItem icon={<User />}>Profile</MenuItem>
+                    <MenuItem icon={<User />}>{t('navbar.profile')}</MenuItem>
                   </Link>
                   <MenuItem onClick={logOut} icon={<LogOut />}>
-                    Logout
+                   {t('navbar.logout')}
                   </MenuItem>
                 </MenuList>
               </Menu>
