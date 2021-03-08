@@ -1,11 +1,9 @@
+import { Box, Button, Flex, Text, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
-import { Flex, Box, Text, Button, SimpleGrid } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { items } from '../../assets/data/items';
-import { requests } from '../../assets/data/requests';
-import moment from 'moment';
+import { convertTimestamp } from '../../helpers/convertTimestamp';
 
-const ItemRequests = () => {
+const ItemRequests = ({ requests }) => {
   const { t } = useTranslation();
 
   const handleDelivered = () => {
@@ -21,61 +19,45 @@ const ItemRequests = () => {
   return (
     <Flex d="column" maxW="400px" fontSize={18}>
       <Box py={5}>
-        <Text fontWeight="bold" fontSize={12}>
-          {items[0].requests.length} {t('itemPage.requests')}
-        </Text>
+        <Text fontWeight="bold" fontSize={12}></Text>
       </Box>
-      <Box
-        maxH="300px"
-        style={items[0].requests.length >= 3 ? { overflow: 'auto' } : {}}
-      >
+      <Box maxH="300px">
         <SimpleGrid spacing={5}>
-          {requests.requests &&
-            requests.requests
-              .filter((r) => r.requestedId === items[0].id)
-              .map((request) => {
-                return (
-                  <Box bg="gray.50" height="80px" py="10px" px="5px">
-                    <Flex align="center" justify="space-between">
-                      <Text
-                        fonts="Montserrat"
-                        fontSize="lg"
-                        fontWeight="semibold"
-                        as="h3"
-                      >
-                        {t('itemPage.reason')} {request.requestReason}
-                      </Text>
-                      <Box>
-                        <Button
-                          fontSize="xs"
-                          variant="ghost"
-                          onClick={handleApprove}
-                        >
-                          {t('itemPage.approve')}
-                        </Button>
-                        <Button
-                          fontSize="xs"
-                          color="red"
-                          variant="ghost"
-                          onClick={handleDecline}
-                        >
-                          {t('itemPage.decline')}
-                        </Button>
-                      </Box>
-                    </Flex>
-                    <Text
-                      fonts="Montserrat"
-                      color="gray.400"
-                      fontSize="xs"
-                      textTransform="uppercase"
-                    >
-                      {moment(`${request.dateOfRequest}`)
-                        .startOf('day')
-                        .fromNow()}
-                    </Text>
-                  </Box>
-                );
-              })}
+          {requests.map((request, index) => (
+            <Box key={index} bg="gray.50" height="80px" py="10px" px="5px">
+              <Flex align="center" justify="space-between">
+                <Text
+                  fonts="Montserrat"
+                  fontSize="lg"
+                  fontWeight="semibold"
+                  as="h3"
+                >
+                  {request.reason}
+                </Text>
+                <Box>
+                  <Button fontSize="xs" variant="ghost" onClick={handleApprove}>
+                    {t('itemPage.approve')}
+                  </Button>
+                  <Button
+                    fontSize="xs"
+                    color="red"
+                    variant="ghost"
+                    onClick={handleDecline}
+                  >
+                    {t('itemPage.decline')}
+                  </Button>
+                </Box>
+              </Flex>
+              <Text
+                fonts="Montserrat"
+                color="gray.400"
+                fontSize="xs"
+                textTransform="uppercase"
+              >
+                {convertTimestamp(request.createdAt)}
+              </Text>
+            </Box>
+          ))}
         </SimpleGrid>
       </Box>
       <Box py="30px">

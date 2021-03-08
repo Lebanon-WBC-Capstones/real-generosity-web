@@ -12,7 +12,10 @@ import {
   GridItem,
 } from '@chakra-ui/react';
 import React from 'react';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
+import {
+  useDocumentData,
+  useCollectionData,
+} from 'react-firebase-hooks/firestore';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
@@ -28,14 +31,21 @@ const SingleItemPage = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const currentUser = useAuth();
+
+  //item details
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
+
   const [value, setValue] = React.useState('');
 
   const { cityName, isLoading } = useLocation(query);
-  console.log('city name', cityName);
 
-  console.log(item);
+  //item requests
+  const requestsRef = firestore.collection('requests');
+  const reqQuery = requestsRef.where('item', '==', id);
+  const [requests, reqLoading] = useCollectionData(reqQuery);
+
+  console.log('requests', requests);
 
   // delete item function
   const handleDelete = () => {
@@ -89,7 +99,8 @@ const SingleItemPage = () => {
                   />
                 </TabPanel>
                 <TabPanel>
-                  <ItemRequests />
+                  {reqLoading && 'is loading...'}
+                  {requests && <ItemRequests requests={requests} />}
                   {/* <ItemReports handleDelete={handleDelete} /> */}
                 </TabPanel>
               </TabPanels>
