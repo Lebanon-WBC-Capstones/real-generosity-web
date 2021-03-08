@@ -53,7 +53,7 @@ const HeroSection = () => {
           {t('heroSection.paragraph_2')}
         </Heading>
 
-        <Link to="/auth//add-item">
+        <Link to="/add-item">
           <Button
             colorScheme="green"
             py={['4', '4', '6', '8']}

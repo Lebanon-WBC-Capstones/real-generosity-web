@@ -5,7 +5,9 @@
     "about": "À Propos",
     "contactUs": "Contact",
     "getStarted": "Créer Un Compte",
-    "copy": "tous les droits sont réservés"
+    "copy": "tous les droits sont réservés",
+    "profile": "view profile",
+    "logout": "logout"
   },
   "aboutUs": {
     "aboutUs": "À Propos de nous",
@@ -92,7 +94,7 @@
     "message": "Write your message",
     "paragraph": "Some relatively long heading paragraph contact Us",
     "send": "Send",
-    "alert":"your message has been sent successfully"
+    "alert": "your message has been sent successfully"
   },
 
   "heroSection": {

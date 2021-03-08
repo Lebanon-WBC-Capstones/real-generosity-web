@@ -1,5 +1,6 @@
 import {
   Box,
+  Text,
   Input,
   InputGroup,
   InputLeftElement,
@@ -14,19 +15,9 @@ import React from 'react';
 import { Search } from 'react-feather';
 import Card from '../Card';
 import { useTranslation } from 'react-i18next';
-import { firestore } from '../../services/firebase';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { useParams } from 'react-router-dom';
 
-const ProfileTaskbars = () => {
+const ProfileTaskbars = ({ donations, donationsloading }) => {
   const { t } = useTranslation();
-  const { uid } = useParams();
-  const items = firestore.collection('items');
-  const [itemslist, loading, error] = useCollectionData(items);
-  console.log(loading);
-  console.log('items', itemslist);
-  if (error) console.error(error);
-  if (loading) return <>loading ...</>;
 
   return (
     <Box>
@@ -48,11 +39,11 @@ const ProfileTaskbars = () => {
             </InputGroup>
 
             <SimpleGrid columns={4} gap={4}>
-              {itemslist
-                .filter((item) => item.uid === uid)
-                .map((ite) => (
-                  <card {...ite} />
-                ))}
+              {donationsloading && 'loading ...'}
+              {donations &&
+                donations.docs.map((item) => {
+                  return <Card key={item.id} id={item.id} {...item.data()} />;
+                })}
             </SimpleGrid>
           </TabPanel>
           {/* Requests panel  */}
