@@ -5,7 +5,9 @@
     "about": "À Propos",
     "contactUs": "Contact",
     "getStarted": "Créer Un Compte",
-    "copy": "tous les droits sont réservés"
+    "copy": "tous les droits sont réservés",
+     "profile":"view profile",
+    "logout":"logout"
   },
   "aboutUs": {
     "aboutUs": "À Propos de nous",

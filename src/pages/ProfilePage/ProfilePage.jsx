@@ -4,7 +4,7 @@ import ProfileHeader from '../../components/ProfileHeader';
 import ProfileTaskbars from '../../components/ProfileTaskbars';
 import { useDocumentData,useCollection } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
-import { useParams,Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 function ProfilePage() {
@@ -31,7 +31,7 @@ function ProfilePage() {
       <ProfileHeader  fullname={fullname} 
                       email={email}
                       phoneNumber={phoneNumber}
-                     uid={uid} />
+                      uid={uid} />
       <ProfileTaskbars  uid={uid} donations={donations} donationsloading={donationsloading} />
     </SimpleGrid>
   );

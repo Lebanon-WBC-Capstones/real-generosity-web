@@ -5,7 +5,9 @@
     "about": "About",
     "contactUs": "Contact Us",
     "getStarted": "Get Started",
-    "copy": "All rights reserved"
+    "copy": "All rights reserved",
+    "profile":"view profile",
+    "logout":"logout"
   },
   "header": {
     "search": "Search"
@@ -69,6 +71,7 @@
   },
   "itemPage": {
     "items": "Items",
+    "back":"Back",
     "details": "Details",
     "requests": "Requests",
     "reason": "Reason:",
