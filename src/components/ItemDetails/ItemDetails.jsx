@@ -31,7 +31,7 @@ const ItemDetails = ({
     <Flex d="column" maxW="400px" fontSize={18}>
       <Flex justify="space-between">
         <Button
-          onClick={() => history.goBack()}
+          onClick={() => history.push('/items')}
           leftIcon={<ArrowLeft size={15} />}
           variant="ghost"
         >
