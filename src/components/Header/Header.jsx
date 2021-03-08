@@ -1,25 +1,20 @@
-import React from 'react';
 import {
-  Flex,
   Box,
+  Flex,
   HStack,
-  Text,
-  Image,
   Input,
-  InputLeftElement,
   InputGroup,
+  InputLeftElement,
+  Text,
 } from '@chakra-ui/react';
+import React from 'react';
 import { Search } from 'react-feather';
 // import sofa from '../../assets/images/sofa.png';
 import { useTranslation } from 'react-i18next';
 
-const Header = ({
-  categoryName,
-  categoryPic,
-  searchQuery,
-  handleSearchChange,
-}) => {
+const Header = ({ categoryName }) => {
   const { t } = useTranslation();
+
   return (
     <Box
       py="10"
@@ -41,8 +36,6 @@ const Header = ({
           <InputGroup>
             <InputLeftElement children={<Search color="black" />} />
             <Input
-              value={searchQuery}
-              onChange={handleSearchChange}
               width="400px"
               bg="whiteAlpha.800"
               placeholder={t('header.search')}
@@ -52,7 +45,7 @@ const Header = ({
       </Flex>
 
       <Flex float="right" my="-180px">
-        <Image src={categoryPic} maxW="241px" maxH="233px"></Image>
+        {/* <Image src={categoryPic} maxW="241px" maxH="233px"></Image> */}
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
