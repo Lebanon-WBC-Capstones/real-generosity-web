@@ -74,7 +74,7 @@ function ContactUsPage() {
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
           <Link to="/">
-            <Box fontSize="4xl">LOGO</Box>
+            <Box fontSize={['sm', 'md', 'md', '4xl']}>LOGO</Box>
           </Link>
           <GetStartedBtn />
         </Flex>
@@ -88,6 +88,7 @@ function ContactUsPage() {
             maxWidth={['20', '28', '36', '72']}
             fontSize={['sm', 'md', 'md', '4xl']}
             display={{ base: 'none', md: 'block' }}
+            mr={40}
           >
             {t('contactUs.paragraph')}
           </Box>
@@ -103,7 +104,7 @@ function ContactUsPage() {
                   variant="filled"
                   isRequired
                   focusBorderColor="green.200"
-                  maxWidth={['38', '28', '48', '72']}
+                  maxW={['48', '40', '52', '72']}
                   name="name"
                 />
               </Box>
@@ -117,7 +118,7 @@ function ContactUsPage() {
                   size="sm"
                   variant="filled"
                   isRequired
-                  maxWidth={['38', '28', '48', '72']}
+                  maxW={['48', '40', '52', '72']}
                   focusBorderColor="green.200"
                   name="email"
                 />
@@ -131,7 +132,7 @@ function ContactUsPage() {
                   size="sm"
                   variant="filled"
                   isRequired
-                  maxWidth={['38', '28', '48', '72']}
+                  maxW={['48', '40', '52', '72']}
                   focusBorderColor="green.200"
                   name="message"
                 />
@@ -140,7 +141,7 @@ function ContactUsPage() {
               <Box mt={8}>
                 <Button
                   colorScheme="green"
-                  w={['48', '40', '40', '72']}
+                  w={['48', '40', '56', '72']}
                   fontSize={['xx-small', 'md', 'md', 'lg']}
                 >
                   {t('contactUs.send')}
