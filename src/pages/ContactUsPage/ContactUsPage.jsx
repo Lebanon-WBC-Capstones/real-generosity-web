@@ -40,7 +40,7 @@ function ContactUsPage() {
     e.target.reset();
   };
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={4} fontFamily="Montserrat">
+    <Grid templateColumns="repeat(3, 1fr)" gap={4}>
       <GridItem colSpan={1}>
         <Image fit="contain" src={proto} alt="contact us img" />
       </GridItem>

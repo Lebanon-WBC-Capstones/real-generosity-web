@@ -56,12 +56,7 @@ const ItemReports = () => {
                     </Text>
 
                     <Box flex="1" textAlign="left">
-                      <Text
-                        fonts="Montserrat"
-                        fontSize="lg"
-                        fontWeight="semibold"
-                        as="h3"
-                      >
+                      <Text fontSize="lg" fontWeight="semibold" as="h3">
                         {opt.option}
                       </Text>
                     </Box>
@@ -77,16 +72,10 @@ const ItemReports = () => {
                         return (
                           <Box mb={4}>
                             <Flex align="center" justify="space-between" px={7}>
-                              <Text
-                                fonts="Montserrat"
-                                fontSize="lg"
-                                fontWeight="semibold"
-                                as="h3"
-                              >
+                              <Text fontSize="lg" fontWeight="semibold" as="h3">
                                 {repor.reporterId}
                               </Text>
                               <Text
-                                fonts="Montserrat"
                                 color="gray.400"
                                 fontSize="xs"
                                 my="5px"
