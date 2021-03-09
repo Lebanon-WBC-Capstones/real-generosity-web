@@ -14,21 +14,21 @@ const ItemsPage = () => {
   const [searchInput, setSearchInput] = useState('');
   const [items, loading, error] = useCollectionOnce(itemsRef);
 
+  const handleSearchChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
   const query = itemsRef.where('category', '==', categoryName.toLowerCase());
   const [filteredItems, catLoading] = useCollectionOnce(query);
 
   const searchQuery = itemsRef.where('title', '==', searchInput);
   const [filteredItemsBySearch, searchLoading] = useCollectionOnce(searchQuery);
+
   const renders = React.useRef(0);
   console.log('ItemsPage.jsx render... ', renders.current++);
 
   if (error) return 'an error has occured...';
 
-  const handleSearchChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-  // console.log(filteredItems);
-  console.log(filteredItemsBySearch?.docs);
   if (loading)
     return (
       <Container centerContent minH="100vh">
