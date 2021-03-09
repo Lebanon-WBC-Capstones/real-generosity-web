@@ -12,7 +12,6 @@ import {
 import React from 'react';
 import { Plus } from 'react-feather';
 import { Link } from 'react-router-dom';
-// import { useTranslation } from 'react-i18next';
 
 const CATEGORIES = [
   'All',
@@ -24,19 +23,24 @@ const CATEGORIES = [
   'Furniture',
 ];
 
-const Filters = ({ setCategoryName }) => {
-  // const { t } = useTranslation();
+const Filters = () => {
+  const renders = React.useRef(0);
+  console.log('Filters.jsx renders', renders.current++);
   return (
     <Box py="10" width={1080} fontSize={15} fontWeight={400}>
       <Flex justifyContent="space-between" mb="10" color="black">
         <Flex>
-          <Link to={`/items`}>
-            {CATEGORIES.map((cat, index) => (
-              <Button key={index} onClick={() => setCategoryName(cat)} ml={4}>
-                {cat}
-              </Button>
-            ))}
-          </Link>
+          {CATEGORIES.map((cat, index) =>
+            cat === 'All' ? (
+              <Link key={index} to={`/items`}>
+                <Button ml={4}>{cat}</Button>
+              </Link>
+            ) : (
+              <Link key={index} to={`/items/${cat.toLowerCase()}`}>
+                <Button ml={4}>{cat}</Button>
+              </Link>
+            )
+          )}
         </Flex>
 
         <HStack>
