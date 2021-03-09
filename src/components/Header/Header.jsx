@@ -1,17 +1,8 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Flex, HStack, Text } from '@chakra-ui/react';
 import React from 'react';
-import { Search } from 'react-feather';
-// import sofa from '../../assets/images/sofa.png';
-import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import { useParams } from 'react-router-dom';
 
 const Header = ({ filteredCategoryCount, items }) => {
   const { category } = useParams();
@@ -34,19 +25,6 @@ const Header = ({ filteredCategoryCount, items }) => {
     >
       <Flex mb="10" color="black" fontWeight={800}>
         <Text>{category ? category : 'all'}</Text>
-
-        <Flex mx="200px" py="1">
-          <InputGroup>
-            <InputLeftElement children={<Search color="black" />} />
-            <Input
-              // value={searchInput}
-              // onChange={handleSearchChange}
-              width="400px"
-              bg="whiteAlpha.800"
-              placeholder={t('header.search')}
-            />
-          </InputGroup>
-        </Flex>
       </Flex>
 
       <Flex float="right" my="-180px">
