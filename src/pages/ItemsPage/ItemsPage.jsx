@@ -12,6 +12,7 @@ const itemsRef = firestore.collection('items');
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('All');
   const [searchInput, setSearchInput] = useState('');
+  const [itemsCounter, setItemsCounter] = useState(0);
   const [items, loading, error] = useCollectionOnce(itemsRef);
 
   const handleSearchChange = (e) => {
@@ -48,6 +49,7 @@ const ItemsPage = () => {
           categoryName={categoryName}
           searchInput={searchInput}
           handleSearchChange={handleSearchChange}
+          itemsCounter={itemsCounter}
         />
       </Box>
 
@@ -59,13 +61,21 @@ const ItemsPage = () => {
         <Box w="50%">
           {searchInput ? (
             (filteredItemsBySearch && (
-              <ItemsList items={filteredItemsBySearch.docs} />
+              <ItemsList
+                items={filteredItemsBySearch.docs}
+                setItemsCounter={setItemsCounter}
+              />
             )) ||
             (searchLoading && `loading item: ${searchInput}`)
           ) : categoryName === 'All' ? (
-            <ItemsList items={items.docs} />
+            <ItemsList items={items.docs} setItemsCounter={setItemsCounter} />
           ) : (
-            (filteredItems && <ItemsList items={filteredItems.docs} />) ||
+            (filteredItems && (
+              <ItemsList
+                items={filteredItems.docs}
+                setItemsCounter={setItemsCounter}
+              />
+            )) ||
             (catLoading && `loading category: ${categoryName}`)
           )}
 

@@ -12,7 +12,12 @@ import { Search } from 'react-feather';
 // import sofa from '../../assets/images/sofa.png';
 import { useTranslation } from 'react-i18next';
 
-const Header = ({ categoryName, searchInput, handleSearchChange }) => {
+const Header = ({
+  categoryName,
+  searchInput,
+  handleSearchChange,
+  itemsCounter,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -51,7 +56,7 @@ const Header = ({ categoryName, searchInput, handleSearchChange }) => {
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
-          items
+          {itemsCounter} items
         </Text>
       </HStack>
     </Box>
