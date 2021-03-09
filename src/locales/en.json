@@ -74,7 +74,7 @@
     "back": "Back",
     "details": "Details",
     "requests": "Requests",
-    "reason": "Reason:",
+    "reason": "Reason",
     "approve": "Approve",
     "decline": "Decline",
     "edit": "edit",
@@ -84,7 +84,9 @@
     "delete": "Delete",
     "delivered": "Delivered",
     "cancel": "Cancel",
-    "deletep": "Are you sure you want to delete?"
+    "deletep": "Are you sure you want to delete?",
+    "createdAt":"CreatedAt",
+    "requesterInfo":"Requester info"
   },
   "contactUs": {
     "fullname": "Full Name",
@@ -124,7 +126,8 @@
     "editProfile": "Edit Profile",
     "donations": "Donations",
     "requests": "Requests",
-    "search": "Search"
+    "search": "Search",
+    "notifications":"Notifications"
   },
   "adminPage": {
     "admin": "Admin",
