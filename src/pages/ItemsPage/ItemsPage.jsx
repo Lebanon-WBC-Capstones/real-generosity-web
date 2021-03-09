@@ -11,16 +11,24 @@ const itemsRef = firestore.collection('items');
 
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('All');
+  const [searchInput, setSearchInput] = useState('');
   const [items, loading, error] = useCollectionOnce(itemsRef);
 
   const query = itemsRef.where('category', '==', categoryName.toLowerCase());
   const [filteredItems, catLoading] = useCollectionOnce(query);
 
+  const searchQuery = itemsRef.where('title', '==', searchInput);
+  const [filteredItemsBySearch, searchLoading] = useCollectionOnce(searchQuery);
   const renders = React.useRef(0);
   console.log('ItemsPage.jsx render... ', renders.current++);
 
   if (error) return 'an error has occured...';
 
+  const handleSearchChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+  // console.log(filteredItems);
+  console.log(filteredItemsBySearch?.docs);
   if (loading)
     return (
       <Container centerContent minH="100vh">
@@ -36,7 +44,11 @@ const ItemsPage = () => {
   return (
     <Container my="45px" maxW="1080px" fontFamily="Montserrat">
       <Box mb="45px">
-        <Header categoryName={categoryName} />
+        <Header
+          categoryName={categoryName}
+          searchInput={searchInput}
+          handleSearchChange={handleSearchChange}
+        />
       </Box>
 
       <Box mb="45px">
@@ -45,12 +57,24 @@ const ItemsPage = () => {
 
       <Flex justify="space-between">
         <Box w="50%">
+          {searchInput ? (
+            (filteredItemsBySearch && (
+              <ItemsList items={filteredItemsBySearch.docs} />
+            )) ||
+            (searchLoading && `loading item: ${searchInput}`)
+          ) : categoryName === 'All' ? (
+            <ItemsList items={items.docs} />
+          ) : (
+            (filteredItems && <ItemsList items={filteredItems.docs} />) ||
+            (catLoading && `loading category: ${categoryName}`)
+          )}
+
           {/* non filtered categories */}
-          {categoryName === 'All' && <ItemsList items={items.docs} />}
+          {/* {categoryName === 'All' && <ItemsList items={items.docs} />} */}
 
           {/* filtered categories  */}
-          {filteredItems && <ItemsList items={filteredItems.docs} />}
-          {catLoading && `loading category: ${categoryName}`}
+          {/* {filteredItems && <ItemsList items={filteredItems.docs} />} */}
+          {/* {catLoading && `loading category: ${categoryName}`} */}
         </Box>
         <Box w="50%" ml={30}>
           {/* non filtered categories */}
