@@ -77,13 +77,23 @@ const ItemsPage = () => {
           {/* {catLoading && `loading category: ${categoryName}`} */}
         </Box>
         <Box w="50%" ml={30}>
+          {searchInput ? (
+            filteredItemsBySearch && (
+              <ItemsMap items={filteredItemsBySearch.docs} />
+            )
+          ) : categoryName === 'All' ? (
+            <ItemsMap items={items.docs} />
+          ) : (
+            filteredItems &&
+            categoryName !== 'All' && <ItemsMap items={filteredItems.docs} />
+          )}
           {/* non filtered categories */}
-          {categoryName === 'All' && <ItemsMap items={items.docs} />}
+          {/* {categoryName === 'All' && <ItemsMap items={items.docs} />} */}
 
           {/* filtered categories  */}
-          {filteredItems && categoryName !== 'All' && (
+          {/* {filteredItems && categoryName !== 'All' && (
             <ItemsMap items={filteredItems.docs} />
-          )}
+          )} */}
         </Box>
       </Flex>
     </Container>
