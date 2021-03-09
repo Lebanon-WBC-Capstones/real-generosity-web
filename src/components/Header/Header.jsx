@@ -12,7 +12,7 @@ import { Search } from 'react-feather';
 // import sofa from '../../assets/images/sofa.png';
 import { useTranslation } from 'react-i18next';
 
-const Header = ({ categoryName }) => {
+const Header = ({ categoryName, searchInput, handleSearchChange }) => {
   const { t } = useTranslation();
 
   return (
@@ -36,6 +36,8 @@ const Header = ({ categoryName }) => {
           <InputGroup>
             <InputLeftElement children={<Search color="black" />} />
             <Input
+              value={searchInput}
+              onChange={handleSearchChange}
               width="400px"
               bg="whiteAlpha.800"
               placeholder={t('header.search')}
