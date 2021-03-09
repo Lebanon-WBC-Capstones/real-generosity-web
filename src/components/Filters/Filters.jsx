@@ -8,10 +8,14 @@ import {
   MenuItem,
   MenuList,
   Text,
+  InputGroup,
+  InputLeftElement,
+  Input,
 } from '@chakra-ui/react';
 import React from 'react';
 import { Plus } from 'react-feather';
 import { Link } from 'react-router-dom';
+import { Search } from 'react-feather';
 
 const CATEGORIES = [
   'All',
@@ -23,7 +27,7 @@ const CATEGORIES = [
   'Furniture',
 ];
 
-const Filters = () => {
+const Filters = ({ setSearch }) => {
   const renders = React.useRef(0);
   console.log('Filters.jsx renders', renders.current++);
   return (
@@ -73,6 +77,24 @@ const Filters = () => {
           </Link>
         </HStack>
       </Flex>
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setSearch(e.target.search.value);
+          e.target.reset();
+        }}
+      >
+        <InputGroup>
+          <InputLeftElement children={<Search color="black" />} />
+          <Input
+            name="search"
+            width="400px"
+            bg="whiteAlpha.800"
+            placeholder={'search...'}
+          />
+        </InputGroup>
+      </form>
     </Box>
   );
 };
