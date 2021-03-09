@@ -2,7 +2,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileTaskbars from '../../components/ProfileTaskbars';
-import { useDocumentData, useCollection } from 'react-firebase-hooks/firestore';
+import { useDocumentData, useCollection,useCollectionData } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
 import { useParams } from 'react-router-dom';
 
@@ -17,7 +17,10 @@ function ProfilePage() {
   const items = firestore.collection('items').where('uid', '==', uid);
   const [donations, donationsloading, donationserror] = useCollection(items);
 
-  //query requests from firebase
+  //query notifications from firebase
+  const notifications=firestore.collection('notifications').where('targetId','==',uid);
+  const [notify, notifyloading, notifyerror] = useCollection(notifications);
+  console.log('notify',notify)
 
   if (error) console.error(error);
 
@@ -37,6 +40,8 @@ function ProfilePage() {
         uid={uid}
         donations={donations}
         donationsloading={donationsloading}
+        notify={notify}
+        notifyloading={notifyloading}
       />
     </SimpleGrid>
   );
