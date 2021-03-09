@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Skeleton } from '@chakra-ui/react';
 import React from 'react';
-import { useCollectionOnce } from 'react-firebase-hooks/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router-dom';
 import Filters from '../../components/Filters';
 import Header from '../../components/Header';
@@ -8,16 +8,22 @@ import ItemsList from '../../components/ItemsList';
 import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import { firestore } from '../../services/firebase';
 
-const itemsRef = firestore.collection('items');
-
 const FilteredItemsPage = () => {
   const { category } = useParams();
+  const [search, setSearch] = React.useState('');
+
+  let itemsRef = firestore
+    .collection('items')
+    .where('category', '==', category);
+
+  if (search) {
+    itemsRef = itemsRef.where('title', '==', search);
+  }
+
+  const [items, loading, error] = useCollection(itemsRef);
 
   const renders = React.useRef(0);
   console.log('FilteredItemsPage.jsx render... ', renders.current++);
-
-  const query = itemsRef.where('category', '==', category);
-  const [items, loading, error] = useCollectionOnce(query);
 
   if (error) return 'an error has occured...';
 
@@ -40,7 +46,7 @@ const FilteredItemsPage = () => {
       </Box>
 
       <Box mb="45px">
-        <Filters />
+        <Filters setSearch={setSearch} />
       </Box>
 
       <Flex justify="space-between">

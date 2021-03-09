@@ -1,16 +1,22 @@
 import { Box, Container, Flex, Skeleton } from '@chakra-ui/react';
 import React from 'react';
-import { useCollectionOnce } from 'react-firebase-hooks/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import Filters from '../../components/Filters';
 import Header from '../../components/Header';
 import ItemsMap from '../../components/ItemsMap';
 import ItemsList from '../../components/ItemsList';
 import { firestore } from '../../services/firebase';
 
-const itemsRef = firestore.collection('items');
-
 const ItemsPage = () => {
-  const [items, loading, error] = useCollectionOnce(itemsRef);
+  const [search, setSearch] = React.useState('');
+
+  let itemsRef = firestore.collection('items');
+
+  if (search) {
+    itemsRef = itemsRef.where('title', '==', search);
+  }
+
+  const [items, loading, error] = useCollection(itemsRef);
 
   const renders = React.useRef(0);
   console.log('ItemsPage.jsx render... ', renders.current++);
@@ -36,7 +42,7 @@ const ItemsPage = () => {
       </Box>
 
       <Box mb="45px">
-        <Filters />
+        <Filters setSearch={setSearch} />
       </Box>
 
       <Flex justify="space-between">
