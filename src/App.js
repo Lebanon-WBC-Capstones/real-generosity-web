@@ -14,6 +14,7 @@ import AdminPage from './pages/AdminPage';
 import ContactUsPage from './pages/ContactUsPage';
 import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
+import FilteredItemsPage from './pages/FilteredItemsPage';
 import ProfilePage from './pages/ProfilePage';
 import ProfileSettingsPage from './pages/ProfileSettingsPage';
 import SignInPage from './pages/SignInPage';
@@ -28,57 +29,46 @@ function App() {
       {/* <DeployingData /> */}
       <Router>
         <Suspense fallback="loading">
-          <Switch>
-            <Route exact path="/">
-              <Layout>
+          <Layout>
+            <Switch>
+              <Route exact path="/">
                 <HomePage />
-              </Layout>
-            </Route>
-            <Route exact path="/auth/signin">
-              <SignInPage />
-            </Route>
-            <Route exact path="/auth/signup">
-              <SignUpPage />
-            </Route>
-            <Route exact path="/add-item">
-              <Layout>
+              </Route>
+              <Route exact path="/auth/signin">
+                <SignInPage />
+              </Route>
+              <Route exact path="/auth/signup">
+                <SignUpPage />
+              </Route>
+              <Route exact path="/add-item">
                 {currentUser ? <AddItemPage /> : <Redirect to="/auth/signin" />}
-              </Layout>
-            </Route>
-            <Route exact path="/items">
-              <Layout>
+              </Route>
+              <Route exact path="/items">
                 <ItemsPage />
-              </Layout>
-            </Route>
-            <Route exact path="/item/:id">
-              <Layout>
+              </Route>
+              <Route exact path="/items/:category">
+                <FilteredItemsPage />
+              </Route>
+              <Route exact path="/item/:id">
                 <SingleItemPage />
-              </Layout>
-            </Route>
-            <Route exact path="/about">
-              <Layout>
+              </Route>
+              <Route exact path="/about">
                 <AboutPage />
-              </Layout>
-            </Route>
-            <Route exact path="/contactus">
-              <ContactUsPage />
-            </Route>
-            <Route exact path="/profile/:uid">
-              <Layout>
+              </Route>
+              <Route exact path="/contactus">
+                <ContactUsPage />
+              </Route>
+              <Route exact path="/profile/:uid">
                 <ProfilePage />
-              </Layout>
-            </Route>
-            <Route exact path="/admin">
-              <Layout>
+              </Route>
+              <Route exact path="/admin">
                 <AdminPage />
-              </Layout>
-            </Route>
-            <Route exact path="/profile/:uid/settings">
-              <Layout>
+              </Route>
+              <Route exact path="/profile/:uid/settings">
                 <ProfileSettingsPage />
-              </Layout>
-            </Route>
-          </Switch>
+              </Route>
+            </Switch>
+          </Layout>
         </Suspense>
       </Router>
     </div>
