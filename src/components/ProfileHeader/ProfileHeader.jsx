@@ -8,7 +8,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
-import { MapPin, Phone } from 'react-feather';
+import { Phone, Mail, User } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -18,9 +18,12 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
   return (
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
-            <Heading as="h1" size="xl">
+            <HStack>
+            <User  />
+            <Heading as="h1" size="lg">
               {fullname}
             </Heading>
+            </HStack>
             <Link to={`/profile/${uid}/settings`}>
               <Button
                 rounded="5px"
@@ -37,12 +40,15 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
             </Link>
          </HStack>
           <VStack  align="right">
-            <Text fontSize="lg" fontWeight="medium">
+            <HStack my={3}>
+            <Mail />
+            <Text fontSize="md" fontWeight="medium">
               {email}
             </Text>
-            <HStack color="black">
-              <Phone size="11" />
-              <Box fontSize="xl">{phoneNumber}</Box>
+            </HStack>
+            <HStack  my={3}>
+              <Phone/>
+              <Text fontSize="md" fontWeight="medium">{phoneNumber}</Text>
             </HStack>
           </VStack>
       </Grid>
