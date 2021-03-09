@@ -2,6 +2,7 @@ import { Box, Button , Text, Container } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
+import UserInfoModal from "../UserInfoModal/UserInfoModal"
 import {
   Table,
   Thead,
@@ -84,6 +85,7 @@ const ItemRequests = ({ requests }) => {
                     {t('itemPage.decline')}
           </Button>
         </Td>
+        <Td><UserInfoModal /></Td>
       </Tr>
       ))}
     </Tbody>
