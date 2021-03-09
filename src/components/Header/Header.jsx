@@ -10,15 +10,13 @@ import {
 import React from 'react';
 import { Search } from 'react-feather';
 // import sofa from '../../assets/images/sofa.png';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const Header = ({
-  categoryName,
-  searchInput,
-  handleSearchChange,
-  itemsCounter,
-}) => {
+const Header = ({ filteredCategoryCount, items }) => {
+  const { category } = useParams();
   const { t } = useTranslation();
+  console.log('category', category);
 
   return (
     <Box
@@ -35,14 +33,14 @@ const Header = ({
       bg="gray.200"
     >
       <Flex mb="10" color="black" fontWeight={800}>
-        <Text>{categoryName}</Text>
+        <Text>{category ? category : 'all'}</Text>
 
         <Flex mx="200px" py="1">
           <InputGroup>
             <InputLeftElement children={<Search color="black" />} />
             <Input
-              value={searchInput}
-              onChange={handleSearchChange}
+              // value={searchInput}
+              // onChange={handleSearchChange}
               width="400px"
               bg="whiteAlpha.800"
               placeholder={t('header.search')}
@@ -56,7 +54,8 @@ const Header = ({
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
-          {itemsCounter} items
+          {filteredCategoryCount ? filteredCategoryCount : items ? items : 0}{' '}
+          items
         </Text>
       </HStack>
     </Box>
