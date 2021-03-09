@@ -35,7 +35,7 @@ const ItemDetails = ({
           leftIcon={<ArrowLeft size={15} />}
           variant="ghost"
         >
-          {t('itemPage.items')}
+          {t('itemPage.back')}
         </Button>
 
         {isOwner && (

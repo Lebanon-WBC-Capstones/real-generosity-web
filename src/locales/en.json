@@ -5,7 +5,9 @@
     "about": "About",
     "contactUs": "Contact Us",
     "getStarted": "Get Started",
-    "copy": "All rights reserved"
+    "copy": "All rights reserved",
+    "profile": "view profile",
+    "logout": "logout"
   },
   "header": {
     "search": "Search"
@@ -69,6 +71,7 @@
   },
   "itemPage": {
     "items": "Items",
+    "back": "Back",
     "details": "Details",
     "requests": "Requests",
     "reason": "Reason:",
@@ -89,7 +92,7 @@
     "message": "Write your message",
     "paragraph": "Some relatively long heading paragraph contact Us",
     "send": "Send",
-    "alert":"your message has been sent successfully"
+    "alert": "your message has been sent successfully"
   },
   "heroSection": {
     "heroText_1": "Make someone's ",

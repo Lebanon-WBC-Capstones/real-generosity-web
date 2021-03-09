@@ -16,7 +16,7 @@ import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
 import FilteredItemsPage from './pages/FilteredItemsPage';
 import ProfilePage from './pages/ProfilePage';
-import ProfileSettingsPage from './pages/ProfileSettingsPage';
+import EditProfilePage from './pages/EditProfile';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';

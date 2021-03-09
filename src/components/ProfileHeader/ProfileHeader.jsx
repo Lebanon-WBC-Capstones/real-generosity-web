@@ -10,25 +10,11 @@ import {
 import React from 'react';
 import { MapPin, Phone } from 'react-feather';
 import { useTranslation } from 'react-i18next';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
-import { firestore } from '../../services/firebase';
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
   const { t } = useTranslation();
-  const { uid } = useParams();
 
-  const query = firestore.collection('users').doc(uid);
-  const [data, loading, error] = useDocumentData(query);
-
-  console.log('loading', loading);
-  console.log('user data', data);
-
-  if (error) console.error(error);
-
-  if (loading) return <>loading...</>;
-
-  const { fullname, email, phoneNumber } = data;
   return (
     <Box>
       <HStack d="flex" justifyContent="center" spacing="40px">
@@ -40,27 +26,25 @@ const ProfileHeader = () => {
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
             <Text fontSize="2xl" fontWeight="semibold" color="black.500">
-              {/* {users[0].name} */}
               {fullname}
             </Text>
-            <Button
-              rounded="5px"
-              size="xs"
-              fontSize="xs"
-              borderRadius="1px"
-              background="white"
-              color="black"
-              borderColor="black"
-              variant="outline"
-            >
-              {t('profilePage.editProfile')}
-            </Button>
+            <Link to={`/profile/${uid}/settings`}>
+              <Button
+                rounded="5px"
+                size="xs"
+                fontSize="xs"
+                borderRadius="1px"
+                background="white"
+                color="black"
+                borderColor="black"
+                variant="outline"
+              >
+                {t('profilePage.editProfile')}
+              </Button>
+            </Link>
           </HStack>
           <VStack spacing="6px" align="right">
             <Text fontSize="11px" fontWeight="semibold">
-              {t('profilePage.donations')}
-              {/* {users[0].itemsDonated.length}  */}
-              {/* items donated */}
               {email}
             </Text>
             <HStack color="gray.500">
@@ -69,10 +53,7 @@ const ProfileHeader = () => {
             </HStack>
             <HStack color="black">
               <Phone size="11" />
-              <Box fontSize="11px">
-                {/* {users[0].mobileNumber} */}
-                {phoneNumber}
-              </Box>
+              <Box fontSize="11px">{phoneNumber}</Box>
             </HStack>
           </VStack>
         </Grid>
