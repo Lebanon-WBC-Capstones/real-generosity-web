@@ -2,7 +2,6 @@ import {
   Box,
   Container,
   GridItem,
-  Image,
   SimpleGrid,
   Skeleton,
   Tab,
@@ -23,7 +22,7 @@ import { useParams } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
 import { useAuth } from '../../contexts/AuthContext';
-import { firestore } from '../../services/firebase';
+import firebase, { firestore } from '../../services/firebase';
 
 const SingleItemPage = () => {
   //query the item from firebase
@@ -35,25 +34,44 @@ const SingleItemPage = () => {
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
 
-  const [value, setValue] = React.useState('');
+ 
 
   //item requests
   const requestsRef = firestore.collection('requests');
-  const reqQuery = requestsRef.where('item', '==', id);
+  const reqQuery = requestsRef.where('itemId', '==', id);
   const [requests, reqLoading] = useCollectionData(reqQuery);
 
   console.log('requests', requests);
 
   // delete item function
+  
   const handleDelete = () => {
     console.log('item deleted');
   };
   // requestModal functions
+  const [value, setValue] = React.useState('');
   const handleChange = (e) => {
     setValue(e.target.value);
   };
   const handleRequest = () => {
-    console.log(value);
+    console.log("requestReason",value);
+    firestore.collection('requests').add({
+      requester: currentUser.uid,
+      status:'pending',
+      itemId:id,
+      reason: value,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    }).then(docRef=>{
+      firestore.collection('notifications').add({
+        targetId:item.uid,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        itemId:id,
+        type:"request",
+        actionId:docRef,
+        seen:false
+      })
+    })
+    
   };
 
   const isOwner = item && item?.uid === currentUser?.uid;
@@ -72,15 +90,15 @@ const SingleItemPage = () => {
   }
 
   return (
-    <Container maxW="1080px" minH="600px" mx="auto" my={24}>
-      <SimpleGrid columns={2}>
+    <Container maxW="6xl" minH="600px" mx="auto" my={20}>
+      {/* <SimpleGrid columns={2}> */}
         {/* <ImageCarousel /> */}
-        <Image boxSize="500px" objectFit={'cover'} src={item.image_url}></Image>
+        {/* <Image boxSize="500px" objectFit={'cover'} src={item.image_url}></Image> */}
 
         <Box px={10}>
           {isOwner ? (
-            <Tabs>
-              <TabList justifyContent="space-around">
+            <Tabs variant="soft-rounded"  colorScheme="gray">
+              <TabList >
                 <Tab>{t('itemPage.details')}</Tab>
                 <Tab>{t('itemPage.requests')}</Tab>
               </TabList>
@@ -112,7 +130,7 @@ const SingleItemPage = () => {
             />
           )}
         </Box>
-      </SimpleGrid>
+      {/* </SimpleGrid> */}
       {/* <Box> */}
       {/* <ItemsMap /> */}
       {/* </Box>  */}
