@@ -1,12 +1,12 @@
 import { Box, Flex, HStack, Text } from '@chakra-ui/react';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 import { useParams } from 'react-router-dom';
 
 const Header = ({ filteredCategoryCount, items }) => {
   const { category } = useParams();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   console.log('category', category);
 
   return (
