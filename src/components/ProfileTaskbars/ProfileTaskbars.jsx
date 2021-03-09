@@ -11,20 +11,22 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react';
+
 import React from 'react';
 import { Search } from 'react-feather';
 import Card from '../Card';
 import { useTranslation } from 'react-i18next';
-
-const ProfileTaskbars = ({ donations, donationsloading }) => {
+import ProfileNotificationsTab from "../ProfileNotificationsTab/ProfileNotificationsTab";
+const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading }) => {
   const { t } = useTranslation();
-
+  
+  
   return (
     <Box>
       <Tabs>
         <TabList justifyContent="space-around">
           <Tab>{t('profilePage.donations')} </Tab>
-          <Tab>{t('profilePage.requests')} </Tab>
+          <Tab>{t('profilePage.notifications')} </Tab>
         </TabList>
 
         <TabPanels>
@@ -55,10 +57,7 @@ const ProfileTaskbars = ({ donations, donationsloading }) => {
               />
               <Input type="text" placeholder="Search" />
             </InputGroup>
-            <SimpleGrid columns={4} gap={4}>
-              <Card />
-              <Card />
-            </SimpleGrid>
+            <ProfileNotificationsTab  notify={notify} notifyloading={notifyloading}/>
           </TabPanel>
         </TabPanels>
       </Tabs>
