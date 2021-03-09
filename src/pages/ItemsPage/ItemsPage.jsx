@@ -28,7 +28,7 @@ const ItemsPage = () => {
     );
 
   return (
-    <Container my="45px" maxW="1080px" fontFamily="Montserrat">
+    <Container my="45px" maxW="1080px">
       <Box mb="45px">
         <Header
           categoryName={categoryName}

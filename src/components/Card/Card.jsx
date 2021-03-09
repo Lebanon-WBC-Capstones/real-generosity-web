@@ -25,20 +25,10 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
         <Box px="4" pb="4">
           <Flex mb="4" align="center" justify="space-between">
             <VStack alignItems="flex-start">
-              <Text
-                fonts="Montserrat"
-                fontSize="lg"
-                fontWeight="semibold"
-                as="h3"
-              >
+              <Text fontSize="lg" fontWeight="semibold" as="h3">
                 {title}
               </Text>
-              <Text
-                fonts="Montserrat"
-                color="gray.400"
-                fontSize="xs"
-                textTransform="uppercase"
-              >
+              <Text color="gray.400" fontSize="xs" textTransform="uppercase">
                 {convertTimestamp(createdAt)}
               </Text>
             </VStack>
@@ -51,7 +41,7 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
                 {cityName ? cityName : 'no location..'}
               </Box>
             </HStack>
-            <Box fonts="Montserrat" color="blue.500" fontSize="sm"></Box>
+            <Box color="blue.500" fontSize="sm"></Box>
           </Flex>
         </Box>
       </Box>

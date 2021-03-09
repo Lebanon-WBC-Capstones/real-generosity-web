@@ -59,7 +59,6 @@ function ContactUsPage() {
     <Grid
       templateColumns="repeat(3, 1fr)"
       gap={4}
-      fontFamily="Montserrat"
       maxW={[
         'auto', // 0-30em
         'auto', // 30em-48em

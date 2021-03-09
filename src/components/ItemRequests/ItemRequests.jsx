@@ -26,12 +26,7 @@ const ItemRequests = ({ requests }) => {
           {requests.map((request, index) => (
             <Box key={index} bg="gray.50" height="80px" py="10px" px="5px">
               <Flex align="center" justify="space-between">
-                <Text
-                  fonts="Montserrat"
-                  fontSize="lg"
-                  fontWeight="semibold"
-                  as="h3"
-                >
+                <Text fontSize="lg" fontWeight="semibold" as="h3">
                   {request.reason}
                 </Text>
                 <Box>
@@ -48,12 +43,7 @@ const ItemRequests = ({ requests }) => {
                   </Button>
                 </Box>
               </Flex>
-              <Text
-                fonts="Montserrat"
-                color="gray.400"
-                fontSize="xs"
-                textTransform="uppercase"
-              >
+              <Text color="gray.400" fontSize="xs" textTransform="uppercase">
                 {convertTimestamp(request.createdAt)}
               </Text>
             </Box>
