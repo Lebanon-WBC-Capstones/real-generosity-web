@@ -13,22 +13,32 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-const RequestModal = ({ handleRequest, handleChange,reqCheck,reqCheckLoading }) => {
+const RequestModal = ({
+  handleRequest,
+  handleChange,
+  reqCheck,
+  reqCheckLoading,
+}) => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
 
-  
   const handleClick = () => {
     handleRequest();
     onClose();
   };
-  
-  if (reqCheckLoading) return <>loading</>
+
+  if (reqCheckLoading) return <>loading</>;
 
   return (
     <>
-      <Button disabled={reqCheck.length? true:false} colorScheme="green" w="100%" size="lg" onClick={onOpen}>
+      <Button
+        disabled={reqCheck.length ? true : false}
+        colorScheme="green"
+        w="100%"
+        size="lg"
+        onClick={onOpen}
+      >
         {t('itemPage.request')}
       </Button>
 

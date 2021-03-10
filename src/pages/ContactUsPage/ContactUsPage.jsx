@@ -60,7 +60,6 @@ function ContactUsPage() {
       </GridItem>
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
-
         <Flex
           minH="80vh"
           align="center"

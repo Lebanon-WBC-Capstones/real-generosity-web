@@ -18,7 +18,7 @@ import {
 import { useTranslation } from 'react-i18next';
 // import Carouselimg from '../../components/Carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { useParams,useHistory  } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
 //import ItemReports from '../../components.Itemreports'
@@ -35,8 +35,6 @@ const SingleItemPage = () => {
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
 
- 
-
   //item requests
   const requestsRef = firestore.collection('requests');
   const reqQuery = requestsRef.where('itemId', '==', id);
@@ -50,54 +48,57 @@ const SingleItemPage = () => {
     setValue(e.target.value);
   };
   const handleRequest = () => {
-    console.log("requestReason",value);
-    firestore.collection('requests').add({
-      requester: currentUser.uid,
-      status:'pending',
-      itemId:id,
-      reason: value,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    }).then(docRef=>{
-      firestore.collection('notifications').add({
-        targetId:item.uid,
+    console.log('requestReason', value);
+    firestore
+      .collection('requests')
+      .add({
+        requester: currentUser.uid,
+        status: 'pending',
+        itemId: id,
+        reason: value,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        itemId:id,
-        type:"request",
-        actionId:docRef,
-        seen:false
       })
-    })
-    
+      .then((docRef) => {
+        firestore.collection('notifications').add({
+          targetId: item.uid,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          itemId: id,
+          type: 'request',
+          actionId: docRef,
+          seen: false,
+        });
+      });
   };
 
+  // delete item function
 
-   // delete item function
-  
-   const updateStatus= async () => {
-    await firestore.collection("items")
-    .doc(id)
-    .set({
-    status: "canceled",
-    },{merge:true})
+  const updateStatus = async () => {
+    await firestore.collection('items').doc(id).set(
+      {
+        status: 'canceled',
+      },
+      { merge: true }
+    );
   };
 
-  const handleDelete=()=>{
+  const handleDelete = () => {
     updateStatus();
-    history.goBack()
-  }
+    history.goBack();
+  };
 
   //check for requests
-  const checkingUserRequest=firestore.collection('requests').where('itemId','==',id).where('requester','==',currentUser.uid)
-  const [reqCheck,reqCheckLoading]=useCollectionData(checkingUserRequest)
-  console.log("check",reqCheck)
-   
+  const checkingUserRequest = firestore
+    .collection('requests')
+    .where('itemId', '==', id)
+    .where('requester', '==', currentUser.uid);
+  const [reqCheck, reqCheckLoading] = useCollectionData(checkingUserRequest);
+  console.log('check', reqCheck);
 
   //handleReport function
-    // const report=React.useRef('')
-    // const handleReportClick=()=>{
-    //     console.log(report)
-    //   }
-     
+  // const report=React.useRef('')
+  // const handleReportClick=()=>{
+  //     console.log(report)
+  //   }
 
   const isOwner = item && item?.uid === currentUser?.uid;
 
@@ -117,52 +118,51 @@ const SingleItemPage = () => {
   return (
     <Container maxW="6xl" minH="600px" mx="auto" my={20}>
       {/* <SimpleGrid columns={2}> */}
-        {/* <ImageCarousel /> */}
-        {/* <Image boxSize="500px" objectFit={'cover'} src={item.image_url}></Image> */}
+      {/* <ImageCarousel /> */}
+      {/* <Image boxSize="500px" objectFit={'cover'} src={item.image_url}></Image> */}
 
-        <Box px={10}>
-          {isOwner ? (
-            <Tabs variant="soft-rounded"  colorScheme="gray">
-              <TabList >
-                <Tab>{t('itemPage.details')}</Tab>
-                <Tab>{t('itemPage.requests')}</Tab>
-                {/* <Tab>{t('itemPage.reports')}</Tab> */}
-              </TabList>
-              <TabPanels>
-                <TabPanel>
-                  <ItemDetails
-                    isOwner={isOwner}
-                    {...item}
-                    handleDelete={handleDelete}
-                    setValue={setValue}
-                    handleChange={handleChange}
-                    handleRequest={handleRequest}
-                    
-                  />
-                </TabPanel>
-                <TabPanel>
-                  {reqLoading && 'is loading...'}
-                  {requests && <ItemRequests requests={requests} />}
-                </TabPanel>
-                {/* <TabPanel>
+      <Box px={10}>
+        {isOwner ? (
+          <Tabs variant="soft-rounded" colorScheme="gray">
+            <TabList>
+              <Tab>{t('itemPage.details')}</Tab>
+              <Tab>{t('itemPage.requests')}</Tab>
+              {/* <Tab>{t('itemPage.reports')}</Tab> */}
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <ItemDetails
+                  isOwner={isOwner}
+                  {...item}
+                  handleDelete={handleDelete}
+                  setValue={setValue}
+                  handleChange={handleChange}
+                  handleRequest={handleRequest}
+                />
+              </TabPanel>
+              <TabPanel>
+                {reqLoading && 'is loading...'}
+                {requests && <ItemRequests requests={requests} />}
+              </TabPanel>
+              {/* <TabPanel>
                 <ItemReports handleDelete={handleDelete} 
                              
                               />
                 </TabPanel> */}
-              </TabPanels>
-            </Tabs>
-          ) : (
-            <ItemDetails
-              {...item}
-              setValue={setValue}
-              handleChange={handleChange}
-              handleRequest={handleRequest}
-              handleDelete={handleDelete}
-              reqCheck={reqCheck}
-              reqCheckLoading={reqCheckLoading}
-            />
-          )}
-        </Box>
+            </TabPanels>
+          </Tabs>
+        ) : (
+          <ItemDetails
+            {...item}
+            setValue={setValue}
+            handleChange={handleChange}
+            handleRequest={handleRequest}
+            handleDelete={handleDelete}
+            reqCheck={reqCheck}
+            reqCheckLoading={reqCheckLoading}
+          />
+        )}
+      </Box>
       {/* </SimpleGrid> */}
       {/* <Box> */}
       {/* <ItemsMap /> */}

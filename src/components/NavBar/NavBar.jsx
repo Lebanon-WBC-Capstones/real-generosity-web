@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link , useHistory} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -11,7 +11,7 @@ import {
   Text,
   HStack,
   Icon,
-  Button
+  Button,
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
@@ -26,7 +26,7 @@ function NavBar() {
   const user = useAuth();
   const history = useHistory();
 
-//logout function
+  //logout function
   const logOut = async () => {
     try {
       await auth.signOut();
@@ -36,17 +36,18 @@ function NavBar() {
     }
   };
 
-  
-//query notifications from firebase
+  //query notifications from firebase
 
-let notifications;
-if(user)notifications=firestore.collection('notifications').where('targetId','==',user.uid);
+  let notifications;
+  if (user)
+    notifications = firestore
+      .collection('notifications')
+      .where('targetId', '==', user.uid);
 
-const [notify, notifyloading, notifyerror] = useCollectionData(notifications)
-console.log('notify',notify)
-if (notifyerror) console.log('error')
-if (notifyloading) return <>loading...</>
-
+  const [notify, notifyloading, notifyerror] = useCollectionData(notifications);
+  console.log('notify', notify);
+  if (notifyerror) console.log('error');
+  if (notifyloading) return <>loading...</>;
 
   return (
     <Box as="nav">
@@ -125,20 +126,21 @@ if (notifyloading) return <>loading...</>
               </MenuItem>
             </MenuList>
           </Menu>
-       { user ? ( 
-          <GetStartedBtn  logOut={logOut}  user={user} notify={notify}/>):(
-          <Link to="/auth/signin">
-          <Button
-            variant="outline"
-            _hover={{ bg: 'green.400', color: 'white' }}
-            _focus={{ boxShadow: 'none' }}
-            colorScheme="black"
-            ml={2}
-          >
-            {t('navbar.getStarted')}
-          </Button>
-        </Link>
-         )}
+          {user ? (
+            <GetStartedBtn logOut={logOut} user={user} notify={notify} />
+          ) : (
+            <Link to="/auth/signin">
+              <Button
+                variant="outline"
+                _hover={{ bg: 'green.400', color: 'white' }}
+                _focus={{ boxShadow: 'none' }}
+                colorScheme="black"
+                ml={2}
+              >
+                {t('navbar.getStarted')}
+              </Button>
+            </Link>
+          )}
         </HStack>
       </Flex>
     </Box>

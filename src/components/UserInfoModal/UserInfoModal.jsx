@@ -13,7 +13,7 @@ import {
   useDisclosure,
   ModalHeader,
   Grid,
-  HStack
+  HStack,
 } from '@chakra-ui/react';
 
 const UserInfoModal = () => {
@@ -22,39 +22,44 @@ const UserInfoModal = () => {
   const finalRef = React.useRef();
   return (
     <>
-     <Button fontSize="xs" variant="ghost"  color="green" onClick={onOpen}>
-                   Contact Info
-     </Button>
-      
-      <Modal size="xl"
+      <Button fontSize="xs" variant="ghost" color="green" onClick={onOpen}>
+        Contact Info
+      </Button>
+
+      <Modal
+        size="xl"
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
-        blockScrollOnMount={false}>
+        blockScrollOnMount={false}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>contact info</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          <Grid>
-          <HStack color="black" my={3}>
-              <User  />
-              <Text fontSize="lg" fontWeight="medium">Full Name: </Text>
-            </HStack>
+            <Grid>
               <HStack color="black" my={3}>
-              <Mail />
-              <Text fontSize="lg" fontWeight="medium">Email Address: </Text>
-            </HStack>
-            <HStack color="black" my={3}>
-              <Phone />
-              <Text fontSize="lg" fontWeight="medium">phone number: </Text>
-            </HStack>
-         
-      </Grid>
+                <User />
+                <Text fontSize="lg" fontWeight="medium">
+                  Full Name:{' '}
+                </Text>
+              </HStack>
+              <HStack color="black" my={3}>
+                <Mail />
+                <Text fontSize="lg" fontWeight="medium">
+                  Email Address:{' '}
+                </Text>
+              </HStack>
+              <HStack color="black" my={3}>
+                <Phone />
+                <Text fontSize="lg" fontWeight="medium">
+                  phone number:{' '}
+                </Text>
+              </HStack>
+            </Grid>
           </ModalBody>
-          <ModalFooter>
-
-          </ModalFooter>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

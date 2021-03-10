@@ -85,8 +85,8 @@
     "delivered": "Delivered",
     "cancel": "Cancel",
     "deletep": "Are you sure you want to delete?",
-    "createdAt":"CreatedAt",
-    "requesterInfo":"Requester info"
+    "createdAt": "CreatedAt",
+    "requesterInfo": "Requester info"
   },
   "contactUs": {
     "fullname": "Full Name",
@@ -127,7 +127,7 @@
     "donations": "Donations",
     "requests": "Requests",
     "search": "Search",
-    "notifications":"Notifications"
+    "notifications": "Notifications"
   },
   "adminPage": {
     "admin": "Admin",
