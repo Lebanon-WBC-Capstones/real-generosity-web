@@ -18,19 +18,20 @@ import {
 import { useTranslation } from 'react-i18next';
 // import Carouselimg from '../../components/Carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory  } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
+//import ItemReports from '../../components.Itemreports'
 import { useAuth } from '../../contexts/AuthContext';
 import firebase, { firestore } from '../../services/firebase';
 
 const SingleItemPage = () => {
-  //query the item from firebase
   const { t } = useTranslation();
   const { id } = useParams();
   const currentUser = useAuth();
+  const history = useHistory();
 
-  //item details
+  // query item details
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
 
@@ -43,11 +44,6 @@ const SingleItemPage = () => {
 
   console.log('requests', requests);
 
-  // delete item function
-  
-  const handleDelete = () => {
-    console.log('item deleted');
-  };
   // requestModal functions
   const [value, setValue] = React.useState('');
   const handleChange = (e) => {
@@ -73,6 +69,29 @@ const SingleItemPage = () => {
     })
     
   };
+
+
+   // delete item function
+  
+   const updateActive= async () => {
+    await firestore.collection("items")
+    .doc(id)
+    .set({
+    isActive: false,
+    },{merge:true})
+  };
+
+  const handleDelete=()=>{
+    updateActive();
+    history.goBack()
+  }
+
+  //handleReport function
+    // const report=React.useRef('')
+    // const handleReportClick=()=>{
+    //     console.log(report)
+    //   }
+     
 
   const isOwner = item && item?.uid === currentUser?.uid;
 
@@ -101,6 +120,7 @@ const SingleItemPage = () => {
               <TabList >
                 <Tab>{t('itemPage.details')}</Tab>
                 <Tab>{t('itemPage.requests')}</Tab>
+                {/* <Tab>{t('itemPage.reports')}</Tab> */}
               </TabList>
               <TabPanels>
                 <TabPanel>
@@ -111,13 +131,18 @@ const SingleItemPage = () => {
                     setValue={setValue}
                     handleChange={handleChange}
                     handleRequest={handleRequest}
+                    
                   />
                 </TabPanel>
                 <TabPanel>
                   {reqLoading && 'is loading...'}
                   {requests && <ItemRequests requests={requests} />}
-                  {/* <ItemReports handleDelete={handleDelete} /> */}
                 </TabPanel>
+                {/* <TabPanel>
+                <ItemReports handleDelete={handleDelete} 
+                             
+                              />
+                </TabPanel> */}
               </TabPanels>
             </Tabs>
           ) : (
