@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { Phone, Mail, User } from 'react-feather';
 import {
   Modal,
@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 
 const UserInfoModal = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
   return (

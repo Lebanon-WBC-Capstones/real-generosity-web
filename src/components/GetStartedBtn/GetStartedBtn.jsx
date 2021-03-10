@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { User, LogOut, Bell } from 'react-feather';
 
 import {
-  Box,
   Menu,
   MenuButton,
   MenuList,
