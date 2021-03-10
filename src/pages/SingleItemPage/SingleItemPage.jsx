@@ -73,18 +73,24 @@ const SingleItemPage = () => {
 
    // delete item function
   
-   const updateActive= async () => {
+   const updateStatus= async () => {
     await firestore.collection("items")
     .doc(id)
     .set({
-    isActive: false,
+    status: "canceled",
     },{merge:true})
   };
 
   const handleDelete=()=>{
-    updateActive();
+    updateStatus();
     history.goBack()
   }
+
+  //check for requests
+  const checkingUserRequest=firestore.collection('requests').where('itemId','==',id).where('requester','==',currentUser.uid)
+  const [reqCheck,reqCheckLoading,reqCheckError]=useCollectionData(checkingUserRequest)
+  console.log("check",reqCheck)
+   
 
   //handleReport function
     // const report=React.useRef('')
@@ -152,6 +158,8 @@ const SingleItemPage = () => {
               handleChange={handleChange}
               handleRequest={handleRequest}
               handleDelete={handleDelete}
+              reqCheck={reqCheck}
+              reqCheckLoading={reqCheckLoading}
             />
           )}
         </Box>
