@@ -27,9 +27,7 @@ const ItemRequests = ({ requests }) => {
   const handleApprove = () => {
     console.log('approve');
   };
-  const handleDecline = () => {
-    console.log('decline');
-  };
+ 
 
   return (
     <Container maxW="7xl" mx="auto">
@@ -45,7 +43,6 @@ const ItemRequests = ({ requests }) => {
         <Th> {t('itemPage.reason')}</Th>
         <Th>{t('itemPage.createdAt')}</Th>
         <Th>{t('itemPage.approve')} </Th>
-        <Th>{t('itemPage.decline')}</Th>
         <Th>{t('itemPage.requesterInfo')}</Th>
       </Tr>
     </Thead>
@@ -75,16 +72,6 @@ const ItemRequests = ({ requests }) => {
                       {t('itemPage.approve')}
           </Button>
          </Td>
-        <Td >
-          <Button
-                  fontSize="xs"
-                  color="red"
-                  variant="ghost"
-                  onClick={handleDecline}
-                   >
-                    {t('itemPage.decline')}
-          </Button>
-        </Td>
         <Td><UserInfoModal /></Td>
       </Tr>
       ))}
