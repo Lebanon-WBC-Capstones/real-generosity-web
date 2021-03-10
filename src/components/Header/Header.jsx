@@ -6,8 +6,6 @@ import { useParams } from 'react-router-dom';
 const Header = ({ filteredCategoryCount, items }) => {
   const { category } = useParams();
 
-  // console.log('category', category);
-
   return (
     <Box
       py="10"
