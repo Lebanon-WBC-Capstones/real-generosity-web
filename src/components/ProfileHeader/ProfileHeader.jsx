@@ -10,9 +10,9 @@ import {
 import React from 'react';
 import { MapPin, Phone } from 'react-feather';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-dom';
 
-const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
+const ProfileHeader = ({ fullname, email, phoneNumber, uid, loaction }) => {
   const { t } = useTranslation();
 
   return (
@@ -49,7 +49,7 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
             </Text>
             <HStack color="gray.500">
               <MapPin size="11" />
-              <Box fontSize="11px">Location</Box>
+              <Box fontSize="11px">{loaction}</Box>
             </HStack>
             <HStack color="black">
               <Phone size="11" />
