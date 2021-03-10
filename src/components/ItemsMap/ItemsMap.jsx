@@ -1,5 +1,10 @@
-import React from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import React, { useState } from 'react';
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from '@react-google-maps/api';
 
 const center = {
   lat: 34.4346,
@@ -11,6 +16,8 @@ const mapStyles = {
 };
 
 export const ItemsMap = ({ items }) => {
+  const [selected, setSelected] = useState();
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -30,9 +37,27 @@ export const ItemsMap = ({ items }) => {
                 lat: item.data().location?.latitude,
                 lng: item.data().location?.longitude,
               }}
+              onClick={() =>
+                setSelected({
+                  title: item.data().title,
+                  location: {
+                    lat: item.data().location?.latitude,
+                    lng: item.data().location?.longitude,
+                  },
+                })
+              }
             />
           );
         })}
+        {selected ? (
+          <InfoWindow
+            position={selected.location}
+            clickable={true}
+            onCloseClick={() => setSelected()}
+          >
+            <p>{selected.title}</p>
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     </div>
   ) : (
