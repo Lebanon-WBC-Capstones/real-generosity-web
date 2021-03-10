@@ -61,7 +61,6 @@ export const ItemsMap = ({ items }) => {
             clickable={true}
             onCloseClick={() => setSelected()}
           >
-            {/* <p>{selected.title}</p> */}
             <Card
               key={selected.id}
               id={selected.id}
