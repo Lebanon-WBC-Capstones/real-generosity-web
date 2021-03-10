@@ -18,9 +18,9 @@ import { Search,Plus } from 'react-feather';
 import Card from '../Card';
 import { useTranslation } from 'react-i18next';
 import ProfileNotificationsTab from "../ProfileNotificationsTab/ProfileNotificationsTab";
-//import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
 
-const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading,tabIndex=0,handleTabsChange}) => {
+
+const ProfileTaskbars = ({ donations, donationsLoading,notify,notifyLoading,tabIndex=0,handleTabsChange}) => {
   const { t } = useTranslation();
  
   return (
@@ -51,7 +51,7 @@ const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading,tabI
             </HStack>
 
             <SimpleGrid columns={4} gap={4}>
-              {donationsloading && 'loading ...'}
+              {donationsLoading && 'loading ...'}
               {donations &&
                 donations.docs.map((item) => {
                   return <Card key={item.id} id={item.id} {...item.data()} />;
@@ -60,7 +60,7 @@ const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading,tabI
           </TabPanel>
           {/* Requests panel  */}
           <TabPanel>
-            <ProfileNotificationsTab  notify={notify} notifyloading={notifyloading}/>
+            <ProfileNotificationsTab  notify={notify} notifyLoading={notifyLoading}/>
           </TabPanel>
         </TabPanels>
       </Tabs>
