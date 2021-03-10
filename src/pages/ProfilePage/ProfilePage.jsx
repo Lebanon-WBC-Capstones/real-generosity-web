@@ -31,11 +31,11 @@ function ProfilePage() {
   //query donations from firebase
 
   const items = firestore.collection('items').where('uid', '==', uid).where('status','==','active');
-  const [donations, donationsLoading, donationsError] = useCollection(items);
+  const [donations, donationsLoading] = useCollection(items);
 
   //query notifications from firebase
   const notifications=firestore.collection('notifications').where('targetId','==',uid);
-  const [notify, notifyLoading, notifyError] = useCollection(notifications);
+  const [notify, notifyLoading] = useCollection(notifications);
   console.log('notify',notify)
 
   if (error) console.error(error);

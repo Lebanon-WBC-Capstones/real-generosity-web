@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   User,
   LogOut,
   Bell,
-  AlertCircle,
 } from 'react-feather';
 
 import {Box,
@@ -13,10 +12,9 @@ import {Box,
   MenuButton,
   MenuList,
   MenuItem,
-  Button,
-  Avatar,AvatarBadge,Badge,
+  Avatar,AvatarBadge,
   IconButton,
-  HStack,CircleIcon
+  HStack
 } from '@chakra-ui/react';
 
 

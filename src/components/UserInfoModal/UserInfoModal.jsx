@@ -13,8 +13,7 @@ import {
   useDisclosure,
   ModalHeader,
   Grid,
-  Heading,
-  HStack,VStack,Box
+  HStack
 } from '@chakra-ui/react';
 
 const UserInfoModal = () => {

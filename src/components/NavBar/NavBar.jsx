@@ -18,7 +18,7 @@ import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import firebase, { firestore } from '../../services/firebase';
+import { firestore } from '../../services/firebase';
 
 function NavBar() {
   const { t, i18n } = useTranslation();

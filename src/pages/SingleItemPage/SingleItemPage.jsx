@@ -88,7 +88,7 @@ const SingleItemPage = () => {
 
   //check for requests
   const checkingUserRequest=firestore.collection('requests').where('itemId','==',id).where('requester','==',currentUser.uid)
-  const [reqCheck,reqCheckLoading,reqCheckError]=useCollectionData(checkingUserRequest)
+  const [reqCheck,reqCheckLoading]=useCollectionData(checkingUserRequest)
   console.log("check",reqCheck)
    
 
