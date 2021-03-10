@@ -29,7 +29,7 @@ export const ItemsMap = ({ items }) => {
 
   return isLoaded ? (
     <div>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={11} center={center}>
+      <GoogleMap mapContainerStyle={mapStyles} zoom={10} center={center}>
         {items.map((item) => {
           // console.log(item.id);
           return (
