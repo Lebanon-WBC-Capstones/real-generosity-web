@@ -20,6 +20,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+// TODO: import from DB instead
 import { users } from '../../assets/data/users';
 
 const AdminTaskbars = () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { Box, Image } from '@chakra-ui/react';
+// TODO: import from DB instead
 import { items } from '../../assets/data/items';
 import { useParams } from 'react-router-dom';
 const Carouselimg = () => {
