@@ -27,59 +27,48 @@ function App() {
     <div className="App">
       {/* <DeployingData /> */}
       <Router>
-        <Suspense fallback="loading">
-          <Switch>
-            <Route exact path="/">
-              <Layout>
+        <Layout>
+          <Suspense fallback="loading">
+            <Switch>
+              <Route exact path="/">
                 <HomePage />
-              </Layout>
-            </Route>
-            <Route exact path="/auth/signin">
-              <SignInPage />
-            </Route>
-            <Route exact path="/auth/signup">
-              <SignUpPage />
-            </Route>
-            <Route exact path="/add-item">
-              <Layout>
+              </Route>
+              <Route exact path="/auth/signin">
+                <SignInPage />
+              </Route>
+              <Route exact path="/auth/signup">
+                <SignUpPage />
+              </Route>
+              <Route exact path="/add-item">
                 {currentUser ? <AddItemPage /> : <Redirect to="/auth/signin" />}
-              </Layout>
-            </Route>
-            <Route exact path="/items">
-              <Layout>
+              </Route>
+              <Route exact path="/items">
                 <ItemsPage />
-              </Layout>
-            </Route>
-            <Route exact path="/item/:id">
-              <Layout>
+              </Route>
+              <Route exact path="/item/:id">
                 <SingleItemPage />
-              </Layout>
-            </Route>
-            <Route exact path="/about">
-              <Layout>
+              </Route>
+              <Route exact path="/about">
                 <AboutPage />
-              </Layout>
-            </Route>
-            <Route exact path="/contactus">
-              <ContactUsPage />
-            </Route>
-            <Route exact path="/profile/:uid">
-              <Layout>
+              </Route>
+              <Route exact path="/contactus">
+                <ContactUsPage />
+              </Route>
+              <Route exact path="/profile/:uid">
                 <ProfilePage />
-              </Layout>
-            </Route>
-            <Route exact path="/admin">
-              <Layout>
+              </Route>
+              <Route exact path="/profile/:uid/:tab">
+                <ProfilePage />
+              </Route>
+              <Route exact path="/admin">
                 <AdminPage />
-              </Layout>
-            </Route>
-            <Route exact path="/profile/:uid/settings">
-              <Layout>
+              </Route>
+              <Route exact path="/profile/:uid/settings">
                 <EditProfilePage />
-              </Layout>
-            </Route>
-          </Switch>
-        </Suspense>
+              </Route>
+            </Switch>
+          </Suspense>
+        </Layout>
       </Router>
     </div>
   );
