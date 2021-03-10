@@ -7,6 +7,7 @@ import ItemsList from '../../components/ItemsList';
 import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import { firestore } from '../../services/firebase';
 
+
 const ItemsPage = () => {
   const [categoryName, setCategoryName] = useState('All');
   const [categoryPic, setCategoryPic] = useState();
@@ -15,7 +16,7 @@ const ItemsPage = () => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
-  const query = firestore.collection('items');
+  const query = firestore.collection('items').where('status','==',"active");
   const [items, loading, error] = useCollectionOnce(query);
 
   if (error) return 'an error has occured...';

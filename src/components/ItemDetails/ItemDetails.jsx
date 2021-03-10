@@ -14,6 +14,8 @@ const ItemDetails = ({
   setValue,
   handleChange,
   handleRequest,
+  reqCheck,
+  reqCheckLoading,
   category,
   title,
   createdAt,
@@ -85,7 +87,8 @@ const ItemDetails = ({
           setValue={setValue}
           handleChange={handleChange}
           handleRequest={handleRequest}
-         
+         reqCheck={reqCheck}
+         reqCheckLoading={reqCheckLoading}
         />
       )}
 
