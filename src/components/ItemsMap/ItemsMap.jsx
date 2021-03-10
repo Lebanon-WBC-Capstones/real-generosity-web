@@ -31,7 +31,6 @@ export const ItemsMap = ({ items }) => {
     <div>
       <GoogleMap mapContainerStyle={mapStyles} zoom={10} center={center}>
         {items.map((item) => {
-          // console.log(item.id);
           return (
             <Marker
               key={item.id}
