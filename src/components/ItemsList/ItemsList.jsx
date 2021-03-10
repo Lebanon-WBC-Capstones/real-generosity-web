@@ -7,7 +7,7 @@ const ItemsList = ({ items }) => {
     <Box maxWidth="540px" bg="white" borderRadius="1px">
       <Grid templateColumns="repeat(2, 0.5fr)" gap={1} my="4px">
         {items.map((item) => (
-          <Card key={item.id} id={item.id} {...item.data()} />
+          <Card key={item.id} id={item.id} {...item} />
         ))}
       </Grid>
     </Box>
