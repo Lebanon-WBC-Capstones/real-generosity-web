@@ -11,9 +11,11 @@ import {
   Text,
   HStack,
   Icon,
+  Image,
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
+import logo from '../../assets/images/logo.png';
 
 function NavBar() {
   const { t, i18n } = useTranslation();
@@ -21,14 +23,21 @@ function NavBar() {
   return (
     <Box as="nav">
       <Flex
-        justify="space-between"
+        justify="space-around"
         align="center"
         mx={16}
         mt={3}
         fontSize="md"
         fontWeight="medium"
       >
-        <Box fontSize="2xl">LOGO</Box>
+        <Box fontSize="2xl">
+          <Image
+            borderRadius="full"
+            boxSize="150px"
+            src={logo}
+            alt="logo"
+          ></Image>
+        </Box>
 
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
           <Link to="/">
