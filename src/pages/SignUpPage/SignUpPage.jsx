@@ -57,16 +57,26 @@ function SignUpPage() {
               _hover={{ bg: 'green.500', color: 'white' }}
               _focus={{ boxShadow: 'none' }}
               w={['32', '36', '40', '72']}
-              ml={["28","56","56","15"]}
+              ml={['28', '56', '56', '15']}
             >
               {t('signin.signinbutton')}
             </Button>
           </Link>
         </Flex>
 
-        <Flex minH="80vh" align="center" justify={['center', 'space-between', 'flex-end', 'flex-end']}>
-          <Box  maxWidth={['20', '28', '36', '72']}
-            fontSize={['sm', 'md', 'md', '4xl']}  display={{ base: 'none', md: 'block' }} mr={40}>{t('signup.paragraph')}</Box>
+        <Flex
+          minH="80vh"
+          align="center"
+          justify={['center', 'space-between', 'flex-end', 'flex-end']}
+        >
+          <Box
+            maxWidth={['20', '28', '36', '72']}
+            fontSize={['sm', 'md', 'md', '4xl']}
+            display={{ base: 'none', md: 'block' }}
+            mr={40}
+          >
+            {t('signup.paragraph')}
+          </Box>
           <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box mt={4} fontSize="lg">
@@ -137,7 +147,11 @@ function SignUpPage() {
                 <Dropzone dropzoneRef={register} setImage={setImage} />
               </Box> */}
               <Box mt={8}>
-                <Button type="submit" colorScheme="green"  w={['48', '40', '56', '72']}>
+                <Button
+                  type="submit"
+                  colorScheme="green"
+                  w={['48', '40', '56', '72']}
+                >
                   {t('signup.createbutton')}
                 </Button>
               </Box>
