@@ -49,7 +49,7 @@ if (notifyloading) return <>loading...</>
 
 
   return (
-    <Box as="nav" fontFamily="Montserrat">
+    <Box as="nav">
       <Flex
         justify="space-between"
         align="center"

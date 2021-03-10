@@ -29,6 +29,7 @@ function ProfilePage() {
   const [data, loading, error] = useDocumentData(query);
 
   //query donations from firebase
+
   const items = firestore.collection('items').where('uid', '==', uid).where('status','==','active');
   const [donations, donationsLoading, donationsError] = useCollection(items);
 

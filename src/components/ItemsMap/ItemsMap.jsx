@@ -1,6 +1,11 @@
-import React from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-
+import React, { useState } from 'react';
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from '@react-google-maps/api';
+import Card from '../Card';
 const center = {
   lat: 34.4346,
   lng: 35.8362,
@@ -11,6 +16,9 @@ const mapStyles = {
 };
 
 export const ItemsMap = ({ items }) => {
+  const [selected, setSelected] = useState();
+
+  console.log(selected?.id);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -21,7 +29,7 @@ export const ItemsMap = ({ items }) => {
 
   return isLoaded ? (
     <div>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={11} center={center}>
+      <GoogleMap mapContainerStyle={mapStyles} zoom={10} center={center}>
         {items.map((item) => {
           return (
             <Marker
@@ -30,9 +38,38 @@ export const ItemsMap = ({ items }) => {
                 lat: item.data().location?.latitude,
                 lng: item.data().location?.longitude,
               }}
+              onClick={() =>
+                setSelected({
+                  title: item.data().title,
+                  location: {
+                    lat: item.data().location?.latitude,
+                    lng: item.data().location?.longitude,
+                  },
+                  createdAt: item.data().createdAt,
+                  image_url: item.data().image_url,
+                  id: item.id,
+                  cityCoords: item.data().location,
+                })
+              }
             />
           );
         })}
+        {selected ? (
+          <InfoWindow
+            position={selected.location}
+            clickable={true}
+            onCloseClick={() => setSelected()}
+          >
+            <Card
+              key={selected.id}
+              id={selected.id}
+              title={selected.title}
+              createdAt={selected.createdAt}
+              image_url={selected.image_url}
+              location={selected.cityCoords}
+            />
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     </div>
   ) : (

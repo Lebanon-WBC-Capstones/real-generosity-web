@@ -36,7 +36,6 @@ const ItemRequests = ({ requests }) => {
     <Button colorScheme="green"  w="100%" size="lg" onClick={handleDelivered}>
           {t('itemPage.delivered')}
          </Button>
-      
     </TableCaption>
     <Thead>
       <Tr>

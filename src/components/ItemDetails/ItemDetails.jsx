@@ -69,7 +69,6 @@ const ItemDetails = ({
         </Box>
         <Box>
           <Text
-            fonts="Montserrat"
             color="gray.400"
             fontSize="xs"
             my="10px"

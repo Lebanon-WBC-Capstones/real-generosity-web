@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 import Layout from './components/Layout';
-// import { DeployingData } from './services/deploy';
 import { useAuth } from './contexts/AuthContext';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
@@ -14,6 +13,7 @@ import AdminPage from './pages/AdminPage';
 import ContactUsPage from './pages/ContactUsPage';
 import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
+import FilteredItemsPage from './pages/FilteredItemsPage';
 import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfile';
 import SignInPage from './pages/SignInPage';
@@ -25,10 +25,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <DeployingData /> */}
       <Router>
-        <Layout>
-          <Suspense fallback="loading">
+        <Suspense fallback="loading">
+          <Layout>
             <Switch>
               <Route exact path="/">
                 <HomePage />
@@ -45,6 +44,9 @@ function App() {
               <Route exact path="/items">
                 <ItemsPage />
               </Route>
+              <Route exact path="/items/:category">
+                <FilteredItemsPage />
+              </Route>
               <Route exact path="/item/:id">
                 <SingleItemPage />
               </Route>
@@ -60,6 +62,7 @@ function App() {
               <Route exact path="/profile/:uid/:tab">
                 <ProfilePage />
               </Route>
+
               <Route exact path="/admin">
                 <AdminPage />
               </Route>
@@ -67,8 +70,8 @@ function App() {
                 <EditProfilePage />
               </Route>
             </Switch>
-          </Suspense>
-        </Layout>
+          </Layout>
+        </Suspense>
       </Router>
     </div>
   );

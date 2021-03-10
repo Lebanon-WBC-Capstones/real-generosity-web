@@ -4,7 +4,7 @@ import { Flex, Stack, Text, Image } from '@chakra-ui/react';
 
 const CategoryCard = ({ categoryPic, direction, categoryName, ml, mt }) => {
   return (
-    <Link to={`/items?category=${categoryName.toLowerCase()}`}>
+    <Link to={`/items/${categoryName.toLowerCase()}`}>
       <Flex
         mb="4"
         fontSize="md"

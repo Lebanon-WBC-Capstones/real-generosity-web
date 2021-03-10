@@ -1,18 +1,20 @@
 import { Box, Container, Flex, Skeleton } from '@chakra-ui/react';
 import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { useParams } from 'react-router-dom';
 import Filters from '../../components/Filters';
 import Header from '../../components/Header';
-import ItemsMap from '../../components/ItemsMap';
 import ItemsList from '../../components/ItemsList';
+import ItemsMap from '../../components/ItemsMap/ItemsMap';
 import { firestore } from '../../services/firebase';
 
-
-const ItemsPage = () => {
+const FilteredItemsPage = () => {
+  const { category } = useParams();
   const [search, setSearch] = React.useState('');
 
-
-  let itemsRef = firestore.collection('items').where('status','==',"active");
+  let itemsRef = firestore
+    .collection('items')
+    .where('category', '==', category);
 
   if (search) {
     itemsRef = itemsRef.where('title', '==', search);
@@ -21,7 +23,7 @@ const ItemsPage = () => {
   const [items, loading, error] = useCollection(itemsRef);
 
   const renders = React.useRef(0);
-  console.log('ItemsPage.jsx render... ', renders.current++);
+  console.log('FilteredItemsPage.jsx render... ', renders.current++);
 
   if (error) return 'an error has occured...';
 
@@ -40,7 +42,7 @@ const ItemsPage = () => {
   return (
     <Container my="45px" maxW="1080px">
       <Box mb="45px">
-        <Header items={items.docs.length} />
+        <Header filteredCategoryCount={items.docs.length} />
       </Box>
 
       <Box mb="45px">
@@ -49,9 +51,12 @@ const ItemsPage = () => {
 
       <Flex justify="space-between">
         <Box w="50%">
-          <ItemsList items={items.docs} />
+          {items.docs.length ? (
+            <ItemsList items={items.docs} />
+          ) : (
+            'no match found...'
+          )}
         </Box>
-
         <Box w="50%" ml={30}>
           <ItemsMap items={items.docs} />
         </Box>
@@ -60,4 +65,4 @@ const ItemsPage = () => {
   );
 };
 
-export default ItemsPage;
+export default FilteredItemsPage;

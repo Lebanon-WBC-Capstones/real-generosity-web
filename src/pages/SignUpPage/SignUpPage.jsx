@@ -41,14 +41,14 @@ function SignUpPage() {
 
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-      <GridItem colSpan={1}>
+      <GridItem colSpan={1} display={{ base: 'none', md: 'block' }}>
         <Image fit="contain" src={proto} alt="sign up img" />
       </GridItem>
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
         <Flex justify="space-between">
           <Link to="/">
-            <Box fontSize="4xl">LOGO</Box>
+            <Box fontSize={['2xl', '2xl', '2xl', '4xl']}>LOGO</Box>
           </Link>
           <Link to="/auth/signin">
             <Button
@@ -56,14 +56,27 @@ function SignUpPage() {
               colorScheme="black"
               _hover={{ bg: 'green.500', color: 'white' }}
               _focus={{ boxShadow: 'none' }}
+              w={['32', '36', '40', '72']}
+              ml={['28', '56', '56', '15']}
             >
               {t('signin.signinbutton')}
             </Button>
           </Link>
         </Flex>
 
-        <Flex minH="80vh" align="center" justify="space-between">
-          <Box fontSize="4xl">{t('signup.paragraph')}</Box>
+        <Flex
+          minH="80vh"
+          align="center"
+          justify={['center', 'space-between', 'flex-end', 'flex-end']}
+        >
+          <Box
+            maxWidth={['20', '28', '36', '72']}
+            fontSize={['sm', 'md', 'md', '4xl']}
+            display={{ base: 'none', md: 'block' }}
+            mr={40}
+          >
+            {t('signup.paragraph')}
+          </Box>
           <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box mt={4} fontSize="lg">
@@ -74,7 +87,7 @@ function SignUpPage() {
                   variant="filled"
                   isRequired
                   focusBorderColor="green.200"
-                  maxWidth={72}
+                  maxW={['48', '40', '52', '72']}
                   ref={register}
                 />
               </Box>
@@ -99,7 +112,7 @@ function SignUpPage() {
                   name="email"
                   variant="filled"
                   isRequired
-                  maxWidth={72}
+                  maxW={['48', '40', '52', '72']}
                   ref={register}
                   focusBorderColor="green.200"
                 />
@@ -111,7 +124,7 @@ function SignUpPage() {
                   name="password"
                   variant="filled"
                   isRequired
-                  maxWidth={72}
+                  maxW={['48', '40', '52', '72']}
                   ref={register}
                   focusBorderColor="green.200"
                 />
@@ -134,7 +147,11 @@ function SignUpPage() {
                 <Dropzone dropzoneRef={register} setImage={setImage} />
               </Box> */}
               <Box mt={8}>
-                <Button type="submit" colorScheme="green" w={72}>
+                <Button
+                  type="submit"
+                  colorScheme="green"
+                  w={['48', '40', '56', '72']}
+                >
                   {t('signup.createbutton')}
                 </Button>
               </Box>
