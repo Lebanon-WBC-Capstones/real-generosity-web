@@ -1,7 +1,7 @@
-import { Box, Flex, HStack, Text } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
 // import { useTranslation } from 'react-i18next';
-
+import { categories } from '../../assets/data/categories';
 import { useParams } from 'react-router-dom';
 
 const Header = ({ filteredCategoryCount, items }) => {
@@ -29,6 +29,11 @@ const Header = ({ filteredCategoryCount, items }) => {
 
       <Flex float="right" my="-180px">
         {/* <Image src={categoryPic} maxW="241px" maxH="233px"></Image> */}
+        {categories.map((cat) =>
+          cat.name.toLowerCase() === category ? (
+            <Image src={cat.imgURL} maxW="241px" maxH="230px" />
+          ) : null
+        )}
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
