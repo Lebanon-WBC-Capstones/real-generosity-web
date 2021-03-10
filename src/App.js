@@ -65,7 +65,7 @@ function App() {
                 <AdminPage />
               </Route>
               <Route exact path="/profile/:uid/settings">
-                <ProfileSettingsPage />
+                <EditProfilePage />
               </Route>
             </Switch>
           </Layout>
