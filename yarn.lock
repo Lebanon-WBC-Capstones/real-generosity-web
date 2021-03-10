@@ -12947,6 +12947,11 @@ use-dark-mode@2.3.1:
     "@use-it/event-listener" "^0.1.2"
     use-persisted-state "^0.3.0"
 
+use-pagination-firestore@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/use-pagination-firestore/-/use-pagination-firestore-0.3.0.tgz#6b03119ecce0a33d7b4497099b32e2283c2814cc"
+  integrity sha512-ACAGYi0j9MpIzFvZFgOBYpkN03ZpQWO+c5sJr6vhjsA0+YasRk7Q9qgCXPl2iz8vWHA8QITnRoT6e6fVLi/PHA==
+
 use-persisted-state@^0.3.0:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/use-persisted-state/-/use-persisted-state-0.3.3.tgz#5e0f2236967cec7c34de33abc07ae6818e7c7451"
