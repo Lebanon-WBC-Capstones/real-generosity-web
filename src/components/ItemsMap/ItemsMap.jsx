@@ -5,7 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
-
+import Card from '../Card';
 const center = {
   lat: 34.4346,
   lng: 35.8362,
@@ -18,6 +18,7 @@ const mapStyles = {
 export const ItemsMap = ({ items }) => {
   const [selected, setSelected] = useState();
 
+  console.log(selected?.id);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -30,6 +31,7 @@ export const ItemsMap = ({ items }) => {
     <div>
       <GoogleMap mapContainerStyle={mapStyles} zoom={11} center={center}>
         {items.map((item) => {
+          // console.log(item.id);
           return (
             <Marker
               key={item.id}
@@ -44,6 +46,10 @@ export const ItemsMap = ({ items }) => {
                     lat: item.data().location?.latitude,
                     lng: item.data().location?.longitude,
                   },
+                  createdAt: item.data().createdAt,
+                  image_url: item.data().image_url,
+                  id: item.id,
+                  cityCoords: item.data().location,
                 })
               }
             />
@@ -55,7 +61,15 @@ export const ItemsMap = ({ items }) => {
             clickable={true}
             onCloseClick={() => setSelected()}
           >
-            <p>{selected.title}</p>
+            {/* <p>{selected.title}</p> */}
+            <Card
+              key={selected.id}
+              id={selected.id}
+              title={selected.title}
+              createdAt={selected.createdAt}
+              image_url={selected.image_url}
+              location={selected.cityCoords}
+            />
           </InfoWindow>
         ) : null}
       </GoogleMap>
