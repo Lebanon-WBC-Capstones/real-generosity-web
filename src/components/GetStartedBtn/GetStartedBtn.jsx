@@ -29,7 +29,7 @@ const GetStartedBtn = ({logOut,user,notify}) => {
               color="black"
               aria-label="Options"
               icon={ <Avatar size="sm" bg="white" icon={<Bell fontSize="1.5rem" />} >
-                      {notify.length!==0? <AvatarBadge boxSize="1.25em" bg="red" />:""}
+                      {notify.length? <AvatarBadge boxSize="1.25em" bg="red" />:""}
                      </Avatar> }
               size="md"
               variant="white"
