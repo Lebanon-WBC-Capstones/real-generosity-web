@@ -11,9 +11,11 @@ import {
   Text,
   HStack,
   Icon,
+  Image,
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
+import logo2 from '../../assets/images/logo2.png';
 
 function NavBar() {
   const { t, i18n } = useTranslation();
@@ -28,7 +30,9 @@ function NavBar() {
         fontSize="md"
         fontWeight="medium"
       >
-        <Box fontSize="2xl">LOGO</Box>
+        <Box fontSize="xl">
+          <Image borderRadius="full" boxSize="130px" src={logo2} alt="logo" />
+        </Box>
 
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
           <Link to="/">
@@ -44,7 +48,6 @@ function NavBar() {
             <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
           </Link>
         </HStack>
-
         <HStack>
           <Menu>
             <MenuButton
