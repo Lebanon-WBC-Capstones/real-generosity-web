@@ -10,7 +10,10 @@ import { firestore } from '../../services/firebase';
 const ItemsPage = () => {
   const [search, setSearch] = React.useState('');
 
-  let itemsRef = firestore.collection('items').orderBy('createdAt', 'desc');
+  let itemsRef = firestore
+    .collection('items')
+    // .where('status', '==', 'active')
+    .orderBy('createdAt', 'desc');
 
   if (search) {
     itemsRef = itemsRef.where('title', '==', search);

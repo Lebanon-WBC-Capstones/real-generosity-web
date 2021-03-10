@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 import Layout from './components/Layout';
-// import { DeployingData } from './services/deploy';
 import { useAuth } from './contexts/AuthContext';
 import AboutPage from './pages/AboutUs';
 import AddItemPage from './pages/AddItemPage';
@@ -26,7 +25,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <DeployingData /> */}
       <Router>
         <Suspense fallback="loading">
           <Layout>
@@ -61,6 +59,10 @@ function App() {
               <Route exact path="/profile/:uid">
                 <ProfilePage />
               </Route>
+              <Route exact path="/profile/:uid/:tab">
+                <ProfilePage />
+              </Route>
+
               <Route exact path="/admin">
                 <AdminPage />
               </Route>

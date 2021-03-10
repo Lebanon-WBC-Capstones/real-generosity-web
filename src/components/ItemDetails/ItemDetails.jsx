@@ -1,4 +1,4 @@
-import { Badge, Box, Button, Flex, HStack, Text } from '@chakra-ui/react';
+import { Badge, Box, Button, Flex, HStack, Text,SimpleGrid,Image } from '@chakra-ui/react';
 import React from 'react';
 import { AlertCircle, ArrowLeft, Edit, MapPin } from 'react-feather';
 import { useTranslation } from 'react-i18next';
@@ -14,11 +14,14 @@ const ItemDetails = ({
   setValue,
   handleChange,
   handleRequest,
+  reqCheck,
+  reqCheckLoading,
   category,
   title,
   createdAt,
   description,
   location,
+  image_url
 }) => {
   const history = useHistory();
   const { t } = useTranslation();
@@ -28,10 +31,12 @@ const ItemDetails = ({
   console.log('item details city name', cityName);
 
   return (
-    <Flex d="column" maxW="400px" fontSize={18}>
+    <SimpleGrid columns={2} my={15}>
+     <Image boxSize="500px" objectFit={'cover'} src={image_url}></Image> 
+    <Flex d="column" maxW="400px" fontSize={18} px={10}>
       <Flex justify="space-between">
         <Button
-          onClick={() => history.push('/items')}
+          onClick={() => history.goBack()}
           leftIcon={<ArrowLeft size={15} />}
           variant="ghost"
         >
@@ -81,6 +86,8 @@ const ItemDetails = ({
           setValue={setValue}
           handleChange={handleChange}
           handleRequest={handleRequest}
+         reqCheck={reqCheck}
+         reqCheckLoading={reqCheckLoading}
         />
       )}
 
@@ -97,6 +104,7 @@ const ItemDetails = ({
         {isOwner && <DeleteModal handleDelete={handleDelete} />}
       </Flex>
     </Flex>
+    </SimpleGrid> 
   );
 };
 

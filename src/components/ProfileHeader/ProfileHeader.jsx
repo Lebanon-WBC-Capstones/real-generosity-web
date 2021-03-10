@@ -1,6 +1,5 @@
 import {
-  Avatar,
-  Box,
+  Heading,
   Button,
   Grid,
   HStack,
@@ -8,7 +7,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
-import { MapPin, Phone } from 'react-feather';
+import { Phone, Mail, User } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -16,18 +15,14 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
   const { t } = useTranslation();
 
   return (
-    <Box>
-      <HStack d="flex" justifyContent="center" spacing="40px">
-        <Avatar
-          size="2xl"
-          name="Kent Dodds"
-          src="https://bit.ly/kent-c-dodds"
-        />
         <Grid>
           <HStack spacing="25px" marginBottom="10px">
-            <Text fontSize="2xl" fontWeight="semibold" color="black.500">
+            <HStack>
+            <User  />
+            <Heading as="h1" size="lg">
               {fullname}
-            </Text>
+            </Heading>
+            </HStack>
             <Link to={`/profile/${uid}/settings`}>
               <Button
                 rounded="5px"
@@ -42,23 +37,20 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
                 {t('profilePage.editProfile')}
               </Button>
             </Link>
-          </HStack>
-          <VStack spacing="6px" align="right">
-            <Text fontSize="11px" fontWeight="semibold">
+         </HStack>
+          <VStack  align="right">
+            <HStack my={3}>
+            <Mail />
+            <Text fontSize="md" fontWeight="medium">
               {email}
             </Text>
-            <HStack color="gray.500">
-              <MapPin size="11" />
-              <Box fontSize="11px">Location</Box>
             </HStack>
-            <HStack color="black">
-              <Phone size="11" />
-              <Box fontSize="11px">{phoneNumber}</Box>
+            <HStack  my={3}>
+              <Phone/>
+              <Text fontSize="md" fontWeight="medium">{phoneNumber}</Text>
             </HStack>
           </VStack>
-        </Grid>
-      </HStack>
-    </Box>
+      </Grid>
   );
 };
 export default ProfileHeader;

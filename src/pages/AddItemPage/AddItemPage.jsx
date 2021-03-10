@@ -38,8 +38,7 @@ function AddItemPage() {
         image_url: image,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid: user.uid,
-        isActive: true,
-        isDelivered: false,
+        status: "active",
       });
       //grab the document id
       const docId = await doc.id;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link , useHistory} from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -11,13 +11,43 @@ import {
   Text,
   HStack,
   Icon,
+  Button
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
+import { auth } from '../../services/firebase';
+import { useAuth } from '../../contexts/AuthContext';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { firestore } from '../../services/firebase';
 
 function NavBar() {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState('EN');
+  const user = useAuth();
+  const history = useHistory();
+
+//logout function
+  const logOut = async () => {
+    try {
+      await auth.signOut();
+      history.push('/auth/signin');
+    } catch (error) {
+      console.log('an error has occured...', error);
+    }
+  };
+
+  
+//query notifications from firebase
+
+let notifications;
+if(user)notifications=firestore.collection('notifications').where('targetId','==',user.uid);
+
+const [notify, notifyloading, notifyerror] = useCollectionData(notifications)
+console.log('notify',notify)
+if (notifyerror) console.log('error')
+if (notifyloading) return <>loading...</>
+
+
   return (
     <Box as="nav">
       <Flex
@@ -95,7 +125,20 @@ function NavBar() {
               </MenuItem>
             </MenuList>
           </Menu>
-          <GetStartedBtn />
+       { user ? ( 
+          <GetStartedBtn  logOut={logOut}  user={user} notify={notify}/>):(
+          <Link to="/auth/signin">
+          <Button
+            variant="outline"
+            _hover={{ bg: 'green.400', color: 'white' }}
+            _focus={{ boxShadow: 'none' }}
+            colorScheme="black"
+            ml={2}
+          >
+            {t('navbar.getStarted')}
+          </Button>
+        </Link>
+         )}
         </HStack>
       </Flex>
     </Box>
