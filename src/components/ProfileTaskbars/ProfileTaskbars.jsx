@@ -1,6 +1,7 @@
 import {
   Box,
   Text,
+  HStack,Button,
   Input,
   InputGroup,
   InputLeftElement,
@@ -11,20 +12,21 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react';
-
 import React from 'react';
-import { Search } from 'react-feather';
+import {Link} from "react-router-dom"
+import { Search,Plus } from 'react-feather';
 import Card from '../Card';
 import { useTranslation } from 'react-i18next';
 import ProfileNotificationsTab from "../ProfileNotificationsTab/ProfileNotificationsTab";
-const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading }) => {
+//import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+
+const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading,tabIndex=0,handleTabsChange}) => {
   const { t } = useTranslation();
-  
-  
+ 
   return (
     <Box>
-      <Tabs>
-        <TabList justifyContent="space-around">
+      <Tabs index={tabIndex} onChange={handleTabsChange}>
+        <TabList  justifyContent="space-around">
           <Tab>{t('profilePage.donations')} </Tab>
           <Tab>{t('profilePage.notifications')} </Tab>
         </TabList>
@@ -32,6 +34,7 @@ const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading }) =
         <TabPanels>
           {/* Donations panel  */}
           <TabPanel>
+            <HStack>
             <InputGroup>
               <InputLeftElement
                 pointerEvents="none"
@@ -39,6 +42,13 @@ const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading }) =
               />
               <Input type="text" placeholder="Search" />
             </InputGroup>
+            <Link to="/add-item">
+            <Button color="white" bg="green.400">
+              <Plus />
+              Submit Donation
+            </Button>
+          </Link>
+            </HStack>
 
             <SimpleGrid columns={4} gap={4}>
               {donationsloading && 'loading ...'}
@@ -50,13 +60,6 @@ const ProfileTaskbars = ({ donations, donationsloading,notify,notifyloading }) =
           </TabPanel>
           {/* Requests panel  */}
           <TabPanel>
-            <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<Search color="gray" />}
-              />
-              <Input type="text" placeholder="Search" />
-            </InputGroup>
             <ProfileNotificationsTab  notify={notify} notifyloading={notifyloading}/>
           </TabPanel>
         </TabPanels>
