@@ -35,20 +35,20 @@ export const ItemsMap = ({ items }) => {
             <Marker
               key={item.id}
               position={{
-                lat: item.data().location?.latitude,
-                lng: item.data().location?.longitude,
+                lat: item.location?.latitude,
+                lng: item.location?.longitude,
               }}
               onClick={() =>
                 setSelected({
-                  title: item.data().title,
+                  title: item.title,
                   location: {
-                    lat: item.data().location?.latitude,
-                    lng: item.data().location?.longitude,
+                    lat: item.location?.latitude,
+                    lng: items.location?.longitude,
                   },
-                  createdAt: item.data().createdAt,
-                  image_url: item.data().image_url,
+                  createdAt: item.createdAt,
+                  image_url: item.image_url,
                   id: item.id,
-                  cityCoords: item.data().location,
+                  cityCoords: item.location,
                 })
               }
             />
