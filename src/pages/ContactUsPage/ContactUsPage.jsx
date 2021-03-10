@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
-import GetStartedBtn from '../../components/GetStartedBtn/GetStartedBtn';
 import {
   Box,
   Image,
