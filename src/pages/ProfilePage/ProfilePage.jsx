@@ -2,7 +2,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileTaskbars from '../../components/ProfileTaskbars';
-import { useDocumentData, useCollection,useCollectionData } from 'react-firebase-hooks/firestore';
+import { useDocumentData, useCollection } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
 import { useParams } from 'react-router-dom';
 
@@ -29,12 +29,12 @@ function ProfilePage() {
   const [data, loading, error] = useDocumentData(query);
 
   //query donations from firebase
-  const items = firestore.collection('items').where('uid', '==', uid).where('isActive','==',true);
-  const [donations, donationsloading, donationserror] = useCollection(items);
+  const items = firestore.collection('items').where('uid', '==', uid).where('status','==','active');
+  const [donations, donationsLoading, donationsError] = useCollection(items);
 
   //query notifications from firebase
   const notifications=firestore.collection('notifications').where('targetId','==',uid);
-  const [notify, notifyloading, notifyerror] = useCollection(notifications);
+  const [notify, notifyLoading, notifyError] = useCollection(notifications);
   console.log('notify',notify)
 
   if (error) console.error(error);
@@ -54,9 +54,9 @@ function ProfilePage() {
       <ProfileTaskbars
         uid={uid}
         donations={donations}
-        donationsloading={donationsloading}
+        donationsLoading={donationsLoading}
         notify={notify}
-        notifyloading={notifyloading}
+        notifyLoading={notifyLoading}
         tabIndex={tabIndex}
         handleTabsChange={handleTabsChange}
       />
