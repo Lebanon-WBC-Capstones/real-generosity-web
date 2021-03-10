@@ -13,47 +13,44 @@ import {
     Text
   } from "@chakra-ui/react";
   import {
-    Gift,
     ShoppingBag,
   } from 'react-feather';
   import { convertTimestamp } from '../../helpers/convertTimestamp';
   import { Link } from 'react-router-dom';
   import { firestore } from '../../services/firebase';
-import ItemDetails from '../ItemDetails';
+
+
 const ProfileNotificationsTab = ({notify,notifyloading}) => {
 
-    const handleSeenClick=(notification)=>{
-       console.log("seen")
-//        firestore.collection("notifications")
-//   .document(notification.id)
-//   .update({
-//     "seen": true,
-   
-  //})
-    }
+const handleSeenClick=async(id)=>{
+  await firestore.collection("notifications")
+                 .doc(id)
+                 .set({
+                 seen: true,
+              },{merge:true})
+
+}
 
     if (notifyloading) return  <>loading...</>;
     return (  
         <Container maxW="7xl" mx="auto">
         <Table variant="simple" >
         <TableCaption>
-        
           
         </TableCaption>
         <Thead>
           <Tr >
             <Th >type</Th>
             <Th>date</Th>
-            <Th>seen</Th>
+            <Th>status</Th>
             <Th>link to it</Th>
-           
+            <Th>Action</Th>
           </Tr>
         </Thead>
         <Tbody  overflow="auto">
       { notify.docs ?
         notify.docs.map(notification=>(
           <Tr key={notification.id}>
-
               <Td>
               <HStack>
               {notification.data().type==="request" && <ShoppingBag />}
@@ -63,19 +60,23 @@ const ProfileNotificationsTab = ({notify,notifyloading}) => {
             <Td>
               {convertTimestamp(notification.data().createdAt)}
             </Td>
-            <Td> <Button
-                  fontSize="xs"
-                  color="red"
-                  variant="ghost"
-                  onClick={()=>handleSeenClick()}
-                   >
-                  unseen
-                  </Button>
-                </Td>
+            <Td> 
+            {notification.data().seen ? "seen":"unseen"}
+            </Td>
             <Td>
               <Link to={`/item/${notification.data().itemId}`}>
               <Text>link to item </Text>
               </Link>
+            </Td>
+            <Td>
+            <Button
+                  fontSize="xs"
+                  colorScheme="green" variant="solid"
+                  disabled={notification.data().seen}
+                  onClick={()=>handleSeenClick(notification.id)}
+                   >
+                  seen
+                  </Button>
             </Td>
           </Tr>
           )):<>you don't have notifications</>}
