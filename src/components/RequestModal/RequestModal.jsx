@@ -17,17 +17,16 @@ const RequestModal = ({ handleRequest, handleChange }) => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
-  const reqBtnRef=React.useRef()
+
   
   const handleClick = () => {
     handleRequest();
     onClose();
-    reqBtnRef.current.disabled=true;
   };
 
   return (
     <>
-      <Button ref={reqBtnRef} colorScheme="green" w="100%" size="lg" onClick={onOpen}>
+      <Button  colorScheme="green" w="100%" size="lg" onClick={onOpen}>
         {t('itemPage.request')}
       </Button>
 
