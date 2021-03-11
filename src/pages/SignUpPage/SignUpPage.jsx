@@ -26,33 +26,10 @@ function SignUpPage() {
   const toast = useToast();
   // const [image, setImage] = React.useState();
 
-  // const checkEmail = () => {
-  //   firestore.collection('users').where('email', '==', email)
-  //     ?  toast({
-  //   title: 'Account created.',
-  //   description: "Your account was successfully created.",
-  //   status: 'success',
-  //   duration: 7000,
-  //   isClosable: true,
-  // })
-  //     :
-  // toast({
-  //   title: 'Sign Up Failed',
-  //   description: 'Email already exists.',
-  //   status: 'error',
-  //   duration: 9000,
-  //   isClosable: true,
-  // });
-  // };
-
-  // const [notify, notifyLoading] = useCollection(notifications);
-  // console.log('email', email);
-
   const onSubmit = async ({ fullname, email, password }) => {
     console.log('registration in process...');
     console.log('email', email);
-    // data.image = image;
-    // console.log(email, password);
+
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
