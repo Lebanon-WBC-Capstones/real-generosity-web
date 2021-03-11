@@ -7,6 +7,7 @@ import {
   Image,
   Input,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -20,23 +21,62 @@ import { useHistory } from 'react-router-dom';
 function SignUpPage() {
   const { t } = useTranslation();
   const { register, handleSubmit } = useForm();
+
   const history = useHistory();
+  const toast = useToast();
   // const [image, setImage] = React.useState();
+
+  // const checkEmail = () => {
+  //   firestore.collection('users').where('email', '==', email)
+  //     ?  toast({
+  //   title: 'Account created.',
+  //   description: "Your account was successfully created.",
+  //   status: 'success',
+  //   duration: 7000,
+  //   isClosable: true,
+  // })
+  //     :
+  // toast({
+  //   title: 'Sign Up Failed',
+  //   description: 'Email already exists.',
+  //   status: 'error',
+  //   duration: 9000,
+  //   isClosable: true,
+  // });
+  // };
+
+  // const [notify, notifyLoading] = useCollection(notifications);
+  // console.log('email', email);
 
   const onSubmit = async ({ fullname, email, password }) => {
     console.log('registration in process...');
+    console.log('email', email);
     // data.image = image;
     // console.log(email, password);
-    const { user } = await auth.createUserWithEmailAndPassword(email, password);
-    await firestore.collection('users').doc(user.uid).set({
-      fullname,
-      email,
-      role: 'user',
-      uid: user.uid,
-      isApproved: false,
-    });
-    console.log('registered user...', user);
-    history.push('/');
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await firestore.collection('users').doc(user.uid).set({
+        fullname,
+        email,
+        role: 'user',
+        uid: user.uid,
+        isApproved: false,
+      });
+
+      history.push('/');
+    } catch (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      if (errorCode === 'auth/email-already-in-use') {
+        alert('email already in use');
+      }
+    }
   };
 
   return (
@@ -80,7 +120,7 @@ function SignUpPage() {
           <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box mt={4} fontSize="lg">
-                <Text mb={2}>full name</Text>
+                <Text mb={2}>Full Name</Text>
                 <Input
                   size="sm"
                   name="fullname"
