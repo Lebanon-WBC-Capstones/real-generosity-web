@@ -42,7 +42,8 @@ function NavBar() {
   if (user)
     notifications = firestore
       .collection('notifications')
-      .where('targetId', '==', user.uid);
+      .where('targetId', '==', user.uid)
+      .where('seen','==',false);
 
   const [notify, notifyloading, notifyerror] = useCollectionData(notifications);
   console.log('notify', notify);

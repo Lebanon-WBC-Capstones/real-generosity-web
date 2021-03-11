@@ -42,7 +42,7 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
           </Tr>
         </Thead>
         <Tbody overflow="auto">
-          {notify.docs ? (
+          {notify ? (
             notify.docs.map((notification) => (
               <Tr key={notification.id}>
                 <Td>

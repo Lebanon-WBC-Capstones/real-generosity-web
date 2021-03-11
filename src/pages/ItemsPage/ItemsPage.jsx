@@ -13,7 +13,7 @@ const ItemsPage = () => {
   let itemsRef = firestore
     .collection('items')
     // TODO: uncomment after fixing old items
-    // .where('status', '==', 'active')
+    //.where('status', '==','active')
     .orderBy('createdAt', 'desc');
 
   if (search) {
@@ -21,11 +21,12 @@ const ItemsPage = () => {
   }
 
   const [items, loading, error] = useCollection(itemsRef);
+   
 
   const renders = React.useRef(0);
   console.log('ItemsPage.jsx render... ', renders.current++);
 
-  if (error) return 'an error has occured...';
+ if (error) return 'an error has occured...';
 
   if (loading)
     return (

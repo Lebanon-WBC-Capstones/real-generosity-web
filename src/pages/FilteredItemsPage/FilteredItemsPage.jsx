@@ -14,6 +14,8 @@ const FilteredItemsPage = () => {
 
   let itemsRef = firestore
     .collection('items')
+   // TODO: uncomment after fixing old items
+   // .where('status', '==','active')
     .where('category', '==', category)
     .orderBy('createdAt', 'desc');
 
