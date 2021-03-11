@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
-import GetStartedBtn from '../../components/GetStartedBtn/GetStartedBtn';
 import {
   Box,
   Image,
@@ -62,13 +60,6 @@ function ContactUsPage() {
       </GridItem>
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
-        <Flex justify="space-between">
-          <Link to="/">
-            <Box fontSize={['sm', 'md', 'md', '4xl']}>LOGO</Box>
-          </Link>
-          <GetStartedBtn />
-        </Flex>
-
         <Flex
           minH="80vh"
           align="center"

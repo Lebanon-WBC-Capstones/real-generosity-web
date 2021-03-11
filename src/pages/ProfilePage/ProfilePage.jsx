@@ -7,17 +7,40 @@ import { firestore } from '../../services/firebase';
 import { useParams } from 'react-router-dom';
 
 function ProfilePage() {
-  const { uid } = useParams();
+  const { uid, tab } = useParams();
+  console.log(tab);
+  let tabIndex = 0;
+  switch (tab) {
+    case 'notifications':
+      tabIndex = 1;
+      break;
+    case 'donations':
+      tabIndex = 0;
+      break;
+    default:
+      tabIndex = 0;
+  }
+  const handleTabsChange = () => {};
 
   //query header details from firebase
   const query = firestore.collection('users').doc(uid);
   const [data, loading, error] = useDocumentData(query);
 
   //query donations from firebase
-  const items = firestore.collection('items').where('uid', '==', uid);
-  const [donations, donationsLoading, donationsError] = useCollection(items);
-  console.log(donationsError);
-  //query requests from firebase
+
+  const items = firestore
+    .collection('items')
+    .where('uid', '==', uid)
+    .where('status', '==', 'active');
+  const [donations, donationsLoading] = useCollection(items);
+
+  //query notifications from firebase
+  const notifications = firestore
+    .collection('notifications')
+    .where('targetId', '==', uid);
+
+  const [notify, notifyLoading] = useCollection(notifications);
+  console.log('notify', notify);
 
   if (error) console.error(error);
 
@@ -36,7 +59,11 @@ function ProfilePage() {
       <ProfileTaskbars
         uid={uid}
         donations={donations}
-        donationsloading={donationsLoading}
+        donationsLoading={donationsLoading}
+        notify={notify}
+        notifyLoading={notifyLoading}
+        tabIndex={tabIndex}
+        handleTabsChange={handleTabsChange}
       />
     </SimpleGrid>
   );
