@@ -33,7 +33,7 @@ const RequestModal = ({
   return (
     <>
       <Button
-        disabled={reqCheck.length ? true : false}
+        disabled={reqCheck? true : false}
         colorScheme="green"
         w="100%"
         size="lg"
