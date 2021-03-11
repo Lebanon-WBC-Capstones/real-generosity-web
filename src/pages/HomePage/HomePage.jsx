@@ -7,7 +7,10 @@ import { useCollectionOnce } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
 
 function HomePage() {
-  const query = firestore.collection('items').limit(4);
+  const query = firestore.collection('items')
+                         .where('status', '==','active')
+                         .orderBy('createdAt', 'desc')
+                         .limit(4);
   const [items, loading, error] = useCollectionOnce(query);
 
   if (error) return 'an error has occured...';

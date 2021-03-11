@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom';
 
 function ProfilePage() {
   const { uid, tab } = useParams();
-  console.log(tab);
   let tabIndex = 0;
   switch (tab) {
     case 'notifications':
@@ -31,16 +30,19 @@ function ProfilePage() {
   const items = firestore
     .collection('items')
     .where('uid', '==', uid)
-    .where('status', '==', 'active');
+    .where('status', '==', 'active')
+    //.orderBy('createdAt', 'desc');
   const [donations, donationsLoading] = useCollection(items);
+  console.log(donations)
 
   //query notifications from firebase
   const notifications = firestore
     .collection('notifications')
-    .where('targetId', '==', uid);
+    .where('targetId', '==', uid)
+   // .orderBy('createdAt', 'desc');
     
   const [notify, notifyLoading] = useCollection(notifications);
-  console.log('notify', notify);
+   console.log("notification",notify)
 
   if (error) console.error(error);
 

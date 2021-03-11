@@ -9,11 +9,11 @@ import { firestore } from '../../services/firebase';
 
 const ItemsPage = () => {
   const [search, setSearch] = React.useState('');
-
+  console.log(search)
   let itemsRef = firestore
     .collection('items')
     // TODO: uncomment after fixing old items
-    //.where('status', '==','active')
+    .where('status', '==','active')
     .orderBy('createdAt', 'desc');
 
   if (search) {
