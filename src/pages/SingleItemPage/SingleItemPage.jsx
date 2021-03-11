@@ -75,7 +75,7 @@ const SingleItemPage = () => {
   const updateStatus = async () => {
     await firestore.collection('items').doc(id).set(
       {
-        status: 'canceled',
+        status: 'deleted',
       },
       { merge: true }
     );
