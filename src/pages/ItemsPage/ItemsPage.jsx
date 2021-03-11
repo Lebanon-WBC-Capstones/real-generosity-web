@@ -17,14 +17,12 @@ const ItemsPage = () => {
     itemsRef = firestore
       .collection('items')
       .where('category', '==', category)
-      // TODO: uncomment after fixing old items
-      // .where('status', '==', 'active')
+      .where('status', '==', 'active')
       .orderBy('createdAt', 'desc');
   } else {
     itemsRef = firestore
       .collection('items')
-      // TODO: uncomment after fixing old items
-      // .where('status', '==', 'active')
+      .where('status', '==', 'active')
       .orderBy('createdAt', 'desc');
   }
 
