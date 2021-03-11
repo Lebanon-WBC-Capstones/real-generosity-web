@@ -81,7 +81,13 @@ function SignUpPage() {
       console.log(errorCode);
       console.log(errorMessage);
       if (errorCode === 'auth/email-already-in-use') {
-        alert('email already in use');
+        toast({
+          title: 'Sign Up Failed',
+          description: 'Email already exists.',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
       }
     }
   };
