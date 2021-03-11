@@ -64,7 +64,6 @@ const SingleItemPage = () => {
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           itemId: id,
           type: 'request',
-          actionId: docRef,
           seen: false,
         });
       });
