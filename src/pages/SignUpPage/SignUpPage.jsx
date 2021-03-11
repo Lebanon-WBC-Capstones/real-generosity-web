@@ -66,6 +66,13 @@ function SignUpPage() {
         uid: user.uid,
         isApproved: false,
       });
+      toast({
+        title: 'Account created.',
+        description: 'Your account was successfully created.',
+        status: 'success',
+        duration: 7000,
+        isClosable: true,
+      });
 
       history.push('/');
     } catch (error) {
