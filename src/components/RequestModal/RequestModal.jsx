@@ -12,6 +12,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../contexts/AuthContext';
 
 const RequestModal = ({
   handleRequest,
@@ -19,6 +20,8 @@ const RequestModal = ({
   reqCheck,
   reqCheckLoading,
 }) => {
+
+  const currentUser = useAuth();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
@@ -33,7 +36,7 @@ const RequestModal = ({
   return (
     <>
       <Button
-        disabled={reqCheck? true : false}
+        disabled={currentUser && reqCheck.length===0? false : true}
         colorScheme="green"
         w="100%"
         size="lg"
