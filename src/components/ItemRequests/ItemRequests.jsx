@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 import UserInfoModal from '../UserInfoModal/UserInfoModal';
+import firebase, { firestore } from '../../services/firebase';
 import {
   Table,
   Thead,
@@ -18,14 +19,25 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react';
 
-const ItemRequests = ({ requests }) => {
+const ItemRequests = ({ requests,id}) => {
   const { t } = useTranslation();
 
   const handleDelivered = () => {
     console.log('delivered');
   };
-  const handleApprove = () => {
-    console.log('approve');
+
+  const notificationsRef = firestore.collection('notifications');
+
+  const handleApprove = async(requester) => {
+      //insert a new document in firestore
+      const notification = await notificationsRef.add({
+        createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+        targetId:requester,
+        itemId:id,
+        seen: false,
+        type:'approve',
+      });
+    console.log('hi')
   };
 
   return (
@@ -50,7 +62,8 @@ const ItemRequests = ({ requests }) => {
           </Tr>
         </Thead>
         <Tbody overflow="auto">
-          {requests.map((request, index) => (
+          {requests?
+           requests.map((request, index) => (
             <Tr>
               <Td>
                 <Accordion allowToggle>
@@ -74,7 +87,7 @@ const ItemRequests = ({ requests }) => {
               </Td>
               <Td>{convertTimestamp(request.createdAt)}</Td>
               <Td>
-                <Button fontSize="xs" variant="ghost" onClick={handleApprove}>
+                <Button fontSize="xs" variant="ghost" onClick={()=>handleApprove(request.requester)}>
                   {t('itemPage.approve')}
                 </Button>
               </Td>
@@ -82,7 +95,7 @@ const ItemRequests = ({ requests }) => {
                 <UserInfoModal />
               </Td>
             </Tr>
-          ))}
+          )):(<>no requests yet</>)}
         </Tbody>
       </Table>
     </Container>

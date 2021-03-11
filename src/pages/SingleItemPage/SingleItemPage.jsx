@@ -87,7 +87,9 @@ const SingleItemPage = () => {
   };
 
   //check for requests
-  const checkingUserRequest = firestore
+  let checkingUserRequest
+  if (currentUser) 
+   checkingUserRequest = firestore
     .collection('requests')
     .where('itemId', '==', id)
     .where('requester', '==', currentUser.uid);
@@ -138,11 +140,13 @@ const SingleItemPage = () => {
                   setValue={setValue}
                   handleChange={handleChange}
                   handleRequest={handleRequest}
+                  reqCheck={reqCheck}
+                  reqCheckLoading={reqCheckLoading}
                 />
               </TabPanel>
               <TabPanel>
                 {reqLoading && 'is loading...'}
-                {requests && <ItemRequests requests={requests} />}
+                {requests && <ItemRequests requests={requests} id={id} />}
               </TabPanel>
               {/* <TabPanel>
                 <ItemReports handleDelete={handleDelete} 
