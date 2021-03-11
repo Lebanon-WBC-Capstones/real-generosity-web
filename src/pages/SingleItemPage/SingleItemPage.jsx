@@ -64,7 +64,6 @@ const SingleItemPage = () => {
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           itemId: id,
           type: 'request',
-          actionId: docRef,
           seen: false,
         });
       });
@@ -87,12 +86,14 @@ const SingleItemPage = () => {
   };
 
   //check for requests
-  let checkingUserRequest
-  if (currentUser) 
-   checkingUserRequest = firestore
-    .collection('requests')
-    .where('itemId', '==', id)
-    .where('requester', '==', currentUser.uid);
+
+  let checkingUserRequest;
+  if (currentUser)
+    checkingUserRequest = firestore
+      .collection('requests')
+      .where('itemId', '==', id)
+      .where('requester', '==', currentUser.uid);
+
   const [reqCheck, reqCheckLoading] = useCollectionData(checkingUserRequest);
   console.log('check', reqCheck);
 

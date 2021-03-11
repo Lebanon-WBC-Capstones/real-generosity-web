@@ -13,7 +13,7 @@ import AdminPage from './pages/AdminPage';
 import ContactUsPage from './pages/ContactUsPage';
 import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
-import FilteredItemsPage from './pages/FilteredItemsPage';
+// import FilteredItemsPage from './pages/FilteredItemsPage';
 import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfile';
 import SignInPage from './pages/SignInPage';
@@ -45,7 +45,7 @@ function App() {
                 <ItemsPage />
               </Route>
               <Route exact path="/items/:category">
-                <FilteredItemsPage />
+                <ItemsPage />
               </Route>
               <Route exact path="/item/:id">
                 <SingleItemPage />
