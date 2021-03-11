@@ -20,7 +20,6 @@ const RequestModal = ({
   reqCheck,
   reqCheckLoading,
 }) => {
-
   const currentUser = useAuth();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,7 +35,7 @@ const RequestModal = ({
   return (
     <>
       <Button
-        disabled={currentUser && reqCheck.length===0? false : true}
+        disabled={currentUser && reqCheck.length === 0 ? false : true}
         colorScheme="green"
         w="100%"
         size="lg"

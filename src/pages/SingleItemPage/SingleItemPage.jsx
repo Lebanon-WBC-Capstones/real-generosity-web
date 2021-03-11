@@ -86,12 +86,12 @@ const SingleItemPage = () => {
   };
 
   //check for requests
-  let checkingUserRequest
+  let checkingUserRequest;
   if (currentUser)
-    checkingUserRequest= firestore
-    .collection('requests')
-    .where('itemId', '==', id)
-    .where('requester', '==', currentUser.uid);
+    checkingUserRequest = firestore
+      .collection('requests')
+      .where('itemId', '==', id)
+      .where('requester', '==', currentUser.uid);
   const [reqCheck, reqCheckLoading] = useCollectionData(checkingUserRequest);
   console.log('check', reqCheck);
 

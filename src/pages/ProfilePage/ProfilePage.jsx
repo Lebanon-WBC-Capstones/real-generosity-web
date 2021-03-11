@@ -38,7 +38,7 @@ function ProfilePage() {
   const notifications = firestore
     .collection('notifications')
     .where('targetId', '==', uid);
-    
+
   const [notify, notifyLoading] = useCollection(notifications);
   console.log('notify', notify);
 
