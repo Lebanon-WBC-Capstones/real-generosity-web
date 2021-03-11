@@ -64,7 +64,6 @@ const SingleItemPage = () => {
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           itemId: id,
           type: 'request',
-          actionId: docRef,
           seen: false,
         });
       });
@@ -75,7 +74,7 @@ const SingleItemPage = () => {
   const updateStatus = async () => {
     await firestore.collection('items').doc(id).set(
       {
-        status: 'canceled',
+        status: 'deleted',
       },
       { merge: true }
     );
@@ -87,7 +86,9 @@ const SingleItemPage = () => {
   };
 
   //check for requests
-  const checkingUserRequest = firestore
+  let checkingUserRequest
+  if (currentUser)
+    checkingUserRequest= firestore
     .collection('requests')
     .where('itemId', '==', id)
     .where('requester', '==', currentUser.uid);
