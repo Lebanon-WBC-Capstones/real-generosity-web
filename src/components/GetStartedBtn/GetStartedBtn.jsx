@@ -77,7 +77,7 @@ const GetStartedBtn = () => {
           </Menu>
         </HStack>
       ) : (
-        <Link to="/auth/signin">
+        <Link to="/auth/signup">
           <Button
             variant="outline"
             _hover={{ bg: 'green.400', color: 'white' }}
