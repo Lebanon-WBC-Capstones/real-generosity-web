@@ -2,9 +2,8 @@ import {
   Box,
   Button,
   Flex,
-  Grid,
-  GridItem,
-  Image,
+  Heading,
+  HStack,
   Input,
   Text,
 } from '@chakra-ui/react';
@@ -12,10 +11,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import proto from '../../assets/images/proto.png';
 import { auth, firestore } from '../../services/firebase';
 import { useHistory } from 'react-router-dom';
-// import Dropzone from '../../components/Dropzone';
 
 function SignUpPage() {
   const { t } = useTranslation();
@@ -23,7 +20,7 @@ function SignUpPage() {
   const history = useHistory();
   // const [image, setImage] = React.useState();
 
-  const onSubmit = async ({ fullname, email, password }) => {
+  const onSubmit = async ({ fullname, email, password, }) => {
     console.log('registration in process...');
     // data.image = image;
     // console.log(email, password);
@@ -40,126 +37,80 @@ function SignUpPage() {
   };
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-      <GridItem colSpan={1} display={{ base: 'none', md: 'block' }}>
-        <Image fit="contain" src={proto} alt="sign up img" />
-      </GridItem>
+    <Flex
+      minH="100vh"
+      align="center"
+      justify="center"
+      align="center"
+      m="auto"
+      fontSize="md"
+      fontWeight="medium"
+    >
 
-      <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
-        <Flex justify="space-between">
-          <Link to="/">
-            <Box fontSize={['2xl', '2xl', '2xl', '4xl']}>LOGO</Box>
-          </Link>
+      <Box>
+        <Heading py="2">{t('navbar.getStarted')}</Heading>
+
+        <HStack mb="12">
+          <Text textColor="gray.400">{t('signup.subheading')} </Text>
           <Link to="/auth/signin">
-            <Button
-              variant="outline"
-              colorScheme="black"
-              _hover={{ bg: 'green.500', color: 'white' }}
-              _focus={{ boxShadow: 'none' }}
-              w={['32', '36', '40', '72']}
-              ml={['28', '56', '56', '15']}
-            >
-              {t('signin.signinbutton')}
-            </Button>
+            <Text textColor="blue.400">{t('signin.signinbutton')}</Text>
           </Link>
-        </Flex>
-
-        <Flex
-          minH="80vh"
-          align="center"
-          justify={['center', 'space-between', 'flex-end', 'flex-end']}
-        >
-          <Box
-            maxWidth={['20', '28', '36', '72']}
-            fontSize={['sm', 'md', 'md', '4xl']}
-            display={{ base: 'none', md: 'block' }}
-            mr={40}
-          >
-            {t('signup.paragraph')}
-          </Box>
+        </HStack>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Box mt={4} fontSize="lg">
-                <Text mb={2}>full name</Text>
-                <Input
-                  size="sm"
-                  name="fullname"
-                  variant="filled"
-                  isRequired
-                  focusBorderColor="green.200"
-                  maxW={['48', '40', '52', '72']}
-                  ref={register}
-                />
-              </Box>
-              {/* <Box mt={4} fontSize="lg">
-                <Text mb={2}>last name</Text>
-                <Input
-                  size="sm"
-                  name="lastname"
-                  variant="filled"
-                  isRequired
-                  focusBorderColor="green.200"
-                  maxWidth={72}
-                  ref={register}
-                />
-              </Box> */}
-
-              <Box mt={8} fontSize="lg">
-                <Text mb={2}>{t('signup.email')}</Text>
-                <Input
-                  type="email"
-                  size="sm"
-                  name="email"
-                  variant="filled"
-                  isRequired
-                  maxW={['48', '40', '52', '72']}
-                  ref={register}
-                  focusBorderColor="green.200"
-                />
-              </Box>
-              <Box mt={8} fontSize="lg">
-                <Text mb={2}>Password</Text>
-                <Input
-                  size="sm"
-                  name="password"
-                  variant="filled"
-                  isRequired
-                  maxW={['48', '40', '52', '72']}
-                  ref={register}
-                  focusBorderColor="green.200"
-                />
-              </Box>
-              {/* <Box mt={8} fontSize="lg">
-                <Text mb={2}>{t('signup.phone')}</Text>
-                <Input
-                  type="tel"
-                  size="sm"
-                  name="phone"
-                  variant="filled"
-                  isRequired
-                  maxWidth={72}
-                  ref={register}
-                  focusBorderColor="green.200"
-                />
-              </Box>
-              <Box mt={8} fontSize="lg">
-                <Text mb={2}>{t('signup.idupload')}</Text>
-                <Dropzone dropzoneRef={register} setImage={setImage} />
-              </Box> */}
-              <Box mt={8}>
-                <Button
-                  type="submit"
-                  colorScheme="green"
-                  w={['48', '40', '56', '72']}
-                >
-                  {t('signup.createbutton')}
-                </Button>
-              </Box>
-            </form>
+            <Text mb={2}>{t('signup.fullname')}</Text>
+            <Input
+              size="md"
+              name="fullname"
+              variant="filled"
+              isRequired
+              focusBorderColor="green.200"
+              maxW={['72', '96', '96', '96']}
+              ref={register}
+            />
           </Box>
-        </Flex>
-      </GridItem>
-    </Grid>
+
+          <Box mt={4}>
+            <Text mb={2}>{t('signup.email')}</Text>
+            <Input
+              placeholder="samir@realgen.com"
+              type="email"
+              size="md"
+              name="email"
+              variant="filled"
+              isRequired
+              maxW={['72', '96', '96', '96']}
+              ref={register}
+              focusBorderColor="green.200"
+            />
+          </Box>
+          <Box mt={4}>
+            <Text mb={2}>{t('signup.password')}</Text>
+            <Input
+              placeholder={t('signup.passplaceholder')}
+              size="md"
+              name="password"
+              variant="filled"
+              isRequired
+              maxW={['72', '96', '96', '96']}
+              ref={register}
+              focusBorderColor="green.200"
+            />
+          </Box>
+
+          <Box mt={8}>
+            <Button
+              type="submit"
+              colorScheme="green"
+              w={['72', '96', '96', '96']}
+            >
+              {t('signup.createbutton')}
+            </Button>
+          </Box>
+        </form>
+      </Box>
+    </Flex>
+
   );
 }
 
