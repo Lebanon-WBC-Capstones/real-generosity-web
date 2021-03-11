@@ -53,10 +53,8 @@ function SignUpPage() {
 
       history.push('/');
     } catch (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
+      const errorCode = error.code;
+
       if (errorCode === 'auth/email-already-in-use') {
         toast({
           title: 'Sign Up Failed',
