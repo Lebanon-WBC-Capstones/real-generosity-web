@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { User, LogOut, Bell } from 'react-feather';
-
+import { User, LogOut, Bell,Heart,ShoppingBag } from 'react-feather';
 import {
-  Menu,
+  Menu,Box,
   MenuButton,
   MenuList,
   MenuItem,
@@ -14,9 +13,12 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-const GetStartedBtn = ({ logOut, user, notify }) => {
+const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
   const { t } = useTranslation();
+ 
+ 
   return (
+   
     <HStack>
       <Menu border="1px">
         <MenuButton
@@ -33,14 +35,29 @@ const GetStartedBtn = ({ logOut, user, notify }) => {
         />
 
         <MenuList>
-          <Link to={`/profile/${user.uid}/notifications`}>
+          {/* {notify? 
+          notify.map(notification=>
+          (<MenuItem
+            onClick={handleClick}
+            icon= {notification.type === 'request' ? <ShoppingBag fontSize="1.5rem"  />: <Heart fontSize="1.5rem" />}
+            >
+           <span>{notification.type}</span>
+          </MenuItem>)
+          ):''} */}
+          {isAdmin?
+          (<Link to='/admin'>
+              <MenuItem>Notifications</MenuItem>
+           </Link>
+           )
+          :
+            (<Link to={`/profile/${user.uid}/notifications`}>
             <MenuItem>Notifications</MenuItem>
-          </Link>
+          </Link>)}
         </MenuList>
       </Menu>
 
       <Menu>
-        <MenuButton
+      <MenuButton
           as={IconButton}
           color="black"
           aria-label="Options"
@@ -48,17 +65,20 @@ const GetStartedBtn = ({ logOut, user, notify }) => {
           size="md"
           variant="white"
         />
-        <MenuList>
-          <Link to={`/profile/${user.uid}/donations`}>
+         <MenuList>
+         {isAdmin? 
+            (<Link to="/admin">
+            <MenuItem icon={<User />}>users</MenuItem>
+          </Link>)
+         :
+         (<Link to={`/profile/${user.uid}`}>
             <MenuItem icon={<User />}>{t('navbar.profile')}</MenuItem>
-          </Link>
-
+          </Link>)}
           <MenuItem onClick={logOut} icon={<LogOut />}>
             {t('navbar.logout')}
           </MenuItem>
         </MenuList>
       </Menu>
-    </HStack>
-  );
+    </HStack>)
 };
 export default GetStartedBtn;
