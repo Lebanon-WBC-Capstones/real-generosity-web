@@ -44,7 +44,7 @@ function SignInPage() {
         toast({
           title: 'Sign In Failed',
           description:
-            'Invalid Password. Please enter the correct password and try again.',
+            'Wrong Password. Please enter the correct password and try again.',
           status: 'error',
           duration: 10000,
           isClosable: true,
