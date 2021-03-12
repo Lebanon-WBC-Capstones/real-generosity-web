@@ -1,10 +1,13 @@
-import { Box, Button, Text, Container } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
-import UserInfoModal from '../UserInfoModal/UserInfoModal';
+import ContactInfoModal from '../ContactInfoModal/ContactInfoModal';
 import firebase, { firestore } from '../../services/firebase';
+import { useAuth } from '../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 import {
+  Box, Button, Text,Container,
+  HStack,
   Table,
   Thead,
   Tbody,
@@ -19,30 +22,72 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react';
 
-const ItemRequests = ({ requests,id}) => {
+const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval}) => {
   const { t } = useTranslation();
+  const currentUser = useAuth();
+  const history = useHistory();
 
-  const handleDelivered = () => {
-    console.log('delivered');
-  };
+ // handleDelivered function to delete an item once its delivered
+    const updateStatus = async () => {
+      //update item status 
+      await firestore.collection('items').doc(id).set(
+        {
+          status: 'deleted',
+        },
+        { merge: true }
+      );
+    };
+    const handleDelivered = () => {
+      updateStatus();
+      history.goBack();
+    };
 
+  
+  // handleApprove send a notification for requester once its approved 
   const notificationsRef = firestore.collection('notifications');
-
   const handleApprove = async(requester) => {
-      //insert a new document in firestore
-      const notification = await notificationsRef.add({
+    //insert a new document in firestore notifications collection
+   await notificationsRef.add({
         createdAt:firebase.firestore.FieldValue.serverTimestamp(),
         targetId:requester,
         itemId:id,
         seen: false,
         type:'approve',
-      });
-    console.log('hi')
+      })
   };
 
+ // handleDecline update  the type of a notification
+    const updateType = async (id) => {
+       //update notification type 
+    await firestore.collection('notifications').doc(id).set(
+    {
+      type: 'decline',
+    },
+    { merge: true }
+    );
+  };
+  const handleDecline = () => {
+   updateType();
+   console.log("decline")
+  };
+
+
+
+
+
+  if (checkApprovalLoading) return <>loading</>;
   return (
     <Container maxW="7xl" mx="auto">
-      <Table variant="simple">
+      {requests && requests.length===0?
+       (<Box
+         m="auto"
+         color="black"
+         fontWeight="bold"
+         letterSpacing="wide"
+          fontSize="3xl">
+            No Requests Yet
+        </Box>) :
+      (<Table variant="simple">
         <TableCaption>
           <Button
             colorScheme="green"
@@ -62,11 +107,11 @@ const ItemRequests = ({ requests,id}) => {
           </Tr>
         </Thead>
         <Tbody overflow="auto">
-          {requests?
+          {
            requests.map((request, index) => (
             <Tr>
               <Td>
-                <Accordion allowToggle>
+                <Accordion allowToggle maxW="200px">
                   <AccordionItem>
                     <h2>
                       <AccordionButton>
@@ -87,17 +132,42 @@ const ItemRequests = ({ requests,id}) => {
               </Td>
               <Td>{convertTimestamp(request.createdAt)}</Td>
               <Td>
-                <Button fontSize="xs" variant="ghost" onClick={()=>handleApprove(request.requester)}>
-                  {t('itemPage.approve')}
+                
+                <Button fontSize="xs" 
+                        disabled={currentUser && checkApproval.length === 0 ? false : true}
+                        onClick={()=>handleApprove(request.requester)}>
+                  {/* {t('itemPage.approve')} */}
+                  approve
                 </Button>
               </Td>
               <Td>
-                <UserInfoModal />
+              {checkApproval && 
+               checkApproval.filter(check=>check.targetId===request.requester)===0 ?
+               '':
+                 (<HStack>
+                      <Button onClick={()=>handleDecline()}>
+                         decline
+                      </Button>
+                      <ContactInfoModal requester={request.requester} />
+                 </HStack>)
+              }
+             
+              {/* {checkApproval && 
+               checkApproval?.docs.filter(check=>check.targetId===request.requester).map(checkApp=>(
+                <HStack>
+                  <Button onClick={()=>handleDecline(checkApp.id)}>
+                     decline
+                  </Button>
+                  <ContactInfoModal requester={request.requester} />
+             </HStack>
+                
+               ))} */}
               </Td>
             </Tr>
-          )):(<>no requests yet</>)}
+          ))}
         </Tbody>
       </Table>
+      )}
     </Container>
   );
 };
