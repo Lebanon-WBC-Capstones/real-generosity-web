@@ -22,11 +22,19 @@ function SignInPage() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async ({ email, password }) => {
-    const user = await auth.signInWithEmailAndPassword(email, password);
-    if (user) {
-      history.push('/');
+    try {
+      const user = await auth.signInWithEmailAndPassword(email, password);
+      if (user) {
+        history.push('/');
+      }
+      console.log(user);
+    } catch (error) {
+      const errorCode = error.code;
+
+      if (errorCode === 'auth/wrong-password') {
+        alert('wrong password');
+      }
     }
-    console.log(user);
   };
 
   return (
