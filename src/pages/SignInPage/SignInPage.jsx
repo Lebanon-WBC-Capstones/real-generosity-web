@@ -23,43 +23,13 @@ function SignInPage() {
   const { register, handleSubmit } = useForm();
   const toast = useToast();
 
-  // try {
-  //   const { user } = await auth.signInWithEmailAndPassword(
-  //     email,
-  //     password
-  //   );
-
-  //   toast({
-  //     title: 'Account created.',
-  //     description: 'Your account was successfully created.',
-  //     status: 'success',
-  //     duration: 7000,
-  //     isClosable: true,
-  //   });
-
-  //   history.push('/');
-  // }
-  // catch (error) {
-  //   const errorCode = error.code;
-
-  //   if (errorCode === 'auth/email-already-in-use') {
-  //     toast({
-  //       title: 'Sign Up Failed',
-  //       description: 'Email already exists.',
-  //       status: 'error',
-  //       duration: 9000,
-  //       isClosable: true,
-  //     });
-  //   }
-  // }
-
   const onSubmit = async ({ email, password }) => {
     try {
       const user = await auth.signInWithEmailAndPassword(email, password);
       if (user) {
         toast({
           title: 'You are now signed in',
-          // description: 'Your account was successfully signed in.',
+
           status: 'success',
           duration: 7000,
           isClosable: true,
