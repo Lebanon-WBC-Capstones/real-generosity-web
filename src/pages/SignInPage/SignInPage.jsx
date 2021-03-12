@@ -7,6 +7,7 @@ import {
   Image,
   Input,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -20,6 +21,30 @@ function SignInPage() {
   const { t } = useTranslation();
   const history = useHistory();
   const { register, handleSubmit } = useForm();
+  const toast = useToast();
+
+  // try {
+  //   const { user } = await auth.createUserWithEmailAndPassword(
+  //     email,
+  //     password
+  //   );
+
+  //   history.push('/');
+  // }
+  // catch (error) {
+  //   const errorCode = error.code;
+
+  //   if (errorCode === 'auth/email-already-in-use') {
+  //     toast({
+  //   title: 'Sign In Failed',
+  //   description:
+  //     'Invalid Password. Please enter the correct password and try again.',
+  //   status: 'error',
+  //   duration: 10000,
+  //   isClosable: true,
+  // });
+  //   }
+  // }
 
   const onSubmit = async ({ email, password }) => {
     try {
@@ -32,7 +57,14 @@ function SignInPage() {
       const errorCode = error.code;
 
       if (errorCode === 'auth/wrong-password') {
-        alert('wrong password');
+        toast({
+          title: 'Sign In Failed',
+          description:
+            'Invalid Password. Please enter the correct password and try again.',
+          status: 'error',
+          duration: 10000,
+          isClosable: true,
+        });
       }
     }
   };
