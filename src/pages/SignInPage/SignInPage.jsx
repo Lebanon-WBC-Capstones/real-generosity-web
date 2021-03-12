@@ -24,10 +24,18 @@ function SignInPage() {
   const toast = useToast();
 
   // try {
-  //   const { user } = await auth.createUserWithEmailAndPassword(
+  //   const { user } = await auth.signInWithEmailAndPassword(
   //     email,
   //     password
   //   );
+
+  //   toast({
+  //     title: 'Account created.',
+  //     description: 'Your account was successfully created.',
+  //     status: 'success',
+  //     duration: 7000,
+  //     isClosable: true,
+  //   });
 
   //   history.push('/');
   // }
@@ -36,13 +44,12 @@ function SignInPage() {
 
   //   if (errorCode === 'auth/email-already-in-use') {
   //     toast({
-  //   title: 'Sign In Failed',
-  //   description:
-  //     'Invalid Password. Please enter the correct password and try again.',
-  //   status: 'error',
-  //   duration: 10000,
-  //   isClosable: true,
-  // });
+  //       title: 'Sign Up Failed',
+  //       description: 'Email already exists.',
+  //       status: 'error',
+  //       duration: 9000,
+  //       isClosable: true,
+  //     });
   //   }
   // }
 
@@ -50,6 +57,13 @@ function SignInPage() {
     try {
       const user = await auth.signInWithEmailAndPassword(email, password);
       if (user) {
+        toast({
+          title: 'You are now signed in',
+          // description: 'Your account was successfully signed in.',
+          status: 'success',
+          duration: 7000,
+          isClosable: true,
+        });
         history.push('/');
       }
       console.log(user);
