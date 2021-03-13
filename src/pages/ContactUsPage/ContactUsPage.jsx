@@ -13,7 +13,6 @@ import {
   Button,
 } from '@chakra-ui/react';
 import proto from '../../assets/images/proto.png';
-import logo2 from '../../assets/images/logo2.png';
 
 function ContactUsPage() {
   const { t } = useTranslation();
@@ -61,23 +60,6 @@ function ContactUsPage() {
       </GridItem>
 
       <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
-<<<<<<< HEAD
-        <Flex justify="space-between">
-          <Link to="/">
-            <Box fontSize={['sm', 'md', 'md', '4xl']}>
-              <Image
-                borderRadius="full"
-                boxSize="130px"
-                src={logo2}
-                alt="logo"
-              />
-            </Box>
-          </Link>
-          <GetStartedBtn />
-        </Flex>
-
-=======
->>>>>>> dev
         <Flex
           minH="80vh"
           align="center"

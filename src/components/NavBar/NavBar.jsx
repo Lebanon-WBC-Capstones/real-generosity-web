@@ -11,14 +11,8 @@ import {
   Text,
   HStack,
   Icon,
-<<<<<<< HEAD
-  Image,
-} from '@chakra-ui/react';
-import { Globe } from 'react-feather';
-import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
-import logo2 from '../../assets/images/logo2.png';
-=======
   Button,
+  Image,
 } from '@chakra-ui/react';
 import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
@@ -26,7 +20,7 @@ import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
->>>>>>> dev
+import logo2 from '../../assets/images/logo2.png';
 
 function NavBar() {
   const { t, i18n } = useTranslation();
