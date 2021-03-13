@@ -7,6 +7,7 @@ import {
   Image,
   Input,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -20,13 +21,36 @@ function SignInPage() {
   const { t } = useTranslation();
   const history = useHistory();
   const { register, handleSubmit } = useForm();
+  const toast = useToast();
 
   const onSubmit = async ({ email, password }) => {
-    const user = await auth.signInWithEmailAndPassword(email, password);
-    if (user) {
-      history.push('/');
+    try {
+      const user = await auth.signInWithEmailAndPassword(email, password);
+      if (user) {
+        toast({
+          title: 'You are now signed in',
+
+          status: 'success',
+          duration: 7000,
+          isClosable: true,
+        });
+        history.push('/');
+      }
+      console.log(user);
+    } catch (error) {
+      const errorCode = error.code;
+
+      if (errorCode === 'auth/wrong-password') {
+        toast({
+          title: 'Sign In Failed',
+          description:
+            'Wrong Password. Please enter the correct password and try again.',
+          status: 'error',
+          duration: 10000,
+          isClosable: true,
+        });
+      }
     }
-    console.log(user);
   };
 
   return (
