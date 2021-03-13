@@ -57,7 +57,7 @@ export const items = [
       'https://i.guim.co.uk/img/media/75412bb0723270b6e0d29b8655c341e2c34c85cc/546_0_2031_2032/master/2031.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=fd9b3dc0572b7bdf3e964621501b6ec2',
       'https://i.guim.co.uk/img/media/75412bb0723270b6e0d29b8655c341e2c34c85cc/546_0_2031_2032/master/2031.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=fd9b3dc0572b7bdf3e964621501b6ec2',
     ],
-    description: 'good quality',
+    description: '  Good quality',
     ownerId: '88978628',
     Active: true,
     isDelivered: false,
