@@ -3,16 +3,14 @@ import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
 import {
   Box,
-  Image,
   Text,
-  Grid,
-  GridItem,
+  Heading,
   Flex,
   Input,
   Textarea,
   Button,
+  HStack
 } from '@chakra-ui/react';
-import proto from '../../assets/images/proto.png';
 
 function ContactUsPage() {
   const { t } = useTranslation();
@@ -54,28 +52,21 @@ function ContactUsPage() {
   };
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-      <GridItem colSpan={1}>
-        <Image fit="contain" src={proto} alt="contact us img" />
-      </GridItem>
-
-      <GridItem colSpan={2} mt={10} w="100%" maxW="800px" mx="auto">
-        <Flex
-          minH="80vh"
-          align="center"
-          justify={['center', 'space-between', 'flex-end', 'flex-end']}
-        >
-          <Box
-            maxWidth={['20', '28', '36', '72']}
-            fontSize={['sm', 'md', 'md', '4xl']}
-            display={{ base: 'none', md: 'block' }}
-            mr={40}
-          >
-            {t('contactUs.paragraph')}
-          </Box>
-          <Box>
-            <form onSubmit={sendEmail}>
-              <Box mt={4} fontSize={['xx-small', 'md', 'md', 'lg']}>
+    <Flex
+    minH="100vh"
+    align="center"
+    justify="center"
+    m="auto"
+    fontSize="md"
+    fontWeight="medium"
+  >
+    <Box>
+      <Heading py="2">{t('contactUs.contact')}</Heading>
+      <HStack mb="12">
+        <Text textColor="gray.400">{t('contactUs.subheading')} </Text>
+      </HStack>
+      <form onSubmit={sendEmail}>
+              <Box >
                 <Text mb={2}>{t('contactUs.fullname')}</Text>
                 <Input
                   value={fullName}
@@ -84,8 +75,8 @@ function ContactUsPage() {
                   size="sm"
                   variant="filled"
                   isRequired
+                  maxW={['72', '96', '96', '96']}
                   focusBorderColor="green.200"
-                  maxW={['48', '40', '52', '72']}
                   name="name"
                 />
               </Box>
@@ -99,13 +90,13 @@ function ContactUsPage() {
                   size="sm"
                   variant="filled"
                   isRequired
-                  maxW={['48', '40', '52', '72']}
+                  maxW={['72', '96', '96', '96']}
                   focusBorderColor="green.200"
                   name="email"
                 />
               </Box>
 
-              <Box mt={8} fontSize={['xx-small', 'md', 'md', 'lg']}>
+              <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('contactUs.message')}</Text>
                 <Textarea
                   value={message}
@@ -113,7 +104,7 @@ function ContactUsPage() {
                   size="sm"
                   variant="filled"
                   isRequired
-                  maxW={['48', '40', '52', '72']}
+                  maxW={['72', '96', '96', '96']}
                   focusBorderColor="green.200"
                   name="message"
                 />
@@ -121,19 +112,17 @@ function ContactUsPage() {
 
               <Box mt={8}>
                 <Button
-                  colorScheme="green"
-                  w={['48', '40', '56', '72']}
-                  fontSize={['xx-small', 'md', 'md', 'lg']}
+                   type="submit"
+                   colorScheme="green"
+                   w={['72', '96', '96', '96']}
                 >
                   {t('contactUs.send')}
                 </Button>
               </Box>
             </form>
-          </Box>
-        </Flex>
-      </GridItem>
-    </Grid>
-  );
+    </Box>
+  </Flex>
+);
 }
 
 export default ContactUsPage;

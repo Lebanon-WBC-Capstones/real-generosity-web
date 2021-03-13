@@ -137,6 +137,7 @@ function NavBar() {
           ) : (
             <Link to="/auth/signin">
               <Button
+              color="gray.400"
                 variant="outline"
                 _hover={{ bg: 'green.400', color: 'white' }}
                 _focus={{ boxShadow: 'none' }}

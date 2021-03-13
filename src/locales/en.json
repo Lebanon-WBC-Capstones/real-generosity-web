@@ -70,6 +70,15 @@
     "idupload": "Kindly, upload your ID card here",
     "createbutton": "Create Account"
   },
+  "contactUs": {
+    "contact": "Contact Us",
+    "subheading": "For All Enquiries, Please Email Us Using The Form",
+    "fullname": "Full Name",
+    "email": "Email Address",
+    "message": "Write your message",
+    "send": "Send",
+    "alert": "your message has been sent successfully"
+  },
   "card": {
     "more": "more datails"
   },
@@ -92,14 +101,7 @@
     "createdAt": "CreatedAt",
     "requesterInfo": "Requester info"
   },
-  "contactUs": {
-    "fullname": "Full Name",
-    "email": "Email Address",
-    "message": "Write your message",
-    "paragraph": "Some relatively long heading paragraph contact Us",
-    "send": "Send",
-    "alert": "your message has been sent successfully"
-  },
+ 
   "heroSection": {
     "heroText_1": "Make someone's ",
     "heroText_2": "Life ",

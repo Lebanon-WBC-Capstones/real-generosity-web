@@ -59,7 +59,7 @@
   "signup": {
     "subheading": "Vous avez un compte existé?",
     "signuplink": "S'inscrire'",
-    "fullname": "Prénom et Nom",
+    "fullname": " Nom et Prénom",
     "address": "Adresse",
     "email": "Adresse E-mail",
     "password": "Mot de Passe",
@@ -67,6 +67,15 @@
     "phone": "Numéro de Telephone",
     "idupload": "SVP, télécharger ici votre Carte d'Identification",
     "createbutton": "Créer Un Compte"
+  },
+  "contactUs": {
+    "contact": "Contactez Nous",
+    "subheading": "Pour toutes demandes de renseignements, veuillez nous envoyer un courriel en utilisant le formulaire",
+    "fullname": "Nom et Prénom",
+    "email": "Adresse E-mail",
+    "message": "Rédigez votre message",
+    "send": "Envoyer",
+    "alert": "Votre message a été envoyé avec succès"
   },
   "profilePage": {
     "editProfile": "Modifier le Profil",
@@ -92,14 +101,7 @@
     "addbutton": "Ajouter un élément"
   },
 
-  "contactUs": {
-    "fullname": "Full Name",
-    "email": "Email Address",
-    "message": "Write your message",
-    "paragraph": "Some relatively long heading paragraph contact Us",
-    "send": "Send",
-    "alert": "your message has been sent successfully"
-  },
+  
 
   "heroSection": {
     "heroText_1": "Change la vie",
