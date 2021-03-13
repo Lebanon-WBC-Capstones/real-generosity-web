@@ -31,7 +31,7 @@ const SingleItemPage = () => {
   const { id } = useParams();
   const currentUser = useAuth();
   const history = useHistory();
-
+ 
   // query item details
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
@@ -103,20 +103,26 @@ const SingleItemPage = () => {
       .collection('notifications')
       .where('itemId','==',id)
       .where('type','==','approve');
-    const [checkApproval,checkApprovalLoading]=useCollectionData(checkingApproval)
+     const [checkApproval,checkApprovalLoading]=useCollectionData(checkingApproval)
      console.log("checkapproval",checkApproval)
 
+  //check approveid
+  // let checkingApprovalId ;
+  // if (currentUser)
+  // checkingApprovalId = firestore
+  //    .collection('notifications')
+  //    .where('itemId','==',id)
+  //    .where('type','==','approve');
+  //   const [checkApprovalId,checkApprovalIdLoading]=useCollection(checkingApprovalId)
+  //   console.log("checkapprovalId",checkApprovalId)
+ 
+         
 
   //query all users
   const usersCollection=firestore.collection('users')
   const [users,usersLoading]=useCollectionData(usersCollection)
 
   //query owner info of this item to display for approved requester 
-  //  let ownerInformation
-  //  if(item && item.uid && currentUser) 
-  //  ownerInformation=firestore.collection('users').where('uid','==',item.uid)
-  //  const [ownerInfo,ownerInfoLoading]=useCollection(ownerInformation)
-  //  console.log(ownerInfo)
    const ownerInfo=users?.find(user=>user?.uid===item?.uid)
      console.log('owner',ownerInfo)
   //handleReport function

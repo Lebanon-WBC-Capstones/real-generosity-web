@@ -23,6 +23,8 @@ import {
 } from '@chakra-ui/react';
 
 const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval,users}) => {
+  const [approveNotificationId,setApproveNotificationId]=React.useState('')
+     console.log('approveNotificationId',approveNotificationId.id)
   const { t } = useTranslation();
   const currentUser = useAuth();
   const history = useHistory();
@@ -46,21 +48,20 @@ const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval,users}) =
   // handleApprove send a notification for requester once its approved 
   const notificationsRef = firestore.collection('notifications');
   const handleApprove = async(requester) => {
-    //insert a new document in firestore notifications collection
+  //insert a new document in firestore notifications collection
    await notificationsRef.add({
         createdAt:firebase.firestore.FieldValue.serverTimestamp(),
         targetId:requester,
         itemId:id,
         seen: false,
         type:'approve',
-      })
+      }).then((docRef)=> setApproveNotificationId(docRef))
   };
 
-
  // handleDecline update  the type of a notification
-    const updateType = async (id) => {
+    const updateType = async () => {
        //update notification type 
-    await firestore.collection('notifications').doc(id).set(
+    await firestore.collection('notifications').doc(approveNotificationId.id).set(
     {
       type: 'decline',
     },
@@ -123,7 +124,7 @@ const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval,users}) =
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    <AccordionPanel pb={4}>{request.reason}</AccordionPanel>
+                    <AccordionPanel pb={4}> {request.reason} </AccordionPanel>
                   </AccordionItem>
                 </Accordion>
               </Td>
@@ -146,20 +147,10 @@ const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval,users}) =
                          decline
                       </Button>
                   
-                      <ContactInfoModal users={users} requesterid={request.requester} />)}
+                      <ContactInfoModal users={users} requesterid={request.requester} />)
                  </HStack>): ""
               }
-             
-              {/* {checkApproval && 
-               checkApproval?.docs.filter(check=>check.targetId===request.requester).map(checkApp=>(
-                <HStack>
-                  <Button onClick={()=>handleDecline(checkApp.id)}>
-                     decline
-                  </Button>
-                  <ContactInfoModal requester={request.requester} />
-             </HStack>
-                
-               ))} */}
+            
               </Td>
             </Tr>
           ))}
