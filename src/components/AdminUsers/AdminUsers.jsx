@@ -3,7 +3,7 @@ import { HStack, Avatar, VStack, Heading, Box, Button } from '@chakra-ui/react';
 import { MapPin, Heart, ShoppingCart } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 
-const AdminUsers = ({ user, items,requests }) => {
+const AdminUsers = ({ user,items,requests }) => {
   const { t } = useTranslation();
   return (
     <Box maxWidth="1080px">
@@ -25,14 +25,14 @@ const AdminUsers = ({ user, items,requests }) => {
         <VStack>
           <Heart size="14" />
           <Box fontSize="12px">
-            {items.filter(item=>item.uid===user.uid).length} 
+            {/* {items.filter(item=>item.uid===user.uid).length}  */}
             {t('adminPage.donations')}
           </Box>
         </VStack>
         <VStack>
           <ShoppingCart size="14" />
           <Box fontSize="12px">
-          {requests.filter(request=>request.requester===user.uid).length}
+          {/* {requests.filter(request=>request.requester===user.uid).length} */}
              {t('adminPage.requests')}
           </Box>
         </VStack>
