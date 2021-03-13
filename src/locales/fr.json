@@ -51,7 +51,7 @@
     "password": "Mot de Passe:",
     "forgotyourpassword": "Oublié votre mot de passe?",
     "signinbutton": "Se Connecter",
-    "paragraph": "Un long paragraphe sign in",
+    "paragraph": "Content de te revoir! Connectez-vous à votre compte",
     "googlebutton": "Se Connecter avec Google"
   },
 
@@ -62,7 +62,7 @@
     "phone": "Numéro de Telephone:",
     "idupload": "SVP, télécharger ici votre Carte d'Identification:",
     "createbutton": "Créer Un Compte",
-    "paragraph": "Un long paragraphe sign up"
+    "paragraph": "Nous transformons la façon dont les gens donnent et changent des vies. Êtes-vous prêt à nous rejoindre?"
   },
   "profilePage": {
     "editProfile": "Modifier le Profil",
@@ -89,12 +89,12 @@
   },
 
   "contactUs": {
-    "fullname": "Full Name",
+    "fullname": "Nom et Prenom",
     "email": "Email Address",
-    "message": "Write your message",
-    "paragraph": "Some relatively long heading paragraph contact Us",
-    "send": "Send",
-    "alert": "your message has been sent successfully"
+    "message": "Rédigez votre message",
+    "paragraph": "Pour toutes demandes de renseignements, veuillez nous envoyer un courriel en utilisant le formulaire",
+    "send": "Envoyer",
+    "alert": "Votre message a été envoyé avec succès"
   },
 
   "heroSection": {

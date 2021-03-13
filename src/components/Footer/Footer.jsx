@@ -8,13 +8,13 @@ const Footer = (props) => {
 
   return (
     <Flex
-      py="10"
+      py={["10","12","14","8"]}
       as="footer"
       justify="space-between"
       fontSize={['xx-small', 'xs', 'sm', 'xl']}
       fontWeight={600}
       bg="gray.50"
-      width="100%"
+     
       direction="column"
       {...props}
     >
@@ -24,7 +24,7 @@ const Footer = (props) => {
         color="gray.500"
         _hover={{ cursor: 'pointer' }}
         align="center"
-        px={['10', '48', '52', '60']}
+        px={['10', '48', '56', '60']}
       >
         <Link to="/">
           {' '}

@@ -15,13 +15,14 @@ import { Link } from 'react-router-dom';
 import proto from '../../assets/images/proto.png';
 import { auth, firestore } from '../../services/firebase';
 import { useHistory } from 'react-router-dom';
-// import Dropzone from '../../components/Dropzone';
+import Dropzone from '../../components/Dropzone';
+
 
 function SignUpPage() {
   const { t } = useTranslation();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors , getValues} = useForm();
   const history = useHistory();
-  // const [image, setImage] = React.useState();
+  const [image, setImage] = React.useState();
 
   const onSubmit = async ({ fullname, email, password }) => {
     console.log('registration in process...');
@@ -37,8 +38,11 @@ function SignUpPage() {
     });
     console.log('registered user...', user);
     history.push('/');
+    
+    
   };
 
+  
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={4}>
       <GridItem colSpan={1} display={{ base: 'none', md: 'block' }}>
@@ -66,21 +70,24 @@ function SignUpPage() {
 
         <Flex
           minH="80vh"
-          align="center"
+        
           justify={['center', 'space-between', 'flex-end', 'flex-end']}
         >
           <Box
-            maxWidth={['20', '28', '36', '72']}
-            fontSize={['sm', 'md', 'md', '4xl']}
+            maxWidth={['20', '28', '36', '80']}
+            fontSize={['sm', 'md', '2xl', '4xl']}
             display={{ base: 'none', md: 'block' }}
-            mr={40}
+            mx={['0','0','28','32']}
+            my={['0','0','28','36']}
+        
           >
             {t('signup.paragraph')}
           </Box>
-          <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
+          <Box  w={{ base: "80%", md: "40%" }}
+        align={["flex-start", "flex-start", "flex-start", "flex-start"]} >
+            <form onSubmit={handleSubmit(onSubmit)}  >
               <Box mt={4} fontSize="lg">
-                <Text mb={2}>full name</Text>
+                <Text mb={2}>first name</Text>
                 <Input
                   size="sm"
                   name="fullname"
@@ -91,7 +98,7 @@ function SignUpPage() {
                   ref={register}
                 />
               </Box>
-              {/* <Box mt={4} fontSize="lg">
+              <Box mt={4} fontSize="lg">
                 <Text mb={2}>last name</Text>
                 <Input
                   size="sm"
@@ -102,7 +109,7 @@ function SignUpPage() {
                   maxWidth={72}
                   ref={register}
                 />
-              </Box> */}
+              </Box>
 
               <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.email')}</Text>
@@ -117,19 +124,53 @@ function SignUpPage() {
                   focusBorderColor="green.200"
                 />
               </Box>
+              
               <Box mt={8} fontSize="lg">
+                
                 <Text mb={2}>Password</Text>
+          
                 <Input
+                type="password"
                   size="sm"
                   name="password"
                   variant="filled"
                   isRequired
                   maxW={['48', '40', '52', '72']}
-                  ref={register}
+                 
+                  ref={register({
+               
+                    minLength: { value: 10, message: 'Too short' }})}
+                    pattern="(?=.*[a-z]{1,})(?=.*[A-Z]{1,})(?=.*[0-9]{1,})(?=.*[!@#\$%\^&\*]).{9,}$"
+                   
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
+                    
                   focusBorderColor="green.200"
                 />
+                { errors.password  && <Text>{errors.password.message } </Text> }
+    
               </Box>
-              {/* <Box mt={8} fontSize="lg">
+              <Box mt={8} fontSize="lg">
+                <Text mb={2}> Repeat Password</Text>
+        
+                <Input
+                type="password"
+                  size="sm"
+                  name="confirm"
+                  variant="filled"
+                  isRequired
+                  maxW={['48', '40', '52', '72']}
+                  focusBorderColor="green.200"
+                  ref={register ({validate: value =>{
+                 
+
+  if (value === getValues('password')) {return true} else {return <span>Password fields don't match</span>}}})}
+               
+                 
+                />
+               
+               {errors.confirm && <p>{errors.confirm.message}</p>}
+              </Box>
+              <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.phone')}</Text>
                 <Input
                   type="tel"
@@ -144,13 +185,15 @@ function SignUpPage() {
               </Box>
               <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('signup.idupload')}</Text>
-                <Dropzone dropzoneRef={register} setImage={setImage} />
-              </Box> */}
+                <Dropzone dropzoneRef={register} setImage={setImage} isRequired />
+              </Box>
               <Box mt={8}>
                 <Button
                   type="submit"
                   colorScheme="green"
                   w={['48', '40', '56', '72']}
+                  mb={["8","9","10","10"]}
+             
                 >
                   {t('signup.createbutton')}
                 </Button>
@@ -160,7 +203,10 @@ function SignUpPage() {
         </Flex>
       </GridItem>
     </Grid>
+    
   );
-}
+ 
+} 
+
 
 export default SignUpPage;

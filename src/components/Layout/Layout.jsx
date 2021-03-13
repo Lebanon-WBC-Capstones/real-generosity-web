@@ -9,11 +9,11 @@ function Layout({ children }) {
       minH="100vh"
       direction="column"
       justify="space-between"
-      maxW={{ xl: '1200px' }}
+      // maxW={{ xl: '1200px' }}
       m="0 auto"
     >
       <NavBar />
-      <Box flex="1">{children}</Box>
+      <Box flex="1" >{children}</Box>
       <Footer />
     </Flex>
   );

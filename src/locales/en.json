@@ -54,7 +54,7 @@
     "password": "Password:",
     "forgotyourpassword": "Forgot your password?",
     "signinbutton": "Sign In",
-    "paragraph": "Some relatively long heading paragraph sign-in",
+    "paragraph": "Welcome Back! Login to your account",
     "googlebutton": "Sign in with Google"
   },
   "signup": {
@@ -64,7 +64,7 @@
     "phone": "Phone Number:",
     "idupload": "Kindly, upload your ID card here:",
     "createbutton": "Create Account",
-    "paragraph": "Some relatively long heading paragraph sign-in"
+    "paragraph": "We are transforming the way people give and changing lives Are you ready to join us?"
   },
   "card": {
     "more": "more datails"
@@ -90,7 +90,7 @@
     "fullname": "Full Name",
     "email": "Email Address",
     "message": "Write your message",
-    "paragraph": "Some relatively long heading paragraph contact Us",
+    "paragraph": "For All Enquiries, Please Email Us Using The Form",
     "send": "Send",
     "alert": "your message has been sent successfully"
   },
