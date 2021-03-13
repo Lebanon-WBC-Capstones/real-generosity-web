@@ -3,19 +3,13 @@ import {
   Button,
   Flex,
   HStack,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
+  Input,
   InputGroup,
   InputLeftElement,
-  Input,
 } from '@chakra-ui/react';
 import React from 'react';
-import { Plus } from 'react-feather';
+import { Plus, Search } from 'react-feather';
 import { Link } from 'react-router-dom';
-import { Search } from 'react-feather';
 
 const CATEGORIES = [
   'All',
@@ -46,27 +40,6 @@ const Filters = ({ setSearch }) => {
             )
           )}
         </Flex>
-
-        <HStack>
-          <Menu>
-            <Text color="gray.400">SortedBy:</Text>
-            <MenuButton
-              transition="all 0.2s"
-              borderRadius="md"
-              _hover={{ bg: 'gray.100', color: 'green.400' }}
-              _expanded={{ bg: 'gray.100' }}
-            >
-              <Box>
-                <Text>Newest</Text>
-              </Box>
-            </MenuButton>
-            <MenuList minW="max-content">
-              <MenuItem>
-                <Box _hover={{ color: 'green.400' }}>Oldest</Box>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </HStack>
 
         <HStack pl={100}>
           <Link to="/add-item">

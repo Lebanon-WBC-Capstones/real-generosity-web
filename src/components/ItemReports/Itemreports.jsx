@@ -7,7 +7,9 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react';
+// TODO: import from DB instead
 import rep from '../../assets/data/reports.json';
+// TODO: import from DB instead
 import data from '../../assets/data/items.json';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';

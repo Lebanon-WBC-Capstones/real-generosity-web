@@ -1,6 +1,7 @@
 import { Box, Container, Flex, Skeleton } from '@chakra-ui/react';
 import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { useParams } from 'react-router-dom';
 import Filters from '../../components/Filters';
 import Header from '../../components/Header';
 import ItemsMap from '../../components/ItemsMap';
@@ -8,9 +9,24 @@ import ItemsList from '../../components/ItemsList';
 import { firestore } from '../../services/firebase';
 
 const ItemsPage = () => {
+  const { category } = useParams();
   const [search, setSearch] = React.useState('');
 
-  let itemsRef = firestore.collection('items');
+  let itemsRef;
+  if (category) {
+    itemsRef = firestore
+      .collection('items')
+      .where('category', '==', category)
+      // TODO: uncomment after fixing old items
+      // .where('status', '==', 'active')
+      .orderBy('createdAt', 'desc');
+  } else {
+    itemsRef = firestore
+      .collection('items')
+      // TODO: uncomment after fixing old items
+      // .where('status', '==', 'active')
+      .orderBy('createdAt', 'desc');
+  }
 
   if (search) {
     itemsRef = itemsRef.where('title', '==', search);
@@ -47,7 +63,11 @@ const ItemsPage = () => {
 
       <Flex justify="space-between">
         <Box w="50%">
-          <ItemsList items={items.docs} />
+          {items.docs.length ? (
+            <ItemsList items={items.docs} />
+          ) : (
+            'no match found...'
+          )}
         </Box>
 
         <Box w="50%" ml={30}>

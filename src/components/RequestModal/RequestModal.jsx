@@ -12,8 +12,15 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../contexts/AuthContext';
 
-const RequestModal = ({ handleRequest, handleChange }) => {
+const RequestModal = ({
+  handleRequest,
+  handleChange,
+  reqCheck,
+  reqCheckLoading,
+}) => {
+  const currentUser = useAuth();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
@@ -23,9 +30,17 @@ const RequestModal = ({ handleRequest, handleChange }) => {
     onClose();
   };
 
+  if (reqCheckLoading) return <>loading</>;
+
   return (
     <>
-      <Button colorScheme="green" w="100%" size="lg" onClick={onOpen}>
+      <Button
+        disabled={currentUser && reqCheck.length === 0 ? false : true}
+        colorScheme="green"
+        w="100%"
+        size="lg"
+        onClick={onOpen}
+      >
         {t('itemPage.request')}
       </Button>
 

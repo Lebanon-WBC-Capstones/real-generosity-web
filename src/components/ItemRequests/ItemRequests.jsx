@@ -1,7 +1,22 @@
-import { Box, Button, Flex, Text, SimpleGrid } from '@chakra-ui/react';
+import { Box, Button, Text, Container } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
+import UserInfoModal from '../UserInfoModal/UserInfoModal';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from '@chakra-ui/react';
 
 const ItemRequests = ({ requests }) => {
   const { t } = useTranslation();
@@ -12,50 +27,65 @@ const ItemRequests = ({ requests }) => {
   const handleApprove = () => {
     console.log('approve');
   };
-  const handleDecline = () => {
-    console.log('decline');
-  };
 
   return (
-    <Flex d="column" maxW="400px" fontSize={18}>
-      <Box py={5}>
-        <Text fontWeight="bold" fontSize={12}></Text>
-      </Box>
-      <Box maxH="300px">
-        <SimpleGrid spacing={5}>
+    <Container maxW="7xl" mx="auto">
+      <Table variant="simple">
+        <TableCaption>
+          <Button
+            colorScheme="green"
+            w="100%"
+            size="lg"
+            onClick={handleDelivered}
+          >
+            {t('itemPage.delivered')}
+          </Button>
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th> {t('itemPage.reason')}</Th>
+            <Th>{t('itemPage.createdAt')}</Th>
+            <Th>{t('itemPage.approve')} </Th>
+            <Th>{t('itemPage.requesterInfo')}</Th>
+          </Tr>
+        </Thead>
+        <Tbody overflow="auto">
           {requests.map((request, index) => (
-            <Box key={index} bg="gray.50" height="80px" py="10px" px="5px">
-              <Flex align="center" justify="space-between">
-                <Text fontSize="lg" fontWeight="semibold" as="h3">
-                  {request.reason}
-                </Text>
-                <Box>
-                  <Button fontSize="xs" variant="ghost" onClick={handleApprove}>
-                    {t('itemPage.approve')}
-                  </Button>
-                  <Button
-                    fontSize="xs"
-                    color="red"
-                    variant="ghost"
-                    onClick={handleDecline}
-                  >
-                    {t('itemPage.decline')}
-                  </Button>
-                </Box>
-              </Flex>
-              <Text color="gray.400" fontSize="xs" textTransform="uppercase">
-                {convertTimestamp(request.createdAt)}
-              </Text>
-            </Box>
+            <Tr>
+              <Td>
+                <Accordion allowToggle>
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          flex="1"
+                          textAlign="left"
+                          overflow="hidden"
+                          maxW="250px"
+                        >
+                          <Text isTruncated> {request.reason} </Text>
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>{request.reason}</AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
+              </Td>
+              <Td>{convertTimestamp(request.createdAt)}</Td>
+              <Td>
+                <Button fontSize="xs" variant="ghost" onClick={handleApprove}>
+                  {t('itemPage.approve')}
+                </Button>
+              </Td>
+              <Td>
+                <UserInfoModal />
+              </Td>
+            </Tr>
           ))}
-        </SimpleGrid>
-      </Box>
-      <Box py="30px">
-        <Button variant="outline" w="100%" size="lg" onClick={handleDelivered}>
-          {t('itemPage.delivered')}
-        </Button>
-      </Box>
-    </Flex>
+        </Tbody>
+      </Table>
+    </Container>
   );
 };
 

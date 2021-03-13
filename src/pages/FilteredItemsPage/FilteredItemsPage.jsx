@@ -14,7 +14,10 @@ const FilteredItemsPage = () => {
 
   let itemsRef = firestore
     .collection('items')
-    .where('category', '==', category);
+    // TODO: uncomment after fixing old items
+    // .where('status', '==','active')
+    .where('category', '==', category)
+    .orderBy('createdAt', 'desc');
 
   if (search) {
     itemsRef = itemsRef.where('title', '==', search);
@@ -25,7 +28,10 @@ const FilteredItemsPage = () => {
   const renders = React.useRef(0);
   console.log('FilteredItemsPage.jsx render... ', renders.current++);
 
-  if (error) return 'an error has occured...';
+  if (error) {
+    console.log('error', error);
+    return 'an error has occured...';
+  }
 
   if (loading)
     return (

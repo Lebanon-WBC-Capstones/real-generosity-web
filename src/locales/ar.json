@@ -46,21 +46,25 @@
     "here": "هنا"
   },
   "signin": {
-    "email": "البريد الالكتروني:",
-    "password": "كلمة المرور:",
+    "signin": "تسجيل الدخول",
+    "subheading": "ليس لديك حساب؟",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
     "forgotyourpassword": "نسيت كلمة السر؟",
     "signinbutton": "تسجيل الدخول",
-    "paragraph": "مقطعععععععععععععععععععع",
     "googlebutton": "تسجيل عبر غوغل"
   },
   "signup": {
-    "fullname": "الاسم الكامل:",
-    "address": "العنوان:",
-    "email": "البريد الالكتروني:",
-    "phone": "رقم الهاتف:",
-    "idupload": "حمل بطاقة هويتك هنا:",
-    "createbutton": "إنشاء حساب",
-    "paragraph": "مقطععععععععععععععععععععع"
+    "subheading": "هل لديك حساب مسبقاً؟",
+    "signuplink": "إنشاء حساب",
+    "fullname": "الاسم الكامل",
+    "address": "العنوان",
+    "email": "البريد الالكتروني",
+    "password": "كلمة السر",
+    "passplaceholder": "6+ أحرف",
+    "phone": "رقم الهاتف",
+    "idupload": "حمل بطاقة هويتك هنا",
+    "createbutton": "إنشاء حساب"
   },
   "card": {
     "more": "المزيد من التفاصيل"

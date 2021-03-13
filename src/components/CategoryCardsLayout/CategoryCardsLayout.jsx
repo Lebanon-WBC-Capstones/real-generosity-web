@@ -13,7 +13,12 @@ const CategoryCardsLayout = () => {
   const { t } = useTranslation();
 
   return (
-    <Flex justifyContent="center">
+    <Flex
+      justifyContent="center"
+      maxWidth="4xl"
+      mx="auto"
+      mt={['0', '0', '24', '0']}
+    >
       <Grid
         maxH="72"
         maxW="4xl"

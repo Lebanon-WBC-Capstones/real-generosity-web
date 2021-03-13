@@ -50,21 +50,25 @@
     "here": "here"
   },
   "signin": {
-    "email": "Email Address:",
-    "password": "Password:",
+    "signin": "Sign In",
+    "subheading": "Do not have an account?",
+    "email": "Email Address",
+    "password": "Password",
     "forgotyourpassword": "Forgot your password?",
     "signinbutton": "Sign In",
-    "paragraph": "Some relatively long heading paragraph sign-in",
     "googlebutton": "Sign in with Google"
   },
   "signup": {
-    "fullname": "Full Name:",
-    "address": "Address:",
-    "email": "Email Address:",
-    "phone": "Phone Number:",
-    "idupload": "Kindly, upload your ID card here:",
-    "createbutton": "Create Account",
-    "paragraph": "Some relatively long heading paragraph sign-in"
+    "subheading": "Already have an account?",
+    "signuplink": "Sign Up",
+    "fullname": "Full Name",
+    "address": "Address",
+    "email": "Email Address",
+    "password": "Password",
+    "passplaceholder": "6+ characters",
+    "phone": "Phone Number",
+    "idupload": "Kindly, upload your ID card here",
+    "createbutton": "Create Account"
   },
   "card": {
     "more": "more datails"
@@ -74,7 +78,7 @@
     "back": "Back",
     "details": "Details",
     "requests": "Requests",
-    "reason": "Reason:",
+    "reason": "Reason",
     "approve": "Approve",
     "decline": "Decline",
     "edit": "edit",
@@ -84,7 +88,9 @@
     "delete": "Delete",
     "delivered": "Delivered",
     "cancel": "Cancel",
-    "deletep": "Are you sure you want to delete?"
+    "deletep": "Are you sure you want to delete?",
+    "createdAt": "CreatedAt",
+    "requesterInfo": "Requester info"
   },
   "contactUs": {
     "fullname": "Full Name",
@@ -124,7 +130,8 @@
     "editProfile": "Edit Profile",
     "donations": "Donations",
     "requests": "Requests",
-    "search": "Search"
+    "search": "Search",
+    "notifications": "Notifications"
   },
   "adminPage": {
     "admin": "Admin",
@@ -155,7 +162,7 @@
     "button": "Donate Now"
   },
   "cardlist": {
-    "heading": "latest donations",
-    "heading1": " See more"
+    "heading": "Latest Donations",
+    "heading1": " See More..."
   }
 }
