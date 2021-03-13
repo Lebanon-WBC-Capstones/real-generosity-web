@@ -50,8 +50,8 @@
     "here": "here"
   },
   "signin": {
-    "signin":"Sign In",
-    "subheading":"Do not have an account?",
+    "signin": "Sign In",
+    "subheading": "Do not have an account?",
     "email": "Email Address",
     "password": "Password",
     "forgotyourpassword": "Forgot your password?",
@@ -59,13 +59,13 @@
     "googlebutton": "Sign in with Google"
   },
   "signup": {
-    "subheading":"Already have an account?",
+    "subheading": "Already have an account?",
     "signuplink": "Sign Up",
     "fullname": "Full Name",
     "address": "Address",
     "email": "Email Address",
     "password": "Password",
-    "passplaceholder":"6+ characters",
+    "passplaceholder": "6+ characters",
     "phone": "Phone Number",
     "idupload": "Kindly, upload your ID card here",
     "createbutton": "Create Account"

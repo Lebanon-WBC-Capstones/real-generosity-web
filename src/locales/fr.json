@@ -47,8 +47,8 @@
   },
 
   "signin": {
-    "signin":"Se Connecter",
-    "subheading":"Vous n'avez pas un compte?",
+    "signin": "Se Connecter",
+    "subheading": "Vous n'avez pas un compte?",
     "email": "Adresse E-mail",
     "password": "Mot de Passe",
     "forgotyourpassword": "Oublié votre mot de passe?",
@@ -57,13 +57,13 @@
   },
 
   "signup": {
-    "subheading":"Vous avez un compte existé?",
+    "subheading": "Vous avez un compte existé?",
     "signuplink": "S'inscrire'",
     "fullname": "Prénom et Nom",
     "address": "Adresse",
     "email": "Adresse E-mail",
     "password": "Mot de Passe",
-    "passplaceholder":"6+ caractères",
+    "passplaceholder": "6+ caractères",
     "phone": "Numéro de Telephone",
     "idupload": "SVP, télécharger ici votre Carte d'Identification",
     "createbutton": "Créer Un Compte"

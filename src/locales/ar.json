@@ -46,8 +46,8 @@
     "here": "هنا"
   },
   "signin": {
-    "signin":"تسجيل الدخول",
-    "subheading":"ليس لديك حساب؟",
+    "signin": "تسجيل الدخول",
+    "subheading": "ليس لديك حساب؟",
     "email": "البريد الالكتروني",
     "password": "كلمة المرور",
     "forgotyourpassword": "نسيت كلمة السر؟",
@@ -55,13 +55,13 @@
     "googlebutton": "تسجيل عبر غوغل"
   },
   "signup": {
-    "subheading":"هل لديك حساب مسبقاً؟",
+    "subheading": "هل لديك حساب مسبقاً؟",
     "signuplink": "إنشاء حساب",
     "fullname": "الاسم الكامل",
     "address": "العنوان",
     "email": "البريد الالكتروني",
     "password": "كلمة السر",
-    "passplaceholder":"6+ أحرف",
+    "passplaceholder": "6+ أحرف",
     "phone": "رقم الهاتف",
     "idupload": "حمل بطاقة هويتك هنا",
     "createbutton": "إنشاء حساب"
