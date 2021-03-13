@@ -12,7 +12,7 @@ import {
   HStack,
   Text,
 } from '@chakra-ui/react';
-import { ShoppingBag } from 'react-feather';
+import { ShoppingBag, Heart} from 'react-feather';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 import { Link } from 'react-router-dom';
 import { firestore } from '../../services/firebase';
@@ -48,6 +48,7 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
                 <Td>
                   <HStack>
                     {notification.data().type === 'request' && <ShoppingBag />}
+                    {notification.data().type === 'approve' && <Heart />}
                     <Text>{notification.data().type}</Text>
                   </HStack>
                 </Td>

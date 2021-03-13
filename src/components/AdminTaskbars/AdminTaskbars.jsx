@@ -20,16 +20,18 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-// TODO: import from DB instead
-import { users } from '../../assets/data/users';
+import { useAuth } from '../../contexts/AuthContext';
 
-const AdminTaskbars = () => {
+
+const AdminTaskbars = ( {allUsers,
+                        allItems,allItemsLoading,
+                        allRequests, allRequestsLoading}) => {
   const { t } = useTranslation();
+  const currentUser = useAuth();
+
+  
   return (
     <Container maxWidth="891px">
-      <Heading size="lg" marginBottom="30px">
-        {t('adminPage.admin')}
-      </Heading>
       <Tabs>
         <TabList justifyContent="space-around">
           <Tab>{t('adminPage.users')}</Tab>
@@ -41,7 +43,7 @@ const AdminTaskbars = () => {
           <TabPanel>
             <HStack justifyContent="space-between" marginBottom="40px">
               <Text fontSize="md" fontWeight="bold">
-                {users.length} {t('adminPage.users')}
+                {currentUser && allUsers? allUsers.length :'' } {t('adminPage.users')}
               </Text>
               <Box size="100px">
                 <InputGroup>
@@ -54,9 +56,13 @@ const AdminTaskbars = () => {
               </Box>
             </HStack>
             <SimpleGrid rows={6} gap={4}>
-              {users.map((user) => (
-                <AdminUsers {...user} />
-              ))}
+            {allUsers? allUsers.map((user) => (
+                <AdminUsers  user={user} 
+                             allItems={allItems} 
+                             allItemsLoading={allItemsLoading}
+                             allRequests={allRequests} 
+                             allRequestsLoading={allRequestsLoading} /> 
+              )):''}
             </SimpleGrid>
           </TabPanel>
 

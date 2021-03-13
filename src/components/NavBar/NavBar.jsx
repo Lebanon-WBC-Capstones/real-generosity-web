@@ -18,7 +18,7 @@ import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
 import logo2 from '../../assets/images/logo2.png';
 
@@ -28,6 +28,14 @@ function NavBar() {
   const user = useAuth();
   const history = useHistory();
 
+  
+  //check if the user is Admin
+  let currentUser;
+  if(user) 
+  currentUser=firestore.collection('users').doc(user.uid)
+  const [userData,userDataLoading]=useDocumentData(currentUser)
+  const isAdmin = user && userData?.role==="admin";
+  console.log('admin',isAdmin)
   //logout function
   const logOut = async () => {
     try {
@@ -39,7 +47,6 @@ function NavBar() {
   };
 
   //query notifications from firebase
-
   let notifications;
   if (user)
     notifications = firestore
@@ -133,7 +140,7 @@ function NavBar() {
             </MenuList>
           </Menu>
           {user ? (
-            <GetStartedBtn logOut={logOut} user={user} notify={notify} />
+            <GetStartedBtn logOut={logOut} user={user} notify={notify} isAdmin={isAdmin} />
           ) : (
             <Link to="/auth/signin">
               <Button

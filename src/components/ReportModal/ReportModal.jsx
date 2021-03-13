@@ -1,5 +1,7 @@
 import React from 'react';
-import { Info } from 'react-feather';
+import { AlertCircle } from 'react-feather';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../contexts/AuthContext';
 import {
   Modal,
   ModalOverlay,
@@ -14,34 +16,27 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-const ReportModal = () => {
+const ReportModal = ({handleReport,reportType,repoCheck,repoCheckLoading}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
+  const { t } = useTranslation();
+  const currentUser = useAuth();
 
-  let [value, setValue] = React.useState('');
-
-  let handleRequest = (e) => {
-    let inputValue = e.target.value;
-    setValue(inputValue);
-  };
-
+  const handleClick=()=>{
+    handleReport()
+    onClose()
+  }
+  if (repoCheckLoading) return <>loading...</>
   return (
     <>
-      <HStack
-        fontSize="xs"
-        fontWeight="normal"
-        mb="4"
-        align="center"
-        ref={finalRef}
-        tabIndex={-1}
-        aria-label="Focus moved to this box"
-        onClick={onOpen}
-      >
-        <Info color="red" />
-        <Text fontSize="medium" textColor="red">
-          Report
-        </Text>
-      </HStack>
+    <Button   onClick={onOpen}
+              disabled={currentUser && repoCheck.length===0? false : true  }
+              color="red"
+              leftIcon={<AlertCircle size={15} color="red" />}
+              variant="ghost"
+            >
+              {t('itemPage.report')}
+    </Button>
 
       <Modal
         size="xl"
@@ -60,10 +55,11 @@ const ReportModal = () => {
                 size="sm"
                 maxW="96"
                 focusBorderColor="green.200"
+                ref={reportType}
               >
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="inappropriate content">inappropriate content</option>
+                <option value="false identity to decieve people">false identity to decieve people</option>
+                <option value="scam">scam</option>
               </Select>
             </VStack>
           </ModalBody>
@@ -74,7 +70,7 @@ const ReportModal = () => {
               textColor="white"
               px="12"
               py="4"
-              onClick={handleRequest}
+              onClick={handleClick}
             >
               Report
             </Button>
