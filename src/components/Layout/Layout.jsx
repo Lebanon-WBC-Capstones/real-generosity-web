@@ -9,7 +9,6 @@ function Layout({ children }) {
       minH="100vh"
       direction="column"
       justify="space-between"
-      maxW={{ xl: '1200px' }}
       m="0 auto"
     >
       <NavBar />

@@ -47,22 +47,26 @@
   },
 
   "signin": {
-    "email": "Adresse E-mail:",
-    "password": "Mot de Passe:",
+    "signin":"Se Connecter",
+    "subheading":"Vous n'avez pas un compte?",
+    "email": "Adresse E-mail",
+    "password": "Mot de Passe",
     "forgotyourpassword": "Oublié votre mot de passe?",
     "signinbutton": "Se Connecter",
-    "paragraph": "Un long paragraphe sign in",
     "googlebutton": "Se Connecter avec Google"
   },
 
   "signup": {
-    "fullname": "Prénom et Nom:",
-    "address": "Adresse:",
-    "email": "Adresse E-mail:",
-    "phone": "Numéro de Telephone:",
-    "idupload": "SVP, télécharger ici votre Carte d'Identification:",
-    "createbutton": "Créer Un Compte",
-    "paragraph": "Un long paragraphe sign up"
+    "subheading":"Vous avez un compte existé?",
+    "signuplink": "S'inscrire'",
+    "fullname": "Prénom et Nom",
+    "address": "Adresse",
+    "email": "Adresse E-mail",
+    "password": "Mot de Passe",
+    "passplaceholder":"6+ caractères",
+    "phone": "Numéro de Telephone",
+    "idupload": "SVP, télécharger ici votre Carte d'Identification",
+    "createbutton": "Créer Un Compte"
   },
   "profilePage": {
     "editProfile": "Modifier le Profil",
