@@ -19,10 +19,12 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-const ContactInfoModal = ({ ownerInfo,requesterInfo}) => {
+const ContactInfoModal = ({ ownerInfo, users, requesterid}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
   const currentUser = useAuth();
+  
+
   
 
   return (
@@ -52,8 +54,8 @@ const ContactInfoModal = ({ ownerInfo,requesterInfo}) => {
                   Full Name:
                   </Text>
                   <Text fontSize="lg" fontWeight="medium" >
-                  {currentUser && ownerInfo && ownerInfo.fullname}
-                  {currentUser && requesterInfo &&  requesterInfo.fullname}
+                  {currentUser && ownerInfo ? ownerInfo.fullname:''}
+                  {currentUser && users? users.filter(user=>user.uid===requesterid)?.map(u=><span>{u.fullname}</span>):''}
                 </Text>
               </HStack>
               <HStack  my={3}>
@@ -62,8 +64,8 @@ const ContactInfoModal = ({ ownerInfo,requesterInfo}) => {
                   Email Address:
                 </Text>
                   <Text fontSize="lg" fontWeight="medium">
-                  {currentUser && ownerInfo && ownerInfo.email}
-                  {currentUser && requesterInfo && requesterInfo.email}
+                  {currentUser && ownerInfo ? ownerInfo.email:''}
+                  {currentUser && users? users.filter(user=>user.uid===requesterid)?.map(u=><span>{u.email}</span>):''}
                 </Text>
               </HStack>
               <HStack  my={3}>
@@ -72,8 +74,8 @@ const ContactInfoModal = ({ ownerInfo,requesterInfo}) => {
                   phone number:
                   </Text>
                   <Text fontSize="lg" fontWeight="medium">
-                  {currentUser && ownerInfo && ownerInfo.phonenumber}
-                  {currentUser && requesterInfo && requesterInfo.phonenumber}
+                  {currentUser && ownerInfo ? ownerInfo.phonenumber:''}
+                  {currentUser && users?  users.filter(user=>user.uid===requesterid)?.map(u=><span>{u.phonenumber}</span>):''}
                 </Text>
               </HStack>
             </Grid>
