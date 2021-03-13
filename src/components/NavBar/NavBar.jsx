@@ -60,10 +60,12 @@ function NavBar() {
   return (
     <Box as="nav">
       <Flex
+        maxWidth="1200px"
+        m="auto"
         justify="space-between"
         align="center"
-        mx={16}
-        mt={3}
+        px={16}
+        pt={3}
         fontSize="md"
         fontWeight="medium"
       >

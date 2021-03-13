@@ -50,21 +50,25 @@
     "here": "here"
   },
   "signin": {
-    "email": "Email Address:",
-    "password": "Password:",
+    "signin": "Sign In",
+    "subheading": "Do not have an account?",
+    "email": "Email Address",
+    "password": "Password",
     "forgotyourpassword": "Forgot your password?",
     "signinbutton": "Sign In",
-    "paragraph": "Some relatively long heading paragraph sign-in",
     "googlebutton": "Sign in with Google"
   },
   "signup": {
-    "fullname": "Full Name:",
-    "address": "Address:",
-    "email": "Email Address:",
-    "phone": "Phone Number:",
-    "idupload": "Kindly, upload your ID card here:",
-    "createbutton": "Create Account",
-    "paragraph": "Some relatively long heading paragraph sign-in"
+    "subheading": "Already have an account?",
+    "signuplink": "Sign Up",
+    "fullname": "Full Name",
+    "address": "Address",
+    "email": "Email Address",
+    "password": "Password",
+    "passplaceholder": "6+ characters",
+    "phone": "Phone Number",
+    "idupload": "Kindly, upload your ID card here",
+    "createbutton": "Create Account"
   },
   "card": {
     "more": "more datails"

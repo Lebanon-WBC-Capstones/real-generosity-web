@@ -2,7 +2,6 @@ import React from 'react';
 import { Heading, Button, Flex, Stack, Image } from '@chakra-ui/react';
 import heroSectionImage_1 from '../../assets/images/heroSectionImage_1.png';
 import heroSectionImage_2 from '../../assets/images/heroSectionImage_2.png';
-import './HeroSection.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -12,9 +11,11 @@ const HeroSection = () => {
   return (
     <Flex>
       <Stack
+        maxWidth="1200px"
+        m="0 auto"
         spacing={['5', '8', '14', '20']}
         px={['2', '3', '14', '32']}
-        w={{ base: '80%', md: '60%' }}
+        w={{ base: '80%', md: '100%' }}
         align="flex-start"
         minH={{
           base: '30vh',
