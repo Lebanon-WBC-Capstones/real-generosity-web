@@ -5,9 +5,9 @@
     "about": "À Propos",
     "contactUs": "Contact",
     "getStarted": "Créer Un Compte",
-    "copy": "tous les droits sont réservés",
-    "profile": "view profile",
-    "logout": "logout"
+    "copy": "Tous les droits sont réservés",
+    "profile": "View profile",
+    "logout": "Logout"
   },
   "aboutUs": {
     "aboutUs": "À Propos de nous",
@@ -101,8 +101,6 @@
     "addbutton": "Ajouter un élément"
   },
 
-  
-
   "heroSection": {
     "heroText_1": "Change la vie",
     "heroText_2": " de quelqu'un",
@@ -110,19 +108,19 @@
     "heroText_4": "la",
     "heroText_5": " vôtre",
     "paragraph_1": "Aidez à faire du Liban un meilleur endroit",
-    "paragraph_2": "un don à la fois ",
+    "paragraph_2": "un don à la fois.. ",
     "donateButton": "Faire un Don maintenant "
   },
   "categoryCards": {
-    "furniture": "fourniture",
-    "clothes": "vêtements",
-    "books": "livres",
-    "toys": "jouets",
-    "medics": "médecins",
+    "furniture": "Fourniture",
+    "clothes": "Vêtements",
+    "books": "Livres",
+    "toys": "Jouets",
+    "medics": "Médecins",
     "appliances": "Dispositifs"
   },
   "itemPage": {
-    "items": "éléments",
+    "items": "Eléments",
     "details": "Détails",
     "requests": "Demandes",
     "reason": "Raison:",
@@ -133,7 +131,7 @@
     "report": "Rapport",
     "reports": "Rapports",
     "delete": "Suprimer",
-    "delivered": "livré",
+    "delivered": "Livré",
     "cancel": "Annuler",
     "deletep": "Etes-vous sûr que vous voulez supprimer?"
   },
@@ -141,7 +139,7 @@
     "search": "Explore"
   },
   "cardlist": {
-    "heading": "les dernières dons",
-    "heading1": "explorer plus"
+    "heading": "Les dernières dons",
+    "heading1": "Explorer Plus"
   }
 }
