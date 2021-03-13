@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import {
-  useCollection,
+  // useCollection,
   useCollectionData,
   useDocumentData,
 } from 'react-firebase-hooks/firestore';
@@ -22,7 +22,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
-import ItemReports from '../../components/ItemReports/Itemreports'
+import ItemReports from '../../components/ItemReports/Itemreports';
 import { useAuth } from '../../contexts/AuthContext';
 import firebase, { firestore } from '../../services/firebase';
 
@@ -31,7 +31,7 @@ const SingleItemPage = () => {
   const { id } = useParams();
   const currentUser = useAuth();
   const history = useHistory();
- 
+
   // query item details
   const query = firestore.collection('items').doc(id);
   const [item, loading, error] = useDocumentData(query);
@@ -48,9 +48,9 @@ const SingleItemPage = () => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-  
+
   const handleRequest = () => {
-    //add request doc to requests 
+    //add request doc to requests
     firestore
       .collection('requests')
       .add({
@@ -61,7 +61,7 @@ const SingleItemPage = () => {
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((docRef) => {
-        //add notification doc to notifications targeted to the requestee 
+        //add notification doc to notifications targeted to the requestee
         firestore.collection('notifications').add({
           targetId: item.uid,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -74,7 +74,7 @@ const SingleItemPage = () => {
 
   // delete item function
   const updateStatus = async () => {
-    //update item status 
+    //update item status
     await firestore.collection('items').doc(id).set(
       {
         status: 'deleted',
@@ -96,15 +96,17 @@ const SingleItemPage = () => {
       .where('requester', '==', currentUser.uid);
   const [reqCheck, reqCheckLoading] = useCollectionData(checkingUserRequest);
 
-   //check if exist an approve notification for this item 
-   let checkingApproval ;
-   if (currentUser)
-   checkingApproval = firestore
+  //check if exist an approve notification for this item
+  let checkingApproval;
+  if (currentUser)
+    checkingApproval = firestore
       .collection('notifications')
-      .where('itemId','==',id)
-      .where('type','==','approve');
-     const [checkApproval,checkApprovalLoading]=useCollectionData(checkingApproval)
-     console.log("checkapproval",checkApproval)
+      .where('itemId', '==', id)
+      .where('type', '==', 'approve');
+  const [checkApproval, checkApprovalLoading] = useCollectionData(
+    checkingApproval
+  );
+  console.log('checkapproval', checkApproval);
 
   //check approveid
   // let checkingApprovalId ;
@@ -115,48 +117,46 @@ const SingleItemPage = () => {
   //    .where('type','==','approve');
   //   const [checkApprovalId,checkApprovalIdLoading]=useCollection(checkingApprovalId)
   //   console.log("checkapprovalId",checkApprovalId)
- 
-         
 
   //query all users
-  const usersCollection=firestore.collection('users')
-  const [users,usersLoading]=useCollectionData(usersCollection)
+  const usersCollection = firestore.collection('users');
+  const [users, usersLoading] = useCollectionData(usersCollection);
 
-  //query owner info of this item to display for approved requester 
-   const ownerInfo=users?.find(user=>user?.uid===item?.uid)
-     console.log('owner',ownerInfo)
+  //query owner info of this item to display for approved requester
+  const ownerInfo = users?.find((user) => user?.uid === item?.uid);
+  console.log('owner', ownerInfo);
   //handleReport function
-  const reportType=React.useRef('')
-  const handleReport=()=>{
-      //add report doc to reports
+  const reportType = React.useRef('');
+  const handleReport = () => {
+    //add report doc to reports
     firestore
-    .collection('reports')
-    .add({
-      reporter: currentUser.uid,
-      itemId: id,
-      reason: reportType.current.value ,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    })
-    .then((docRef) => {
-      //add notification doc to notifications targeted to the admin
-      firestore.collection('notifications').add({
-        targetId:'ng0Qsdz9OubnnqMvdvpJ58CnX3z2',
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      .collection('reports')
+      .add({
+        reporter: currentUser.uid,
         itemId: id,
-        type: 'report',
-        seen: false,
+        reason: reportType.current.value,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((docRef) => {
+        //add notification doc to notifications targeted to the admin
+        firestore.collection('notifications').add({
+          targetId: 'ng0Qsdz9OubnnqMvdvpJ58CnX3z2',
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          itemId: id,
+          type: 'report',
+          seen: false,
+        });
       });
-    });
-    }
+  };
   //check for report with reporter=currentuser to disable report Btn
-    let checkReports
-    if(currentUser)
-    checkReports=firestore
-    .collection('reports')
-    .where('itemId', '==', id)
-    .where('reporter','==', currentUser.uid)
-    const [repoCheck,repoCheckLoading]=useCollectionData(checkReports)
-    console.log('repo', repoCheck)
+  let checkReports;
+  if (currentUser)
+    checkReports = firestore
+      .collection('reports')
+      .where('itemId', '==', id)
+      .where('reporter', '==', currentUser.uid);
+  const [repoCheck, repoCheckLoading] = useCollectionData(checkReports);
+  console.log('repo', repoCheck);
 
   // query reports
   const reportsRef = firestore.collection('reports');
@@ -164,20 +164,20 @@ const SingleItemPage = () => {
   const [reports, reportsLoading] = useCollectionData(repQuery);
 
   console.log('reports', reports);
- 
 
   //check if the user isOwner of the item
   const isOwner = item && item?.uid === currentUser?.uid;
-  
+
   //check if the user is Admin
   let user;
-  if(currentUser) 
-  user=firestore.collection('users').doc(currentUser.uid)
-  const [userData,userDataLoading]=useDocumentData(user)
-  const isAdmin = currentUser && userData?.role==="admin";
-  
+  if (currentUser) user = firestore.collection('users').doc(currentUser.uid);
+  const [userData, userDataLoading] = useDocumentData(user);
+  console.log(userDataLoading);
+  const isAdmin = currentUser && userData?.role === 'admin';
+
   //check requester isApprovedRequester to display the item owner contact info
-  const isApprovedRequester=checkApproval && currentUser?.uid===checkApproval[0]?.targetId;
+  const isApprovedRequester =
+    checkApproval && currentUser?.uid === checkApproval[0]?.targetId;
 
   if (error) return 'an error has occured...';
 
@@ -212,24 +212,26 @@ const SingleItemPage = () => {
                   handleRequest={handleRequest}
                   reqCheck={reqCheck}
                   reqCheckLoading={reqCheckLoading}
-                 
                 />
               </TabPanel>
               <TabPanel>
                 {reqLoading && 'is loading...'}
-                {requests && <ItemRequests
-                                 requests={requests} 
-                                 users={users}
-                                 id={id}
-                                 checkApproval={checkApproval}
-                                 checkApprovalLoading={checkApprovalLoading}
-                                 />}
+                {requests && (
+                  <ItemRequests
+                    requests={requests}
+                    users={users}
+                    id={id}
+                    checkApproval={checkApproval}
+                    checkApprovalLoading={checkApprovalLoading}
+                  />
+                )}
               </TabPanel>
             </TabPanels>
-          </Tabs>)}
-        
-      {!isOwner && !isAdmin &&  
-      (   <ItemDetails
+          </Tabs>
+        )}
+
+        {!isOwner && !isAdmin && (
+          <ItemDetails
             {...item}
             setValue={setValue}
             handleChange={handleChange}
@@ -242,12 +244,13 @@ const SingleItemPage = () => {
             handleReport={handleReport}
             repoCheck={repoCheck}
             repoCheckLoading={repoCheckLoading}
-            users={users} usersLoading={usersLoading}
+            users={users}
+            usersLoading={usersLoading}
             ownerInfo={ownerInfo}
           />
-         )}
+        )}
 
-        { isAdmin &&   (
+        {isAdmin && (
           <Tabs variant="soft-rounded" colorScheme="gray">
             <TabList>
               <Tab>{t('itemPage.details')}</Tab>
@@ -265,21 +268,25 @@ const SingleItemPage = () => {
               </TabPanel>
               <TabPanel>
                 {reportsLoading && <>loading</>}
-                {reports && <ItemReports reports={reports} handleDelete={handleDelete}
-                                          users={users} usersLoading={usersLoading}/>
-                 }
-                </TabPanel>
+                {reports && (
+                  <ItemReports
+                    reports={reports}
+                    handleDelete={handleDelete}
+                    users={users}
+                    usersLoading={usersLoading}
+                  />
+                )}
+              </TabPanel>
             </TabPanels>
-          </Tabs>)}
-      
-      {/* <Box> */}
-      {/* <ItemsMap /> */}
-      {/* </Box>  */}
+          </Tabs>
+        )}
+
+        {/* <Box> */}
+        {/* <ItemsMap /> */}
+        {/* </Box>  */}
       </Box>
     </Container>
   );
 };
 
 export default SingleItemPage;
-
-

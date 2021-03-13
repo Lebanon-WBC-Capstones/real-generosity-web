@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { User, LogOut, Bell,Heart,ShoppingBag } from 'react-feather';
-import { firestore } from '../../services/firebase';
+import { User, LogOut, Bell } from 'react-feather';
+// import { firestore } from '../../services/firebase';
 import {
-  Menu,Box,
+  Menu,
   MenuButton,
   MenuList,
   MenuItem,
@@ -16,19 +16,17 @@ import {
 
 const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
   const { t } = useTranslation();
- 
-//  const handleClick = async (id) => {
-//       await firestore.collection('notifications').doc(id).set(
-//         {
-//           seen: true,
-//         },
-//         { merge: true }
-//       );
-//     };
-  
- 
+
+  //  const handleClick = async (id) => {
+  //       await firestore.collection('notifications').doc(id).set(
+  //         {
+  //           seen: true,
+  //         },
+  //         { merge: true }
+  //       );
+  //     };
+
   return (
-   
     <HStack>
       <Menu border="1px">
         <MenuButton
@@ -44,7 +42,7 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           variant="white"
         />
 
-         <MenuList>
+        <MenuList>
           {/* {notify? 
           notify.docs.map(notification=>
           (
@@ -58,20 +56,20 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           </Link>
           )):''}  */}
 
-          {isAdmin?
-          (<Link to='/admin'>
+          {isAdmin ? (
+            <Link to="/admin">
               <MenuItem>Notifications</MenuItem>
-           </Link>
-           )
-          :
-            (<Link to={`/profile/${user.uid}/notifications`}>
-            <MenuItem>Notifications</MenuItem>
-          </Link>)}
+            </Link>
+          ) : (
+            <Link to={`/profile/${user.uid}/notifications`}>
+              <MenuItem>Notifications</MenuItem>
+            </Link>
+          )}
         </MenuList>
       </Menu>
 
       <Menu>
-      <MenuButton
+        <MenuButton
           as={IconButton}
           color="black"
           aria-label="Options"
@@ -79,20 +77,22 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           size="md"
           variant="white"
         />
-         <MenuList>
-         {isAdmin? 
-            (<Link to="/admin">
-            <MenuItem icon={<User />}>users</MenuItem>
-          </Link>)
-         :
-         (<Link to={`/profile/${user.uid}`}>
-            <MenuItem icon={<User />}>{t('navbar.profile')}</MenuItem>
-          </Link>)}
+        <MenuList>
+          {isAdmin ? (
+            <Link to="/admin">
+              <MenuItem icon={<User />}>users</MenuItem>
+            </Link>
+          ) : (
+            <Link to={`/profile/${user.uid}`}>
+              <MenuItem icon={<User />}>{t('navbar.profile')}</MenuItem>
+            </Link>
+          )}
           <MenuItem onClick={logOut} icon={<LogOut />}>
             {t('navbar.logout')}
           </MenuItem>
         </MenuList>
       </Menu>
-    </HStack>)
+    </HStack>
+  );
 };
 export default GetStartedBtn;

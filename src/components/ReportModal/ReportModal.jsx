@@ -8,7 +8,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalBody,
-  HStack,
   Button,
   Text,
   Select,
@@ -16,27 +15,33 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-const ReportModal = ({handleReport,reportType,repoCheck,repoCheckLoading}) => {
+const ReportModal = ({
+  handleReport,
+  reportType,
+  repoCheck,
+  repoCheckLoading,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
   const { t } = useTranslation();
   const currentUser = useAuth();
 
-  const handleClick=()=>{
-    handleReport()
-    onClose()
-  }
-  if (repoCheckLoading) return <>loading...</>
+  const handleClick = () => {
+    handleReport();
+    onClose();
+  };
+  if (repoCheckLoading) return <>loading...</>;
   return (
     <>
-    <Button   onClick={onOpen}
-              disabled={currentUser && repoCheck.length===0? false : true  }
-              color="red"
-              leftIcon={<AlertCircle size={15} color="red" />}
-              variant="ghost"
-            >
-              {t('itemPage.report')}
-    </Button>
+      <Button
+        onClick={onOpen}
+        disabled={currentUser && repoCheck.length === 0 ? false : true}
+        color="red"
+        leftIcon={<AlertCircle size={15} color="red" />}
+        variant="ghost"
+      >
+        {t('itemPage.report')}
+      </Button>
 
       <Modal
         size="xl"
@@ -57,8 +62,12 @@ const ReportModal = ({handleReport,reportType,repoCheck,repoCheckLoading}) => {
                 focusBorderColor="green.200"
                 ref={reportType}
               >
-                <option value="inappropriate content">inappropriate content</option>
-                <option value="false identity to decieve people">false identity to decieve people</option>
+                <option value="inappropriate content">
+                  inappropriate content
+                </option>
+                <option value="false identity to decieve people">
+                  false identity to decieve people
+                </option>
                 <option value="scam">scam</option>
               </Select>
             </VStack>

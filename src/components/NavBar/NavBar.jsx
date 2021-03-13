@@ -35,6 +35,7 @@ function NavBar() {
   let currentUser;
   if (user) currentUser = firestore.collection('users').doc(user.uid);
   const [userData, userDataLoading] = useDocumentData(currentUser);
+  console.log(userDataLoading);
   const isAdmin = user && userData?.role === 'admin';
   console.log('admin', isAdmin);
   //logout function
