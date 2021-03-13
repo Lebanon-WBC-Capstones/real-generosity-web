@@ -74,7 +74,7 @@ function NavBar() {
         fontWeight="medium"
       >
         <Box fontSize="xl">
-          <Image borderRadius="full" boxSize="130px" src={logo2} alt="logo" />
+          <Image borderRadius="full" boxSize="160px" src={logo2} alt="logo" />
         </Box>
 
         <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
