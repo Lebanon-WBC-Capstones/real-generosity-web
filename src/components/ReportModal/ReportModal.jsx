@@ -57,9 +57,9 @@ const ReportModal = ({handleReport,reportType,repoCheck,repoCheckLoading}) => {
                 focusBorderColor="green.200"
                 ref={reportType}
               >
-                <option value="option1">inappropriate content</option>
-                <option value="option2">false identity to decieve people</option>
-                <option value="option3">scam</option>
+                <option value="inappropriate content">inappropriate content</option>
+                <option value="false identity to decieve people">false identity to decieve people</option>
+                <option value="scam">scam</option>
               </Select>
             </VStack>
           </ModalBody>

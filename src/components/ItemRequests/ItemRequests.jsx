@@ -22,7 +22,7 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react';
 
-const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval}) => {
+const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval,users}) => {
   const { t } = useTranslation();
   const currentUser = useAuth();
   const history = useHistory();
@@ -56,6 +56,7 @@ const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval}) => {
       })
   };
 
+
  // handleDecline update  the type of a notification
     const updateType = async (id) => {
        //update notification type 
@@ -70,10 +71,6 @@ const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval}) => {
    updateType();
    console.log("decline")
   };
-
-
-
-
 
   if (checkApprovalLoading) return <>loading</>;
   return (
@@ -141,15 +138,16 @@ const ItemRequests = ({ requests,id,checkApprovalLoading,checkApproval}) => {
                 </Button>
               </Td>
               <Td>
-              {checkApproval && 
-               checkApproval.filter(check=>check.targetId===request.requester)===0 ?
-               '':
+                
+              {checkApproval && users && 
+               checkApproval.find(check=>check.targetId===request.requester) ?
                  (<HStack>
                       <Button onClick={()=>handleDecline()}>
                          decline
                       </Button>
-                      <ContactInfoModal requester={request.requester} />
-                 </HStack>)
+                  
+                      <ContactInfoModal users={users} requesterid={request.requester} />)}
+                 </HStack>): ""
               }
              
               {/* {checkApproval && 

@@ -19,19 +19,11 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-const ContactInfoModal = ({ ownerInfo,ownerInfoLoading}) => {
+const ContactInfoModal = ({ ownerInfo,requesterInfo}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef();
   const currentUser = useAuth();
-  //const { t } = useTranslation();
-  //query approved requester info 
-  // const requesterInfo=firestore.collection('users').where('uid','==',requester)
-  // const [info,infoLoading,infoError]=useCollectionData(requesterInfo)
-
-  // console.log("info",info)
-  // if (infoError) return 'an error has occured...';
-
-   if (ownerInfoLoading) return "loading..."
+  
 
   return (
     <>
@@ -60,7 +52,8 @@ const ContactInfoModal = ({ ownerInfo,ownerInfoLoading}) => {
                   Full Name:
                   </Text>
                   <Text fontSize="lg" fontWeight="medium" >
-                  {currentUser && ownerInfo?  ownerInfo[0].fullname:''}
+                  {currentUser && ownerInfo && ownerInfo.fullname}
+                  {currentUser && requesterInfo &&  requesterInfo.fullname}
                 </Text>
               </HStack>
               <HStack  my={3}>
@@ -69,7 +62,8 @@ const ContactInfoModal = ({ ownerInfo,ownerInfoLoading}) => {
                   Email Address:
                 </Text>
                   <Text fontSize="lg" fontWeight="medium">
-                  {currentUser && ownerInfo ? ownerInfo[0].email:''}
+                  {currentUser && ownerInfo && ownerInfo.email}
+                  {currentUser && requesterInfo && requesterInfo.email}
                 </Text>
               </HStack>
               <HStack  my={3}>
@@ -78,7 +72,8 @@ const ContactInfoModal = ({ ownerInfo,ownerInfoLoading}) => {
                   phone number:
                   </Text>
                   <Text fontSize="lg" fontWeight="medium">
-                  {currentUser && ownerInfo ? ownerInfo[0].phoneNumber:''}
+                  {currentUser && ownerInfo && ownerInfo.phonenumber}
+                  {currentUser && requesterInfo && requesterInfo.phonenumber}
                 </Text>
               </HStack>
             </Grid>

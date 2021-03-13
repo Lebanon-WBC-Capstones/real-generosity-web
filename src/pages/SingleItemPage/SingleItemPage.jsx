@@ -106,13 +106,19 @@ const SingleItemPage = () => {
     const [checkApproval,checkApprovalLoading]=useCollectionData(checkingApproval)
      console.log("checkapproval",checkApproval)
 
-   //query owner info of this item to display for approved requester 
-   let ownerInformation
-   if(item && item.uid && currentUser) 
-   ownerInformation=firestore.collection('users').where('uid','==',item.uid)
-   const [ownerInfo,ownerInfoLoading]=useCollection(ownerInformation)
-   console.log(ownerInfo)
 
+  //query all users
+  const usersCollection=firestore.collection('users')
+  const [users,usersLoading]=useCollectionData(usersCollection)
+
+  //query owner info of this item to display for approved requester 
+  //  let ownerInformation
+  //  if(item && item.uid && currentUser) 
+  //  ownerInformation=firestore.collection('users').where('uid','==',item.uid)
+  //  const [ownerInfo,ownerInfoLoading]=useCollection(ownerInformation)
+  //  console.log(ownerInfo)
+   const ownerInfo=users?.find(user=>user?.uid===item?.uid)
+     console.log('owner',ownerInfo)
   //handleReport function
   const reportType=React.useRef('')
   const handleReport=()=>{
@@ -122,7 +128,7 @@ const SingleItemPage = () => {
     .add({
       reporter: currentUser.uid,
       itemId: id,
-      reportReason: reportType.current.value ,
+      reason: reportType.current.value ,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then((docRef) => {
@@ -200,15 +206,14 @@ const SingleItemPage = () => {
                   handleRequest={handleRequest}
                   reqCheck={reqCheck}
                   reqCheckLoading={reqCheckLoading}
-                  ownerInfo={ownerInfo}
-                  ownerInfoLoading={ownerInfoLoading}
-                  isApprovedRequester={isApprovedRequester}
+                 
                 />
               </TabPanel>
               <TabPanel>
                 {reqLoading && 'is loading...'}
                 {requests && <ItemRequests
                                  requests={requests} 
+                                 users={users}
                                  id={id}
                                  checkApproval={checkApproval}
                                  checkApprovalLoading={checkApprovalLoading}
@@ -226,13 +231,13 @@ const SingleItemPage = () => {
             handleDelete={handleDelete}
             reqCheck={reqCheck}
             reqCheckLoading={reqCheckLoading}
-            ownerInfo={ownerInfo}
-            ownerInfoLoading={ownerInfoLoading}
             isApprovedRequester={isApprovedRequester}
             reportType={reportType}
             handleReport={handleReport}
             repoCheck={repoCheck}
             repoCheckLoading={repoCheckLoading}
+            users={users} usersLoading={usersLoading}
+            ownerInfo={ownerInfo}
           />
          )}
 
@@ -254,7 +259,8 @@ const SingleItemPage = () => {
               </TabPanel>
               <TabPanel>
                 {reportsLoading && <>loading</>}
-                {reports && <ItemReports reports={reports} handleDelete={handleDelete} />
+                {reports && <ItemReports reports={reports} handleDelete={handleDelete}
+                                          users={users} usersLoading={usersLoading}/>
                  }
                 </TabPanel>
             </TabPanels>

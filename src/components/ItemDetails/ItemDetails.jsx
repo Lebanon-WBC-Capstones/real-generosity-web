@@ -18,8 +18,9 @@ import DeleteModal from '../DeleteModal/DeleteModal';
 import RequestModal from '../RequestModal';
 import ContactInfoModal from '../ContactInfoModal/ContactInfoModal'
 import ReportModal from '../ReportModal/ReportModal'
-
+import { useAuth } from '../../contexts/AuthContext';
 const ItemDetails = ({
+  ownerInfo,
   isOwner,
   isAdmin,
   handleReport,
@@ -37,14 +38,13 @@ const ItemDetails = ({
   description,
   location,
   image_url,
-  ownerInfo,
-  ownerInfoLoading,
+  users,usersLoading,
   repoCheck,
   repoCheckLoading,
 }) => {
   const history = useHistory();
   const { t } = useTranslation();
-
+  const currentUser = useAuth();
 
   const { cityName, isLoading } = useLocation(location);
   console.log('item details city name', cityName);
@@ -65,9 +65,8 @@ const ItemDetails = ({
             {t('itemPage.back')}
           </Button>
         </Box> 
-        {isApprovedRequester?
-        <ContactInfoModal   ownerInfo={ownerInfo}
-                            ownerInfoLoading={ownerInfoLoading}/>:''}
+        {currentUser && isApprovedRequester &&  ownerInfo? 
+        (<ContactInfoModal ownerInfo={ownerInfo} />):''}
         </Flex>
 
         <Badge my="20px" bg="gray.100" fontSize="md" py="1" px="5">
