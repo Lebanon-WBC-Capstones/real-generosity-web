@@ -4,12 +4,12 @@ import emailjs from 'emailjs-com';
 import {
   Box,
   Text,
+  HStack,
   Heading,
   Flex,
   Input,
   Textarea,
   Button,
-  HStack
 } from '@chakra-ui/react';
 
 function ContactUsPage() {
@@ -36,9 +36,13 @@ function ContactUsPage() {
     e.target.reset();
   };
 
-  const [fullName, setFullName] = useState('');
-  const handleFullNameChange = (e) => {
-    setFullName(e.target.value);
+  const [firstName, setFirstName] = useState('');
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+  };
+  const [lastName, setLastName] = useState('');
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
   };
 
   const [emailAddress, setEmailAddress] = useState('');
@@ -53,76 +57,92 @@ function ContactUsPage() {
 
   return (
     <Flex
-    minH="100vh"
-    align="center"
-    justify="center"
-    m="auto"
-    fontSize="md"
-    fontWeight="medium"
-  >
-    <Box>
-      <Heading py="2">{t('contactUs.contact')}</Heading>
-      <HStack mb="12">
-        <Text textColor="gray.400">{t('contactUs.subheading')} </Text>
-      </HStack>
-      <form onSubmit={sendEmail}>
-              <Box >
-                <Text mb={2}>{t('contactUs.fullname')}</Text>
-                <Input
-                  value={fullName}
-                  onChange={handleFullNameChange}
-                  type="text"
-                  size="sm"
-                  variant="filled"
-                  isRequired
-                  maxW={['72', '96', '96', '96']}
-                  focusBorderColor="green.200"
-                  name="name"
-                />
+      minH="100vh"
+      align="center"
+      justify="center"
+      m="auto"
+      fontSize="md"
+      fontWeight="medium"
+    >
+      <Box>
+        <Heading pt="2" mb="12">{t('navbar.contactUs')}</Heading>
+        <Box>
+          <form onSubmit={sendEmail}>
+          <HStack justify="space-between">
+            <Box mb={2}>
+              <Text mb={2}>{t('contactUs.fullname')}</Text>
+              <Input
+                value={firstName}
+                onChange={handleFirstNameChange}
+                type="text"
+                size="md"
+                variant="filled"
+                isRequired
+                focusBorderColor="green.200"
+                maxW={['32', '44', '44', '44']}
+                name="name"
+              /> 
               </Box>
 
-              <Box mt={8} fontSize={['xx-small', 'md', 'md', 'lg']}>
-                <Text mb={2}>{t('contactUs.email')}</Text>
-                <Input
-                  value={emailAddress}
-                  onChange={handleEmailAddressChange}
-                  type="email"
-                  size="sm"
-                  variant="filled"
-                  isRequired
-                  maxW={['72', '96', '96', '96']}
-                  focusBorderColor="green.200"
-                  name="email"
-                />
-              </Box>
+              <Box mb={2}>
+              <Text mb={2}>{t('contactUs.fullname')}</Text>
+              <Input
+                value={lastName}
+                onChange={handleLastNameChange}
+                type="text"
+                size="md"
+                variant="filled"
+                isRequired
+                focusBorderColor="green.200"
+                maxW={['32', '44', '44', '44']}
+                name="name"
+              />
+            </Box>
+            </HStack>
 
-              <Box mt={8} fontSize="lg">
-                <Text mb={2}>{t('contactUs.message')}</Text>
-                <Textarea
-                  value={message}
-                  onChange={handleMessageChange}
-                  size="sm"
-                  variant="filled"
-                  isRequired
-                  maxW={['72', '96', '96', '96']}
-                  focusBorderColor="green.200"
-                  name="message"
-                />
-              </Box>
+            <Box mt={4}>
+              <Text mb={2}>{t('contactUs.email')}</Text>
+              <Input
+                value={emailAddress}
+                onChange={handleEmailAddressChange}
+                type="email"
+                size="md"
+                variant="filled"
+                isRequired
+                maxW={['72', '96', '96', '96']}
+                focusBorderColor="green.200"
+                name="email"
+              />
+            </Box>
 
-              <Box mt={8}>
-                <Button
-                   type="submit"
-                   colorScheme="green"
-                   w={['72', '96', '96', '96']}
-                >
-                  {t('contactUs.send')}
-                </Button>
-              </Box>
-            </form>
-    </Box>
-  </Flex>
-);
+            <Box mt={4}>
+              <Text mb={2}>{t('contactUs.message')}</Text>
+              <Textarea
+                value={message}
+                onChange={handleMessageChange}
+                size="md"
+                variant="filled"
+                isRequired
+                maxW={['72', '96', '96', '96']}
+                focusBorderColor="green.200"
+                name="message"
+              />
+            </Box>
+
+            <Box mt={4}>
+              <Button
+                type="submit"
+                colorScheme="green"
+                w={['72', '96', '96', '96']}
+              >
+                {t('contactUs.send')}
+              </Button>
+            </Box>
+          </form>
+        </Box>
+      </Box>
+    </Flex>
+  );
 }
 
 export default ContactUsPage;
