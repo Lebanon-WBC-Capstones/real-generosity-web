@@ -22,7 +22,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemDetails from '../../components/ItemDetails';
 import ItemRequests from '../../components/ItemRequests';
-import ItemReports from '../../components/ItemReports'
+import ItemReports from '../../components/ItemReports/Itemreports'
 import { useAuth } from '../../contexts/AuthContext';
 import firebase, { firestore } from '../../services/firebase';
 
