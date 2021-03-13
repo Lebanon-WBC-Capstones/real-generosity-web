@@ -2,13 +2,20 @@ import React from 'react';
 import AdminTaskbars from '../../components/AdminTaskbars/AdminTaskbars';
 import { SimpleGrid,Heading, Container} from '@chakra-ui/react';
 import { firestore } from '../../services/firebase';
-import { useCollectionData, useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 
 function AdminPage() {
   const currentUser = useAuth();
   const { t } = useTranslation();
+
+  //check if the user is Admin
+  let user;
+  if(currentUser) 
+  user=firestore.collection('users').doc(currentUser.uid)
+  const [userData,userDataLoading]=useDocumentData(user)
+  const isAdmin = currentUser && userData?.role==="admin";
   
   //query all users
   const usersRef=firestore.collection('users').where('role','==','user')
@@ -31,12 +38,12 @@ function AdminPage() {
       <Heading size="lg" marginBottom="30px">
         {t('adminPage.admin')}
       </Heading>
-      {/* {currentUser && allUsers?
+      {currentUser && allUsers && isAdmin?
       <AdminTaskbars allUsers={allUsers} 
                      allItems={allItems} 
                      allItemsLoading={allItemsLoading}
-                     allRequests={allRequests} llRequestsLoading={allRequestsLoading}/>: ""} */}
-        </Container>
+                     allRequests={allRequests} allRequestsLoading={allRequestsLoading}/>: ""}
+      </Container>
     </SimpleGrid>
   );
 }

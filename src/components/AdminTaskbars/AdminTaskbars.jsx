@@ -23,11 +23,13 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/AuthContext';
 
 
-const AdminTaskbars = ( allUsers,
+const AdminTaskbars = ( {allUsers,
                         allItems,allItemsLoading,
-                        allRequests, allRequestsLoading) => {
+                        allRequests, allRequestsLoading}) => {
   const { t } = useTranslation();
   const currentUser = useAuth();
+
+  
   return (
     <Container maxWidth="891px">
       <Tabs>
@@ -54,11 +56,13 @@ const AdminTaskbars = ( allUsers,
               </Box>
             </HStack>
             <SimpleGrid rows={6} gap={4}>
-            {allUsers && allUsers.map((user) => (
+            {allUsers? allUsers.map((user) => (
                 <AdminUsers  user={user} 
-                             allItems={allItems} allItemsLoading={allItemsLoading}
-                             allRequests={allRequests} allRequestsLoading={allRequestsLoading} /> 
-              ))}
+                             allItems={allItems} 
+                             allItemsLoading={allItemsLoading}
+                             allRequests={allRequests} 
+                             allRequestsLoading={allRequestsLoading} /> 
+              )):''}
             </SimpleGrid>
           </TabPanel>
 

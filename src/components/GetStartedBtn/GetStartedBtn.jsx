@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { User, LogOut, Bell,Heart,ShoppingBag } from 'react-feather';
+import { firestore } from '../../services/firebase';
 import {
   Menu,Box,
   MenuButton,
@@ -16,6 +17,15 @@ import {
 const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
   const { t } = useTranslation();
  
+//  const handleClick = async (id) => {
+//       await firestore.collection('notifications').doc(id).set(
+//         {
+//           seen: true,
+//         },
+//         { merge: true }
+//       );
+//     };
+  
  
   return (
    
@@ -34,16 +44,20 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           variant="white"
         />
 
-        <MenuList>
+         <MenuList>
           {/* {notify? 
-          notify.map(notification=>
-          (<MenuItem
-            onClick={handleClick}
+          notify.docs.map(notification=>
+          (
+          <Link to={`/item/${notification.itemId}`}>
+           <MenuItem
+            onClick={handleClick(notification.id)}
             icon= {notification.type === 'request' ? <ShoppingBag fontSize="1.5rem"  />: <Heart fontSize="1.5rem" />}
             >
            <span>{notification.type}</span>
-          </MenuItem>)
-          ):''} */}
+          </MenuItem>
+          </Link>
+          )):''}  */}
+
           {isAdmin?
           (<Link to='/admin'>
               <MenuItem>Notifications</MenuItem>
