@@ -12,7 +12,7 @@ import {
   HStack,
   Text,
 } from '@chakra-ui/react';
-import { ShoppingBag, Heart} from 'react-feather';
+import { ShoppingBag, Heart } from 'react-feather';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 import { Link } from 'react-router-dom';
 import { firestore } from '../../services/firebase';

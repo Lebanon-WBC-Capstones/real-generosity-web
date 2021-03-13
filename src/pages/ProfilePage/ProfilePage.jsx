@@ -7,7 +7,6 @@ import { firestore } from '../../services/firebase';
 import { useParams } from 'react-router-dom';
 
 function ProfilePage() {
-
   const { uid, tab } = useParams();
   console.log(tab);
   let tabIndex = 0;
@@ -20,10 +19,8 @@ function ProfilePage() {
       tabIndex = 0;
   }
 
-  console.log(tabIndex)
-  const handleTabsChange = () => {
-    
-  };
+  console.log(tabIndex);
+  const handleTabsChange = () => {};
 
   //query header details from firebase
   const query = firestore.collection('users').doc(uid);
@@ -33,14 +30,14 @@ function ProfilePage() {
   const items = firestore
     .collection('items')
     .where('uid', '==', uid)
-    .where('status', '==', 'active')
+    .where('status', '==', 'active');
   const [donations, donationsLoading] = useCollection(items);
 
   //query notifications from firebase
   const notifications = firestore
     .collection('notifications')
-    .where('targetId', '==', uid)
- 
+    .where('targetId', '==', uid);
+
   const [notify, notifyLoading] = useCollection(notifications);
   console.log('notify', notify);
 
