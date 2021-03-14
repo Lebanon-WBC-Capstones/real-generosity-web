@@ -21,7 +21,7 @@ const Header = ({ filteredCategoryCount, items }) => {
       bg="gray.200"
     >
       <Flex mb="10" color="black" fontWeight={800}>
-        <Text>{category ? category : 'all'}</Text>
+        <Text textTransform="capitalize">{category ? category : 'All'}</Text>
       </Flex>
 
       <Flex float="right" my="-180px">
