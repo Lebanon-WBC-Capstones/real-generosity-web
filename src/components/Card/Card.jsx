@@ -36,7 +36,7 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
           <Flex align="center" justify="space-between">
             <HStack color="green.400">
               <MapPin />
-              <Box fontSize="sm">
+              <Box fontSize="sm" w="xs" overflow="hidden">
                 {isLoading && 'loading location..'}
                 {cityName ? cityName : 'no location..'}
               </Box>
