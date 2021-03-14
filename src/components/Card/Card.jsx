@@ -34,7 +34,7 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
             </VStack>
           </Flex>
           <Flex align="center" justify="space-between">
-            <HStack color="gray.500">
+            <HStack color="green.400">
               <MapPin />
               <Box fontSize="sm">
                 {isLoading && 'loading location..'}
