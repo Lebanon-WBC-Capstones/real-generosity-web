@@ -13,6 +13,7 @@ import {
   Icon,
   Button,
   Image,
+  useDisclosure
 } from '@chakra-ui/react';
 import { AlignLeft, Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
@@ -48,8 +49,7 @@ function NavBar(props) {
   const [lang, setLang] = useState('EN');
   const user = useAuth();
   const history = useHistory();
-  const [show, setShow] = useState(false);
-  const toggleMenu = () => setShow(!show);
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   //check if the user is Admin
   let currentUser;
@@ -99,36 +99,42 @@ function NavBar(props) {
       {...props}
     >
 
-      <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
-        {show ? <CloseButton size="md" color="white" /> : <Button
+      <Box display={{ base: "block", md: "none" }} onClick={onOpen}>
+        <Button
           p={2}
           borderRadius="md"
-        ><AlignLeft /></Button>}
+        ><AlignLeft ref={btnRef} colorScheme="teal" onClick={onOpen}/></Button>
       </Box>
 
       <Image display={{ base: "none", sm: show ? "none" : "block", md: "block" }} maxH={["10", "10", "12", "16"]} src={logo2} alt="logo" />
 
-      <Box
-        display={{ base: show ? "block" : "none", md: "block" }}
-        opacity={{ base: show ? "1" : "0", md: "1" }}
-        flexBasis={{ base: "100%", md: "auto" }}
-        position="inherit"
-        height={{ base: show ? "100vh" : "auto", sm: show ? "10vh" : "auto", md: "auto" }}
-      >
-        <Flex
-          align={["center", "center", "center", "center"]}
-          justify={["center", "space-between", "space-between", "space-between"]}
-          direction={["column", "row", "row", "row"]}
-          pt={[4, 4, 0, 0]}
-          _hover={{ cursor: 'pointer' }}
+      <Drawer isOpen={isOpen} onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <Box
+            display={{ base: show ? "block" : "none", md: "block" }}
+            opacity={{ base: show ? "1" : "0", md: "1" }}
+            flexBasis={{ base: "100%", md: "auto" }}
+            position="inherit"
+            height={{ base: show ? "100vh" : "auto", sm: show ? "10vh" : "auto", md: "auto" }}
+          >
+            <Flex
+              align={["center", "center", "center", "center"]}
+              justify={["center", "space-between", "space-between", "space-between"]}
+              direction={["column", "row", "row", "row"]}
+              pt={[4, 4, 0, 0]}
+              _hover={{ cursor: 'pointer' }}
 
-        >
-          <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
-          <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
-          <MenuItems to="/about" _hover={{ color: 'green.400' }}>{t('navbar.about')} </MenuItems>
-          <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
-        </Flex>
-      </Box>
+            >
+              <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
+              <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
+              <MenuItems to="/about" _hover={{ color: 'green.400' }}>{t('navbar.about')} </MenuItems>
+              <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
+            </Flex>
+          </Box>
+        </DrawerContent>
+      </Drawer>
 
       <Flex
         align={["center", "center", "center", "center"]}
