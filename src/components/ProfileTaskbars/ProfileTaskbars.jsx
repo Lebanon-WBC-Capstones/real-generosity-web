@@ -20,21 +20,27 @@ import { useTranslation } from 'react-i18next';
 import ProfileNotificationsTab from '../ProfileNotificationsTab/ProfileNotificationsTab';
 
 const ProfileTaskbars = ({
+  uid,
   donations,
   donationsLoading,
   notify,
   notifyLoading,
   tabIndex = 0,
-  handleTabsChange,
 }) => {
   const { t } = useTranslation();
 
   return (
     <Box>
-      <Tabs index={tabIndex} onChange={handleTabsChange}>
+      <Tabs index={tabIndex}>
         <TabList justifyContent="space-around">
-          <Tab>{t('profilePage.donations')} </Tab>
-          <Tab>{t('profilePage.notifications')} </Tab>
+         <Tab><Link to={`/profile/${uid}/donations`}>
+          {t('profilePage.donations')}</Link> </Tab>
+        <Tab>  
+          <Link to={`/profile/${uid}/notifications`}>
+          {t('profilePage.notifications')}
+          </Link> 
+          </Tab>
+          
         </TabList>
 
         <TabPanels>

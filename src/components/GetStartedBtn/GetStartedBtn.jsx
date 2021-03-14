@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { User, LogOut, Bell } from 'react-feather';
-// import { firestore } from '../../services/firebase';
+import { User, LogOut, Bell, Mail } from 'react-feather';
+import { firestore } from '../../services/firebase';
 import {
   Menu,
   MenuButton,
@@ -17,46 +17,45 @@ import {
 const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
   const { t } = useTranslation();
 
-  //  const handleClick = async (id) => {
-  //       await firestore.collection('notifications').doc(id).set(
-  //         {
-  //           seen: true,
-  //         },
-  //         { merge: true }
-  //       );
-  //     };
+   const handleClick = async (id) => {
+        await firestore.collection('notifications').doc(id).set(
+          {
+            seen: true,
+          },
+          { merge: true }
+        );
+      };
 
   return (
     <HStack>
       <Menu border="1px">
         <MenuButton
           as={IconButton}
-          color="black"
+          color="gray.400"
           aria-label="Options"
           icon={
             <Avatar size="sm" bg="white" icon={<Bell fontSize="1.5rem" />}>
-              {notify?.length ? <AvatarBadge boxSize="1.25em" bg="red" /> : ''}
+              {notify?.docs.length ? <AvatarBadge boxSize="1.25em" bg="red" /> : ''}
             </Avatar>
           }
           size="md"
           variant="white"
         />
-
         <MenuList>
-          {/* {notify? 
+        {user && notify? 
           notify.docs.map(notification=>
-          (
-          <Link to={`/item/${notification.itemId}`}>
+          (notification  && 
+          <Link to={`/item/${notification?.data().itemId}/${notification.data().type}s`}>
            <MenuItem
-            onClick={handleClick(notification.id)}
-            icon= {notification.type === 'request' ? <ShoppingBag fontSize="1.5rem"  />: <Heart fontSize="1.5rem" />}
+            onClick={()=>handleClick(notification?.id)}
+            icon= { <Mail fontSize="1.5rem"  />}
             >
-           <span>{notification.type}</span>
+            {notification.data().type}
           </MenuItem>
-          </Link>
-          )):''}  */}
+          </Link>)
+          ):''} 
 
-          {isAdmin ? (
+          {isAdmin && notify ? (
             <Link to="/admin">
               <MenuItem>Notifications</MenuItem>
             </Link>
