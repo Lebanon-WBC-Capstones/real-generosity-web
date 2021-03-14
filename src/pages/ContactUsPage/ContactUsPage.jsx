@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
 import {
@@ -36,20 +36,6 @@ function ContactUsPage() {
     e.target.reset();
   };
 
-  const [fullName, setFullName] = useState('');
-  const handleFullNameChange = (e) => {
-    setFullName(e.target.value);
-  };
-
-  const [emailAddress, setEmailAddress] = useState('');
-  const handleEmailAddressChange = (e) => {
-    setEmailAddress(e.target.value);
-  };
-
-  const [message, setMessage] = useState('');
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
-  };
 
   return (
     <Flex
@@ -69,8 +55,6 @@ function ContactUsPage() {
               <Box >
                 <Text mb={2}>{t('contactUs.fullname')}</Text>
                 <Input
-                  value={fullName}
-                  onChange={handleFullNameChange}
                   type="text"
                   size="sm"
                   variant="filled"
@@ -84,8 +68,6 @@ function ContactUsPage() {
               <Box mt={8} fontSize={['xx-small', 'md', 'md', 'lg']}>
                 <Text mb={2}>{t('contactUs.email')}</Text>
                 <Input
-                  value={emailAddress}
-                  onChange={handleEmailAddressChange}
                   type="email"
                   size="sm"
                   variant="filled"
@@ -99,8 +81,6 @@ function ContactUsPage() {
               <Box mt={8} fontSize="lg">
                 <Text mb={2}>{t('contactUs.message')}</Text>
                 <Textarea
-                  value={message}
-                  onChange={handleMessageChange}
                   size="sm"
                   variant="filled"
                   isRequired
