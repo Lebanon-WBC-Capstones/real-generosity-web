@@ -11,8 +11,9 @@ const center = {
   lng: 35.8362,
 };
 const mapStyles = {
-  height: '80vh',
+  height: '110vh',
   width: '500px',
+  borderRadius: '2%',
 };
 
 export const ItemsMap = ({ items }) => {
