@@ -5,7 +5,7 @@
     "about": "À Propos",
     "contactUs": "Contact",
     "getStarted": "Créer Un Compte",
-    "copy": "tous les droits sont réservés",
+    "copy": "Tous les droits sont réservés",
     "profile": "view profile",
     "logout": "logout"
   },
@@ -31,7 +31,7 @@
     "step3": "step 3",
     "step1H": "S'inscrire",
     "step2H": "Être vérifié",
-    "step3H": "Faire un donation et demander des articles",
+    "step3H": "Donner et Demander des articles",
     "step1p": "Remplissez le formulaire d'inscription",
     "step2p": "Attendez l'approbation",
     "step3p": "Collaborez avec nous en toute sécurité",

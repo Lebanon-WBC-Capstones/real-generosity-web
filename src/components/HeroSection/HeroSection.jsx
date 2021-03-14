@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Button, Flex, Stack, Image } from '@chakra-ui/react';
-import heroSectionImage_1 from '../../assets/images/heroSectionImage_1.png';
+import donation from '../../assets/images/donation.png';
 import heroSectionImage_2 from '../../assets/images/heroSectionImage_2.png';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -67,14 +67,15 @@ const HeroSection = () => {
       </Stack>
 
       <Image
-        src={heroSectionImage_1}
+        src={donation}
         display={{ base: 'none', md: 'block' }}
         position="absolute"
         zIndex="-1"
-        top="0"
+        top="24"
         right="0"
         w="56%"
-        maxH="110vh"
+        maxH="110vh" 
+        dir="rtl"
       />
       <Image
         src={heroSectionImage_2}
