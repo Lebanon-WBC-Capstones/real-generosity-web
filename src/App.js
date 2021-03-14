@@ -15,7 +15,7 @@ import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
 // import FilteredItemsPage from './pages/FilteredItemsPage';
 import ProfilePage from './pages/ProfilePage';
-import EditProfilePage from './pages/EditProfile';
+import EditProfile from './pages/EditProfile';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import SingleItemPage from './pages/SingleItemPage';
@@ -50,6 +50,9 @@ function App() {
               <Route exact path="/item/:id">
                 <SingleItemPage />
               </Route>
+              <Route exact path="/item/:id/:tab">
+                <SingleItemPage />
+              </Route>
               <Route exact path="/about">
                 <AboutPage />
               </Route>
@@ -66,8 +69,8 @@ function App() {
               <Route exact path="/admin">
                 <AdminPage />
               </Route>
-              <Route exact path="/profile/:uid/settings">
-                <EditProfilePage />
+              <Route exact path="/profile/:uid/edit/info">
+                <EditProfile />
               </Route>
             </Switch>
           </Layout>
