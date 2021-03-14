@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { Plus, Search } from 'react-feather';
 import { Link } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 const CATEGORIES = [
   'All',
   'Books',
@@ -31,11 +31,21 @@ const Filters = ({ setSearch }) => {
           {CATEGORIES.map((cat, index) =>
             cat === 'All' ? (
               <Link key={index} to={`/items`}>
-                <Button ml={4}>{cat}</Button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button ml={4}>{cat}</Button>
+                </motion.button>
               </Link>
             ) : (
               <Link key={index} to={`/items/${cat.toLowerCase()}`}>
-                <Button ml={4}>{cat}</Button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button ml={4}>{cat}</Button>
+                </motion.button>
               </Link>
             )
           )}
