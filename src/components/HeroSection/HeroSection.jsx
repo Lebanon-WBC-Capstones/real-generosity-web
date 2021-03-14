@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Button, Flex, Stack, Image } from '@chakra-ui/react';
+import { Heading, Button, Flex, Stack, Image, Box } from '@chakra-ui/react';
 import heroSectionImage_1 from '../../assets/images/heroSectionImage_1.png';
 import heroSectionImage_2 from '../../assets/images/heroSectionImage_2.png';
 import { Link } from 'react-router-dom';
@@ -9,12 +9,12 @@ const HeroSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Flex>
+    <Flex         
+    maxWidth="4xl" mx="auto"
+    justify="space-between">
       <Stack
-        maxWidth="1200px"
-        m="0 auto"
+      direction="column"
         spacing={['5', '8', '14', '20']}
-        px={['2', '3', '14', '32']}
         w={{ base: '80%', md: '100%' }}
         align="flex-start"
         minH={{
@@ -65,17 +65,11 @@ const HeroSection = () => {
           </Button>
         </Link>
       </Stack>
-
+<Box w="4xl">
       <Image
         src={heroSectionImage_1}
         display={{ base: 'none', md: 'block' }}
-        position="absolute"
-        zIndex="-1"
-        top="0"
-        right="0"
-        w="56%"
-        maxH="110vh"
-      />
+        />
       <Image
         src={heroSectionImage_2}
         display={{ base: 'block', md: 'none' }}
@@ -85,6 +79,7 @@ const HeroSection = () => {
         w="100%"
         maxH="110vh"
       />
+      </Box>
     </Flex>
   );
 };
