@@ -26,6 +26,7 @@ import {
 } from '@chakra-ui/react';
 
 const ItemRequests = ({
+  title,
   requests,
   id,
   checkApprovalLoading,
@@ -89,6 +90,14 @@ const ItemRequests = ({
   if (checkApprovalLoading) return <>loading</>;
   return (
     <Container maxW="7xl" mx="auto">
+      <Box
+          color="black"
+          fontWeight="bold"
+          letterSpacing="wide"
+          fontSize="3xl"
+        >
+          {title}
+        </Box>
       {requests && requests.length === 0 ? (
         <Box
           m="auto"

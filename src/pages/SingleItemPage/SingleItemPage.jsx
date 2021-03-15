@@ -240,6 +240,7 @@ const SingleItemPage = () => {
                 {reqLoading && 'is loading...'}
                 {requests && (
                   <ItemRequests
+                    {...item}
                     requests={requests}
                     users={users}
                     id={id}
