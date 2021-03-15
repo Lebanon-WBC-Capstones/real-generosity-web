@@ -7,6 +7,7 @@ import book from '../../assets/images/book.png';
 import toys from '../../assets/images/toys.png';
 import medicalkit from '../../assets/images/medicalkit.png';
 import appliances from '../../assets/images/appliances.png';
+import all from '../../assets/images/all.png';
 import { useTranslation } from 'react-i18next';
 
 const CategoryCardsLayout = ({ setQuery }) => {
@@ -74,7 +75,7 @@ const CategoryCardsLayout = ({ setQuery }) => {
           <WrapItem display={{ base: "none", md: "block" }}>
             <Link to="/items">
         <CategoryCard
-          // categoryPic={all}
+          categoryPic={all}
           categoryName="All"
           bgColor="#EAEAF1"
         ></CategoryCard>
