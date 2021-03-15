@@ -63,6 +63,7 @@
     "address": "Adresse",
     "email": "Adresse E-mail",
     "password": "Mot de Passe",
+    "repeat":"Repetez le Mot de Passe",
     "passplaceholder": "6+ caractères",
     "phone": "Numéro de Telephone",
     "idupload": "SVP, télécharger ici votre Carte d'Identification",
