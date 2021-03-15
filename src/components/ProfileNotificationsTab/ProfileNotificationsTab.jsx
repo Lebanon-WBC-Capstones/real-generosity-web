@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Table,
   Thead,
   Tbody,
@@ -38,7 +37,6 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
             <Th>date</Th>
             <Th>status</Th>
             <Th>link to notified item</Th>
-            
           </Tr>
         </Thead>
         <Tbody overflow="auto">
@@ -56,10 +54,15 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
                 <Td>{notification.data().seen ? 'seen' : 'unseen'}</Td>
                 <Td>
                   <Link to={`/item/${notification.data().itemId}`}>
-                    <Text as="u" onClick={handleSeenClick(notification.id)} color="blue">link to item </Text>
+                    <Text
+                      as="u"
+                      onClick={handleSeenClick(notification.id)}
+                      color="blue"
+                    >
+                      link to item{' '}
+                    </Text>
                   </Link>
                 </Td>
-               
               </Tr>
             ))
           ) : (

@@ -18,10 +18,7 @@ import { Globe } from 'react-feather';
 import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
-import {
-  useCollectionData,useCollection,
-  useDocumentData,
-} from 'react-firebase-hooks/firestore';
+import { useCollection, useDocumentData } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
 import logo2 from '../../assets/images/logo2.png';
 
@@ -61,8 +58,6 @@ function NavBar() {
   console.log('notify', notify);
   if (notifyerror) console.log('error');
   if (notifyloading) return <>loading...</>;
-
-  
 
   return (
     <Box as="nav">
