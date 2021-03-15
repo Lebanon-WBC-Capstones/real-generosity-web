@@ -98,7 +98,7 @@ const SingleItemPage = () => {
   };
   const handleDelete = () => {
     updateStatus();
-    history.goBack();
+    history.push('/items');
   };
 
   //check for request with requester=currentuser to disable request Btn
