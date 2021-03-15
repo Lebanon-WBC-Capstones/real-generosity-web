@@ -34,9 +34,10 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
             </VStack>
           </Flex>
           <Flex align="center" justify="space-between">
-            <HStack color="green.400">
+            <HStack color="green.400" w="xs" mr={5} maxH={5}>
               <MapPin />
-              <Box fontSize="sm" w="xs" overflow="hidden">
+              {/* <Box fontSize="sm" w="xs" overflow="hidden"> */}
+              <Box fontSize="sm" maxW={40}>
                 {isLoading && 'loading location..'}
                 {cityName ? cityName : 'no location..'}
               </Box>
