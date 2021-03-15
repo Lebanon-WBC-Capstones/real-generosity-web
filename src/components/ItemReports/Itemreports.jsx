@@ -7,32 +7,33 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react';
-import rep from '../../assets/data/reports.json';
-import data from '../../assets/data/items.json';
-import { useTranslation } from 'react-i18next';
-import moment from 'moment';
+// import { useTranslation } from 'react-i18next';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import { convertTimestamp } from '../../helpers/convertTimestamp';
 
-const ItemReports = () => {
-  const { t } = useTranslation();
+const ItemReports = ({ reports, handleDelete, users, usersLoading }) => {
+  // const { t } = useTranslation();
+
   const reportoptions = [
-    { id: '01', option: 'False identity to decieve people' },
-    { id: '02', option: 'Inappropriate content' },
-    { id: '03', option: 'option 03' },
+    { option: 'option1', value: 'inappropriate content' },
+    { option: 'option2', value: 'false identity to decieve people' },
+    { option: 'option3', value: 'scam' },
   ];
-  return (
-    <Flex d="column" maxW="400px" fontSize={18}>
-      <Box py={5}>
-        <Text fontWeight="bold" fontSize={12}>
-          {
-            rep.reports.filter((repo) => repo.reportedId === data.items[0].id)
-              .length
-          }{' '}
-          {t('itemPage.reports')}
-        </Text>
-      </Box>
 
-      {reportoptions.map((opt) => {
+  if (usersLoading) return <>loading...</>;
+  return (
+    <Flex d="column" fontSize={18}>
+      <Flex justify="space-between">
+        <Box py={5}>
+          <Text fontWeight="bold" fontSize={18}>
+            Number of Reports: {reports.length}
+          </Text>
+        </Box>
+        <Box ml={80} my={5} alignItems="flex-end">
+          <DeleteModal handleDelete={handleDelete} />
+        </Box>
+      </Flex>
+      {reportoptions.map((reportoption) => {
         return (
           <Box>
             <Accordion allowToggle>
@@ -47,70 +48,61 @@ const ItemReports = () => {
                       mr="5px"
                     >
                       {
-                        rep.reports
-                          .filter(
-                            (repo) => repo.reportedId === data.items[0].id
-                          )
-                          .filter((r) => r.reasonId === opt.id).length
+                        reports.filter((repo) => {
+                          return repo.reason === reportoption.value;
+                        }).length
                       }
                     </Text>
 
                     <Box flex="1" textAlign="left">
-                      <Text
-                        fonts="Montserrat"
-                        fontSize="lg"
-                        fontWeight="semibold"
-                        as="h3"
-                      >
-                        {opt.option}
+                      <Text fontSize="lg" fontWeight="semibold" as="h3">
+                        {reportoption.value}
                       </Text>
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4}>
-                  <Flex d="column">
-                    {rep.reports
-                      .filter((repo) => repo.reportedId === data.items[0].id)
-                      .filter((r) => r.reasonId === opt.id)
-                      .map((repor) => {
-                        return (
-                          <Box mb={4}>
+                  {reports
+                    .filter((repo) => {
+                      return repo.reason === reportoption.value;
+                    })
+                    .map((rep) => {
+                      return (
+                        <Flex d="column">
+                          <Box mb={4} bg={'green.400'}>
                             <Flex align="center" justify="space-between" px={7}>
-                              <Text
-                                fonts="Montserrat"
-                                fontSize="lg"
-                                fontWeight="semibold"
-                                as="h3"
-                              >
-                                {repor.reporterId}
+                              <Text fontSize="lg" fontWeight="semibold" as="h3">
+                                {users &&
+                                  users.find(
+                                    (user) => user.uid === rep.reporter
+                                  )?.fullname}
+                              </Text>
+                              <Text fontSize="lg" fontWeight="semibold" as="h3">
+                                {users &&
+                                  users.find(
+                                    (user) => user.uid === rep.reporter
+                                  )?.email}
                               </Text>
                               <Text
-                                fonts="Montserrat"
-                                color="gray.400"
-                                fontSize="xs"
+                                color="gray.100"
+                                fontSize="lg"
                                 my="5px"
                                 textTransform="uppercase"
                               >
-                                {moment(`${repor.dateOfReport}`)
-                                  .startOf('day')
-                                  .fromNow()}
+                                {convertTimestamp(rep.createdAt)}
                               </Text>
                             </Flex>
                           </Box>
-                        );
-                      })}
-                  </Flex>
+                        </Flex>
+                      );
+                    })}
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
           </Box>
         );
       })}
-
-      <Box ml={80} my={5} alignItems="flex-end">
-        <DeleteModal />
-      </Box>
     </Flex>
   );
 };

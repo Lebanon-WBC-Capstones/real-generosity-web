@@ -5,30 +5,28 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 const Footer = (props) => {
   const { t } = useTranslation();
-  
+
   return (
     <Flex
-   
       py="10"
       as="footer"
       justify="space-between"
-      fontSize={["xx-small","xs","sm", "xl"]} 
-     
+      fontSize={['xx-small', 'xs', 'sm', 'xl']}
       fontWeight={600}
-      bg="gray.50"
+      // bg="gray.50"
       width="100%"
-     direction="column"
-    
-     {...props}
+      direction="column"
+      maxW="1200px"
+      {...props}
+      mx="auto"
     >
       <HStack
-        
         mb="10"
         justify="space-between"
         color="gray.500"
         _hover={{ cursor: 'pointer' }}
         align="center"
-        px={["10","48","52","60"]}
+        px={['10', '48', '52', '72']}
       >
         <Link to="/">
           {' '}
@@ -46,7 +44,7 @@ const Footer = (props) => {
           <Text>{t('navbar.contactUs')}</Text>
         </Link>
       </HStack>
-      <HStack mb="10" justify="space-between"  px={["12","10","56","80"]} >
+      <HStack mb="2" justify="space-between" px={80}>
         <Box color="gray.500" fontSize="xs">
           <a href="http://www.facebook.com">
             {' '}
@@ -55,10 +53,11 @@ const Footer = (props) => {
         </Box>
         <Box color="gray.500" fontSize="xs">
           <a href="http://www.instagram.com">
-            <Instagram  />
+            <Instagram />
           </a>
         </Box>
         <Box color="gray.500" fontSize="xl">
+          {/* mr={8} */}
           <a href="http://www.github.com">
             <GitHub />
           </a>
@@ -70,9 +69,9 @@ const Footer = (props) => {
           </a>
         </Box>
       </HStack>
-      <Flex mr="10" justify="flex-end" color="gray.500">
+      {/* <Flex mb={-8} mr="28" justify="flex-end" fontSize="xs" color="gray.500">
         &copy; {t('navbar.copy')}
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 };

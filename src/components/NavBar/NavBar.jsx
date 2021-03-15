@@ -1,30 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
 import {
   Menu,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
   MenuButton,
   MenuList,
   MenuItem,
   Box,
   Flex,
   Text,
-  HStack,
-  Button,
-  Avatar,
   Icon,
-  IconButton,
+  Button,
+  Image,
+  useDisclosure
 } from '@chakra-ui/react';
-import { Globe } from 'react-feather';
+import { AlignLeft, Globe } from 'react-feather';
+import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
-import { MoreHorizontal, User, LogOut } from 'react-feather';
+import { useCollection, useDocumentData } from 'react-firebase-hooks/firestore';
+import { firestore } from '../../services/firebase';
+import logo2 from '../../assets/images/logo2.png';
 
-function NavBar() {
+
+//menu items
+const MenuItems = ({ children, to = "/", ...rest }) => {
+
+  return (
+    <Text
+      mb={{ base: 8, sm: 0 }}
+      mx={{ base: 0, sm: 8 }}
+      color={["Black", "Black", "gray.400", "gray.400"]}
+      fontWeight="medium"
+      {...rest}
+    >
+      <Link to={to} _hover={{ color: 'green.400' }}>{children}</Link>
+    </Text>
+  )
+}
+
+
+function NavBar(props) {
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState('EN');
   const user = useAuth();
   const history = useHistory();
-  console.log('context user', user);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
 
+  //check if the user is Admin
+  let currentUser;
+  if (user) currentUser = firestore.collection('users').doc(user.uid);
+  const [userData, userDataLoading] = useDocumentData(currentUser);
+  console.log(userDataLoading);
+  const isAdmin = user && userData?.role === 'admin';
+  console.log('admin', isAdmin);
+
+  //logout function
   const logOut = async () => {
     try {
       await auth.signOut();
@@ -34,126 +70,176 @@ function NavBar() {
     }
   };
 
-  const { t, i18n } = useTranslation();
-  const [lang, setLang] = useState('EN');
+  //query notifications from firebase
+  let notifications;
+  if (user)
+    notifications = firestore
+      .collection('notifications')
+      .where('targetId', '==', user.uid)
+      .where('seen', '==', false);
+
+  const [notify, notifyloading, notifyerror] = useCollection(notifications);
+  console.log('notify', notify);
+  if (notifyerror) console.log('error');
+  if (notifyloading) return <>loading...</>;
+
   return (
-    <Box fontFamily="Montserrat">
-      <Flex
-        justify="space-between"
-        align="center"
-        mx={16}
-        mt={3}
-        fontSize="md"
-        fontWeight="medium"
-      >
-        <Box fontSize="2xl">LOGO</Box>
 
-        <HStack spacing={50} color="gray.400" _hover={{ cursor: 'pointer' }}>
-          <Link to="/">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.home')}</Text>
-          </Link>
-          <Link to="/items">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.items')}</Text>
-          </Link>
-          <Link to="/about">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
-          </Link>
-          <Link to="/contactus">
-            <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
-          </Link>
-        </HStack>
+    <Flex
+      maxWidth="1200px"
+      m="auto"
+      w="100%"
+      px={["2", "4", "8", "14"]}
+      pt={2}
+      pb={["0", "8", "0", "0"]}
+      flexWrap="wrap"
+      justify="space-between"
+      align="center"
+      fontSize={["lg", "lg", "md", "lg"]}
+      fontWeight="medium"
+      {...props}
+    >
 
-        <Flex>
-          <Menu>
-            <MenuButton
-              p={2}
-              transition="all 0.2s"
-              borderRadius="md"
-              _hover={{ bg: 'gray.100', color: 'green.400' }}
-              _expanded={{ bg: 'gray.100' }}
+      <Box display={{ base: "block", md: "none" }} onClick={onOpen}>
+        <Button
+          p={2}
+          borderRadius="md"
+        ><AlignLeft ref={btnRef} colorScheme="teal" onClick={onOpen}/></Button>
+      </Box>
+
+      <Image borderRadius="full" boxSize={{ base: "16", md: "24" }} src={logo2} alt="logo" />
+
+      <Box
+            display={{ base: "none", md: "block" }}
+            position="inherit"
+          >
+            <Flex
+              align="center"
+              justify="space-between"
+              direction="row"
+              _hover={{ cursor: 'pointer' }}
+
             >
-              <Box color="gray.400">
-                <Icon as={Globe} mr={0.5} /> {lang}
-              </Box>
-            </MenuButton>
-            <MenuList minW="max-content">
-              <MenuItem
-                onClick={() => {
-                  i18n.changeLanguage('en');
-                  document.body.dir = i18n.dir();
-                  setLang('EN');
-                }}
-              >
-                <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  English
-                </Box>
-              </MenuItem>
+              <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
+              <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
+              <MenuItems to="/about" _hover={{ color: 'green.400' }}>{t('navbar.about')} </MenuItems>
+              <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
+            </Flex>
+          </Box>
 
-              <MenuItem
-                onClick={() => {
-                  i18n.changeLanguage('fr');
-                  document.body.dir = i18n.dir();
-                  setLang('FR');
-                }}
-              >
-                <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  French
-                </Box>
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  i18n.changeLanguage('ar');
-                  document.body.dir = i18n.dir();
-                  setLang('ع');
-                }}
-              >
-                <Box color="gray.400" _hover={{ color: 'green.400' }}>
-                  العربية
-                </Box>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-          {user ? (
-            <>
-              <Avatar
-                name={user.email.charAt(0).toUpperCase()}
-                bg="green.500"
-              ></Avatar>
+      <Drawer isOpen={isOpen} onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+            <Flex
+              align="center"
+              justify="space-between"
+              direction="column"
+              _hover={{ cursor: 'pointer' }}
+              minH="50vh"
+              py="14"
 
-              <Menu>
-                <MenuButton
-                  as={IconButton}
-                  aria-label="Options"
-                  icon={<MoreHorizontal color="white" />}
-                  size="md"
-                  variant="ghost"
-                />
-                <MenuList>
-                  <Link to={`/profile/${user.uid}`}>
-                    <MenuItem icon={<User />}>Profile</MenuItem>
-                  </Link>
-                  <MenuItem onClick={logOut} icon={<LogOut />}>
-                    Logout
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </>
-          ) : (
-            <Link to="/auth/signin">
-              <Button
-                variant="outline"
-                _hover={{ bg: 'green.400', color: 'white' }}
-                _focus={{ boxShadow: 'none' }}
-                colorScheme="black"
-                ml={2}
-              >
-                {t('navbar.getStarted')}
-              </Button>
-            </Link>
-          )}
-        </Flex>
+            >
+              <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
+              <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
+              <MenuItems to="/about" _hover={{ color: 'green.400' }}>{t('navbar.about')} </MenuItems>
+              <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
+              <Link to="/auth/signup">
+            <Button
+              variant="outline"
+              _hover={{ bg: 'green.400', color: 'white' }}
+              _focus={{ boxShadow: 'none' }}
+              colorScheme="black"
+              bg="white"
+              ml={2}
+            >
+              {t('navbar.getStarted')}
+            </Button>
+          </Link>
+          </Flex>
+        </DrawerContent>
+      </Drawer>
+
+      <Flex
+        align="center"
+        justify={["center", "space-between", "space-between", "space-between"]}
+        direction="row"
+        _hover={{ cursor: 'pointer' }}
+      >
+        <Menu>
+          <MenuButton
+            p={2}
+            transition="all 0.2s"
+            borderRadius="md"
+            _hover={{ bg: 'gray.100', color: 'green.400' }}
+            _expanded={{ bg: 'gray.100' }}
+          >
+            <Box color="gray.400">
+              <Icon as={Globe} mr={0.5} /> {lang}
+            </Box>
+          </MenuButton>
+          <MenuList minW="max-content">
+            <MenuItem
+              onClick={() => {
+                i18n.changeLanguage('en');
+                document.body.dir = i18n.dir();
+                setLang('EN');
+              }}
+            >
+              <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                EN
+                    </Box>
+            </MenuItem>
+
+            <MenuItem
+              onClick={() => {
+                i18n.changeLanguage('fr');
+                document.body.dir = i18n.dir();
+                setLang('FR');
+              }}
+            >
+              <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                FR
+                    </Box>
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                i18n.changeLanguage('ar');
+                document.body.dir = i18n.dir();
+                setLang('ع');
+              }}
+            >
+              <Box color="gray.400" _hover={{ color: 'green.400' }}>
+                ع
+                    </Box>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+        {user ? (
+          <GetStartedBtn
+            logOut={logOut}
+            user={user}
+            notify={notify}
+            isAdmin={isAdmin}
+          />
+        ) : (
+          <Link to="/auth/signup">
+            <Button
+              variant="outline"
+              _hover={{ bg: 'green.400', color: 'white' }}
+              _focus={{ boxShadow: 'none' }}
+              colorScheme="black"
+              bg="white"
+              ml={2}
+              display={{ base: "none", md: "block" }}
+            >
+              {t('navbar.getStarted')}
+            </Button>
+          </Link>
+        )}
+
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 

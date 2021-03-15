@@ -151,10 +151,7 @@ const AboutUs = () => {
                     {t('aboutUs.tab4heading')}{' '}
                   </Heading>
                   <Box py="15px">
-                    <Heading font="Montserrat" size="sx">
-                      {' '}
-                      {t('aboutUs.q1')}{' '}
-                    </Heading>
+                    <Heading size="sx"> {t('aboutUs.q1')} </Heading>
                     <Text fontSize="sx"> {t('aboutUs.a1')} </Text>
                   </Box>
                   <Box py="15px">

@@ -5,8 +5,9 @@ import { ArrowRight } from 'react-feather';
 
 const CategoryCard = ({ categoryPic, categoryName, bgColor }) => {
   return (
-    <Link to={`/items?category=${categoryName.toLowerCase()}`}>
+    <Link to={`/items/${categoryName.toLowerCase()}`}>
       <Flex
+
         direction="column"
         justifyContent="space-between"
         align="center"

@@ -1,26 +1,11 @@
+import { Box, Flex, HStack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
-import {
-  Flex,
-  Box,
-  HStack,
-  Text,
-  Image,
-  Input,
-  InputLeftElement,
-  InputGroup,
-} from '@chakra-ui/react';
-import { Search } from 'react-feather';
-// import sofa from '../../assets/images/sofa.png';
-import { useTranslation } from 'react-i18next';
+import { categories } from '../../assets/data/categories';
+import { useParams } from 'react-router-dom';
 
-const Header = ({
-  categoryName,
-  categoryPic,
-  searchQuery,
-  handleSearchChange,
-  itemsCounter,
-}) => {
-  const { t } = useTranslation();
+const Header = ({ filteredCategoryCount, items }) => {
+  const { category } = useParams();
+
   return (
     <Box
       py="10"
@@ -34,30 +19,23 @@ const Header = ({
       width={1080}
       borderRadius="20px"
       bg="gray.200"
+      
     >
       <Flex mb="10" color="black" fontWeight={800}>
-        <Text>{categoryName}</Text>
-
-        <Flex mx="200px" py="1">
-          <InputGroup>
-            <InputLeftElement children={<Search color="black" />} />
-            <Input
-              value={searchQuery}
-              onChange={handleSearchChange}
-              width="400px"
-              bg="whiteAlpha.800"
-              placeholder={t('header.search')}
-            />
-          </InputGroup>
-        </Flex>
+        <Text textTransform="capitalize">{category ? category : 'All'}</Text>
       </Flex>
 
       <Flex float="right" my="-180px">
-        <Image src={categoryPic} maxW="241px" maxH="233px"></Image>
+        {categories.map((cat) =>
+          cat.name.toLowerCase() === category ? (
+            <Image src={cat.imgURL} maxW="241px" maxH="230px" />
+          ) : null
+        )}
       </Flex>
       <HStack>
         <Text mt="-50px" fontWeight={200} color="gray" fontSize="20px">
-          {itemsCounter} items
+          {filteredCategoryCount ? filteredCategoryCount : items ? items : 0}{' '}
+          items
         </Text>
       </HStack>
     </Box>

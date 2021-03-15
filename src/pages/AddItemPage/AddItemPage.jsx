@@ -2,27 +2,31 @@ import { Box, Button, Container, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import AddForm from '../../components/AddForm';
-import MapForm from '../../components/MapForm';
+import Map from '../../components/Map';
 import { useAuth } from '../../contexts/AuthContext';
 import firebase, { firestore } from '../../services/firebase';
-import { useHistory } from 'react-router-dom';
 
 function AddItemPage() {
   const user = useAuth();
   const history = useHistory();
-  const [currentPosition, setCurrentPosition] = useState({});
-  const [cityName, setCityName] = useState('');
+  const { t } = useTranslation();
   const { register, handleSubmit, reset } = useForm();
-  const [image, setImage] = React.useState();
+  const [image, setImage] = useState();
 
-  console.log('image_url', image);
+  const [currentPosition, setCurrentPosition] = useState({
+    lat: null,
+    lng: null,
+  });
+
+  const { lat: latitude, lng: longitude } = currentPosition;
+  const location = new firebase.firestore.GeoPoint(latitude, longitude);
 
   const itemsRef = firestore.collection('items');
 
-  const { t } = useTranslation();
-
   const onSubmit = async (data) => {
+    console.log(data);
     const { title, category, description } = data;
     try {
       //insert a new document in firestore
@@ -30,9 +34,11 @@ function AddItemPage() {
         title,
         category,
         description,
+        location,
         image_url: image,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid: user.uid,
+        status: 'active',
       });
       //grab the document id
       const docId = await doc.id;
@@ -48,12 +54,9 @@ function AddItemPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex justify="space-between">
           <Box maxW="50vw" maxH="60vh" ml={10} mt={8}>
-            <MapForm
+            <Map
               currentPosition={currentPosition}
               setCurrentPosition={setCurrentPosition}
-              cityName={cityName}
-              setCityName={setCityName}
-              register={register}
             />
           </Box>
           <Box maxW="50vw">

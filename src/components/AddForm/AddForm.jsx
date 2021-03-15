@@ -36,6 +36,7 @@ const AddForm = ({ register, setImage }) => {
             size="md"
             variant="filled"
             isRequired
+            focusBorderColor="green.200"
           />
         </Box>
 
@@ -48,6 +49,7 @@ const AddForm = ({ register, setImage }) => {
             size="md"
             variant="filled"
             isRequired
+            focusBorderColor="green.200"
           >
             <option defaultValue hidden>
               Please select a category
@@ -67,6 +69,7 @@ const AddForm = ({ register, setImage }) => {
             size="md"
             variant="filled"
             isRequired
+            focusBorderColor="green.200"
           />
         </Box>
 
