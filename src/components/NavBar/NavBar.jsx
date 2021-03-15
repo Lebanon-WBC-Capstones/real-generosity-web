@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
 import {
   Menu,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
   MenuButton,
-  CloseButton,
   MenuList,
   MenuItem,
   Box,
@@ -34,7 +37,7 @@ const MenuItems = ({ children, to = "/", ...rest }) => {
     <Text
       mb={{ base: 8, sm: 0 }}
       mx={{ base: 0, sm: 8 }}
-      color={["white", "white", "gray.400", "gray.400"]}
+      color={["Black", "Black", "gray.400", "gray.400"]}
       fontWeight="medium"
       {...rest}
     >
@@ -50,6 +53,7 @@ function NavBar(props) {
   const user = useAuth();
   const history = useHistory();
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
 
   //check if the user is Admin
   let currentUser;
@@ -86,16 +90,15 @@ function NavBar(props) {
     <Flex
       maxWidth="1200px"
       m="auto"
-      px={["2", "2", "8", "14"]}
+      w="100%"
+      px={["2", "4", "8", "14"]}
       pt={2}
       pb={["0", "8", "0", "0"]}
-      w="100%"
       flexWrap="wrap"
       justify="space-between"
       align="center"
       fontSize={["lg", "lg", "md", "lg"]}
       fontWeight="medium"
-      bgColor={{ base: show ? "green.400" : "transparent", md: "transparent" }}
       {...props}
     >
 
@@ -106,24 +109,16 @@ function NavBar(props) {
         ><AlignLeft ref={btnRef} colorScheme="teal" onClick={onOpen}/></Button>
       </Box>
 
-      <Image display={{ base: "none", sm: show ? "none" : "block", md: "block" }} maxH={["10", "10", "12", "16"]} src={logo2} alt="logo" />
+      <Image borderRadius="full" boxSize={{ base: "16", md: "24" }} src={logo2} alt="logo" />
 
-      <Drawer isOpen={isOpen} onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <Box
-            display={{ base: show ? "block" : "none", md: "block" }}
-            opacity={{ base: show ? "1" : "0", md: "1" }}
-            flexBasis={{ base: "100%", md: "auto" }}
+      <Box
+            display={{ base: "none", md: "block" }}
             position="inherit"
-            height={{ base: show ? "100vh" : "auto", sm: show ? "10vh" : "auto", md: "auto" }}
           >
             <Flex
-              align={["center", "center", "center", "center"]}
-              justify={["center", "space-between", "space-between", "space-between"]}
-              direction={["column", "row", "row", "row"]}
-              pt={[4, 4, 0, 0]}
+              align="center"
+              justify="space-between"
+              direction="row"
               _hover={{ cursor: 'pointer' }}
 
             >
@@ -133,15 +128,45 @@ function NavBar(props) {
               <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
             </Flex>
           </Box>
+
+      <Drawer isOpen={isOpen} onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+            <Flex
+              align="center"
+              justify="space-between"
+              direction="column"
+              _hover={{ cursor: 'pointer' }}
+              minH="50vh"
+              py="14"
+
+            >
+              <MenuItems to="/" _hover={{ color: 'green.400' }}>{t('navbar.home')}</MenuItems>
+              <MenuItems to="/items" _hover={{ color: 'green.400' }}>{t('navbar.items')} </MenuItems>
+              <MenuItems to="/about" _hover={{ color: 'green.400' }}>{t('navbar.about')} </MenuItems>
+              <MenuItems to="/contactus" _hover={{ color: 'green.400' }}>{t('navbar.contactUs')} </MenuItems>
+              <Link to="/auth/signup">
+            <Button
+              variant="outline"
+              _hover={{ bg: 'green.400', color: 'white' }}
+              _focus={{ boxShadow: 'none' }}
+              colorScheme="black"
+              bg="white"
+              ml={2}
+            >
+              {t('navbar.getStarted')}
+            </Button>
+          </Link>
+          </Flex>
         </DrawerContent>
       </Drawer>
 
       <Flex
-        align={["center", "center", "center", "center"]}
+        align="center"
         justify={["center", "space-between", "space-between", "space-between"]}
         direction="row"
         _hover={{ cursor: 'pointer' }}
-        display={{ base: show ? "none" : "block", md: "block" }}
       >
         <Menu>
           <MenuButton
@@ -208,6 +233,7 @@ function NavBar(props) {
               colorScheme="black"
               bg="white"
               ml={2}
+              display={{ base: "none", md: "block" }}
             >
               {t('navbar.getStarted')}
             </Button>
