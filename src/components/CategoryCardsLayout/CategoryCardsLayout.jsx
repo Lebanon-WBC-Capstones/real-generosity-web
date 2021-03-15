@@ -1,16 +1,12 @@
-import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import React from 'react';
-
 import { Flex, Text, Wrap, WrapItem, Stack, Center, Link } from '@chakra-ui/react';
 import CategoryCard from '../CategoryCard';
 import furniture from '../../assets/images/furniture.png';
 import Clothes from '../../assets/images/Clothes.png';
-
 import book from '../../assets/images/book.png';
-import Clothes from '../../assets/images/Clothes.png';
 import medicalkit from '../../assets/images/medicalkit.png';
-
 import appliances from '../../assets/images/appliances.png';
+import toys from '../../assets/images/toys.png';
 import all from '../../assets/images/all.png';
 import { useTranslation } from 'react-i18next';
 
