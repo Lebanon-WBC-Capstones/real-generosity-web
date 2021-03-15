@@ -65,7 +65,7 @@
     "address": "Address",
     "email": "Email Address",
     "password": "Password",
-    "repeat":"Repeat Password",
+    "repeat": "Repeat Password",
     "passplaceholder": "6+ characters",
     "phone": "Phone Number",
     "idupload": "Kindly, upload your ID card here",

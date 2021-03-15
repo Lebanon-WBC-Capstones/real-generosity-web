@@ -17,7 +17,7 @@ import { useHistory } from 'react-router-dom';
 
 function SignUpPage() {
   const { t } = useTranslation();
-  const { register, handleSubmit, errors , getValues } = useForm();
+  const { register, handleSubmit, errors, getValues } = useForm();
 
   const history = useHistory();
   const toast = useToast();
@@ -26,7 +26,7 @@ function SignUpPage() {
   const onSubmit = async ({ fullname, email, password, phone }) => {
     console.log('registration in process...');
     console.log('email', email);
-    console.log('phone',phone);
+    console.log('phone', phone);
 
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -36,7 +36,7 @@ function SignUpPage() {
 
       await firestore.collection('users').doc(user.uid).set({
         fullname,
-        email, 
+        email,
         phone,
         role: 'user',
         uid: user.uid,
@@ -124,10 +124,10 @@ function SignUpPage() {
               maxW={['72', '96', '96', '96']}
               ref={register}
               focusBorderColor="green.200"
-              pattern="(?=.*[a-z]{1,})(?=.*[A-Z]{1,})(?=.*[0-9]{1,})(?=.*[!@#\$%\^&\*]).{5,}$" 
+              pattern="(?=.*[a-z]{1,})(?=.*[A-Z]{1,})(?=.*[0-9]{1,})(?=.*[!@#\$%\^&\*]).{5,}$"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
             />
-             { errors.password  && <Text>{errors.password.message } </Text> }
+            {errors.password && <Text>{errors.password.message} </Text>}
           </Box>
           <Box mt={4}>
             <Text mb={2}>{t('signup.repeat')}</Text>
@@ -139,12 +139,18 @@ function SignUpPage() {
               variant="filled"
               isRequired
               maxW={['72', '96', '96', '96']}
-              ref={register ({validate: value =>{
-                 
-                if (value === getValues('password')) {return true} else {return <span>Password fields don't match</span>}}})}
+              ref={register({
+                validate: (value) => {
+                  if (value === getValues('password')) {
+                    return true;
+                  } else {
+                    return <span>Password fields don't match</span>;
+                  }
+                },
+              })}
               focusBorderColor="green.200"
             />
-              {errors.confirm && <p>{errors.confirm.message}</p>}
+            {errors.confirm && <p>{errors.confirm.message}</p>}
           </Box>
           <Box mt={4}>
             <Text mb={2}>{t('signup.phone')}</Text>
