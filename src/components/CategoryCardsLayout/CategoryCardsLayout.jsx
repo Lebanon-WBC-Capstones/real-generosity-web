@@ -25,14 +25,12 @@ const CategoryCardsLayout = () => {
         <CategoryCard
           categoryPic={furniture}
           categoryName={t('categoryCards.furniture')}
-          onClick={() => setQuery('furniture')}
           bgColor="#EAEAF1"
         ></CategoryCard></WrapItem>
  <WrapItem>
         <CategoryCard
           categoryPic={Clothes}
           categoryName={t('categoryCards.clothes')}
-          onClick={() => setQuery('clothes')}
           bgColor="#F6E8CD"
         ></CategoryCard>
         </WrapItem>
@@ -41,7 +39,6 @@ const CategoryCardsLayout = () => {
         <CategoryCard
           categoryPic={book}
           categoryName={t('categoryCards.books')}
-          onClick={() => setQuery('books')}
           bgColor="#CBECE9"
         ></CategoryCard>
         </WrapItem>
@@ -50,7 +47,6 @@ const CategoryCardsLayout = () => {
         <CategoryCard
           categoryPic={toys}
           categoryName={t('categoryCards.toys')}
-          onClick={() => setQuery('toys')}
           bgColor="#E6D0EF"
         ></CategoryCard>
         </WrapItem>
@@ -59,7 +55,6 @@ const CategoryCardsLayout = () => {
         <CategoryCard
           categoryPic={medicalkit}
           categoryName={t('categoryCards.medics')}
-          onClick={() => setQuery('medics')}
           bgColor="#F0D0D2"
         ></CategoryCard>
         </WrapItem>
@@ -68,7 +63,6 @@ const CategoryCardsLayout = () => {
         <CategoryCard
           categoryPic={appliances}
           categoryName={t('categoryCards.appliances')}
-          onClick={() => setQuery('appliances')}
           bgColor="#CFD6F2"
         ></CategoryCard>
           </WrapItem>
