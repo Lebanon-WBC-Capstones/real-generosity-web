@@ -16,7 +16,7 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
             {fullname}
           </Heading>
         </HStack>
-        <Link to={`/profile/${uid}/settings`}>
+        <Link to={`/profile/${uid}/edit/info`}> 
           <Button
             rounded="5px"
             size="xs"

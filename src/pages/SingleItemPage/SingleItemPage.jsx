@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import {
-  // useCollection,
   useCollectionData,
   useDocumentData,
 } from 'react-firebase-hooks/firestore';
@@ -25,12 +24,27 @@ import ItemRequests from '../../components/ItemRequests';
 import ItemReports from '../../components/ItemReports/Itemreports';
 import { useAuth } from '../../contexts/AuthContext';
 import firebase, { firestore } from '../../services/firebase';
+import { Link } from 'react-router-dom';
 
 const SingleItemPage = () => {
   const { t } = useTranslation();
-  const { id } = useParams();
+  const { id, tab } = useParams();
   const currentUser = useAuth();
   const history = useHistory();
+
+  let tabIndex = 0;
+  
+  switch (tab) {
+    case 'requests':
+      tabIndex = 1;
+      break;
+    case 'reports':
+      tabIndex = 1;
+      break;
+    case 'details':
+    default:
+      tabIndex = 0;
+  }
 
   // query item details
   const query = firestore.collection('items').doc(id);
@@ -196,10 +210,18 @@ const SingleItemPage = () => {
     <Container maxW="6xl" minH="500px" mx="auto" my={20}>
       <Box px={10}>
         {isOwner && (
-          <Tabs variant="soft-rounded" colorScheme="gray">
+          <Tabs variant="soft-rounded" colorScheme="gray" index={tabIndex}>
             <TabList>
-              <Tab>{t('itemPage.details')}</Tab>
-              <Tab>{t('itemPage.requests')}</Tab>
+              <Tab>
+              <Link to={`/item/${id}/details`}>
+                {t('itemPage.details')}
+                </Link>
+              </Tab>
+              <Tab>
+              <Link to={`/item/${id}/requests`}>
+                {t('itemPage.requests')}
+                </Link>
+                </Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -251,10 +273,18 @@ const SingleItemPage = () => {
         )}
 
         {isAdmin && (
-          <Tabs variant="soft-rounded" colorScheme="gray">
+          <Tabs variant="soft-rounded" colorScheme="gray" index={tabIndex}> 
             <TabList>
-              <Tab>{t('itemPage.details')}</Tab>
-              <Tab>{t('itemPage.reports')}</Tab>
+              <Tab>
+                <Link to={`/item/${id}/details`}>
+                {t('itemPage.details')}
+                </Link>
+              </Tab>
+              <Tab>
+              <Link to={`/item/${id}/reports`}>
+                {t('itemPage.reports')}
+                </Link>
+              </Tab>
             </TabList>
             <TabPanels>
               <TabPanel>

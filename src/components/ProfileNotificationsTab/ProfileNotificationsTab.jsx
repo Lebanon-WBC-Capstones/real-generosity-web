@@ -12,7 +12,7 @@ import {
   HStack,
   Text,
 } from '@chakra-ui/react';
-import { ShoppingBag, Heart } from 'react-feather';
+import { ShoppingBag, CheckCircle } from 'react-feather';
 import { convertTimestamp } from '../../helpers/convertTimestamp';
 import { Link } from 'react-router-dom';
 import { firestore } from '../../services/firebase';
@@ -37,8 +37,8 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
             <Th>type</Th>
             <Th>date</Th>
             <Th>status</Th>
-            <Th>link to it</Th>
-            <Th>Action</Th>
+            <Th>link to notified item</Th>
+            
           </Tr>
         </Thead>
         <Tbody overflow="auto">
@@ -48,7 +48,7 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
                 <Td>
                   <HStack>
                     {notification.data().type === 'request' && <ShoppingBag />}
-                    {notification.data().type === 'approve' && <Heart />}
+                    {notification.data().type === 'approve' && <CheckCircle />}
                     <Text>{notification.data().type}</Text>
                   </HStack>
                 </Td>
@@ -56,20 +56,10 @@ const ProfileNotificationsTab = ({ notify, notifyloading }) => {
                 <Td>{notification.data().seen ? 'seen' : 'unseen'}</Td>
                 <Td>
                   <Link to={`/item/${notification.data().itemId}`}>
-                    <Text>link to item </Text>
+                    <Text as="u" onClick={handleSeenClick(notification.id)} color="blue">link to item </Text>
                   </Link>
                 </Td>
-                <Td>
-                  <Button
-                    fontSize="xs"
-                    colorScheme="green"
-                    variant="solid"
-                    disabled={notification.data().seen}
-                    onClick={() => handleSeenClick(notification.id)}
-                  >
-                    seen
-                  </Button>
-                </Td>
+               
               </Tr>
             ))
           ) : (

@@ -19,7 +19,7 @@ import GetStartedBtn from '../GetStartedBtn/GetStartedBtn';
 import { auth } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import {
-  useCollectionData,
+  useCollectionData,useCollection,
   useDocumentData,
 } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
@@ -38,6 +38,7 @@ function NavBar() {
   console.log(userDataLoading);
   const isAdmin = user && userData?.role === 'admin';
   console.log('admin', isAdmin);
+
   //logout function
   const logOut = async () => {
     try {
@@ -56,10 +57,12 @@ function NavBar() {
       .where('targetId', '==', user.uid)
       .where('seen', '==', false);
 
-  const [notify, notifyloading, notifyerror] = useCollectionData(notifications);
+  const [notify, notifyloading, notifyerror] = useCollection(notifications);
   console.log('notify', notify);
   if (notifyerror) console.log('error');
   if (notifyloading) return <>loading...</>;
+
+  
 
   return (
     <Box as="nav">

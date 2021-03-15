@@ -1,9 +1,10 @@
 import React from 'react';
+import EditProfile from '../EditProfile'
 
 function ProfileSettingsPage() {
   return (
     <div>
-      <h1>Profile Settings Page</h1>
+     <EditProfile />
     </div>
   );
 }

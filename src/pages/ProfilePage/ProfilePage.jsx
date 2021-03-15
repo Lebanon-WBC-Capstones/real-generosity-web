@@ -5,8 +5,10 @@ import ProfileTaskbars from '../../components/ProfileTaskbars';
 import { useDocumentData, useCollection } from 'react-firebase-hooks/firestore';
 import { firestore } from '../../services/firebase';
 import { useParams } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 function ProfilePage() {
+  const currentUser = useAuth();
   const { uid, tab } = useParams();
   console.log(tab);
   let tabIndex = 0;
@@ -20,7 +22,7 @@ function ProfilePage() {
   }
 
   console.log(tabIndex);
-  const handleTabsChange = () => {};
+ 
 
   //query header details from firebase
   const query = firestore.collection('users').doc(uid);
@@ -44,7 +46,9 @@ function ProfilePage() {
   if (error) console.error(error);
 
   if (loading) return <>loading...</>;
+ 
 
+  
   const { fullname, email, phoneNumber } = data;
 
   return (
@@ -54,6 +58,7 @@ function ProfilePage() {
         email={email}
         phoneNumber={phoneNumber}
         uid={uid}
+        currentUser={currentUser}
       />
       <ProfileTaskbars
         uid={uid}
@@ -62,7 +67,6 @@ function ProfilePage() {
         notify={notify}
         notifyLoading={notifyLoading}
         tabIndex={tabIndex}
-        handleTabsChange={handleTabsChange}
       />
     </SimpleGrid>
   );
