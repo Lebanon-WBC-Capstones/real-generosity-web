@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Flex, Box, Text, Image } from '@chakra-ui/react';
 import { ArrowRight } from 'react-feather';
 
-const CategoryCard = ({ categoryPic, categoryName, bgColor }) => {
+const CategoryCard = ({ categoryPic, categoryName, bgColor,categoryLink }) => {
   return (
-    <Link to={`/items/${categoryName.toLowerCase()}`}>
+    <Link to={categoryLink}>
       <Flex
 
         direction="column"

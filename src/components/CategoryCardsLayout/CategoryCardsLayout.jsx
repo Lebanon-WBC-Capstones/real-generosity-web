@@ -26,12 +26,14 @@ const CategoryCardsLayout = () => {
           categoryPic={furniture}
           categoryName={t('categoryCards.furniture')}
           bgColor="#EAEAF1"
+          categoryLink="/items/furniture"
         ></CategoryCard></WrapItem>
  <WrapItem>
         <CategoryCard
           categoryPic={Clothes}
           categoryName={t('categoryCards.clothes')}
           bgColor="#F6E8CD"
+          categoryLink="/items/clothes"
         ></CategoryCard>
         </WrapItem>
 
@@ -40,6 +42,7 @@ const CategoryCardsLayout = () => {
           categoryPic={book}
           categoryName={t('categoryCards.books')}
           bgColor="#CBECE9"
+          categoryLink="/items/books"
         ></CategoryCard>
         </WrapItem>
 
@@ -48,6 +51,7 @@ const CategoryCardsLayout = () => {
           categoryPic={toys}
           categoryName={t('categoryCards.toys')}
           bgColor="#E6D0EF"
+          categoryLink="/items/toys"
         ></CategoryCard>
         </WrapItem>
 
@@ -56,6 +60,7 @@ const CategoryCardsLayout = () => {
           categoryPic={medicalkit}
           categoryName={t('categoryCards.medics')}
           bgColor="#F0D0D2"
+          categoryLink="/items/medics"
         ></CategoryCard>
         </WrapItem>
 
@@ -64,6 +69,7 @@ const CategoryCardsLayout = () => {
           categoryPic={appliances}
           categoryName={t('categoryCards.appliances')}
           bgColor="#CFD6F2"
+          categoryLink="/items/appliances"
         ></CategoryCard>
           </WrapItem>
 
@@ -73,6 +79,7 @@ const CategoryCardsLayout = () => {
           categoryPic={all}
           categoryName="All"
           bgColor="#EAEAF1"
+          categoryLink="/items"
         ></CategoryCard>
         </Link>
           </WrapItem>
