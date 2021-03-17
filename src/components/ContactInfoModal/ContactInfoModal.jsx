@@ -77,11 +77,11 @@ const ContactInfoModal = ({ ownerInfo, users, requesterid }) => {
                   phone number:
                 </Text>
                 <Text fontSize="lg" fontWeight="medium">
-                  {currentUser && ownerInfo ? ownerInfo.phonenumber : ''}
+                  {currentUser && ownerInfo ? ownerInfo.phone : ''}
                   {currentUser && users
                     ? users
                         .filter((user) => user.uid === requesterid)
-                        ?.map((u) => <span>{u.phonenumber}</span>)
+                        ?.map((u) => <span>{u.phone}</span>)
                     : ''}
                 </Text>
               </HStack>

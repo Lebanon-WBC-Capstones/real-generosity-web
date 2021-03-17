@@ -49,14 +49,14 @@ function ProfilePage() {
  
 
   
-  const { fullname, email, phoneNumber } = data;
+  const { fullname, email, phone } = data;
 
   return (
     <SimpleGrid maxW="1080px" mx="auto" gap={8} mt="20">
       <ProfileHeader
         fullname={fullname}
         email={email}
-        phoneNumber={phoneNumber}
+        phone={phone}
         uid={uid}
         currentUser={currentUser}
       />

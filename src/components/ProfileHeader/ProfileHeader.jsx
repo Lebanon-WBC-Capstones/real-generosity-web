@@ -4,7 +4,7 @@ import { Phone, Mail, User } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
+const ProfileHeader = ({ fullname, email, phone, uid }) => {
   const { t } = useTranslation();
 
   return (
@@ -41,7 +41,7 @@ const ProfileHeader = ({ fullname, email, phoneNumber, uid }) => {
         <HStack my={3}>
           <Phone />
           <Text fontSize="md" fontWeight="medium">
-            {phoneNumber}
+            {phone}
           </Text>
         </HStack>
       </VStack>
