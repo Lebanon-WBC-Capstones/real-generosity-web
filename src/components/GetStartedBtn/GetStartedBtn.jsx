@@ -72,7 +72,7 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           as={IconButton}
           color="black"
           aria-label="Options"
-          icon={<Avatar size="sm" bg="black" />}
+          icon={<Avatar size="md"  name={user.email.charAt(0).toUpperCase()} bg="green.500" />} 
           size="md"
           variant="white"
         />
