@@ -90,14 +90,7 @@ const ItemRequests = ({
   if (checkApprovalLoading) return <>loading</>;
   return (
     <Container maxW="7xl" mx="auto">
-      <Box
-          color="black"
-          fontWeight="bold"
-          letterSpacing="wide"
-          fontSize="3xl"
-        >
-          {title}
-        </Box>
+    
       {requests && requests.length === 0 ? (
         <Box
           m="auto"
@@ -106,9 +99,18 @@ const ItemRequests = ({
           letterSpacing="wide"
           fontSize="3xl"
         >
-          No Requests Yet
+          No Requests Yet for {title}
         </Box>
       ) : (
+       <Box>
+        <Box
+        color="black"
+        fontWeight="bold"
+        letterSpacing="wide"
+        fontSize="3xl"
+      >
+       {title} requests
+      </Box>
         <Table variant="simple">
           <TableCaption>
             <Button
@@ -186,7 +188,9 @@ const ItemRequests = ({
             ))}
           </Tbody>
         </Table>
+        </Box>
       )}
+      
     </Container>
   );
 };
