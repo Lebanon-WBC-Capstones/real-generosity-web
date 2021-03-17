@@ -22,7 +22,7 @@ import { Link } from 'react-router-dom';
 const AboutUs = () => {
   const { t } = useTranslation();
   return (
-    <Box maxW="1080px" minH="500px" m="auto">
+    <Box maxW="1080px" minH="500px" my={4} mx="auto">
       <Box m="auto">
         <Heading as="h1" py="20px" size="lg">
           {t('aboutUs.aboutUs')}
