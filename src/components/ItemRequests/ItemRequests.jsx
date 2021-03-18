@@ -90,7 +90,6 @@ const ItemRequests = ({
   if (checkApprovalLoading) return <>loading</>;
   return (
     <Container maxW="7xl" mx="auto">
-    
       {requests && requests.length === 0 ? (
         <Box
           m="auto"
@@ -102,95 +101,97 @@ const ItemRequests = ({
           No Requests Yet for {title}
         </Box>
       ) : (
-       <Box>
-        <Box
-        color="black"
-        fontWeight="bold"
-        letterSpacing="wide"
-        fontSize="3xl"
-      >
-       {title} requests
-      </Box>
-        <Table variant="simple">
-          <TableCaption>
-            <Button
-              colorScheme="green"
-              w="100%"
-              size="lg"
-              onClick={handleDelivered}
-            >
-              {t('itemPage.delivered')}
-            </Button>
-          </TableCaption>
-          <Thead>
-            <Tr>
-              <Th> {t('itemPage.reason')}</Th>
-              <Th>{t('itemPage.createdAt')}</Th>
-              <Th>{t('itemPage.approve')} </Th>
-              <Th>{t('itemPage.requesterInfo')}</Th>
-            </Tr>
-          </Thead>
-          <Tbody overflow="auto">
-            {requests.map((request, index) => (
+        <Box>
+          <Box
+            color="black"
+            fontWeight="bold"
+            letterSpacing="wide"
+            fontSize="3xl"
+          >
+            {title} requests
+          </Box>
+          <Table variant="simple">
+            <TableCaption>
+              <Button
+                colorScheme="green"
+                w="100%"
+                size="lg"
+                onClick={handleDelivered}
+              >
+                {t('itemPage.delivered')}
+              </Button>
+            </TableCaption>
+            <Thead>
               <Tr>
-                <Td>
-                  <Accordion allowToggle maxW="200px">
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Box
-                            flex="1"
-                            textAlign="left"
-                            overflow="hidden"
-                            maxW="250px"
-                          >
-                            <Text isTruncated> {request.reason} </Text>
-                          </Box>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4}> {request.reason} </AccordionPanel>
-                    </AccordionItem>
-                  </Accordion>
-                </Td>
-                <Td>{convertTimestamp(request.createdAt)}</Td>
-                <Td>
-                  <Button
-                    fontSize="xs"
-                    disabled={
-                      currentUser && checkApproval.length === 0 ? false : true
-                    }
-                    onClick={() => handleApprove(request.requester)}
-                  >
-                    {/* {t('itemPage.approve')} */}
-                    approve
-                  </Button>
-                </Td>
-                <Td>
-                  {checkApproval &&
-                  users &&
-                  checkApproval.find(
-                    (check) => check.targetId === request.requester
-                  ) ? (
-                    <HStack>
-                      <Button onClick={() => handleDecline()}>decline</Button>
-                      <ContactInfoModal
-                        users={users}
-                        requesterid={request.requester}
-                      />
-                      )
-                    </HStack>
-                  ) : (
-                    ''
-                  )}
-                </Td>
+                <Th> {t('itemPage.reason')}</Th>
+                <Th>{t('itemPage.createdAt')}</Th>
+                <Th>{t('itemPage.approve')} </Th>
+                <Th>{t('itemPage.requesterInfo')}</Th>
               </Tr>
-            ))}
-          </Tbody>
-        </Table>
+            </Thead>
+            <Tbody overflow="auto">
+              {requests.map((request, index) => (
+                <Tr>
+                  <Td>
+                    <Accordion allowToggle maxW="200px">
+                      <AccordionItem>
+                        <h2>
+                          <AccordionButton>
+                            <Box
+                              flex="1"
+                              textAlign="left"
+                              overflow="hidden"
+                              maxW="250px"
+                            >
+                              <Text isTruncated> {request.reason} </Text>
+                            </Box>
+                            <AccordionIcon />
+                          </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                          {' '}
+                          {request.reason}{' '}
+                        </AccordionPanel>
+                      </AccordionItem>
+                    </Accordion>
+                  </Td>
+                  <Td>{convertTimestamp(request.createdAt)}</Td>
+                  <Td>
+                    <Button
+                      fontSize="xs"
+                      disabled={
+                        currentUser && checkApproval.length === 0 ? false : true
+                      }
+                      onClick={() => handleApprove(request.requester)}
+                    >
+                      {/* {t('itemPage.approve')} */}
+                      approve
+                    </Button>
+                  </Td>
+                  <Td>
+                    {checkApproval &&
+                    users &&
+                    checkApproval.find(
+                      (check) => check.targetId === request.requester
+                    ) ? (
+                      <HStack>
+                        <Button onClick={() => handleDecline()}>decline</Button>
+                        <ContactInfoModal
+                          users={users}
+                          requesterid={request.requester}
+                        />
+                        )
+                      </HStack>
+                    ) : (
+                      ''
+                    )}
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
         </Box>
       )}
-      
     </Container>
   );
 };

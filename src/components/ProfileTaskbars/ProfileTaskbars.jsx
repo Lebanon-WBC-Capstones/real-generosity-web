@@ -33,14 +33,16 @@ const ProfileTaskbars = ({
     <Box>
       <Tabs index={tabIndex}>
         <TabList justifyContent="space-around">
-         <Tab><Link to={`/profile/${uid}/donations`}>
-          {t('profilePage.donations')}</Link> </Tab>
-        <Tab>  
-          <Link to={`/profile/${uid}/notifications`}>
-          {t('profilePage.notifications')}
-          </Link> 
+          <Tab>
+            <Link to={`/profile/${uid}/donations`}>
+              {t('profilePage.donations')}
+            </Link>{' '}
           </Tab>
-          
+          <Tab>
+            <Link to={`/profile/${uid}/notifications`}>
+              {t('profilePage.notifications')}
+            </Link>
+          </Tab>
         </TabList>
 
         <TabPanels>

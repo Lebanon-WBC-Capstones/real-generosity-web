@@ -22,7 +22,6 @@ function ProfilePage() {
   }
 
   console.log(tabIndex);
- 
 
   //query header details from firebase
   const query = firestore.collection('users').doc(uid);
@@ -46,9 +45,7 @@ function ProfilePage() {
   if (error) console.error(error);
 
   if (loading) return <>loading...</>;
- 
 
-  
   const { fullname, email, phone } = data;
 
   return (

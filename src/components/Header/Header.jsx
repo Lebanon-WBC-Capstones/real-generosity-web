@@ -19,7 +19,6 @@ const Header = ({ filteredCategoryCount, items }) => {
       width={1080}
       borderRadius="20px"
       bg="gray.200"
-      
     >
       <Flex mb="10" color="black" fontWeight={800}>
         <Text textTransform="capitalize">{category ? category : 'All'}</Text>

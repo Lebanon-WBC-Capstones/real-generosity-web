@@ -33,7 +33,7 @@ const SingleItemPage = () => {
   const history = useHistory();
 
   let tabIndex = 0;
-  
+
   switch (tab) {
     case 'requests':
       tabIndex = 1;
@@ -213,15 +213,13 @@ const SingleItemPage = () => {
           <Tabs variant="soft-rounded" colorScheme="gray" index={tabIndex}>
             <TabList>
               <Tab>
-              <Link to={`/item/${id}/details`}>
-                {t('itemPage.details')}
-                </Link>
+                <Link to={`/item/${id}/details`}>{t('itemPage.details')}</Link>
               </Tab>
               <Tab>
-              <Link to={`/item/${id}/requests`}>
-                {t('itemPage.requests')}
+                <Link to={`/item/${id}/requests`}>
+                  {t('itemPage.requests')}
                 </Link>
-                </Tab>
+              </Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -274,17 +272,13 @@ const SingleItemPage = () => {
         )}
 
         {isAdmin && (
-          <Tabs variant="soft-rounded" colorScheme="gray" index={tabIndex}> 
+          <Tabs variant="soft-rounded" colorScheme="gray" index={tabIndex}>
             <TabList>
               <Tab>
-                <Link to={`/item/${id}/details`}>
-                {t('itemPage.details')}
-                </Link>
+                <Link to={`/item/${id}/details`}>{t('itemPage.details')}</Link>
               </Tab>
               <Tab>
-              <Link to={`/item/${id}/reports`}>
-                {t('itemPage.reports')}
-                </Link>
+                <Link to={`/item/${id}/reports`}>{t('itemPage.reports')}</Link>
               </Tab>
             </TabList>
             <TabPanels>

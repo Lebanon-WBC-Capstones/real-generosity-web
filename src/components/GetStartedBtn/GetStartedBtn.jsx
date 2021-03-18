@@ -17,14 +17,14 @@ import {
 const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
   const { t } = useTranslation();
 
-   const handleClick = async (id) => {
-        await firestore.collection('notifications').doc(id).set(
-          {
-            seen: true,
-          },
-          { merge: true }
-        );
-      };
+  const handleClick = async (id) => {
+    await firestore.collection('notifications').doc(id).set(
+      {
+        seen: true,
+      },
+      { merge: true }
+    );
+  };
 
   return (
     <HStack>
@@ -35,25 +35,36 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           aria-label="Options"
           icon={
             <Avatar size="sm" bg="white" icon={<Bell fontSize="1.5rem" />}>
-              {notify?.docs.length ? <AvatarBadge boxSize="1.25em" bg="red" /> : ''}
+              {notify?.docs.length ? (
+                <AvatarBadge boxSize="1.25em" bg="red" />
+              ) : (
+                ''
+              )}
             </Avatar>
           }
           size="md"
           variant="white"
         />
         <MenuList>
-        {user && notify? 
-          notify.docs.map(notification=>
-          (notification  && 
-          <Link to={`/item/${notification?.data().itemId}/${notification.data().type}s`}>
-           <MenuItem
-            onClick={()=>handleClick(notification?.id)}
-            icon= { <Mail fontSize="1.5rem"  />}
-            >
-            {notification.data().type}
-          </MenuItem>
-          </Link>)
-          ):''} 
+          {user && notify
+            ? notify.docs.map(
+                (notification) =>
+                  notification && (
+                    <Link
+                      to={`/item/${notification?.data().itemId}/${
+                        notification.data().type
+                      }s`}
+                    >
+                      <MenuItem
+                        onClick={() => handleClick(notification?.id)}
+                        icon={<Mail fontSize="1.5rem" />}
+                      >
+                        {notification.data().type}
+                      </MenuItem>
+                    </Link>
+                  )
+              )
+            : ''}
 
           {isAdmin && notify ? (
             <Link to="/admin">
@@ -72,7 +83,13 @@ const GetStartedBtn = ({ logOut, user, notify, isAdmin }) => {
           as={IconButton}
           color="black"
           aria-label="Options"
-          icon={<Avatar size="md"  name={user.email.charAt(0).toUpperCase()} bg="green.500" />} 
+          icon={
+            <Avatar
+              size="md"
+              name={user.email.charAt(0).toUpperCase()}
+              bg="green.500"
+            />
+          }
           size="md"
           variant="white"
         />
