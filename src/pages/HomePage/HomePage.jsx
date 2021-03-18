@@ -20,7 +20,7 @@ function HomePage() {
     <Flex direction="column" justify="space-evenly">
       <HeroSection />
 
-      <Box my="24" justify="center" mx="auto">
+      <Box mt={18} mb={24} justify="center" mx="auto">
         <CategoryCardLayout />
       </Box>
 
