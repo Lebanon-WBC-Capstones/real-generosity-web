@@ -114,6 +114,7 @@
     "donateButton": "Donate Now"
   },
   "categoryCards": {
+    "header": "Categories",
     "furniture": "Furniture",
     "clothes": "Clothes",
     "books": "Books",
