@@ -3,7 +3,7 @@ import { Heading, Button, Flex, Stack, Image, Box } from '@chakra-ui/react';
 import heroSectionImage_1 from '../../assets/images/heroSectionImage_1.png';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
+import { motion } from 'framer-motion';
 const HeroSection = () => {
   const { t } = useTranslation();
 
@@ -56,14 +56,16 @@ const HeroSection = () => {
         </Heading>
 
         <Link to="/add-item">
-          <Button
-            colorScheme="green"
-            py={['4', '4', '8', '8']}
-            px={['10', '10', '20', '20']}
-            fontSize={['md', 'md', '2xl', '2xl']}
-          >
-            {t('heroSection.donateButton')}
-          </Button>
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <Button
+              colorScheme="green"
+              py={['4', '4', '8', '8']}
+              px={['10', '10', '20', '20']}
+              fontSize={['md', 'md', '2xl', '2xl']}
+            >
+              {t('heroSection.donateButton')}
+            </Button>
+          </motion.button>
         </Link>
       </Stack>
       <Box w={{ base: '80%', sm: '60%', md: '60%' }} mb={{ base: 12, md: 0 }}>
