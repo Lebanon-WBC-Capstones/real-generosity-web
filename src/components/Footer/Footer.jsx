@@ -30,39 +30,39 @@ const Footer = (props) => {
       >
         <Link to="/">
           {' '}
-          <Text>{t('navbar.home')}</Text>
+          <Text _hover={{ color: 'green.400' }}>{t('navbar.home')}</Text>
         </Link>
         <Link to="/items">
           {' '}
-          <Text>{t('navbar.items')}</Text>
+          <Text _hover={{ color: 'green.400' }}>{t('navbar.items')}</Text>
         </Link>
         <Link to="/about">
-          <Text>{t('navbar.about')}</Text>
+          <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
         </Link>
         <Link to="/contactus">
           {' '}
-          <Text>{t('navbar.contactUs')}</Text>
+          <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
         </Link>
       </HStack>
       <HStack mb="2" justify="space-between" px={80}>
-        <Box color="gray.500" fontSize="xs">
+        <Box color="gray.500" fontSize="xs" _hover={{ color: 'green.400' }}>
           <a href="http://www.facebook.com">
             {' '}
             <Facebook />
           </a>
         </Box>
-        <Box color="gray.500" fontSize="xs">
+        <Box color="gray.500" fontSize="xs" _hover={{ color: 'green.400' }}>
           <a href="http://www.instagram.com">
             <Instagram />
           </a>
         </Box>
-        <Box color="gray.500" fontSize="xl">
+        <Box color="gray.500" fontSize="xl" _hover={{ color: 'green.400' }}>
           {/* mr={8} */}
           <a href="http://www.github.com">
             <GitHub />
           </a>
         </Box>
-        <Box color="gray.500" fontSize="sm">
+        <Box color="gray.500" fontSize="sm" _hover={{ color: 'green.400' }}>
           <a href="http://www.twitter.com">
             {' '}
             <Twitter />
