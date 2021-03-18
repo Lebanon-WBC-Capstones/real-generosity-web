@@ -29,13 +29,9 @@ const CategoryCardsLayout = () => {
       <Stack>
         <Box>
           <Heading size="lg" color="green.500" mb={5}>
-            {' '}
             {t('categoryCards.header')}
           </Heading>
         </Box>
-        {/* <Text fontSize="xl" fontWeight="medium">
-          {t('categoryCards.header')}
-        </Text> */}
 
         <Center direction="row" flexWrap="wrap" justifyContent="space-between">
           <Wrap spacing={['', '', '14', '16']} align="center">
