@@ -7,6 +7,8 @@ import {
   Stack,
   Center,
   Link,
+  Box,
+  Heading,
 } from '@chakra-ui/react';
 import CategoryCard from '../CategoryCard';
 import furniture from '../../assets/images/furniture.png';
@@ -24,9 +26,12 @@ const CategoryCardsLayout = () => {
   return (
     <Flex maxW="4xl" m="auto" align="center" justify="space-between">
       <Stack>
-        <Text fontSize="xl" fontWeight="medium">
+        <Box>
+          <Heading size="md"> {t('categoryCards.header')}</Heading>
+        </Box>
+        {/* <Text fontSize="xl" fontWeight="medium">
           {t('categoryCards.header')}
-        </Text>
+        </Text> */}
 
         <Center direction="row" flexWrap="wrap" justifyContent="space-between">
           <Wrap spacing={['', '', '14', '16']} align="center">
