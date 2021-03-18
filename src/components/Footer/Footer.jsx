@@ -13,7 +13,6 @@ const Footer = (props) => {
       justify="space-between"
       fontSize={['xx-small', 'xs', 'sm', 'xl']}
       fontWeight={600}
-      // bg="gray.50"
       width="100%"
       direction="column"
       maxW="1200px"
@@ -29,25 +28,21 @@ const Footer = (props) => {
         px={['10', '48', '52', '72']}
       >
         <Link to="/">
-          {' '}
           <Text _hover={{ color: 'green.400' }}>{t('navbar.home')}</Text>
         </Link>
         <Link to="/items">
-          {' '}
           <Text _hover={{ color: 'green.400' }}>{t('navbar.items')}</Text>
         </Link>
         <Link to="/about">
           <Text _hover={{ color: 'green.400' }}>{t('navbar.about')}</Text>
         </Link>
         <Link to="/contactus">
-          {' '}
           <Text _hover={{ color: 'green.400' }}>{t('navbar.contactUs')}</Text>
         </Link>
       </HStack>
       <HStack mb="2" justify="space-between" px={80}>
         <Box color="gray.500" fontSize="xs" _hover={{ color: 'green.400' }}>
           <a href="http://www.facebook.com">
-            {' '}
             <Facebook />
           </a>
         </Box>
@@ -57,21 +52,16 @@ const Footer = (props) => {
           </a>
         </Box>
         <Box color="gray.500" fontSize="xl" _hover={{ color: 'green.400' }}>
-          {/* mr={8} */}
           <a href="http://www.github.com">
             <GitHub />
           </a>
         </Box>
         <Box color="gray.500" fontSize="sm" _hover={{ color: 'green.400' }}>
           <a href="http://www.twitter.com">
-            {' '}
             <Twitter />
           </a>
         </Box>
       </HStack>
-      {/* <Flex mb={-8} mr="28" justify="flex-end" fontSize="xs" color="gray.500">
-        &copy; {t('navbar.copy')}
-      </Flex> */}
     </Flex>
   );
 };
