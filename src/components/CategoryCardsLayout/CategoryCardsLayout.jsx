@@ -1,78 +1,140 @@
-import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import appliances from '../../assets/images/appliances.png';
-import book from '../../assets/images/book.png';
-import Clothes from '../../assets/images/Clothes.png';
-import medicalkit from '../../assets/images/medicalkit.png';
-import sofa from '../../assets/images/sofa.png';
-import toys from '../../assets/images/toys.png';
+import {
+  Flex,
+  Wrap,
+  WrapItem,
+  Stack,
+  Center,
+  Link,
+  Box,
+  Heading,
+} from '@chakra-ui/react';
 import CategoryCard from '../CategoryCard';
+import furniture from '../../assets/images/furniture.png';
+import Clothes from '../../assets/images/Clothes.png';
+import book from '../../assets/images/book.png';
+import medicalkit from '../../assets/images/medicalkit.png';
+import appliances from '../../assets/images/appliances.png';
+import toys from '../../assets/images/toys.png';
+import all from '../../assets/images/all.png';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 const CategoryCardsLayout = () => {
   const { t } = useTranslation();
 
   return (
-    <Flex
-      justifyContent="center"
-      maxWidth="4xl"
-      mx="auto"
-      mt={['0', '0', '24', '0']}
-    >
-      <Grid
-        maxH="72"
-        maxW="4xl"
-        templateRows="repeat(12, 1fr)"
-        templateColumns="repeat(25, 1fr)"
-        gap={4}
-      >
-        <GridItem borderRadius="xl" colSpan={8} rowSpan={12} bg="#EAEAF1">
-          <CategoryCard
-            categoryPic={sofa}
-            direction="column"
-            categoryName={t('categoryCards.furniture')}
-            ml="4"
-          ></CategoryCard>
-        </GridItem>
-        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#F6E8CD">
-          <CategoryCard
-            categoryPic={Clothes}
-            direction="column"
-            categoryName={t('categoryCards.clothes')}
-          ></CategoryCard>
-        </GridItem>
-        <GridItem borderRadius="xl" colSpan={5} rowSpan={6} bg="#CBECE9">
-          <CategoryCard
-            categoryPic={book}
-            direction="column"
-            categoryName={t('categoryCards.books')}
-          ></CategoryCard>
-        </GridItem>
-        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#E6D0EF">
-          <CategoryCard
-            categoryPic={toys}
-            direction="row-reverse"
-            categoryName={t('categoryCards.toys')}
-            mt="24"
-          ></CategoryCard>
-        </GridItem>
-        <GridItem borderRadius="xl" colSpan={7} rowSpan={6} bg="#F0D0D2">
-          <CategoryCard
-            categoryPic={medicalkit}
-            direction="row-reverse"
-            categoryName={t('categoryCards.medics')}
-            mt="24"
-          ></CategoryCard>
-        </GridItem>
-        <GridItem borderRadius="xl" colSpan={10} rowSpan={6} bg="#CFD6F2">
-          <CategoryCard
-            categoryPic={appliances}
-            direction="row-reverse"
-            categoryName={t('categoryCards.appliances')}
-            mt="24"
-          ></CategoryCard>
-        </GridItem>
-      </Grid>
+    <Flex maxW="4xl" m="auto" align="center" justify="space-between">
+      <Stack>
+        <Box>
+          <Heading size="lg" color="green.500" mb={5}>
+            {t('categoryCards.header')}
+          </Heading>
+        </Box>
+
+        <Center direction="row" flexWrap="wrap" justifyContent="space-between">
+          <Wrap spacing={['', '', '14', '16']} align="center">
+            <WrapItem>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <CategoryCard
+                  categoryPic={furniture}
+                  categoryName={t('categoryCards.furniture')}
+                  bgColor="#EAEAF1"
+                  categoryLink="/items/furniture"
+                ></CategoryCard>
+              </motion.button>
+            </WrapItem>
+            <WrapItem>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <CategoryCard
+                  categoryPic={Clothes}
+                  categoryName={t('categoryCards.clothes')}
+                  bgColor="#F6E8CD"
+                  categoryLink="/items/clothes"
+                ></CategoryCard>
+              </motion.button>
+            </WrapItem>
+
+            <WrapItem>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <CategoryCard
+                  categoryPic={book}
+                  categoryName={t('categoryCards.books')}
+                  bgColor="#CBECE9"
+                  categoryLink="/items/books"
+                ></CategoryCard>
+              </motion.button>
+            </WrapItem>
+
+            <WrapItem>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <CategoryCard
+                  categoryPic={toys}
+                  categoryName={t('categoryCards.toys')}
+                  bgColor="#E6D0EF"
+                  categoryLink="/items/toys"
+                ></CategoryCard>
+              </motion.button>
+            </WrapItem>
+
+            <WrapItem>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <CategoryCard
+                  categoryPic={medicalkit}
+                  categoryName={t('categoryCards.medics')}
+                  bgColor="#F0D0D2"
+                  categoryLink="/items/medics"
+                ></CategoryCard>
+              </motion.button>
+            </WrapItem>
+
+            <WrapItem>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <CategoryCard
+                  categoryPic={appliances}
+                  categoryName={t('categoryCards.appliances')}
+                  bgColor="#CFD6F2"
+                  categoryLink="/items/appliances"
+                ></CategoryCard>
+              </motion.button>
+            </WrapItem>
+
+            <WrapItem display={{ base: 'none', md: 'block' }}>
+              <Link to="/items">
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <CategoryCard
+                    categoryPic={all}
+                    categoryName="All"
+                    bgColor="#EAEAF1"
+                    categoryLink="/items"
+                  ></CategoryCard>
+                </motion.button>
+              </Link>
+            </WrapItem>
+          </Wrap>
+        </Center>
+      </Stack>
     </Flex>
   );
 };

@@ -1,30 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Stack, Text, Image } from '@chakra-ui/react';
+import { Flex, Box, Text, Image } from '@chakra-ui/react';
+import { ArrowRight } from 'react-feather';
 
-const CategoryCard = ({ categoryPic, direction, categoryName, ml, mt }) => {
+const CategoryCard = ({ categoryPic, categoryName, bgColor, categoryLink }) => {
   return (
-    <Link to={`/items/${categoryName.toLowerCase()}`}>
+    <Link to={categoryLink}>
       <Flex
-        mb="4"
-        fontSize="md"
-        width="100%"
-        height="100%"
-        justifyContent="center"
-        _hover={{ cursor: 'pointer' }}
+        direction="column"
+        justifyContent="space-between"
+        align="center"
+        borderRadius="xl"
+        w={['28', '36', '44', '44']}
+        h={['32', '40', '48', '48']}
+        py={['2', '4', '8', '8']}
+        boxShadow="lg"
+        fontFamily="Montserrat"
       >
-        <Stack direction={direction} mb="4">
-          <Image src={categoryPic} maxW="90%" maxH="90%" m="auto" />
-
-          <Flex mt={mt} justify="left" spacing="2">
-            <Text fontWeight={600} ml={ml} mr="2">
-              {categoryName}
-            </Text>
-            <Text mr="1" color="gray.400">
-              55
-            </Text>
+        <Image src={categoryPic} maxW="10" />
+        <Text m="auto" fontWeight="bold">
+          {categoryName}
+        </Text>
+        <Box
+          bgColor={bgColor}
+          w="10"
+          h="10"
+          align="center"
+          m="auto"
+          borderRadius="lg"
+        >
+          <Flex m="2">
+            <ArrowRight />
           </Flex>
-        </Stack>
+        </Box>
       </Flex>
     </Link>
   );
