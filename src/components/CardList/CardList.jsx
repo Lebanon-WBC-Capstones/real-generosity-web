@@ -11,7 +11,9 @@ const CardList = ({ items }) => {
     <Box maxWidth="4xl" mx="auto">
       <Box d="flex" justifyContent="space-between" fontSize="md" mb="5px">
         <Box>
-          <Heading size="md">{t('cardlist.heading')}</Heading>
+          <Heading size="lg" color="green.500" mb={5}>
+            {t('cardlist.heading')}
+          </Heading>
         </Box>
         <Box>
           <Link to="/items">
