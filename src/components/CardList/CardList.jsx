@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
+import { motion } from 'framer-motion';
 
 const CardList = ({ items }) => {
   const { t } = useTranslation();
@@ -27,7 +28,14 @@ const CardList = ({ items }) => {
         {items.map((item) => {
           console.log(item.data());
           console.log(item.id);
-          return <Card key={item.id} id={item.id} {...item.data()} />;
+          return (
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Card key={item.id} id={item.id} {...item.data()} />
+            </motion.button>
+          );
         })}
       </SimpleGrid>
     </Box>
