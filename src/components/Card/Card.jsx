@@ -10,16 +10,17 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
 
   return (
     <Link to={`/item/${id}`}>
-      <Box bg="white" maxW="2xs" borderRadius="lg" boxShadow="md">
+      <Box bg="white" maxW="2xs" borderRadius="md" boxShadow="md">
         <Box p="4">
           <Image
             objectFit="cover"
-            width="250px"
-            height="100px"
-            borderRadius="lg"
-            boxShadow="lg"
+            w="full"
+            height="200px"
+            borderRadius="md"
+            boxShadow="md"
             src={image_url}
             alt="item image"
+            loading="lazy"
           />
         </Box>
         <Box px="4" pb="4">
@@ -36,8 +37,7 @@ const Card = ({ title, id, createdAt, image_url, location }) => {
           <Flex align="center" justify="space-between">
             <HStack color="green.400" w="xs" mr={5} maxH={5}>
               <MapPin />
-              {/* <Box fontSize="sm" w="xs" overflow="hidden"> */}
-              <Box fontSize="sm" maxW={40}>
+              <Box fontSize="sm">
                 {isLoading && 'loading location..'}
                 {cityName ? cityName : 'no location..'}
               </Box>

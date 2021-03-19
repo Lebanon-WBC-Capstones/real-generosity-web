@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const mapStyles = {
-  height: '60vh',
-  width: '500px',
+  height: '400px',
+  width: '100%',
 };
 
 const Map = ({ currentPosition, setCurrentPosition }) => {
@@ -40,11 +40,11 @@ const Map = ({ currentPosition, setCurrentPosition }) => {
           <Marker position={currentPosition} draggable={true} />
         ) : null}
       </GoogleMap>
-      {currentPosition && (
+      {/* {currentPosition && (
         <h3>
           Current Position: {currentPosition.lat}, {currentPosition.lng}
         </h3>
-      )}
+      )} */}
     </>
   ) : (
     <>map is loading...</>

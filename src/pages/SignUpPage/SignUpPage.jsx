@@ -67,16 +67,9 @@ function SignUpPage() {
   };
 
   return (
-    <Flex
-      minH="100vh"
-      align="center"
-      justify="center"
-      m="auto"
-      fontSize="md"
-      fontWeight="medium"
-    >
-      <Box>
-        <Heading py="2">{t('navbar.getStarted')}</Heading>
+    <Flex minH="100vh" align="center" justify="center">
+      <Box w="xl" bg="white" p={16} borderRadius="md" boxShadow="md">
+        <Heading mb="2">{t('navbar.getStarted')}</Heading>
 
         <HStack mb="12">
           <Text textColor="gray.400">{t('signup.subheading')} </Text>
@@ -88,12 +81,11 @@ function SignUpPage() {
           <Box>
             <Text mb={2}>{t('signup.fullname')}</Text>
             <Input
-              size="md"
+              size="lg"
               name="fullname"
               variant="filled"
               isRequired
               focusBorderColor="green.200"
-              maxW={['72', '96', '96', '96']}
               ref={register}
             />
           </Box>
@@ -103,11 +95,10 @@ function SignUpPage() {
             <Input
               placeholder="samir@realgen.com"
               type="email"
-              size="md"
+              size="lg"
               name="email"
               variant="filled"
               isRequired
-              maxW={['72', '96', '96', '96']}
               ref={register}
               focusBorderColor="green.200"
             />
@@ -116,12 +107,11 @@ function SignUpPage() {
             <Text mb={2}>{t('signup.password')}</Text>
             <Input
               placeholder={t('signup.passplaceholder')}
-              size="md"
+              size="lg"
               name="password"
               type="password"
               variant="filled"
               isRequired
-              maxW={['72', '96', '96', '96']}
               ref={register}
               focusBorderColor="green.200"
               pattern="(?=.*[a-z]{1,})(?=.*[A-Z]{1,})(?=.*[0-9]{1,})(?=.*[!@#\$%\^&\*]).{5,}$"
@@ -133,12 +123,11 @@ function SignUpPage() {
             <Text mb={2}>{t('signup.repeat')}</Text>
             <Input
               placeholder={t('signup.passplaceholder')}
-              size="md"
+              size="lg"
               type="password"
               name="confirm"
               variant="filled"
               isRequired
-              maxW={['72', '96', '96', '96']}
               ref={register({
                 validate: (value) => {
                   if (value === getValues('password')) {
@@ -157,21 +146,16 @@ function SignUpPage() {
             <Input
               placeholder="+961...`"
               type="phone"
-              size="md"
+              size="lg"
               name="phone"
               variant="filled"
               isRequired
-              maxW={['72', '96', '96', '96']}
               ref={register}
               focusBorderColor="green.200"
             />
           </Box>
           <Box mt={8}>
-            <Button
-              type="submit"
-              colorScheme="green"
-              w={['72', '96', '96', '96']}
-            >
+            <Button type="submit" colorScheme="green" w="full" size="lg">
               {t('signup.createbutton')}
             </Button>
           </Box>

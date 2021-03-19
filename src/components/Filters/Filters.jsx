@@ -1,16 +1,7 @@
-import {
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-} from '@chakra-ui/react';
-import React from 'react';
-import { Plus, Search } from 'react-feather';
-import { Link } from 'react-router-dom';
+import { Button, Grid, HStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 const CATEGORIES = [
   'All',
   'Books',
@@ -21,69 +12,42 @@ const CATEGORIES = [
   'Furniture',
 ];
 
-const Filters = ({ setSearch }) => {
+const Filters = () => {
+  const { category } = useParams();
   const renders = React.useRef(0);
   console.log('Filters.jsx renders', renders.current++);
   return (
-    <Box py="10" width={1080} fontSize={15} fontWeight={400}>
-      <Flex justifyContent="space-between" mb="10" color="black">
-        <Flex>
-          {CATEGORIES.map((cat, index) =>
-            cat === 'All' ? (
-              <Link key={index} to={`/items`}>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+    <Grid gap={4} fontSize={15} mb="20px">
+      <HStack spacing={8}>
+        {CATEGORIES.map((cat, index) =>
+          cat === 'All' ? (
+            <Link key={index} to={`/items`}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Button colorScheme={category === undefined ? 'green' : null}>
+                  {cat}
+                </Button>
+              </motion.button>
+            </Link>
+          ) : (
+            <Link key={index} to={`/items/${cat.toLowerCase()}`}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Button
+                  colorScheme={cat.toLowerCase() === category ? 'green' : null}
                 >
-                  <Button ml={4}>{cat}</Button>
-                </motion.button>
-              </Link>
-            ) : (
-              <Link key={index} to={`/items/${cat.toLowerCase()}`}>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Button ml={4}>{cat}</Button>
-                </motion.button>
-              </Link>
-            )
-          )}
-        </Flex>
-
-        <HStack pl={100}>
-          <Link to="/add-item">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Button colorScheme="green">
-                <Plus />
-                Submit Donation
-              </Button>
-            </motion.button>
-          </Link>
-        </HStack>
-      </Flex>
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setSearch(e.target.search.value);
-          e.target.reset();
-        }}
-      >
-        <InputGroup>
-          <InputLeftElement children={<Search color="black" />} />
-          <Input
-            name="search"
-            width="400px"
-            bg="whiteAlpha.800"
-            placeholder={'search...'}
-          />
-        </InputGroup>
-      </form>
-    </Box>
+                  {cat}
+                </Button>
+              </motion.button>
+            </Link>
+          )
+        )}
+      </HStack>
+    </Grid>
   );
 };
 

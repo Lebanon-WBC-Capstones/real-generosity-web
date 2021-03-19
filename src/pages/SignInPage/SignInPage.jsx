@@ -52,16 +52,9 @@ function SignInPage() {
   };
 
   return (
-    <Flex
-      minH="100vh"
-      align="center"
-      justify="center"
-      m="auto"
-      fontSize="md"
-      fontWeight="medium"
-    >
-      <Box>
-        <Heading py="2">{t('signin.signin')}</Heading>
+    <Flex minH="100vh" align="center" justify="center">
+      <Box w="xl" bg="white" p={16} borderRadius="md" boxShadow="md">
+        <Heading mb="2">{t('signin.signin')}</Heading>
         <HStack mb="12">
           <Text textColor="gray.400">{t('signin.subheading')} </Text>
           <Link to="/auth/signup">
@@ -75,10 +68,9 @@ function SignInPage() {
               ref={register}
               name="email"
               type="email"
-              size="sm"
+              size="lg"
               variant="filled"
               isRequired
-              maxW={['72', '96', '96', '96']}
               focusBorderColor="green.200"
             />
           </Box>
@@ -88,10 +80,9 @@ function SignInPage() {
               ref={register}
               name="password"
               type="password"
-              size="sm"
+              size="lg"
               variant="filled"
               isRequired
-              maxW={['72', '96', '96', '96']}
               focusBorderColor="green.200"
             />
           </Box>
@@ -106,11 +97,7 @@ function SignInPage() {
             </Text>
           </Box>
           <Box mt={8}>
-            <Button
-              type="submit"
-              colorScheme="green"
-              w={['72', '96', '96', '96']}
-            >
+            <Button type="submit" size="lg" colorScheme="green" w="full">
               {t('signin.signinbutton')}
             </Button>
           </Box>

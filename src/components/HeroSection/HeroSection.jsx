@@ -12,11 +12,8 @@ const HeroSection = () => {
       align="center"
       justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
       direction={{ base: 'column-reverse', md: 'row' }}
-      wrap="no-wrap"
-      minH="70vh"
       px={['8', '8', '0', '0']}
-      mb={16}
-      maxWidth="4xl"
+      maxW="7xl"
       mx="auto"
     >
       <Stack
@@ -69,7 +66,7 @@ const HeroSection = () => {
         </Link>
       </Stack>
       <Box w={{ base: '80%', sm: '60%', md: '60%' }} mb={{ base: 12, md: 0 }}>
-        <Image size="100%" src={heroSectionImage_1} />
+        <Image size="100%" src={heroSectionImage_1} loading="eager" />
       </Box>
     </Flex>
   );

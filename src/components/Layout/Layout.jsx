@@ -5,9 +5,11 @@ import NavBar from '../NavBar';
 
 function Layout({ children }) {
   return (
-    <Flex minH="100vh" direction="column" justify="space-between" m="0 auto">
+    <Flex minH="100vh" bg="gray.50" direction="column" justify="space-between">
       <NavBar />
-      <Box flex="1">{children}</Box>
+      <Box mt={16} flex="1">
+        {children}
+      </Box>
       <Footer />
     </Flex>
   );

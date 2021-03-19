@@ -1,16 +1,20 @@
-import { Box, Container, Flex, Skeleton } from '@chakra-ui/react';
+import { Box, Flex, Grid, Image, Skeleton, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router-dom';
 import Filters from '../../components/Filters';
-import Header from '../../components/Header';
-import ItemsMap from '../../components/ItemsMap';
 import ItemsList from '../../components/ItemsList';
+import ItemsMap from '../../components/ItemsMap';
 import { firestore } from '../../services/firebase';
 
 const ItemsPage = () => {
   const { category } = useParams();
-  const [search, setSearch] = React.useState('');
+
+  const mapStyles = {
+    height: '850px',
+    width: '800px',
+    borderRadius: '2%',
+  };
 
   let itemsRef;
   if (category) {
@@ -26,10 +30,6 @@ const ItemsPage = () => {
       .orderBy('createdAt', 'desc');
   }
 
-  if (search) {
-    itemsRef = itemsRef.where('title', '==', search);
-  }
-
   const [items, loading, error] = useCollection(itemsRef);
 
   const renders = React.useRef(0);
@@ -39,40 +39,48 @@ const ItemsPage = () => {
 
   if (loading)
     return (
-      <Container centerContent minH="100vh">
-        <Skeleton w={1080} my={50} h={200} />
-        <Skeleton w={1080} mb={50} h={50} />
-        <Flex>
-          <Skeleton mr={30} w={500} h="80vh" />
-          <Skeleton w={500} h="80vh" />
+      <Box mx={36} mb="36px" mt={'44'}>
+        <Flex justify="space-between">
+          <Box h={800}>
+            <Filters />
+
+            <Grid templateColumns="repeat(3, 1fr)" gap={4} p={4}>
+              {['', '', '', '', '', ''].map(() => (
+                <Skeleton borderRadius="md" width="2xs" height="200px" />
+              ))}
+            </Grid>
+          </Box>
+          <Box ml={30}>
+            <Skeleton borderRadius="md" h="850px" w="800px" />
+          </Box>
         </Flex>
-      </Container>
+      </Box>
     );
 
   return (
-    <Container my="45px" maxW="1080px">
-      <Box mb="45px">
-        <Header items={items.docs.length} />
-      </Box>
-
-      <Box mb="45px">
-        <Filters setSearch={setSearch} />
-      </Box>
-
+    <Box mx={36} mb="36px" mt={'44'}>
       <Flex justify="space-between">
-        <Box w="50%">
+        <Box h={800}>
+          <Filters />
           {items.docs.length ? (
             <ItemsList items={items.docs} />
           ) : (
-            'no match found...'
+            <Grid gap="4" h={800} placeContent="center">
+              <Text fontSize="5xl">no match found...</Text>
+              <Image
+                mx="auto"
+                src="https://img.icons8.com/fluent/120/000000/nothing-found.png"
+                alt="not found"
+              />
+            </Grid>
           )}
         </Box>
 
-        <Box w="50%" ml={30}>
-          <ItemsMap items={items.docs} />
+        <Box ml={30}>
+          <ItemsMap {...mapStyles} items={items.docs} />
         </Box>
       </Flex>
-    </Container>
+    </Box>
   );
 };
 

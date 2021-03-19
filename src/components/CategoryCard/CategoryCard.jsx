@@ -1,39 +1,30 @@
+import { Flex, Image, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Flex, Box, Text, Image } from '@chakra-ui/react';
 import { ArrowRight } from 'react-feather';
+import { Link } from 'react-router-dom';
 
-const CategoryCard = ({ categoryPic, categoryName, bgColor, categoryLink }) => {
+const CategoryCard = ({ mt, categoryPic, categoryName, categoryLink }) => {
   return (
     <Link to={categoryLink}>
-      <Flex
-        direction="column"
-        justifyContent="space-between"
+      <VStack
+        spacing="4"
+        mt={mt}
+        bg="white"
         align="center"
-        borderRadius="xl"
-        w={['28', '36', '44', '44']}
-        h={['32', '40', '48', '48']}
-        py={['2', '4', '8', '8']}
-        boxShadow="lg"
-        fontFamily="Montserrat"
+        borderRadius="md"
+        w="48"
+        p="6"
+        boxShadow="md"
       >
-        <Image src={categoryPic} maxW="10" />
-        <Text m="auto" fontWeight="bold">
+        <Image color="gray.100" objectFit="cover" src={categoryPic} w="24" />
+
+        <Text fontSize="lg" fontWeight="semibold">
           {categoryName}
         </Text>
-        <Box
-          bgColor={bgColor}
-          w="10"
-          h="10"
-          align="center"
-          m="auto"
-          borderRadius="lg"
-        >
-          <Flex m="2">
-            <ArrowRight />
-          </Flex>
-        </Box>
-      </Flex>
+        <Flex justify="center" align="center" borderRadius="lg">
+          <ArrowRight />
+        </Flex>
+      </VStack>
     </Link>
   );
 };

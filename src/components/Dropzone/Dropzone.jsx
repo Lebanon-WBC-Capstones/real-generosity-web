@@ -52,7 +52,6 @@ function Dropzone({ setImage }) {
     <>
       <Flex
         bg="gray.100"
-        boxShadow="inner"
         justify="center"
         align="center"
         h={150}

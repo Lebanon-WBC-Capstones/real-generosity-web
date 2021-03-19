@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Grid } from '@chakra-ui/react';
 import HeroSection from '../../components/HeroSection';
 import CategoryCardLayout from '../../components/CategoryCardsLayout';
 import CardList from '../../components/CardList';
@@ -11,24 +11,24 @@ function HomePage() {
     .collection('items')
     .where('status', '==', 'active')
     .orderBy('createdAt', 'desc')
-    .limit(4);
+    .limit(5);
   const [items, loading, error] = useCollectionOnce(query);
 
   if (error) return 'an error has occured...';
 
   return (
-    <Flex direction="column" justify="space-evenly">
+    <Grid gap={40}>
       <HeroSection />
 
-      <Box mt={18} mb={24} justify="center" mx="auto">
+      <Box mx="auto">
         <CategoryCardLayout />
       </Box>
 
-      <Box mb="14" justify="center" mx="auto">
+      <Box mb="24" mx="auto">
         {loading && 'items list is loading...'}
         {items && <CardList items={items.docs} />}
       </Box>
-    </Flex>
+    </Grid>
   );
 }
 

@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex } from '@chakra-ui/react';
+import { Box, Button, Stack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -50,27 +50,29 @@ function AddItemPage() {
     reset();
   };
   return (
-    <Container my="45px" maxW="5xl">
+    <Box
+      spacing={8}
+      w="2xl"
+      mx="auto"
+      bg="white"
+      borderRadius="md"
+      boxShadow="md"
+      my="45px"
+      p={12}
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Flex justify="space-between">
-          <Box maxW="50vw" maxH="60vh" ml={10} mt={8}>
-            <Map
-              currentPosition={currentPosition}
-              setCurrentPosition={setCurrentPosition}
-            />
-          </Box>
-          <Box maxW="50vw">
-            <AddForm register={register} setImage={setImage} />
-          </Box>
-        </Flex>
-
-        <Box mt={8} ml={200}>
-          <Button width={550} size="md" colorScheme="green" type="submit">
+        <Stack spacing={8}>
+          <AddForm register={register} setImage={setImage} />
+          <Map
+            currentPosition={currentPosition}
+            setCurrentPosition={setCurrentPosition}
+          />
+          <Button w="full" size="lg" colorScheme="green" type="submit">
             {t('additem.addbutton')}
           </Button>
-        </Box>
+        </Stack>
       </form>
-    </Container>
+    </Box>
   );
 }
 

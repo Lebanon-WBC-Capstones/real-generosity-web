@@ -10,13 +10,8 @@ const center = {
   lat: 34.4346,
   lng: 35.8362,
 };
-const mapStyles = {
-  height: '110vh',
-  width: '500px',
-  borderRadius: '2%',
-};
 
-export const ItemsMap = ({ items }) => {
+export const ItemsMap = ({ items, ...rest }) => {
   const [selected, setSelected] = useState();
 
   console.log(selected?.id);
@@ -30,7 +25,7 @@ export const ItemsMap = ({ items }) => {
 
   return isLoaded ? (
     <div>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={10} center={center}>
+      <GoogleMap mapContainerStyle={rest} zoom={10} center={center}>
         {items.map((item) => {
           return (
             <Marker
