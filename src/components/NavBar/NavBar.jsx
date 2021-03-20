@@ -87,7 +87,7 @@ function NavBar(props) {
       pos="absolute"
       mx="auto"
       w="100%"
-      px={['2', '4', '8', '14']}
+      px={['0', '4', '8', '14']}
       pt={2}
       pb={['0', '8', '0', '0']}
       flexWrap="wrap"

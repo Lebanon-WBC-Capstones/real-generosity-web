@@ -12,8 +12,13 @@ const ItemsPage = () => {
 
   const mapStyles = {
     height: '850px',
-    width: '800px',
+    width: '100%',
     borderRadius: '2%',
+  };
+
+  const mobileMapStyles = {
+    height: '400px',
+    width: '100%',
   };
 
   let itemsRef;
@@ -39,12 +44,16 @@ const ItemsPage = () => {
 
   if (loading)
     return (
-      <Box mx={36} mb="36px" mt={'44'}>
+      <Box mx={36} mb="36px" mt={44}>
         <Flex justify="space-between">
           <Box h={800}>
             <Filters />
 
-            <Grid templateColumns="repeat(3, 1fr)" gap={4} p={4}>
+            <Grid
+              templateColumns={{ lg: 'repeat(2, 1fr)', xl: 'repeat(3, 1fr)' }}
+              gap={4}
+              p={4}
+            >
               {['', '', '', '', '', ''].map(() => (
                 <Skeleton borderRadius="md" width="2xs" height="200px" />
               ))}
@@ -58,29 +67,38 @@ const ItemsPage = () => {
     );
 
   return (
-    <Box mx={36} mb="36px" mt={'44'}>
-      <Flex justify="space-between">
-        <Box h={800}>
-          <Filters />
-          {items.docs.length ? (
+    <Flex
+      w="90vw"
+      mx="auto"
+      mb="36px"
+      mt={{ base: 10, sm: 16, md: 24 }}
+      justify="space-between"
+    >
+      <Box flex="1" h={800}>
+        <Filters />
+        {items.docs.length ? (
+          <>
+            <Box d={{ base: 'block', sm: 'none' }}>
+              <ItemsMap {...mobileMapStyles} items={items.docs} />
+            </Box>
             <ItemsList items={items.docs} />
-          ) : (
-            <Grid gap="4" h={800} placeContent="center">
-              <Text fontSize="5xl">no match found...</Text>
-              <Image
-                mx="auto"
-                src="https://img.icons8.com/fluent/120/000000/nothing-found.png"
-                alt="not found"
-              />
-            </Grid>
-          )}
-        </Box>
+          </>
+        ) : (
+          <Grid gap="4" h={800} placeContent="center">
+            <Text fontSize="5xl">no match found...</Text>
+            <Image
+              mx="auto"
+              src="https://img.icons8.com/fluent/120/000000/nothing-found.png"
+              alt="not found"
+            />
+          </Grid>
+        )}
+      </Box>
 
-        <Box ml={30}>
-          <ItemsMap {...mapStyles} items={items.docs} />
-        </Box>
-      </Flex>
-    </Box>
+      <Box flex="1" d={{ base: 'none', md: 'block' }} ml={6}>
+        <ItemsMap {...mapStyles} items={items.docs} />
+      </Box>
+    </Flex>
   );
 };
 

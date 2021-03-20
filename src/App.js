@@ -24,7 +24,7 @@ function App() {
   const currentUser = useAuth();
 
   return (
-    <div className="App">
+    <div>
       <Router>
         <Suspense fallback="loading">
           <Layout>

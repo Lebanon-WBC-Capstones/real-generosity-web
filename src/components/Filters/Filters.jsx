@@ -1,4 +1,4 @@
-import { Button, Grid, HStack } from '@chakra-ui/react';
+import { Button, HStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -17,37 +17,39 @@ const Filters = () => {
   const renders = React.useRef(0);
   console.log('Filters.jsx renders', renders.current++);
   return (
-    <Grid gap={4} fontSize={15} mb="20px">
-      <HStack spacing={8}>
-        {CATEGORIES.map((cat, index) =>
-          cat === 'All' ? (
-            <Link key={index} to={`/items`}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
+    <HStack wrap="wrap">
+      {CATEGORIES.map((cat, index) =>
+        cat === 'All' ? (
+          <Link key={index} to={`/items`}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Button
+                my={2}
+                colorScheme={category === undefined ? 'green' : null}
               >
-                <Button colorScheme={category === undefined ? 'green' : null}>
-                  {cat}
-                </Button>
-              </motion.button>
-            </Link>
-          ) : (
-            <Link key={index} to={`/items/${cat.toLowerCase()}`}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
+                {cat}
+              </Button>
+            </motion.button>
+          </Link>
+        ) : (
+          <Link key={index} to={`/items/${cat.toLowerCase()}`}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Button
+                my={2}
+                colorScheme={cat.toLowerCase() === category ? 'green' : null}
               >
-                <Button
-                  colorScheme={cat.toLowerCase() === category ? 'green' : null}
-                >
-                  {cat}
-                </Button>
-              </motion.button>
-            </Link>
-          )
-        )}
-      </HStack>
-    </Grid>
+                {cat}
+              </Button>
+            </motion.button>
+          </Link>
+        )
+      )}
+    </HStack>
   );
 };
 
